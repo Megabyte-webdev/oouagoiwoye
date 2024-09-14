@@ -4,18 +4,19 @@ import HomePage from './Pages/HomePage'
 import AllFacultyPage from './Pages/AllFacultyPage'
 import AboutPage from './Pages/AboutPage'
 import './App.css'
+import Navbar from './Components/Navbar'
 
 function App() {
   return (
     <BrowserRouter>
+        <Navbar />
         <Routes>
-          <Route path='/' element={<MainLayout />} >
-            <Route index element={<HomePage />} />
+            {/* <Route path='/' element={<MainLayout />} > */}
+            <Route path='/' element={<HomePage />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='/all-faculties' element={<AllFacultyPage />} />
-          </Route>
           
-      </Routes>
+        </Routes>
     </BrowserRouter>
   )
 }

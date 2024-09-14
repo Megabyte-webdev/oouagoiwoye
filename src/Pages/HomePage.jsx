@@ -10,7 +10,7 @@ import faculties from "../faculties";
 import news from "../news.json";
 const HomePage = () => {
   return (
-    <div>
+    <div className="mt-40">
       <Hero />
       <Statements />
       <Faculties
