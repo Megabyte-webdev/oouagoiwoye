@@ -8,6 +8,12 @@ export default {
     extend: {
       backgroundColor:{
         bgBlue: '#010035',
+      },
+      fontFamily: {
+        cursive: ["UnifrakturCook"],
+      },
+      gradientColorStops: {
+        'bgBlue': '#010035',
       }
     },
   },

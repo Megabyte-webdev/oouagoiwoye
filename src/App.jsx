@@ -9,7 +9,7 @@ import Navbar from './Components/Navbar'
 function App() {
   return (
     <BrowserRouter>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
             {/* <Route path='/' element={<MainLayout />} > */}
             <Route path='/' element={<HomePage />} />

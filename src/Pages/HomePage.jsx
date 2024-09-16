@@ -8,37 +8,27 @@ import Tour from "../Components/Tour";
 import Footer from "../Components/Footer";
 import faculties from "../faculties";
 import news from "../news.json";
+import Events from "../Components/Events";
+import CardComponent from "../Components/CardComponent";
+import { facultyData } from "../Data/faculty.js"
+import testimonyData from "../Data/testimonial.json"
+import VideoComponent from "../Components/VideoComponent";
+import {communityData} from "../Data/communities.js" 
+
+
+
 const HomePage = () => {
   return (
-    <div className="mt-40">
+    <div className="mt-0">
       <Hero />
       <Statements />
-      <Faculties
-        theme="light"
-        label="Our Faculties"
-        heading="Programs Offered At Olabisi Onabanjo University"
-        showAll={false}
-        db={faculties}
-      />
+      <CardComponent data={facultyData} />
       <ViceChancellor />
-      <Testimonials theme="light" />
-      <About />
-      <Faculties
-        theme="dark"
-        label="News and events"
-        heading="Latest news about Olabisi Onabanjo University"
-        showAll={false}
-        db={news}
-      />
-
+      <VideoComponent data={testimonyData} />
+      <About />   
+      <Events/>     
       <Tour />
-      <Faculties
-        theme="light"
-        label="Our Communities"
-        heading="Communities at Olabisi Onabanjo University"
-        showAll={false}
-        db={faculties}
-      />
+      <CardComponent data={communityData} />
       <Footer />
     </div>
   );

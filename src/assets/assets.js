@@ -14,7 +14,9 @@ import union from './Union.png'
 import vc from './vc.png'
 import welcome_img from './welcome-image.png'
 import rectangle from './Rectangle 3 (Stroke).png'
-
+import facultyImg from "./slide.png"
+import events from "./events.png"
+import otc from "./otc.png"
 
 const assets = {
     community1,
@@ -32,7 +34,10 @@ const assets = {
     union,
     vc,
     welcome_img,
-    rectangle
+    rectangle,
+    facultyImg,
+    events,
+    otc
 }
 
 export default assets;

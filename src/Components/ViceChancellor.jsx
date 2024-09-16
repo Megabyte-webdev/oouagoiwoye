@@ -6,10 +6,10 @@ const ViceChancellor = () => {
     
     <section className="w-full h-auto bg-bgBlue p-10 flex flex-col lg:flex-row items-center justify-center">
             <article className='w-full lg:w-1/2'>
-                <div className='flex flex-row items-center justify-center bg-amber-950 p-1 w-56'>
+                <span className='flex flex-row items-center justify-center bg-amber-950 p-1 w-56'>
                     <i className='bx bx-buildings mr-1 text-xl text-amber-500'></i>
                     <h5 className="text-xl font-semibold text-amber-500">Our vice-chancellor</h5>
-                </div>
+                </span>
                 {/* <h5 className="section-label"></h5> */}
 
                 <h2 className="text-white text-4xl font-bold my-3">Prof. Agboola Ayodeji <br /> olayinka johnson</h2>
