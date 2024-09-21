@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {Routes, Route, BrowserRouter} from 'react-router-dom'
 import MainLayout from './Layouts/MainLayout'
 import HomePage from './Pages/HomePage'
@@ -9,14 +10,15 @@ import Navbar from './Components/Navbar'
 function App() {
   return (
     <BrowserRouter>
-        <Navbar />
-        <Routes>
-            {/* <Route path='/' element={<MainLayout />} > */}
-            <Route path='/' element={<HomePage />} />
-            <Route path='/about' element={<AboutPage />} />
-            <Route path='/all-faculties' element={<AllFacultyPage />} />
-          
-        </Routes>
+        {/* <div className='lg:w-9/12 mx-auto'> */}
+          <Navbar />
+          <Routes>
+              {/* <Route path='/' element={<MainLayout />} /> */}
+              <Route path='/' element={<HomePage />} />
+              <Route path='/about' element={<AboutPage />} />
+              <Route path='/all-faculties' element={<AllFacultyPage />} />
+          </Routes>
+        {/* </div> */}
     </BrowserRouter>
   )
 }
