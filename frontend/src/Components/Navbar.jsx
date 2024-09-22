@@ -10,6 +10,7 @@ import Notifications from './Notifications';
 import { NavLink } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import Marquee from 'react-fast-marquee';
+import CustomButton from "./CustomButton"
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,7 +53,8 @@ const Navbar = () => {
 
           </ul>
           <div className=' relative'>
-            <button className='bg-[#0B35A2] px-4 py-2 rounded-sm shadow-3xl shadow-[goldenrod] shadow-[7px_7px] pointer'>Login Here</button>
+            <CustomButton value={"Login Here"} button={false} />
+            {/* <button className='bg-[#0B35A2] px-4 py-2 rounded-sm shadow-3xl shadow-[goldenrod] shadow-[7px_7px] pointer'>Login Here</button> */}
           </div>
         </div>
 
