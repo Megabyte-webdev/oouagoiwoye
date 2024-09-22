@@ -1,4 +1,3 @@
-import React from 'react'
 import statement from "../statement.json"
 import side from "../assets/side.svg"
 import pin from "../assets/pin.svg"
