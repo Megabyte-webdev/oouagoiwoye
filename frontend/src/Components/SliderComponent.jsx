@@ -42,8 +42,8 @@ export default function sliderComponent({data}) {
                 <SwiperSlide key={index} className='bg-white p-5'>
                    {data && <img src={item.image} alt="slide" className='w-full'/>}
                     <div>
-                    <h2 className='text-xl font-semibold my-2 mb-0'>{item.faculty}</h2>
-                    <h2 className='text-sm font-semibold mt-0 my-2 text-blue-600'>{item.department}</h2>
+                    <h2 className='text-xl font-semibold my-2 mb-0'>{item.title}</h2>
+                    <h2 className='text-sm font-semibold mt-0 my-2 text-blue-600'>{item.subtitle}</h2>
                     <p className='text-xs mt-0 my-2'>{item.body}</p>
                     <h2 className='text-xs font-medium mt-0 my-2 text-blue-600'>{item.by}</h2>
                     </div>

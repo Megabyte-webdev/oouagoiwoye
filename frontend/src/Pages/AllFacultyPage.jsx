@@ -1,5 +1,5 @@
 import React from 'react'
-import Faculties from '../Components/Faculties'
+// import Faculties from '../Components/Faculties'
 import faculties from '../faculties'
 const FacultyPage = () => {
   return (

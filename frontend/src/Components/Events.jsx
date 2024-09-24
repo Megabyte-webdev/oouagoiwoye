@@ -1,5 +1,4 @@
 import React from 'react'
-import Slider from './Slider'
 import {data} from "../Data/news.js"
 import SliderComponent from "./SliderComponent"
 

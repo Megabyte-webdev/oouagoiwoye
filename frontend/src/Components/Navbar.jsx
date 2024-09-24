@@ -51,13 +51,13 @@ const Navbar = () => {
             <ul className=" max-3xl:gap-12 flex z-[99] max-2xl:gap-5 max-xl:gap-3 items-center font-bold cursor-pointer max-lg:flex-col max-lg:bg-white max-lg:text-[#010035] max-lg:fixed max-lg:top-[90px] max-lg:left-[50%] max-lg:translate-x-[-50%] max-lg:w-full max-lg:z-[99] max-lg:pt-8 max-lg:gap-7 max-lg:pb-0 max-lg:items-start">
               <li className='max-lg:px-10 max-md:px-7'><NavLink to="/">Home</NavLink></li>
               <hr />
-              <li className='max-lg:px-10 max-md:px-7'><NavLink to="/about">About</NavLink></li>
+              <li className='max-lg:px-10 max-md:px-7'><NavLink to="/about">About Us</NavLink></li>
               <hr />
               <Dropdown subNav={administration} width={true} title="Administration" link="/administration" />
               <hr />
               <Dropdown subNav={admission} width={true} title="Admissions" link="/admission" />
               <hr />
-              <Dropdown subNav={faculties} title="Faculties" link="/all-faculties" />
+              <Dropdown subNav={faculties} title="Services" link="/all-faculties" />
               <hr />
               <Dropdown subNav={faculties} title="Library" link="/library" />
               {/* <hr /> */}

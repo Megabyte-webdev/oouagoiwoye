@@ -17,6 +17,9 @@ import rectangle from './Rectangle 3 (Stroke).png'
 import facultyImg from "./slide.png"
 import events from "./events.png"
 import otc from "./otc.png"
+import place from "./place.svg"
+import wireframe from "./wireframe.svg"
+import ooupics from "./ooupics.png";
 
 const assets = {
     community1,
@@ -37,7 +40,10 @@ const assets = {
     rectangle,
     facultyImg,
     events,
-    otc
+    otc,
+    place,
+    wireframe,
+    ooupics
 }
 
 export default assets;

@@ -18,6 +18,7 @@ export default function CardComponent({data}) {
                 <h2 className="text-xl lg:text-3xl my-3 font-bold">{data.title}</h2>
             </article>
             <SliderComponent data={data.items} />
+            
     </section>
     </>
   )

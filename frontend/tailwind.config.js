@@ -13,7 +13,13 @@ export default {
         cursive: ["UnifrakturCook"],
       },
       gradientColorStops: {
-        'bgBlue': '#010035',
+        bgBlue: '#010035',
+      },
+      colors: {
+        royal: "#0B35A2",
+        deep: "#010035"
+      }, borderWidth: {
+        thin: "0.5px"
       }
     },
   },
