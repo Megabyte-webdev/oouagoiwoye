@@ -1,5 +1,6 @@
 import React from 'react'
 import assets from '../assets/assets'
+import CustomButton from './CustomButton'
 const About = () => {
   return (
     <div>
@@ -16,12 +17,13 @@ const About = () => {
 
                 <h2 className="text-xl lg:text-3xl font-semibold">A good education is a foundation for a better future</h2>
 
-                <p className='w-9/12'>
+                <p className='w-9/12 mb-8'>
                     Olabisi Onabanjo University is a prominent insitution to excellence in teaching, research and
                     community engagement. Over the past few years, we have nurtured leaders acros a multitude of
                     disciplines through our diverse programs.
                 </p>
-                <button className="primary-btn"><a href="">Check it out</a></button>
+                <CustomButton  />
+                {/* <button className="primary-btn"><a href="">Check it out</a></button> */}
             </article>
 
         </section>

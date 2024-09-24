@@ -6,8 +6,7 @@ import Testimonials from "../Components/Testimonials";
 import About from "../Components/About";
 import Tour from "../Components/Tour";
 import Footer from "../Components/Footer";
-import faculties from "../faculties";
-import news from "../news.json";
+
 import Events from "../Components/Events";
 import CardComponent from "../Components/CardComponent";
 import { facultyData } from "../Data/faculty.js"
@@ -29,7 +28,6 @@ const HomePage = () => {
       <Events/>     
       <Tour />
       <CardComponent data={communityData} />
-      <Footer />
     </div>
   );
 };

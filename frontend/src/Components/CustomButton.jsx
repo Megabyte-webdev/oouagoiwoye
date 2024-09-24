@@ -1,7 +1,6 @@
 import React from 'react'
 
-export default function CustomButton({handleClick, value, button}) {
-  !button ? button === false : button
+export default function CustomButton({handleClick}) {
   return (
     <>
       <button onClick={handleClick}>
