@@ -18,7 +18,7 @@ import {communityData} from "../Data/communities.js"
 
 const HomePage = () => {
   return (
-    <div className="mt-0">
+    <div className="">
       <Hero />
       <Statements />
       <CardComponent data={facultyData} />
