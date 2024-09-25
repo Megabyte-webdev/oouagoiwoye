@@ -71,7 +71,7 @@ export default function AdminDash() {
             </h1>
         </div>
         <div className='w-full h-full flex flex-row items-center relative '>
-            <div className={control ? 'w-3/5 lg:w-2/12 h-full absolute left-0 lg:top-0 lg:left-0 lg:relative font-light font-sans bg-white duration-1000' : 'w-3/5 lg:w-2/12 h-full absolute -left-96 lg:top-0 lg:left-0 lg:relative font-light font-sans bg-white duration-1000'}>
+            <div className={control ? 'w-3/5 lg:w-2/12 h-full absolute left-0 lg:top-0 lg:left-0 lg:relative font-light font-sans bg-white duration-1000 shadow-2xl pr-5' : 'w-3/5 lg:w-2/12 h-full absolute -left-96 lg:top-0 lg:left-0 lg:relative font-light font-sans bg-white duration-1000 shadow-2xl pr-5'}>
                 <div className='w-full ml-2'>
                     {sidebar.map((item, index)=>(
                         <button key={index} 
