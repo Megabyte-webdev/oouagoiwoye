@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const corsOption = require('./middleware/cors');
 
 
 // initializations 
@@ -10,8 +11,10 @@ dotenv.config();
 const port = process.env.PORT || 5000;
 
 //middlewares
-app.use(cors());
+app.use(express.urlencoded({extended: true}));
+app.use(cors(corsOption));
 app.use(express.json());
+app.use(express.static('public'));
 
 
 // routes
