@@ -27,7 +27,7 @@ const campusData = [
         image: assets.place,
         video: "",
         campusInfo: "Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research, and community engagement. Over the past few years, we have nurtured leaders across a multitude of disciplines through our diverse programs. Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research, and community engagement. Over the past few years, we have nurtured leaders across a multitude of disciplines through our diverse programs.",
-        faculties: ["Faculty of Arts", "Faculty of Education", "Faculty of Law", "Faculty of Administration & Management"],
+        faculties: ["Faculty of Engineering", "Faculty of Environmental Science"],
         contactInfo: {
             whasapp: "",
             facebook: "",
