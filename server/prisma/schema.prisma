@@ -21,12 +21,13 @@ model admin {
 }
 
 model campus{
-  id          Int @id @default(autoincrement()) @unique
-  image       String 
-  video       String
-  campusInfo  String
-  contactInfo contact?
-  faculties   Faculties[]
+  id              Int @id @default(autoincrement()) @unique
+  title           String
+  image            String 
+  video           String
+  campusInfo      String
+  campusContact   contact?   
+  faculties       Faculties[]
 }
 
 model Faculties {
@@ -34,23 +35,30 @@ model Faculties {
   campusId            Int @unique
   campus              campus @relation(fields: [campusId], references: [id])
   title               String
+  image               String
+  deanImage           String
+  deanName            String
   noOfDepartments     String
+  facultyInfo         String
   body                String
+  facultyContact     contact?  
 }
 
 model contact {
-  whasapp     String
-  facebook    String
-  youtube     String 
-  campusId    Int @unique
-  campus      campus @relation(fields: [campusId], references: [id])
+  whasapp       String
+  facebook      String
+  youtube       String 
+  campusId      Int         @unique
+  facultyId      Int        @unique
+  campus        campus?     @relation(fields: [campusId], references: [id])
+  Faculties     Faculties?  @relation(fields: [facultyId], references: [id])
 }
 model news {
-  id          Int @id @default(autoincrement()) @unique
-  headline    String
-  body        String
-  image       String
-  author      String
+  id           Int @id @default(autoincrement()) @unique
+  headline     String
+  image        String
+  body         String
+  author       String
 }
 model communities {
   id          Int @id @default(autoincrement()) @unique

@@ -4,7 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const corsOption = require('./src/middleware/cors');
 const errorHandler = require("./src/middleware/errorHandler")
-const { swaggerUi, swaggerSpec } = require("./swagger");
+const { swaggerUi, swaggerSpec } = require("./src/documentation/swagger");
 
 // initializations 
 const app = express();
@@ -19,9 +19,12 @@ app.use(express.static('public'));
 
 
 
-// routes
+//swagger UI 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// routes
 app.use('/api/oouweb/communities', require("./src/Routes/communityRoute"));
+app.use("/api/oouweb/news", require("./src/Routes/newsRoute"));
 
 
 // error handler
