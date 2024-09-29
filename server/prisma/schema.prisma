@@ -21,13 +21,12 @@ model admin {
 }
 
 model campus{
-  id              Int @id @default(autoincrement()) @unique
+  id              Int @id   @default(autoincrement()) @unique
   title           String
-  image            String 
-  video           String
+  image           String
   campusInfo      String
-  campusContact   contact?   
-  faculties       Faculties[]
+  Contact         contact?   
+  faculties       Faculties[] 
 }
 
 model Faculties {
@@ -36,21 +35,40 @@ model Faculties {
   campus              campus @relation(fields: [campusId], references: [id])
   title               String
   image               String
-  deanImage           String
-  deanName            String
-  noOfDepartments     String
-  facultyInfo         String
-  body                String
+  deanImage           String?
+  deanName            String?
+  noOfDepartments     String?
+  body                String?
   facultyContact     contact?  
+  facultyLecturers   lecturers[]
+  departments        departments[]
+}
+
+model departments {
+  id           Int @id @default(autoincrement()) @unique
+  title        String
+  image        String
+  body         String
+  facultyId    Int @unique
+  faculty      Faculties @relation(fields: [facultyId], references: [id])
+}
+
+model lecturers {
+  id           Int @id @default(autoincrement()) @unique
+  name         String
+  designation  String
+  image        String
+  facultyId    Int @unique
+  faculty      Faculties @relation(fields: [facultyId], references: [id])
 }
 
 model contact {
-  whasapp       String
-  facebook      String
-  youtube       String 
+  whatsapp       String      
+  facebook      String     
+  youtube       String      
   campusId      Int         @unique
-  facultyId      Int        @unique
-  campus        campus?     @relation(fields: [campusId], references: [id])
+  facultyId     Int?        @unique
+  campus        campus     @relation(fields: [campusId], references: [id])
   Faculties     Faculties?  @relation(fields: [facultyId], references: [id])
 }
 model news {
