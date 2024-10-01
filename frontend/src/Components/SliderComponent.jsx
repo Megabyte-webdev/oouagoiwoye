@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-export default function sliderComponent({data}) {
+export default function sliderComponent({data, design=""}) {
     
   return (
     <div>
@@ -39,16 +39,27 @@ export default function sliderComponent({data}) {
 		    >
         
 		    {data.map((item, index)=>(
-                <SwiperSlide key={index} className='bg-white p-5'>
-                   {data && <img src={item.image} alt="slide" className='w-full'/>}
-                    <div>
-                    <h2 className='text-xl font-semibold my-2 mb-0'>{item.title}</h2>
-                    <h2 className='text-sm font-semibold mt-0 my-2 text-blue-600'>{item.subtitle}</h2>
-                    <p className='text-xs mt-0 my-2'>{item.body}</p>
-                    <h2 className='text-xs font-medium mt-0 my-2 text-blue-600'>{item.author}</h2>
-                    </div>
-                    <CustomButton />
-                </SwiperSlide>
+                (design !== "new") 
+                ?<SwiperSlide key={index} className='bg-white p-5 mb-10'>
+                {data && <img src={item.image} alt="slide" className='w-full'/>}
+                 <div>
+                 <h2 className='capitalize text-xl font-semibold my-2 mb-0'>{item.title}</h2>
+                 <h2 className='text-sm font-semibold mt-0 my-2 text-blue-600'>{item.subtitle}</h2>
+                 <p className='text-xs mt-0 my-2'>{item.body}</p>
+                 <h2 className='text-xs font-medium mt-0 my-2 text-blue-600'>{item.author}</h2>
+                 </div>
+                 <CustomButton />
+             </SwiperSlide> 
+             :<SwiperSlide key={index} className='bg-blue-50 p-5 mb-10'>
+             {data && <img src={item.image} alt="slide" className='w-full'/>}
+              <div>
+              <h2 className='capitalize text-lg text-blue-900 font-semibold mt-5 mb-0'>{item.title}</h2>
+              <h2 className='text-sm font-semibold mt-0 my-2 text-blue-600'>{item.subtitle}</h2>
+              <p className='text-xs mt-0 my-2'>{item.body}</p>
+              <h2 className='text-xs font-medium mt-0 my-2 text-blue-600'>{item.author}</h2>
+              </div>
+              
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>

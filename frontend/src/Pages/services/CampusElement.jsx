@@ -26,9 +26,9 @@ export default function CampusElement({data}) {
         <p key={1} className='text-slate-500' >
             Services
         </p>,
-        <a className='text-slate-500 cursor-pointer' key={2} onClick={handleClick} >
+        <Link className='text-slate-500 cursor-pointer' key={2} onClick={handleClick} >
             Campus
-        </a>,
+        </Link>,
         <p key={3} className='text-blue-500' >
             Services
         </p>,
