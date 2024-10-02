@@ -3,6 +3,8 @@ import { Link, useParams } from 'react-router-dom';
 import {departmentData} from '../../Data/departments'
 
 import {facultyData} from '../../Data/faculty'
+import {lecturerData} from '../../Data/lecturers'
+
 
 // mui component 
 import Stack from '@mui/material/Stack';
@@ -78,16 +80,16 @@ export default function Faculty() {
             </div>
         </div>
 
-        <div className='mx-3 lg:mx-20 my-2'>
-            <h2 className='capitalize text-blue-900 font-bold text-xl lg:text-2xl mt-2'>All Departments</h2>
-            {/* <CardComponent data={communityData} /> */}
-            <SliderComponent design="new" data={departmentData} />
+        <div className='mx-3 my-3'>
+            <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>All Departments</h2>
+            
+            <SliderComponent design="department" data={departmentData} />
         </div>
 
-        <div className='mx-3 lg:mx-20 my-2'>
-            <h2 className='capitalize text-blue-900 font-bold text-xl lg:text-2xl mt-2'>Faculty lecturers</h2>
-            {/* <CardComponent data={communityData} /> */}
-            <SliderComponent design="new" data={departmentData} />
+        <div className='mx-3 my-3'>
+            <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>Faculty lecturers</h2>
+            
+            <SliderComponent design="lecturer" data={lecturerData.items} />
         </div>
 
 
