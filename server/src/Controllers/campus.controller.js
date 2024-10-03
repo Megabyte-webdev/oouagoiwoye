@@ -116,9 +116,7 @@ const updateCampusContact = async (req, res, next) => {
             },
             data: {
                 Contact:{
-                    update:{
-                        data
-                    }
+                    update: data
                 }
             },
             include:{
@@ -149,7 +147,14 @@ const createFaculty = async (req, res, next) => {
                         title,
                         image:  req.file.filename,
                         noOfDepartments,
-                        body
+                        body,
+                        Contact:{
+                            create: {
+                                whatsapp: "000",
+                                facebook: "000",
+                                youtube: "000"
+                            }
+                        }
                     }
                 }
             },

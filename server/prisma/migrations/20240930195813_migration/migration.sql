@@ -21,8 +21,8 @@ CREATE TABLE "Faculties" (
     "image" TEXT NOT NULL,
     "deanImage" TEXT,
     "deanName" TEXT,
-    "noOfDepartments" TEXT,
-    "body" TEXT,
+    "noOfDepartments" TEXT NOT NULL,
+    "body" TEXT NOT NULL,
     CONSTRAINT "Faculties_campusId_fkey" FOREIGN KEY ("campusId") REFERENCES "campus" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -48,12 +48,13 @@ CREATE TABLE "lecturers" (
 
 -- CreateTable
 CREATE TABLE "contact" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "whatsapp" TEXT NOT NULL,
     "facebook" TEXT NOT NULL,
     "youtube" TEXT NOT NULL,
-    "campusId" INTEGER NOT NULL,
+    "campusId" INTEGER,
     "facultyId" INTEGER,
-    CONSTRAINT "contact_campusId_fkey" FOREIGN KEY ("campusId") REFERENCES "campus" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "contact_campusId_fkey" FOREIGN KEY ("campusId") REFERENCES "campus" ("id") ON DELETE SET NULL ON UPDATE CASCADE,
     CONSTRAINT "contact_facultyId_fkey" FOREIGN KEY ("facultyId") REFERENCES "Faculties" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
 
@@ -97,6 +98,9 @@ CREATE UNIQUE INDEX "lecturers_id_key" ON "lecturers"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "lecturers_facultyId_key" ON "lecturers"("facultyId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "contact_id_key" ON "contact"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "contact_campusId_key" ON "contact"("campusId");

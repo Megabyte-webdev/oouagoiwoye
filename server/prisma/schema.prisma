@@ -25,7 +25,7 @@ model campus{
   title           String
   image           String
   campusInfo      String
-  Contact         contact?   
+  Contact         contact?       
   faculties       Faculties[] 
 }
 
@@ -37,9 +37,9 @@ model Faculties {
   image               String
   deanImage           String?
   deanName            String?
-  noOfDepartments     String?
-  body                String?
-  facultyContact     contact?  
+  noOfDepartments     String
+  body                String
+  Contact             contact?  
   facultyLecturers   lecturers[]
   departments        departments[]
 }
@@ -49,7 +49,7 @@ model departments {
   title        String
   image        String
   body         String
-  facultyId    Int @unique
+  facultyId    Int 
   faculty      Faculties @relation(fields: [facultyId], references: [id])
 }
 
@@ -58,18 +58,19 @@ model lecturers {
   name         String
   designation  String
   image        String
-  facultyId    Int @unique
+  facultyId    Int 
   faculty      Faculties @relation(fields: [facultyId], references: [id])
 }
 
 model contact {
-  whatsapp       String      
+  id            Int         @id @default(autoincrement()) @unique
+  whatsapp      String      
   facebook      String     
-  youtube       String      
-  campusId      Int         @unique
-  facultyId     Int?        @unique
-  campus        campus     @relation(fields: [campusId], references: [id])
+  youtube       String
+  campus        campus?     @relation(fields: [campusId], references: [id])
+  campusId      Int?         @unique
   Faculties     Faculties?  @relation(fields: [facultyId], references: [id])
+  facultyId     Int?        @unique
 }
 model news {
   id           Int @id @default(autoincrement()) @unique
