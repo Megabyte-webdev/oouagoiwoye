@@ -193,16 +193,6 @@ const addDepartment = async (req, res, next) => {
 //deleting faculties
 const deleteFaculties = async (req, res, next) => {
     try {
-        // const departdelete = await prisma.departments.delete({
-        //     where: {
-        //         facultyId: parseInt(req.params.id)
-        //     }
-        // })
-        // const lecturerdelete = await prisma.facultyLecturers.delete({
-        //     where:{
-        //         facultyId: parseInt(req.params.id)
-        //     }
-        // })
         const deleteFaculty = await facultyDB.delete({
             where: {
                 id: parseInt(req.params.id)
@@ -210,8 +200,8 @@ const deleteFaculties = async (req, res, next) => {
         })
         res.status(200).json({
             message: "deleted successfully",
-            data: deleteFaculty
-        })
+            data:  deleteFaculty
+        }) 
     } catch (error) {
         next(error)
     }

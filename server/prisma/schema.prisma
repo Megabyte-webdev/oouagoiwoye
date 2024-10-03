@@ -32,7 +32,7 @@ model campus{
 model Faculties {
   id                  Int @id @default(autoincrement()) @unique 
   campusId            Int @unique
-  campus              campus @relation(fields: [campusId], references: [id])
+  campus              campus @relation(fields: [campusId], references: [id], onDelete: Cascade)
   title               String
   image               String
   deanImage           String?
@@ -50,7 +50,7 @@ model departments {
   image        String
   body         String
   facultyId    Int 
-  faculty      Faculties @relation(fields: [facultyId], references: [id])
+  faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
 }
 
 model lecturers {
@@ -59,7 +59,7 @@ model lecturers {
   designation  String
   image        String
   facultyId    Int 
-  faculty      Faculties @relation(fields: [facultyId], references: [id])
+  faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
 }
 
 model contact {
@@ -67,9 +67,9 @@ model contact {
   whatsapp      String      
   facebook      String     
   youtube       String
-  campus        campus?     @relation(fields: [campusId], references: [id])
+  campus        campus?     @relation(fields: [campusId], references: [id], onDelete: Cascade)
   campusId      Int?         @unique
-  Faculties     Faculties?  @relation(fields: [facultyId], references: [id])
+  Faculties     Faculties?  @relation(fields: [facultyId], references: [id], onDelete: Cascade)
   facultyId     Int?        @unique
 }
 model news {
