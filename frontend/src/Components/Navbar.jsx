@@ -68,7 +68,7 @@ const Navbar = () => {
               <Administration />
               <Admission />
               <Services />
-              {/* <Login /> */}
+              <Login />
             </ul>
           </div>
 
