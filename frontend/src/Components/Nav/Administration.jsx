@@ -31,6 +31,7 @@ const Administration = () => {
 
                 {administration && <div className='max-lg:w-full max-lg:overflow-scroll'>
                     <div className="w-[400%] bg-white text-[#010035]  font-light z-50 py-8 text-md absolute px-8 left-[50%] translate-x-[-50%] top-[55px] group-hover:block max-lg:top-[0%] max-lg:left-[0%] max-lg:translate-x-[0%] max-lg:translate-y-[0%] max-lg:static max-lg:py-0 max-lg:w-[100%] ">
+                        <div className='hidden lg:block w-5 h-5 -rotate-45 bg-white absolute -top-2 right-1/2 translate-x-1/2 '/>
                         <div className='w-full max-lg:hidden flex gap-2 items-center pb-3 border-b-[3px]'>
                         <div><FaAsterisk/></div>
                             <h1 className='text-xl font-bold'>Administration</h1>

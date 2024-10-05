@@ -30,6 +30,7 @@ const Services = () => {
 
                 {services && <div>
                     <div className="{`cursor-pointer bg-white text-[#010035]  font-light z-50 w-[90vw] mx-auto py-8 text-md absolute px-8 left-[0%] translate-x-[-67%] max-xl:translate-x-[-70%] top-[55px] group-hover:block max-lg:top-[43%] max-lg:left-[0%] max-lg:translate-x-[0%] max-lg:translate-y-[7%]`} max-lg:static max-lg:py-2.5">
+                        <div className='hidden lg:block w-5 h-5 -rotate-45 bg-white absolute -top-2 right-1/4 -translate-x-11'/>
                         <div className=' flex gap-2 items-center pb-3 border-b-[3px] w-full max-lg:hidden'>
                             <div><FaAsterisk /></div>
                             <h1 className='text-xl font-bold '>Services</h1>
