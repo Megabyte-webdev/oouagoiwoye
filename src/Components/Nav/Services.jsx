@@ -2,7 +2,7 @@ import navListJson from '../../Json/navlist.json';
 import { FaCaretDown, FaCaretUp, FaAsterisk } from 'react-icons/fa';
 import { NavContext } from './useContext';
 import { useContext } from 'react';
-import ServicesList from './Services/ServicesList';
+import ServicesList from '../../../frontend/src/Components/Nav/Services/ServicesList';
 
 const Services = () => {
     const { setAbout, setAdministration, setAdmission, services, setServices, setLogin } = useContext(NavContext);
