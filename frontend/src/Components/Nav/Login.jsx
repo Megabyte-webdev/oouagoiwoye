@@ -1,5 +1,5 @@
 import navListJson from '../../Json/navlist.json';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaCaretDown, FaCaretUp, FaAsterisk } from 'react-icons/fa';
 import { NavContext } from './useContext';
 import { useContext } from 'react';
@@ -29,9 +29,9 @@ const Login = () => {
                 </div>
                 {login && <ul className=" flex flex-col pt-7 gap-7 max-lg:px-7 max-lg:pb-7 ">
                     {
-                        navListJson.login.map(({ title }, index) => {
+                        navListJson.login.map(({ title, href }, index) => {
                             return <li className=' font-thin hover:opacity-[.77] w-[100%]' key={index}>
-                                <NavLink to='/login'>{title}</NavLink>
+                                <Link to={href}>{title}</Link>
                             </li>
                         })
                     }

@@ -9,7 +9,7 @@ import faculties from '../faculties.json'
 import administration from '../administration.json'
 import admission from '../admissions.json'
 import Notifications from './Notifications';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import Marquee from 'react-fast-marquee';
 import About from './Nav/About';
@@ -55,35 +55,12 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* <div className={`relative max-lg:${menu ? 'block' : 'hidden'}`} >
-            <ul className=" max-3xl:gap-12 flex z-[99] max-2xl:gap-5 max-xl:gap-3 items-center font-bold cursor-pointer max-lg:flex-col max-lg:bg-white max-lg:text-[#010035] max-lg:fixed max-lg:top-[90px] max-lg:left-[50%] max-lg:translate-x-[-50%] max-lg:w-full max-lg:z-[99] max-lg:pt-8 max-lg:gap-7 max-lg:pb-0 max-lg:items-start">
-              <li className='max-lg:px-10 max-md:px-7'><NavLink to="/">Home</NavLink></li>
-              <hr />
-              <li className='max-lg:px-10 max-md:px-7'><NavLink to="/about">About Us</NavLink></li>
-              <hr />
-              <Dropdown subNav={administration} width={true} title="Administration" link="/administration" />
-              <hr />
-              <Dropdown subNav={admission} width={true} title="Admissions" link="/admission" />
-              <hr />
-              <Dropdown subNav={faculties} title="Services" link="/all-faculties" />
-              <hr />
-              <Dropdown subNav={faculties} title="Library" link="/library" />
-              <hr /> 
-              <div className='lg:hidden max-lg:px-10 bg-[#0B35A2] w-full py-3 flex justify-between items-center max-md:px-7 my-0'>
-                <button className='bg-[#0B35A2] text-white pointer '>Login Here</button>
-                <div className='text-2xl'>
-                  <FaCaretDown color='white' />
-                </div>
-              </div>
-            </ul>
-          </div> */}
-
           <div className={`relative max-lg:${menu ? 'block' : 'hidden'} max-lg:w-full `} >
-            <ul className="gap-12 flex z-[99] max-2xl:gap-10 max-xl:gap-8 items-center font-bold cursor-pointer max-lg:flex-col max-lg:bg-white max-lg:text-[#010035] max-lg:absolute max-lg:top-[75px] max-lg:w-full max-lg:z-[99] max-lg:pt-8 max-lg:gap-7 max-lg:pb-0 max-lg:items-start max-xl:text-sm  max-lg:gap-0">
-              <li className='xl:px-2 max-lg:px-8 max-md:px-7  max-lg:border-b-2 max-lg:pb-3 max-lg:w-full max-lg:pb-6'><NavLink to="/">
+            <ul className="gap-12 flex z-[99] max-2xl:gap-10 max-xl:gap-8 items-center font-bold max-lg:flex-col max-lg:bg-white max-lg:text-[#010035] max-lg:absolute max-lg:top-[75px] max-lg:w-full max-lg:z-[99] max-lg:pt-8 max-lg:gap-7 max-lg:pb-0 max-lg:items-start max-xl:text-sm  max-lg:gap-0">
+              <li className='xl:px-2 max-lg:px-8 max-md:px-7  max-lg:border-b-2 max-lg:w-full max-lg:pb-6'><NavLink to="/">
                 <div className='max-lg:w-full max-lg:flex max-lg:gap-2 max-lg:items-center'>
                   <div className='lg:hidden'><FaAsterisk /></div>
-                  <a href='/'>Home</a>
+                  <Link to='/'>Home</Link>
                 </div>
                 </NavLink>
               </li>
@@ -91,7 +68,7 @@ const Navbar = () => {
               <Administration />
               <Admission />
               <Services />
-              <Login />
+              {/* <Login /> */}
             </ul>
           </div>
 

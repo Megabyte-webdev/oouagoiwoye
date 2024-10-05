@@ -19,7 +19,7 @@ const Services = () => {
         <div className='max-lg:w-full '>
             <div className={`group flex flex-col items-center relative max-lg:items-start max-lg:px-0 max-lg:w-full`}>
                 <div className='flex gap-1 items-center max-lg:justify-between max-lg:px-8 max-lg:w-full max-md:px-7 max-lg:border-b-2 max-lg:py-7 z-[22]' onClick={toggleBtn}>
-                    <div className='max-lg:w-full max-lg:flex max-lg:gap-2 max-lg:items-center'>
+                    <div className='max-lg:w-full max-lg:flex max-lg:gap-2 max-lg:items-center cursor-pointer'>
                         <div className='lg:hidden'><FaAsterisk /></div>
                         <h1>Services</h1>
                     </div>
@@ -35,11 +35,11 @@ const Services = () => {
                             <h1 className='text-xl font-bold '>Services</h1>
                         </div>
                         <div className="flex justify-between max-lg:flex-col max-lg:gap-5">
-                            <ServicesList headerTitle='Campus' value={navListJson.services.campus} />
-                            <ServicesList headerTitle='Faculities' value={navListJson.services.faculties} />
-                            <ServicesList headerTitle='Faculities' value={navListJson.services.faculties_second} />
-                            <ServicesList headerTitle='Continuing Education' value={navListJson.services.continuing_education} />
-                            <ServicesList headerTitle='Directorates' value={navListJson.services.directorates} />
+                            <ServicesList headerTitle='Campus' Lnk="services/campus" value={navListJson.services.campus} />
+                            <ServicesList headerTitle='Faculities' Lnk="services/faculty" value={navListJson.services.faculties} />
+                            <ServicesList headerTitle='Faculities' Lnk="services/faculty" value={navListJson.services.faculties_second} />
+                            <ServicesList headerTitle='Continuing Education' Lnk="services/continuing" value={navListJson.services.continuing_education} />
+                            <ServicesList headerTitle='Directorates' Lnk="services/directorate" value={navListJson.services.directorates} />
                         </div>
                     </div>
                 </div>}

@@ -11,139 +11,178 @@
     }
   ],
   "administration": {
+    "admin": "/administration/admin",
+    "princi": "/administration/princioal-officers",
     "administrations": [
       {
-        "title": "The Visitor"
+        "title": "The Visitor",
+        "href": "/administration/visitor"
       },
       {
-        "title": "Pro-Chancellor"
+        "title": "Pro-Chancellor",
+        "href": "/administration/pro-chancellor"
       },
       {
-        "title": "Vice-Chancellor"
+        "title": "Vice-Chancellor",
+        "href": "/administration/vice-chancellor"
       },
       {
-        "title": "The Council"
+        "title": "The Council",
+        "href": "/administration/council"
       }
     ],
     "Principal_Officers": [
       {
-        "title": "Deputy Vice-Chancellor (Academics)"
+        "title": "Deputy Vice-Chancellor (Academics)",
+        "href": "/principal-officers/dvc-acad"
       },
       {
-        "title": "Deputy Vice-Chancellor (Administration)"
+        "title": "Deputy Vice-Chancellor (Administration)",
+        "href": "/principal-officers/dvc-admin"
       },
       {
-        "title": "University Registrar"
+        "title": "University Registrar",
+        "href": "/principal-officers/registrar"
       },
       {
-        "title": "University Registrar"
+        "title": "University Bursar",
+        "href": "/principal-officers/bursar"
       },
       {
-        "title": "University Librarian"
+        "title": "University Librarian",
+        "href": "/principal-officers/libarian"
       }
     ]
   },
   "admissions": [
     {
-      "title": "Undergraduate"
+      "title": "Undergraduate",
+      "href": "/"
     },
     {
-      "title": "Postgraduate"
+      "title": "Postgraduate",
+      "href": "/"
     }
   ],
   "services": {
     "campus": [
       {
-        "title": "Main Campus"
+        "title": "Main Campus",
+        "href": "/services/campus/main-campus"
       },
       {
-        "title": "Egba Campus"
+        "title": "Egba Campus",
+        "href": "/services/campus/egba-campus"
       },
       {
-        "title": "Yewa Campus"
+        "title": "Yewa Campus",
+        "href": "/services/campus/yewa-campus"
       },
       {
-        "title": "Remo Campus"
+        "title": "Remo Campus",
+        "href": "/services/campus/remo-campus"
       }
     ]
   ,
 
   "faculties": [
     {
-      "title": "Faculty of Science"
+      "title": "Faculty of Science",
+      "href": "/services/faculty/science"
     },
     {
-      "title": "Faculty of Law"
+      "title": "Faculty of Law",
+      "href": "/services/faculty/Law"
     },
     {
-      "title": "Faculty of social sciences"
+      "title": "Faculty of social sciences",
+      "href": "/services/faculty/social-science"
     },
     {
-      "title": "Faculty of Arts"
+      "title": "Faculty of Arts",
+      "href": "/services/faculty/art"
     },
     {
-      "title": "Faculty of Pharmacy"
+      "title": "Faculty of Pharmacy",
+      "href": "/services/faculty/pharmacy"
     }
   ],
   "faculties_second": [
     {
-      "title": "Faculty of Agricultural Sciences"
+      "title": "Faculty of Agricultural Sciences",
+      "href": "/services/faculty/agric"
     },
     {
-      "title": " Faculty of Basic Medical Sciences"
+      "title": " Faculty of Basic Medical Sciences",
+      "href": "/services/faculty/medical-sciences"
     },
     {
-      "title": "Faculty of Clinical sciences"
+      "title": "Faculty of Clinical sciences",
+      "href": "/services/faculty/clinical-sciences"
     },
     {
-      "title": "Faculty of Education"
+      "title": "Faculty of Education",
+      "href": "/services/faculty/education"
     },
     {
-      "title": "Faculty of Administration & Management"
+      "title": "Faculty of Administration & Management",
+      "href": "/services/faculty/admin"
     },
     {
-      "title": "Faculty of Engineering & Environmental Studies"
+      "title": "Faculty of Engineering & Environmental Studies",
+      "href": "/services/faculty/engineering"
     }
   ],
   "continuing_education": [
     {
-      "title": "Pre-Degree Studies"
+      "title": "Pre-Degree Studies",
+      "href": "/services/continuing/predegree"
     },
     {
-      "title": "Jupeb Programme"
+      "title": "Jupeb Programme",
+      "href": "/services/continuing/jupeb"
     },
     {
-      "title": "Part-Time Programme"
+      "title": "Part-Time Programme",
+      "href": "/services/continuing/part-time"
     },
     {
-      "title": "Advance Certificate Programme"
+      "title": "Advance Certificate Programme",
+      "href": "/services/continuing/advance-certificate"
     }
   ],
   "directorates": [
     {
-      "title": "Academic Planning"
+      "title": "Academic Planning",
+      "href": "/services/directorate/acad-planning"
     },
     {
-      "title": "Quality Assurance"
+      "title": "Quality Assurance",
+      "href": "/services/directorate/quality-assurance"
     },
     {
-      "title": "Student Affairs"
+      "title": "Student Affairs",
+      "href": "/services/directorate/student-affairs"
     },
     {
-      "title": "General Nigerian Studies"
+      "title": "General Nigerian Studies",
+      "href": "/services/directorate/general-studies"
     },
     {
-      "title": "Entrepreneurial Studies & Innovation"
+      "title": "Entrepreneurial Studies & Innovation",
+      "href": "/services/directorate/entrepreneurial-studies"
     }
   ]
 },
 
   "login": [
     {
-      "title": "As a Student"
+      "title": "As a Student",
+      "href": "/"
     },
     {
-      "title": "As a Staff"
+      "title": "As a Staff",
+      "href": "/"
     }
   ]
 }
