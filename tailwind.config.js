@@ -8,6 +8,10 @@ export default {
     extend: {
       backgroundColor:{
         bgBlue: '#010035',
+
+      },
+      colors: {
+        secondaryBlue: 'var(--secondary-blue)',
       }
     },
   },
