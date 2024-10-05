@@ -27,6 +27,7 @@ app.use('/api/oouweb/communities', require("./src/Routes/communityRoute"));
 app.use("/api/oouweb/news", require("./src/Routes/newsRoute"));
 app.use("/api/oouweb/campus", require("./src/Routes/campusRoute"));
 app.use("/api/oouweb/faculty", require("./src/Routes/facultyRoute"));
+app.use("/api/oouweb/department", require("./src/Routes/departmentRoute"));
 
 
 // error handler

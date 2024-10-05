@@ -6,6 +6,8 @@ import { MdGroups } from "react-icons/md";
 import { RiAdminFill } from "react-icons/ri";
 import { HiMiniNewspaper } from "react-icons/hi2";
 import { RiLogoutBoxFill } from "react-icons/ri";
+import { FcDepartment } from "react-icons/fc";
+import { GiTeacher } from "react-icons/gi";
 
 //components
 import Dashboard from "./components/Dashboard";
@@ -32,6 +34,16 @@ export default function AdminDash() {
             title: "Faculties",
             view: "faculty",
             icon: MdGroups,
+        },
+        {
+            title: "Department",
+            view: "department",
+            icon: FcDepartment,
+        },
+        {
+            title: "Lecturers",
+            view: "lecturer",
+            icon: GiTeacher,
         },
         {
             title: "Administration",
