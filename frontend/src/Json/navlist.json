@@ -1,0 +1,149 @@
+{
+  "about": [
+    {
+      "title": "History of the University"
+    },
+    {
+      "title": "Our Vision/Mission/Philosophy"
+    },
+    {
+      "title": "Core Values"
+    }
+  ],
+  "administration": {
+    "administrations": [
+      {
+        "title": "The Visitor"
+      },
+      {
+        "title": "Pro-Chancellor"
+      },
+      {
+        "title": "Vice-Chancellor"
+      },
+      {
+        "title": "The Council"
+      }
+    ],
+    "Principal_Officers": [
+      {
+        "title": "Deputy Vice-Chancellor (Academics)"
+      },
+      {
+        "title": "Deputy Vice-Chancellor (Administration)"
+      },
+      {
+        "title": "University Registrar"
+      },
+      {
+        "title": "University Registrar"
+      },
+      {
+        "title": "University Librarian"
+      }
+    ]
+  },
+  "admissions": [
+    {
+      "title": "Undergraduate"
+    },
+    {
+      "title": "Postgraduate"
+    }
+  ],
+  "services": {
+    "campus": [
+      {
+        "title": "Main Campus"
+      },
+      {
+        "title": "Egba Campus"
+      },
+      {
+        "title": "Yewa Campus"
+      },
+      {
+        "title": "Remo Campus"
+      }
+    ]
+  ,
+
+  "faculties": [
+    {
+      "title": "Faculty of Science"
+    },
+    {
+      "title": "Faculty of Law"
+    },
+    {
+      "title": "Faculty of social sciences"
+    },
+    {
+      "title": "Faculty of Arts"
+    },
+    {
+      "title": "Faculty of Pharmacy"
+    }
+  ],
+  "faculties_second": [
+    {
+      "title": "Faculty of Agricultural Sciences"
+    },
+    {
+      "title": " Faculty of Basic Medical Sciences"
+    },
+    {
+      "title": "Faculty of Clinical sciences"
+    },
+    {
+      "title": "Faculty of Education"
+    },
+    {
+      "title": "Faculty of Administration & Management"
+    },
+    {
+      "title": "Faculty of Engineering & Environmental Studies"
+    }
+  ],
+  "continuing_education": [
+    {
+      "title": "Pre-Degree Studies"
+    },
+    {
+      "title": "Jupeb Programme"
+    },
+    {
+      "title": "Part-Time Programme"
+    },
+    {
+      "title": "Advance Certificate Programme"
+    }
+  ],
+  "directorates": [
+    {
+      "title": "Academic Planning"
+    },
+    {
+      "title": "Quality Assurance"
+    },
+    {
+      "title": "Student Affairs"
+    },
+    {
+      "title": "General Nigerian Studies"
+    },
+    {
+      "title": "Entrepreneurial Studies & Innovation"
+    }
+  ]
+},
+
+  "login": [
+    {
+      "title": "As a Student"
+    },
+    {
+      "title": "As a Staff"
+    }
+  ]
+}

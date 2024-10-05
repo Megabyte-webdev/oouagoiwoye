@@ -8,12 +8,13 @@ import Footer from './Components/Footer'
 import Campus from './Pages/services/Campus'
 import CampusElement from './Pages/services/CampusElement'
 import campusData from "./Data/campus"
-import AdminDash from './Admin/AdminDash'
+import AdminDash from './Admin/AdminDash';
+import NavBar from './Components/Nav/useContext';
 
 function App() {
   return (
     <BrowserRouter>
-          <Navbar />
+          <NavBar/>
           <Routes>
               <Route path='/' element={<HomePage />} />
               <Route path='/about' element={<AboutPage />} />
