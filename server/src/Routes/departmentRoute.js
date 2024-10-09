@@ -9,7 +9,7 @@ router.get("/", departmentController.findAllDepartments);
 //editing department info
 router.patch("/data/:id", departmentController.editDepartment);
 
-//diting department image
+//editing department image
 router.patch("/image/:id", upload.single("image"), departmentController.editDepartmentImage);
 
 module.exports = router;

@@ -29,7 +29,7 @@ const editDepartment = async (req, res, next) => {
             where: {
                 id: parseInt(req.params.id)
             },
-            data:data
+            data: data
         })
     } catch (error) {
         next(error)
