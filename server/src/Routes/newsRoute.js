@@ -7,9 +7,9 @@ router.post("/", upload.single("image"), newsController.createNews);
 
 router.get("/", newsController.fetchNews)
 
-router.put("/:id", newsController.updateNews);
+router.patch("/:id", newsController.updateNews);
 
-router.put("/image/:id", upload.single("image"), newsController.updateNewsImage);
+router.patch("/image/:id", upload.single("image"), newsController.updateNewsImage);
 
 router.delete("/:id", newsController.deleteNews)
 

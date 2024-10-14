@@ -11,7 +11,7 @@ import { GiTeacher } from "react-icons/gi";
 
 //components
 import Dashboard from "./components/Dashboard";
-import Campuses from "./components/Campuses";
+import Campuses from "./components/campus/Campuses";
 import Faculty from "./components/Faculty";
 import Administration from "./components/Administration";
 import Facility from "./components/Facility";
@@ -69,10 +69,10 @@ export default function AdminDash() {
     ]
     const [view, setView] = React.useState("dashboard");
     const [control, setControl] = React.useState(false);
-    console.log(control);
+    // console.log(control);
     
   return (
-    <div className='w-full h-screen'>
+    <div className='w-full h-auto'>
         <div className='p-3 px-5 border-b-thin border-slate-300'>
             <h1 className='text-lg lg:text-3xl font-black flex flex-row items-center justify-between'>
                 <span className='text-emerald-600'>
@@ -102,7 +102,7 @@ export default function AdminDash() {
                     Log Out
                 </button>
             </div>
-            <div className='w-full h-full lg:w-10/12 lg:ml-0 bg-white p-5'>
+            <div className='w-full h-screen lg:w-10/12 lg:ml-0 bg-white p-5'>
                 {view === "dashboard" && <Dashboard/>}
                 {view === "campus" && <Campuses/>}
                 {view === "faculty" && <Faculty/>}

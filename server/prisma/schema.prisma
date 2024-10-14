@@ -31,7 +31,7 @@ model campus{
 
 model Faculties {
   id                  Int @id @default(autoincrement()) @unique 
-  campusId            Int @unique
+  campusId            Int
   campus              campus @relation(fields: [campusId], references: [id], onDelete: Cascade)
   title               String
   image               String

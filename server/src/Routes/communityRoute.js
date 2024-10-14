@@ -6,14 +6,7 @@ const communityController = require('../Controllers/community.controller');
 
 /**
  * @swagger
- * tags:
- *   name: Communities
- *   description: API for file uploads to communities.
- */
-
-/**
- * @swagger
- * /api/oouweb/communities/create-community:
+ * /api/oouweb/communities/:
  *   post:
  *     summary: creating new communities
  *     tags: [Create communities]
@@ -58,13 +51,13 @@ const communityController = require('../Controllers/community.controller');
  *                         body: "We aim to build a vibrant tech community where members can solve realworld problems and contribute to the tech ecosystem ",
  *                       }
  */
-router.post("/create-community", upload.single("image"), communityController.createCommunity);
+router.post("/", upload.single("image"), communityController.createCommunity);
 
 
 
 /**
  * @swagger
- * /api/oouweb/communities/get-all-communities:
+ * /api/oouweb/communities/:
  *   get:
  *     summary:  getting all communities
  *     tags: [Fetch communities]
@@ -93,11 +86,11 @@ router.post("/create-community", upload.single("image"), communityController.cre
  *                       }
  */
 //getting all communities
-router.get("/get-all-communities", communityController.getAllCommunities);
+router.get("/", communityController.getAllCommunities);
 
 /**
  * @swagger
- * /api/oouweb/communities/update-community-data/:id:
+ * /api/oouweb/communities/data/:id:
  *   put:
  *     summary:  updating community data
  *     tags: [update communities data]
@@ -139,12 +132,12 @@ router.get("/get-all-communities", communityController.getAllCommunities);
  *                       }
  */
 //updating community data
-router.put("/update-community-data/:id", communityController.updateCommunityData);
+router.patch("/data/:id", communityController.updateCommunityData);
 
 
 /**
  * @swagger
- * /api/oouweb/communities/update-community-image/:id:
+ * /api/oouweb/communities/image/:id:
  *   put:
  *     summary:  updating community image
  *     tags: [update communities image]
@@ -181,12 +174,12 @@ router.put("/update-community-data/:id", communityController.updateCommunityData
  *                       }
  */
 //update community image
-router.put("/update-community-image/:id", upload.single("image"), communityController.updateCommunityImage);
+router.patch("/image/:id", upload.single("image"), communityController.updateCommunityImage);
 
 
 /**
  * @swagger
- * /api/oouweb/communities/delete-community/:id:
+ * /api/oouweb/communities/:id:
  *   delete:
  *     summary:  delete community
  *     tags: [Delete communities]
@@ -215,6 +208,6 @@ router.put("/update-community-image/:id", upload.single("image"), communityContr
  */
 //update community image
 //delete community
-router.delete("/delete-community/:id", communityController.deleteCommunity);
+router.delete("/:id", communityController.deleteCommunity);
 
 module.exports = router;
