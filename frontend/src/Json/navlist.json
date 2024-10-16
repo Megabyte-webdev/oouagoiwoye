@@ -12,7 +12,7 @@
   ],
   "administration": {
     "admin": "/administration/admin",
-    "princi": "/administration/princioal-officers",
+    "princi": "/administration/principal-officers",
     "administrations": [
       {
         "title": "The Visitor",

@@ -10,6 +10,8 @@ import CampusElement from './Pages/services/CampusElement'
 import campusData from "./Data/campus"
 import AdminDash from './Admin/AdminDash';
 import NavBar from './Components/Nav/useContext';
+import PrincipalOfficers from './Pages/administration/PrincipalOfficers'
+import POfficers from './Pages/administration/POfficers'
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Routes>
               <Route path='/' element={<HomePage />} />
               <Route path='/about' element={<AboutPage />} />
+              <Route path='/administration/principal-officers' element={<PrincipalOfficers />} />
+              <Route path='/administration/principal-officers/:id' element={<POfficers />} />
               <Route path='/services/campus' element={<Campus />} />
               <Route path='/services/campus/main-campus' element={<CampusElement data={campusData[0]} key={1} />} />
               <Route path='/services/campus/egba-campus' element={<CampusElement data={campusData[1]} key={1} />} />
