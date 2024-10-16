@@ -23,10 +23,7 @@ function App() {
               <Route path='/administration/principal-officers' element={<PrincipalOfficers />} />
               <Route path='/administration/principal-officers/:id' element={<POfficers />} />
               <Route path='/services/campus' element={<Campus />} />
-              <Route path='/services/campus/main-campus' element={<CampusElement data={campusData[0]} key={1} />} />
-              <Route path='/services/campus/egba-campus' element={<CampusElement data={campusData[1]} key={1} />} />
-              <Route path='/services/campus/yewa-campus' element={<CampusElement data={campusData[2]} key={1} />} />
-              <Route path='/services/campus/remo-campus' element={<CampusElement data={campusData[3]} key={1} />} />
+              <Route path='/services/campus/:id' element={<CampusElement />} />
               <Route path='/admin-ict/oouagoiwoye-9g4c4h8sh' element={<AdminDash />} />
           </Routes>
       <Footer />

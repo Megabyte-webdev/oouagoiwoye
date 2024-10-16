@@ -2,7 +2,7 @@ import React from 'react'
 import { FaAsterisk, FaFacebookSquare, FaYoutube } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { IoLocation } from "react-icons/io5";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // mui component 
 import {Link} from "react-router-dom";
@@ -11,11 +11,14 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Breadcrumbs } from '@mui/material';
 
 import assets from '../../assets/assets';
-import { communityData } from '../../Data/communities';
+import campusData from "../../Data/campus"
 import SliderComponent from '../../Components/SliderComponent';
 import { facultyData } from '../../Data/faculty';
+import { communityData } from '../../Data/communities';
 
-export default function CampusElement({data}) {
+export default function CampusElement() {
+    const {id} = useParams()
+    const data = campusData[id]
     const navigate = useNavigate()
     function handleClick(event) {
         event.preventDefault();
@@ -30,7 +33,7 @@ export default function CampusElement({data}) {
             Campus
         </a>,
         <p key={3} className='text-blue-500' >
-            Services
+            {data.campus}
         </p>,
       ];
   return (

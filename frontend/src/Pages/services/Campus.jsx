@@ -60,7 +60,7 @@ export default function Campus() {
                             <IoLocationOutline className='mr-2' />
                             {item.location}
                         </p>
-                        <CustomButton handleClick={() => navigate(`/services/campus/${item.href}`)} />
+                        <CustomButton handleClick={() => navigate(`/services/campus/${index}`)} />
                     </div>
                 </div>
             ))}
