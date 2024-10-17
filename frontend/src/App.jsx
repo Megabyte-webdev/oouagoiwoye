@@ -12,18 +12,23 @@ import AdminDash from './Admin/AdminDash';
 import NavBar from './Components/Nav/useContext';
 import PrincipalOfficers from './Pages/administration/PrincipalOfficers'
 import POfficers from './Pages/administration/POfficers'
+import Administration from './Pages/administration/Administration'
+import AAdministration from './Pages/administration/AAdministration'
 
 function App() {
   return (
     <BrowserRouter>
           <NavBar/>
           <Routes>
-              <Route path='/' element={<HomePage />} />
+              <Route path='/' exact element={<HomePage />} />
               <Route path='/about' element={<AboutPage />} />
+              <Route path='//administration/admin' element={<Administration />} />
+              <Route path='//administration/admin/:id' element={<AAdministration />} />
               <Route path='/administration/principal-officers' element={<PrincipalOfficers />} />
               <Route path='/administration/principal-officers/:id' element={<POfficers />} />
               <Route path='/services/campus' element={<Campus />} />
               <Route path='/services/campus/:id' element={<CampusElement />} />
+
               <Route path='/admin-ict/oouagoiwoye-9g4c4h8sh' element={<AdminDash />} />
           </Routes>
       <Footer />
