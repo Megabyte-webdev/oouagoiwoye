@@ -14,6 +14,8 @@ import { Breadcrumbs } from '@mui/material';
 import SliderComponent from '../../Components/SliderComponent';
 
 import assets from '../../assets/assets';
+import { communityData } from '../../Data/communities';
+import { data } from '../../Data/news';
 
 export default function Faculty() {
     const { facultyId } = useParams();
@@ -73,7 +75,7 @@ export default function Faculty() {
             </div>
             </div>
             {/* Right side */}
-            <div className='flex flex-col md:items-end w-full md:w-[40%]'>
+            <div className='flex flex-col items-center md:items-end w-full md:w-[40%]'>
                 <img className='w-[80%]' src={assets.vc} alt="" />
                 <p className='capitalize w-[80%] text-2xl font-semibold py-2'>{faculty.dean}</p>
                 <p className='w-[80%] text-xl text-blue-900 font-semibold py-2'>Faculty Dean</p>
@@ -90,6 +92,18 @@ export default function Faculty() {
             <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>Faculty lecturers</h2>
             
             <SliderComponent design="lecturer" data={lecturerData.items} />
+        </div>
+
+        <div className='mx-3 my-3'>
+            <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>Associations/Communities in the faculty</h2>
+            
+            <SliderComponent hideBtn={true} data={communityData.items} />
+        </div>
+
+        <div className='mx-3 my-3'>
+            <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>Recent News related to the faculty</h2>
+            
+            <SliderComponent design="news" btnDesc="Read More" data={data.items} />
         </div>
 
 

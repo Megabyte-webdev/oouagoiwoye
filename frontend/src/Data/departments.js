@@ -3,7 +3,7 @@ import assets from "../assets/assets"
 export const departmentData = [
       {
         id: 1,
-        image: assets.facultyImg,
+        image: assets.faculty,
         title: "Agricultural science",
         faculty: "science",
         dean: "Prof Agboola, Ayodeji olayinka johnson.",
@@ -11,7 +11,7 @@ export const departmentData = [
       },
       {
         id: 2,
-        image: assets.facultyImg,
+        image: assets.faculty,
         title: "Chemical science",
         faculty: "science",
         dean: "Prof Agboola, Ayodeji olayinka johnson.",
@@ -19,7 +19,7 @@ export const departmentData = [
       },
       {
         id: 3,
-        image: assets.facultyImg,
+        image: assets.faculty,
         title: "Industrial chemistry",
         faculty: "science",
         dean: "Prof Agboola, Ayodeji olayinka johnson.",
@@ -27,7 +27,7 @@ export const departmentData = [
       },
       {
         id: 2,
-        image: assets.facultyImg,
+        image: assets.faculty,
         title: "Computer engineering",
         faculty: "engineering",
         dean: "Prof Agboola, Ayodeji olayinka johnson.",
@@ -35,7 +35,7 @@ export const departmentData = [
       },
       {
         id: 4,
-        image: assets.facultyImg,
+        image: assets.faculty,
         title: "Electrical engineering",
         faculty: "engineering",
         dean: "Prof Agboola, Ayodeji olayinka johnson.",
@@ -43,7 +43,7 @@ export const departmentData = [
       },
       {
         id: 5,
-        image: assets.facultyImg,
+        image: assets.faculty,
         title: "Civil engineering",
         faculty: "engineering",
         dean: "Prof Agboola, Ayodeji olayinka johnson.",
@@ -51,7 +51,7 @@ export const departmentData = [
       },
       {
         id: 6,
-        image: assets.facultyImg,
+        image: assets.faculty,
         title: "Computer education",
         faculty: "education",
         dean: "Prof Agboola, Ayodeji olayinka johnson.",
@@ -59,7 +59,7 @@ export const departmentData = [
       },
       {
         id: 6,
-        image: assets.facultyImg,
+        image: assets.faculty,
         title: "english education",
         faculty: "education",
         dean: "Prof Agboola, Ayodeji olayinka johnson.",
@@ -67,7 +67,7 @@ export const departmentData = [
       },
       {
         id: 6,
-        image: assets.facultyImg,
+        image: assets.faculty,
         title: "chemistry education",
         faculty: "education",
         dean: "Prof Agboola, Ayodeji olayinka johnson.",

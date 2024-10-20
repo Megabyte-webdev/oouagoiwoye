@@ -12,7 +12,7 @@ import {facultyData} from "../../Data/faculty"
 
 
 export default function AllFaculty() {
-    console.log(facultyData.items)
+    // console.log(facultyData.items)
     const navigate = useNavigate()
     function handleClick(event) {
         event.preventDefault();

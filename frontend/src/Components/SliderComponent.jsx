@@ -9,8 +9,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { Link } from "react-router-dom";
 
-export default function sliderComponent({ data, design = "" }) {
+export default function sliderComponent({ data, design = "", hideBtn=false, btnDesc}) {
   return (
     <div>
       <Swiper
@@ -39,60 +40,88 @@ export default function sliderComponent({ data, design = "" }) {
           <>
             {
             (design === "") && (
-              <SwiperSlide key={index} className="bg-white p-5 mb-10">
-                <img src={item.image} alt="slide" className="w-full" />
+              <SwiperSlide key={index} className="bg-[] p-5 mb-10">
+                <img src={item?.image} alt="slide" className="w-full object-cover h-48" />
                 <div>
                   <h2 className="capitalize text-xl font-semibold my-2 mb-0">
-                    {item.title}
+                    {item?.title}
                   </h2>
                   <h2 className="text-sm font-semibold mt-0 my-2 text-blue-600">
-                    {item.subtitle}
+                    {item?.subtitle}
                   </h2>
-                  <p className="text-xs mt-0 my-2">{item.body}</p>
+                  <p className="text-xs mt-0 my-2">{item?.body}</p>
                   <h2 className="text-xs font-medium mt-0 my-2 text-blue-600">
-                    {item.author}
+                    {item?.author}
                   </h2>
                 </div>
-                <CustomButton />
+                {!hideBtn && <CustomButton text={btnDesc && btnDesc} />}
+              </SwiperSlide>
+            )
+            }
+            {
+            (design === "news") && (
+              <SwiperSlide key={index} className="bg-white p-5 mb-10">
+                <img src={item?.image} alt="slide" className="w-full object-cover h-48" />
+                <div>
+                  <h2 className="capitalize text-xl font-semibold my-2 mb-0">
+                    {item?.title}
+                  </h2>
+                  <h2 className="text-sm font-semibold mt-0 my-2 text-blue-600">
+                    {item?.subtitle}
+                  </h2>
+                  <p className="text-sm mt-0 my-2 font-semibold">{item?.body}</p>
+                  <h2 className="text-xs font-semibold mt-0 my-2 text-blue-600">
+                    {item?.author}
+                  </h2>
+                </div>
+                {!hideBtn && <CustomButton text={btnDesc && btnDesc} />}
               </SwiperSlide>
             )
             }
             {
             (design === "department") && (
-              <SwiperSlide key={index} className="bg-blue-50 p-5 mb-10">
+              <SwiperSlide key={index} className="bg-[#f0f8ff] p-5 mb-10">
                 {data && (
-                  <img src={item.image} alt="slide" className="w-full" />
+                  <img src={item?.image} alt="slide" className="w-full object-cover h-48" />
                 )}
                 <div>
                   <h2 className="capitalize text-lg text-blue-900 font-semibold mt-5 mb-0">
-                    {item.title}
+                    {item?.title}
                   </h2>
                   <h2 className="text-sm font-semibold mt-0 my-2 text-blue-600">
-                    {item.subtitle}
+                    {item?.subtitle}
                   </h2>
-                  <p className="text-xs mt-0 my-2">{item.body}</p>
+                  <p className="text-xs mt-0 my-2">{item?.body}</p>
                   <h2 className="text-xs font-medium mt-0 my-2 text-blue-600">
-                    {item.author}
+                    {item?.author}
                   </h2>
                 </div>
               </SwiperSlide>
             )}
             {
             (design === "lecturer") && (
-              <SwiperSlide key={index} className="bg-white p-5 mb-10">
+              <SwiperSlide key={index} className="bg-[#f8f6f6] p-5 mb-10">
                 {data && (
-                  <img src={item.image} alt="slide" className="w-full" />
+                  <img src={item?.image} alt="slide" className="w-full object-cover h-48" />
                 )}
                 <div>
                   <h2 className="capitalize text-lg text-blue-900 font-semibold mt-5 mb-0">
-                    {item.title}
+                    {item?.title}
                   </h2>
                   <h2 className="text-sm font-semibold mt-0 my-2 text-blue-600">
-                    {item.subtitle}
+                    {item?.subtitle}
                   </h2>
                   <h2 className="text-xs font-medium mt-0 my-2 text-blue-600">
-                    {item.author}
+                    {item?.author}
                   </h2>
+                  <div className='flex gap-3'>
+                  {
+                    Object.entries(item?.socials,).map(([key, value], index)=>(
+                      <Link to={value} key={index} className={(key === 'linkedin' && 'bx bxl-linkedin-square text-blue-700 text-3xl cursor-pointer') || (key === 'twitter' && 'bx bxl-twitter text-blue-700 text-3xl cursor-pointer') }></Link>
+                    ))
+                  }
+                  </div>
+                  
                 </div>
               </SwiperSlide>
             )}

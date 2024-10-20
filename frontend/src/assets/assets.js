@@ -20,6 +20,8 @@ import otc from "./otc.png"
 import place from "./place.svg"
 import wireframe from "./wireframe.svg"
 import ooupics from "./ooupics.png";
+import faculty from "./faculty.jpg";
+
 
 const assets = {
     community1,
@@ -43,7 +45,8 @@ const assets = {
     otc,
     place,
     wireframe,
-    ooupics
+    ooupics,
+    faculty,
 }
 
 export default assets;
