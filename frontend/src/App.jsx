@@ -14,6 +14,8 @@ import PrincipalOfficers from './Pages/administration/PrincipalOfficers'
 import POfficers from './Pages/administration/POfficers'
 import Administration from './Pages/administration/Administration'
 import AAdministration from './Pages/administration/AAdministration'
+import ContinuingEducation from './Pages/services/ContinuingEducation'
+import ContinuingEducationElement from './Pages/services/ContinuingEducationElement'
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
               <Route path='/administration/principal-officers/:id' element={<POfficers />} />
               <Route path='/services/campus' element={<Campus />} />
               <Route path='/services/campus/:id' element={<CampusElement />} />
+              <Route path='/services/continuing' element={<ContinuingEducation/>} />
+              <Route path='/services/continuing/:id' element={<ContinuingEducationElement/>} />
 
               <Route path='/admin-ict/oouagoiwoye-9g4c4h8sh' element={<AdminDash />} />
           </Routes>
