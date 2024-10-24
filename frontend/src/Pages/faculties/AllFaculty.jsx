@@ -58,7 +58,7 @@ export default function AllFaculty() {
                         <p className='flex items-center text-sm md:text-xl text-royal font-semibold mt-2 mb-3 lg:mb-8'>
                             {item.subtitle && item.subtitle}
                         </p>
-                        <CustomButton handleClick={() => navigate(`/faculties/${item.href}`)} />
+                        <CustomButton handleClick={() => navigate(`/services/faculty/${index}`)} />
                     </div>
                 </div>
             ))}

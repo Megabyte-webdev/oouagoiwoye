@@ -18,14 +18,14 @@ import { communityData } from '../../Data/communities';
 import { data } from '../../Data/news';
 
 export default function Faculty() {
-    const { facultyId } = useParams();
+    const { id } = useParams();
     const [faculty, setFaculty]=useState([])
   
     useEffect(() => {
-        if(facultyId){
-            setFaculty(facultyData.items.filter(fac=> fac.href === facultyId)[0])
+        if(id){
+            setFaculty(facultyData.items[0])
         }
-    }, [facultyId,faculty])
+    }, [id,faculty])
     
     
     const breadcrumbs = [
@@ -36,7 +36,7 @@ export default function Faculty() {
             Faculties
         </Link>,
         <p key={3} className='text-blue-500' >
-            {facultyId}
+            {faculty.title}
         </p>,
       ];
  
