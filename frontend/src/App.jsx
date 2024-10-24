@@ -1,21 +1,23 @@
 /* eslint-disable no-unused-vars */
-import {Routes, Route, BrowserRouter} from 'react-router-dom'
-import HomePage from './Pages/HomePage'
-import AboutPage from './Pages/AboutPage'
+import {Routes, Route, BrowserRouter} from 'react-router-dom';
+import HomePage from './Pages/HomePage';
+import AboutPage from './Pages/AboutPage';
 import './App.css'
-import Navbar from './Components/Navbar'
-import Footer from './Components/Footer'
-import Campus from './Pages/services/Campus'
-import CampusElement from './Pages/services/CampusElement'
-import campusData from "./Data/campus"
+// import Navbar from './Components/Navbar'
+import Footer from './Components/Footer';
+import Campus from './Pages/services/Campus';
+import CampusElement from './Pages/services/CampusElement';
+// import campusData from "./Data/campus"
 import NavBar from './Components/Nav/useContext';
-import PrincipalOfficers from './Pages/administration/PrincipalOfficers'
-import POfficers from './Pages/administration/POfficers'
-import Administration from './Pages/administration/Administration'
-import AAdministration from './Pages/administration/AAdministration'
-import AdminDash from './Admin/AdminDash'
-import AllFaculty from './Pages/faculties/AllFaculty'
-import Faculty from './Pages/faculties/Faculty'
+import PrincipalOfficers from './Pages/administration/PrincipalOfficers';
+import POfficers from './Pages/administration/POfficers';
+import Administration from './Pages/administration/Administration';
+import AAdministration from './Pages/administration/AAdministration';
+import AdminDash from './Admin/AdminDash';
+import AllFaculty from './Pages/faculties/AllFaculty';
+import Faculty from './Pages/faculties/Faculty';
+import ContinuingEducation from './Pages/services/ContinuingEducation';
+import ContinuingEducationElement from './Pages/services/ContinuingEducationElement';
 
 function App() {
   return (
@@ -34,7 +36,9 @@ function App() {
           <Route path='/services/campus/:id' element={<CampusElement />} />
           <Route path='/services/faculty' element={<AllFaculty />} />
           <Route path='/services/faculty/:id' element={<Faculty />} />
-
+          <Route path='/services/continuing' element={<ContinuingEducation/>} />
+          <Route path='/services/continuing/:id' element={<ContinuingEducationElement/>} />
+          {/* Admin CMS routes */}
           <Route path='/admin-ict/oouagoiwoye-9g4c4h8sh' element={<AdminDash />} />
       </Routes>
       <Footer />
@@ -42,4 +46,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

@@ -5,6 +5,7 @@ import frame5 from './Frame 5.png'
 import group4 from './Group 4.png'
 import group19 from './Group 19.png'
 import group20 from './Group 20.png'
+import Group21 from './Group 21.jpg'
 import hero_img from './hero-img.png'
 import logo from './logo.png'
 import oou from './oou.png'
@@ -22,6 +23,9 @@ import wireframe from "./wireframe.svg"
 import ooupics from "./ooupics.png";
 import imaage from "./imaage.jpg"
 import faculty from "./faculty.jpg";
+import schoolImg from "./school-img.jpg"
+import altFooter1 from "./Frame 127.png"
+import altFooter from "./Frame 127.svg"
 
 const assets = {
     community1,
@@ -31,6 +35,7 @@ const assets = {
     group4,
     group19,
     group20,
+    Group21,
     hero_img,
     logo,
     oou,
@@ -48,6 +53,8 @@ const assets = {
     ooupics,
     imaage,
     faculty,
+    schoolImg,
+    altFooter1
 }
 
 export default assets;
