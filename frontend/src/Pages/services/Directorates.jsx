@@ -1,16 +1,16 @@
+import React from 'react'
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Breadcrumbs } from '@mui/material';
-import React from 'react';
 import assets from '../../assets/assets';
 import { IoLocationOutline } from "react-icons/io5";
 import CustomButton from "../../Components/CustomButton"
 import { useNavigate } from 'react-router-dom';
 
-import ContinuingEducationData from "../../Data/continuingEducation"
+import DirectoratesData from "../../Data/DirectoratesData"
 
-function ContinuingEducation() {
+const Directorates = () => {
     const navigate = useNavigate()
     function handleClick(event) {
         event.preventDefault();
@@ -20,13 +20,14 @@ function ContinuingEducation() {
         <p key={1} className='text-slate-500' >
             Services
         </p>,
-        <Link key={2} className='text-blue-500' href="/services/continuing" onClick={handleClick} >
-            Continuing Education
+        <Link key={2} className='text-blue-500' href="/services/directorate" onClick={handleClick} >
+            Directorates
         </Link>
-      ];
+    ];
+
   return (
     <div className='w-full h-auto lg:h-auto lg:min-h-screen px-2'>
-        <div className='p-2 px-4 bg-white'>
+        <div className='p-2 px-0 bg-white'>
             {/* breadcrumbs */}
             <Stack spacing={1}>
                 <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
@@ -35,13 +36,12 @@ function ContinuingEducation() {
             </Stack>
             <div className='w-full flex items-center justify-center relative'>
                 <img src={assets.wireframe} className='w-full ' />
-                <h2 className='text-blue-700 text-2xl lg:text-4xl font-semibold z-0 absolute'>Continuing Education</h2>
+                <h2 className='text-blue-700 text-2xl lg:text-4xl font-semibold z-0 absolute'>Directorates</h2>
             </div>
             
         </div>
-
         <div className='p-2 px-4'>
-            {ContinuingEducationData.map((item, index)=>(
+            {DirectoratesData.map((item, index)=>(
                 <div key={index} className='w-full bg-white even:bg-blue-50 h-auto border-blue-900 border-t-2 last:border-b-2 p-2 flex items-center justify-between'>
                     <div className='bg-blue-600 relative w-1/3 lg:w-2/12 h-auto flex items-center justify-center'>
                         <div className='bg-yellow-400 w-20 lg:w-40 h-16 lg:h-36 absolute top-0 left-0 '></div>
@@ -57,7 +57,7 @@ function ContinuingEducation() {
                             {item.studiesInfo}
                         </p>
                         {/* <CustomButton handleClick={() => navigate(`/services/continuing/${index}`)} /> */}
-                        <CustomButton handleClick={() => navigate(`/services/continuing/${index}`)} />
+                        <CustomButton handleClick={() => navigate(`/services/directorate/${index}`)} />
                     </div>
                 </div>
             ))}
@@ -66,4 +66,4 @@ function ContinuingEducation() {
   )
 }
 
-export default ContinuingEducation
+export default Directorates;

@@ -18,6 +18,8 @@ import AllFaculty from './Pages/faculties/AllFaculty';
 import Faculty from './Pages/faculties/Faculty';
 import ContinuingEducation from './Pages/services/ContinuingEducation';
 import ContinuingEducationElement from './Pages/services/ContinuingEducationElement';
+import Directorates from './Pages/services/Directorates';
+import DirectoratesElement from './Pages/services/DirectoratesElement';
 
 function App() {
   return (
@@ -38,6 +40,9 @@ function App() {
           <Route path='/services/faculty/:id' element={<Faculty />} />
           <Route path='/services/continuing' element={<ContinuingEducation/>} />
           <Route path='/services/continuing/:id' element={<ContinuingEducationElement/>} />
+          <Route path='/services/directorate' element={<Directorates/>} />
+          <Route path='/services/directorate/:id' element={<DirectoratesElement/>} />
+
           {/* Admin CMS routes */}
           <Route path='/admin-ict/oouagoiwoye-9g4c4h8sh' element={<AdminDash />} />
       </Routes>
