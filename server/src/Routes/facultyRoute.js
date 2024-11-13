@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { upload } = require("../middleware/multer");
-const facultyController  = require("../Controllers/faculty.controller");
+const facultyController  = require("../Controllers/facultyController");
 
 //get all faculty
 router.get("/", facultyController.fetchFaculty);

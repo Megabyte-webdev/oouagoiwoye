@@ -1,5 +1,5 @@
 const express = require("express");
-const lecturerController = require("../Controllers/lecturer.controller");
+const lecturerController = require("../Controllers/lecturerController");
 const { upload } = require("../middleware/multer")
 
 const router = express.Router();

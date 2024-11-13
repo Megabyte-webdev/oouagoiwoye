@@ -23,7 +23,7 @@ CREATE TABLE "Faculties" (
     "deanName" TEXT,
     "noOfDepartments" TEXT NOT NULL,
     "body" TEXT NOT NULL,
-    CONSTRAINT "Faculties_campusId_fkey" FOREIGN KEY ("campusId") REFERENCES "campus" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "Faculties_campusId_fkey" FOREIGN KEY ("campusId") REFERENCES "campus" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -33,7 +33,7 @@ CREATE TABLE "departments" (
     "image" TEXT NOT NULL,
     "body" TEXT NOT NULL,
     "facultyId" INTEGER NOT NULL,
-    CONSTRAINT "departments_facultyId_fkey" FOREIGN KEY ("facultyId") REFERENCES "Faculties" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "departments_facultyId_fkey" FOREIGN KEY ("facultyId") REFERENCES "Faculties" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -43,7 +43,7 @@ CREATE TABLE "lecturers" (
     "designation" TEXT NOT NULL,
     "image" TEXT NOT NULL,
     "facultyId" INTEGER NOT NULL,
-    CONSTRAINT "lecturers_facultyId_fkey" FOREIGN KEY ("facultyId") REFERENCES "Faculties" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "lecturers_facultyId_fkey" FOREIGN KEY ("facultyId") REFERENCES "Faculties" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -54,8 +54,8 @@ CREATE TABLE "contact" (
     "youtube" TEXT NOT NULL,
     "campusId" INTEGER,
     "facultyId" INTEGER,
-    CONSTRAINT "contact_campusId_fkey" FOREIGN KEY ("campusId") REFERENCES "campus" ("id") ON DELETE SET NULL ON UPDATE CASCADE,
-    CONSTRAINT "contact_facultyId_fkey" FOREIGN KEY ("facultyId") REFERENCES "Faculties" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+    CONSTRAINT "contact_campusId_fkey" FOREIGN KEY ("campusId") REFERENCES "campus" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "contact_facultyId_fkey" FOREIGN KEY ("facultyId") REFERENCES "Faculties" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -85,19 +85,10 @@ CREATE UNIQUE INDEX "campus_id_key" ON "campus"("id");
 CREATE UNIQUE INDEX "Faculties_id_key" ON "Faculties"("id");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Faculties_campusId_key" ON "Faculties"("campusId");
-
--- CreateIndex
 CREATE UNIQUE INDEX "departments_id_key" ON "departments"("id");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "departments_facultyId_key" ON "departments"("facultyId");
-
--- CreateIndex
 CREATE UNIQUE INDEX "lecturers_id_key" ON "lecturers"("id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "lecturers_facultyId_key" ON "lecturers"("facultyId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "contact_id_key" ON "contact"("id");

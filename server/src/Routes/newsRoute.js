@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { upload } = require('../middleware/multer');
-const newsController = require("../Controllers/news.controller");
+const newsController = require("../Controllers/newsController");
 
 router.post("/", upload.single("image"), newsController.createNews);
 
