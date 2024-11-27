@@ -1,12 +1,13 @@
 import navListJson from '../../Json/navlist.json';
 import { FaCaretDown, FaCaretUp, FaAsterisk } from 'react-icons/fa';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { NavContext } from './useContext';
 import { useContext } from 'react';
 
 const About = () => {
+    const navigate=useNavigate();
 
-    const { about, setAbout, setAdministration, setAdmission, setServices, setLogin } = useContext(NavContext);
+    const { menu, setMenu, about, setAbout, setAdministration, setAdmission, setServices, setLogin } = useContext(NavContext);
 
     const toggleBtn = () => {
         setAbout(!about);
@@ -36,9 +37,9 @@ const About = () => {
                     <ul className=" flex flex-col gap-7 pt-7 max-lg:px-0 max-lg:pt-0 font-500" >
                         {
                             navListJson.about.map(({ title }, index) => {
-                                return <li className=' font-thin hover:opacity-[.77] w-[100%]' key={index}>
-                                    <NavLink to='/about'>{title}</NavLink>
-                                </li>
+                                return <NavLink to={`/about#${title}`} onClick={()=>{setMenu(false); setAbout(false) }} className='[&.active]:font-medium [&.active]:text-blue-900 cursor-pointer font-thin hover:opacity-[.77] w-[100%]' key={index}>
+                                    {title}
+                                </NavLink>
                             })
                         }
                     </ul>

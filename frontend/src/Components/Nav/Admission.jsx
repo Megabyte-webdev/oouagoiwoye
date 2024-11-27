@@ -6,7 +6,7 @@ import { useContext } from 'react';
 
 const Admission = () => {
 
-    const { setAbout, setAdministration, admission, setAdmission, setServices, setLogin } = useContext(NavContext);
+    const { setMenu, setAbout, setAdministration, admission, setAdmission, setServices, setLogin } = useContext(NavContext);
 
     const toggleBtn = () => {
         setAbout(false);
@@ -37,9 +37,9 @@ const Admission = () => {
 
                     <ul className=" flex flex-col pt-7 gap-7 max-lg:px-0 max-lg:pt-3.5 font-500" >
                         {
-                            navListJson.admissions.map(({ title, href }, index) => {
-                                return <li className=' font-thin cursor-pointer hover:opacity-[.77] w-[100%]' key={index}>
-                                    <Link to={href} className='block w-full'>{title}</Link></li>
+                            navListJson.admissions.map(({ title }, index) => {
+                                return <NavLink to={`admission/${title}`} onClick={()=>{setMenu(false); setAdmission(false)}} className='[&.active]:font-medium [&.active]:text-blue-900 font-thin cursor-pointer hover:opacity-[.77] w-[100%]' key={index}>
+                                    {title}</NavLink>
                             })
                         }
                     </ul>

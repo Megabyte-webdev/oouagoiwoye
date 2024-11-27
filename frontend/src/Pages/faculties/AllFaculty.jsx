@@ -19,8 +19,8 @@ export default function AllFaculty() {
     }
 
     const breadcrumbs = [
-        <p key={1} className='text-slate-500 text-bold' href='/' >
-            Home
+        <p key={1} className='text-slate-500 text-bold' >
+            Services
         </p>,
         <Link key={2} className='text-blue-700 text-bold' href="/faculties" onClick={handleClick} >
             Faculties
@@ -53,12 +53,12 @@ export default function AllFaculty() {
                     </div>
                     <div className='w-10/12 h-full p-3 pl-5 lg:pl-10'>
                         <h1 className='text-black text-xl md:text-2xl font-bold'>
-                            {item.title && item.title}
+                            {item?.title && item?.title}
                         </h1>
                         <p className='flex items-center text-sm md:text-xl text-royal font-semibold mt-2 mb-3 lg:mb-8'>
-                            {item.subtitle && item.subtitle}
+                            {item?.subtitle && item?.subtitle}
                         </p>
-                        <CustomButton handleClick={() => navigate(`/services/faculty/${index}`)} />
+                        <CustomButton handleClick={() => {navigate(`/services/faculty/${item?.title}`); scrollTo(0,0)}} />
                     </div>
                 </div>
             ))}

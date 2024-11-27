@@ -41,7 +41,7 @@ function ContinuingEducation() {
         </div>
 
         <div className='p-2 px-4'>
-            {ContinuingEducationData.map((item, index)=>(
+            {ContinuingEducationData?.map((item, index)=>(
                 <div key={index} className='w-full bg-white even:bg-blue-50 h-auto border-blue-900 border-t-2 last:border-b-2 p-2 flex items-center justify-between'>
                     <div className='bg-blue-600 relative w-1/3 lg:w-2/12 h-auto flex items-center justify-center'>
                         <div className='bg-yellow-400 w-20 lg:w-40 h-16 lg:h-36 absolute top-0 left-0 '></div>
@@ -51,13 +51,13 @@ function ContinuingEducation() {
                     </div>
                     <div className='w-10/12 h-full p-3 pl-5 lg:pl-10'>
                         <h1 className='text-royal text-xl lg:text-2xl font-bold'>
-                            {item.campus}
+                            {item?.title}
                         </h1>
                         <p className='flex items-center text-xs lg:text-[16px] mt-2 mb-3 lg:mb-8'>
-                            {item.studiesInfo}
+                            {item?.studiesInfo}
                         </p>
                         {/* <CustomButton handleClick={() => navigate(`/services/continuing/${index}`)} /> */}
-                        <CustomButton handleClick={() => navigate(`/services/continuing/${index}`)} />
+                        <CustomButton handleClick={() => navigate(`/services/continuing/${item?.title}`)} />
                     </div>
                 </div>
             ))}

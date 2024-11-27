@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import CustomButton from "./CustomButton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -9,9 +9,22 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function sliderComponent({ data, design = "", hideBtn=false, btnDesc}) {
+export default function sliderComponent({ data, design = "", hideBtn=false, btnDesc, address}) {
+  const navigate=useNavigate();
+  
+  const TextTruncator=(text)=>{
+    const [isTruncated, setIsTruncated]= useState(true);
+  const truncatedText=text?.slice(0,300)+"...";
+  return(
+    <p>
+      {isTruncated ? truncatedText : text}
+      {/* <small className="cursor-pointer text-sm font-semibold" onClick={()=>setIsTruncated(!isTruncated)}>{isTruncated ? "...Read More" : "...Read Less"}</small> */}
+    </p>
+  )
+  }  
+  
   return (
     <div>
       <Swiper
@@ -36,11 +49,11 @@ export default function sliderComponent({ data, design = "", hideBtn=false, btnD
         navigation
         pagination={{ clickable: true }}
       >
-        {data.map((item, index) => (
+        {data?.map((item, index) => (
           <>
             {
             (design === "") && (
-              <SwiperSlide key={index} className="bg-[] p-5 mb-10">
+              <SwiperSlide key={index} className="bg-[#FFF] p-5 mb-10">
                 <img src={item?.image} alt="slide" className="w-full object-cover h-48" />
                 <div>
                   <h2 className="capitalize text-xl font-semibold my-2 mb-0">
@@ -49,32 +62,12 @@ export default function sliderComponent({ data, design = "", hideBtn=false, btnD
                   <h2 className="text-sm font-semibold mt-0 my-2 text-blue-600">
                     {item?.subtitle}
                   </h2>
-                  <p className="text-xs mt-0 my-2">{item?.body}</p>
+                  <p className="text-xs mt-0 my-2">{TextTruncator(item?.body)}</p>
                   <h2 className="text-xs font-medium mt-0 my-2 text-blue-600">
                     {item?.author}
                   </h2>
                 </div>
-                {!hideBtn && <CustomButton text={btnDesc && btnDesc} />}
-              </SwiperSlide>
-            )
-            }
-            {
-            (design === "news") && (
-              <SwiperSlide key={index} className="bg-white p-5 mb-10">
-                <img src={item?.image} alt="slide" className="w-full object-cover h-48" />
-                <div>
-                  <h2 className="capitalize text-xl font-semibold my-2 mb-0">
-                    {item?.title}
-                  </h2>
-                  <h2 className="text-sm font-semibold mt-0 my-2 text-blue-600">
-                    {item?.subtitle}
-                  </h2>
-                  <p className="text-sm mt-0 my-2 font-semibold">{item?.body}</p>
-                  <h2 className="text-xs font-semibold mt-0 my-2 text-blue-600">
-                    {item?.author}
-                  </h2>
-                </div>
-                {!hideBtn && <CustomButton text={btnDesc && btnDesc} />}
+                {!hideBtn && <CustomButton handleClick={()=>{navigate(`${address}/${item?.title}`); scrollTo(0,0)}} text={btnDesc && btnDesc} />}
               </SwiperSlide>
             )
             }
@@ -91,7 +84,7 @@ export default function sliderComponent({ data, design = "", hideBtn=false, btnD
                   <h2 className="text-sm font-semibold mt-0 my-2 text-blue-600">
                     {item?.subtitle}
                   </h2>
-                  <p className="text-xs mt-0 my-2">{item?.body}</p>
+                  <p className="text-xs mt-0 my-2">{TextTruncator(item?.body)}</p>
                   <h2 className="text-xs font-medium mt-0 my-2 text-blue-600">
                     {item?.author}
                   </h2>

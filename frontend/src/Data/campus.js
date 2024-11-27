@@ -5,7 +5,7 @@ import assets from "../assets/assets";
 const campusData = [
     {
         id: 1,
-        campus: "Main Campus",
+        title: "Main Campus",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
         image: assets.place,
@@ -21,7 +21,7 @@ const campusData = [
     },
     {
         id: 2,
-        campus: "Egba Campus",
+        title: "Egba Campus",
         location: "Ibogun, Ogun State Nigeria.",
         href: "egba-campus",
         image: assets.place,
@@ -37,7 +37,7 @@ const campusData = [
     },
     {
         id: 3,
-        campus: "Yewa Campus",
+        title: "Yewa Campus",
         location: "Ayetoro, Ogun State Nigeria.",
         href: "yewa-campus",
         image: assets.place,
@@ -53,7 +53,7 @@ const campusData = [
     },
     {
         id: 4,
-        campus: "Remo Campus",
+        title: "Remo Campus",
         location: "Sagamu, Ogun State Nigeria.",
         href: "remo-campus",
         image: assets.place,

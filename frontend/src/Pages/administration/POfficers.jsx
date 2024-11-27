@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useNavigate, useParams } from 'react-router-dom'
 import { principalData } from '../../Data/administration'
@@ -12,12 +12,22 @@ import { FaAsterisk, FaFacebookSquare, FaYoutube } from 'react-icons/fa';
 
 const POfficers = () => {
     const {id} = useParams()
-    const data = principalData[id]
+    const check = principalData.find(item => item.title === id)
+    const [data, setData] = useState();
     const navigate = useNavigate()
     function handleClick(event) {
         event.preventDefault();
         navigate('/administration/principal-officers')
     }
+    
+    useEffect(() => {
+        if (check) {
+            setData(check)
+        } else {
+            navigate('/notfound')
+        }
+    }, [id, check])
+
 
     const breadcrumbs = [
         <p key={1} className='text-slate-500 text-xs lg:text-base' >
@@ -27,11 +37,12 @@ const POfficers = () => {
             Principal Officers
         </a>,
         <p key={3} className='text-blue-500 text-xs lg:text-base' >
-            {data.campus}
+            {data?.title}
         </p>,
       ];
       
   return (
+    data &&
     <div className='w-full h-auto lg:min-h-[calc(100vh-150.39px)] font-sans'>
         <div className='p-2 px-4 bg-white'>
             {/* breadcrumbs */}
@@ -42,7 +53,7 @@ const POfficers = () => {
             </Stack>
             <div className='w-full flex items-center justify-center relative'>
                 <img src={assets.wireframe} className='w-full ' />
-                <h2 className='text-blue-700 text-lg lg:text-4xl font-semibold z-0 absolute'>{data.campus}</h2>
+                <h2 className='text-blue-700 text-lg lg:text-4xl font-semibold z-0 absolute'>{data?.title}</h2>
             </div>
             
         </div>
@@ -54,13 +65,13 @@ const POfficers = () => {
                 <div className='w-full'>
                     <h2 className='text-blue-800 font-bold text-lg lg:text-2xl mt-2'>Brief Biography</h2>
                     <p className='mt-2 leading-7 text-sm'>
-                        {data.biography}
+                        {data?.biography}
                     </p>
                 </div>
                 <div className='w-full'>
                     <h2 className='text-blue-800 font-bold text-lg lg:text-2xl mt-2'>Role and Responsibilities</h2>
                     <div className='mt-1  text-sm'>
-                        {data.roles.map((ele, index)=>(
+                        {data?.roles.map((ele, index)=>(
                             <div key={index} className='flex items-start'>
                                 <FaAsterisk className='text-blue-900 text-sm  mt-2' /> <span className='text-sm my-1 ml-2 text-slate-700 font-sans'>{ele}</span>
                             </div>
@@ -87,10 +98,10 @@ const POfficers = () => {
                         </figure>
                 </div> 
                 <h2 className=' text-neutral-700 font-bold text-xl w-2/3 mx-auto'>
-                    {data.name}
+                    {data?.name}
                 </h2>
                 <h2 className='text-blue-700 font-bold text-sm lg:text-lg mx-auto'>
-                    {data.campus}
+                    {data?.title}
                 </h2>
             </div>
             
