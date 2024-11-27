@@ -6,6 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 8020,
+    proxy: {
+      "/api" : "http://oouwebapp.us-east-2.elasticbeanstalk.com"
+    }
   }
 })
 
