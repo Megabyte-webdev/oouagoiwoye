@@ -52,13 +52,13 @@ const Administration = () => {
                         </div>
                         <div className='w-10/12 h-full p-3 pl-5 lg:pl-10'>
                             <h1 className='text-royal text-xl lg:text-2xl font-bold'>
-                                {item.campus}
+                                {item?.title}
                             </h1>
                             <p className='flex items-center text-xs text-neutral-500 lg:text-base font-semibold mt-2 mb-3 lg:mb-8'>
                                 {/* <IoLocationOutline className='mr-2' /> */}
-                                {item.name}
+                                {item?.name}
                             </p>
-                            <CustomButton handleClick={() => navigate(`/administration/admin/${index}`)} />
+                            <CustomButton handleClick={() => navigate(`/administration/admin/${item.title}`)} />
                         </div>
                     </div>
             ))}

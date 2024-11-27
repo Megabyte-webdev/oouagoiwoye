@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import navListJson from '../../Json/navlist.json';
 import { FaCaretDown, FaCaretUp, FaAsterisk } from 'react-icons/fa';
 import AdministrationList from './Administration/AdminsitrationList';
+import { adminData, principalData } from '../../Data/administration'
 import { NavContext } from './useContext';
 const Administration = () => {
 
@@ -37,8 +38,8 @@ const Administration = () => {
                             <h1 className='text-xl font-bold'>Administration</h1>
                         </div>
                         <div className="flex gap-6 wrap max-lg:flex-col">
-                            <AdministrationList value={navListJson.administration.administrations} Lnk={navListJson.administration.admin} headerTitle='Adminstrations' />
-                            <AdministrationList value={navListJson.administration.Principal_Officers} Lnk={navListJson.administration.princi} headerTitle='Principal Officers' />
+                            <AdministrationList value={adminData} address="administration/admin" headerTitle='Adminstrations' />
+                            <AdministrationList value={principalData} address="administration/principal-officers" headerTitle='Principal Officers' />
                         </div>
                     </div>
                 </div>}

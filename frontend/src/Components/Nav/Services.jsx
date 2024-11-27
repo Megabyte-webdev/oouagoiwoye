@@ -3,7 +3,9 @@ import { FaCaretDown, FaCaretUp, FaAsterisk } from 'react-icons/fa';
 import { NavContext } from './useContext';
 import { useContext } from 'react';
 import ServicesList from './Services/ServicesList';
-
+import ContinuingEducation from "../../Data/continuingEducation"
+import {facultyData} from "../../Data/faculty"
+import campusData from "../../Data/campus"
 const Services = () => {
     const { setAbout, setAdministration, setAdmission, services, setServices, setLogin } = useContext(NavContext);
 
@@ -36,11 +38,11 @@ const Services = () => {
                             <h1 className='text-xl font-bold '>Services</h1>
                         </div>
                         <div className="flex justify-between max-lg:flex-col max-lg:gap-5">
-                            <ServicesList headerTitle='Campus' Lnk="services/campus" value={navListJson.services.campus} />
-                            <ServicesList headerTitle='Faculities' Lnk="services/faculty" value={navListJson.services.faculties} />
-                            <ServicesList headerTitle='Faculities' Lnk="services/faculty" value={navListJson.services.faculties_second} />
-                            <ServicesList headerTitle='Continuing Education' Lnk="services/continuing" value={navListJson.services.continuing_education} />
-                            <ServicesList headerTitle='Directorates' Lnk="services/directorate" value={navListJson.services.directorates} />
+                            <ServicesList headerTitle='Campus' address="services/campus" value={campusData} />
+                            <ServicesList headerTitle='Faculities' address="services/faculty" value={facultyData?.items.slice(0, Math.round(facultyData?.items.length/2))} />
+                            <ServicesList headerTitle='Faculities' address="services/faculty" value={facultyData?.items.slice(Math.round(facultyData?.items.length/2))} />
+                            <ServicesList headerTitle='Continuing Education' address="services/continuing" value={ContinuingEducation} />
+                            <ServicesList headerTitle='Directorates' address="services/directorate" value={navListJson.services.directorates} />
                         </div>
                     </div>
                 </div>}
