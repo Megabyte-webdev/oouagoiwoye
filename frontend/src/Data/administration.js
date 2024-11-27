@@ -5,7 +5,7 @@ import assets from "../assets/assets";
 const principalData = [
     {
         id: 1,
-        campus: "Deputy Vice-Chancellor (Academic)",
+        title: "Deputy Vice-Chancellor (Academic)",
         name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
         href: "main-campus",
         image: assets.imaage,
@@ -27,7 +27,7 @@ const principalData = [
     },
     {
         id: 2,
-        campus: "Deputy Vice-Chancellor (Administration)",
+        title: "Deputy Vice-Chancellor (Administration)",
         name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
         href: "main-campus",
         image: assets.imaage,
@@ -49,7 +49,7 @@ const principalData = [
     },
     {
         id: 3,
-        campus: "University Registrar",
+        title: "University Registrar",
         name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
         href: "main-campus",
         image: assets.imaage,
@@ -71,7 +71,7 @@ const principalData = [
     },
     {
         id: 4,
-        campus: "University Bursar",
+        title: "University Bursar",
         name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
         href: "main-campus",
         image: assets.imaage,
@@ -93,7 +93,7 @@ const principalData = [
     },
     {
         id: 5,
-        campus: "University Libarian",
+        title: "University Libarian",
         name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
         href: "main-campus",
         image: assets.imaage,
@@ -120,7 +120,7 @@ const principalData = [
 const adminData = [
     {
         id: 1,
-        campus: "The Visitor",
+        title: "The Vice Chancellor",
         name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
         href: "",
         image: assets.imaage,
@@ -142,7 +142,7 @@ const adminData = [
     },
     {
         id: 2,
-        campus: "Pro-Chancellor",
+        title: "Pro-Chancellor",
         name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
         href: "",
         image: assets.imaage,

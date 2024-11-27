@@ -3,7 +3,7 @@ import assets from "../assets/assets";
 const DirectoratesData = [
     {
         id: 1,
-        campus: "Academic Planning",
+        title: "Academic Planning",
         slug: "Academic Planning",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
@@ -38,7 +38,7 @@ const DirectoratesData = [
     },
     {
         id: 2,
-        campus: "Quality Assurance",
+        title: "Quality Assurance",
         slug: "Quality Assurance",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
@@ -73,7 +73,7 @@ const DirectoratesData = [
     },
     {
         id: 3,
-        campus: "Student Affairs",
+        title: "Student Affairs",
         slug: "Student Affairs",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
@@ -108,7 +108,7 @@ const DirectoratesData = [
     },
     {
         id: 4,
-        campus: "General Nigerian Studies",
+        title: "General Nigerian Studies",
         slug: "General Nigerian Studies",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
@@ -143,7 +143,7 @@ const DirectoratesData = [
     },
     {
         id: 4,
-        campus: "Entrepreneurial Studies & Innovation",
+        title: "Entrepreneurial Studies & Innovation",
         slug: "Entrepreneurial Studies & Innovation",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",

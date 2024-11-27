@@ -1,7 +1,9 @@
 import React from 'react'
 import assets from '../assets/assets'
 import CustomButton from './CustomButton'
+import { useNavigate } from 'react-router-dom'
 const About = () => {
+    const navigate=useNavigate();
   return (
     <div>
         <section className="w-full bg-blue-100 flex flex-col-reverse lg:flex-row items-center justify-center p-10">
@@ -22,7 +24,7 @@ const About = () => {
                     community engagement. Over the past few years, we have nurtured leaders acros a multitude of
                     disciplines through our diverse programs.
                 </p>
-                <CustomButton  />
+                <CustomButton handleClick={()=>navigate('/about')} />
                 {/* <button className="primary-btn"><a href="">Check it out</a></button> */}
             </article>
 

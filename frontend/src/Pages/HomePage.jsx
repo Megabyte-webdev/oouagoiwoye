@@ -17,13 +17,13 @@ const HomePage = () => {
     <div className="">
       <Hero />
       <Statements />
-      <CardComponent data={facultyData} />
+      <CardComponent address="services/faculty" data={facultyData} />
       <ViceChancellor />
-      <VideoComponent data={testimonyData} />
+      <VideoComponent address="services/testimony" data={testimonyData} />
       <About />   
       <Events/>     
       <Tour />
-      <CardComponent data={communityData} />
+      <CardComponent address="services/community" data={communityData} />
     </div>
   );
 };

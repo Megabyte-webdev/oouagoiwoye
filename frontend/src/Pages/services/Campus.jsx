@@ -54,13 +54,13 @@ export default function Campus() {
                     </div>
                     <div className='w-10/12 h-full p-3 pl-5 lg:pl-10'>
                         <h1 className='text-royal text-xl lg:text-2xl font-bold'>
-                            {item.campus}
+                            {item.title}
                         </h1>
                         <p className='flex items-center text-xs lg:text-lg font-semibold mt-2 mb-3 lg:mb-8'>
                             <IoLocationOutline className='mr-2' />
                             {item.location}
                         </p>
-                        <CustomButton handleClick={() => navigate(`/services/campus/${index}`)} />
+                        <CustomButton handleClick={() => navigate(`/services/campus/${item.title}`)} />
                     </div>
                 </div>
             ))}

@@ -10,9 +10,10 @@ const NavBar = () => {
     const [admission, setAdmission] = useState(false);
     const [services, setServices] = useState(false);
     const [login, setLogin] = useState(false);
+    const [menu, setMenu] = useState(false);
 
     return (
-        <NavContext.Provider value={{ about, setAbout, administration, setAdministration, admission, setAdmission, services, setServices, login, setLogin }}>
+        <NavContext.Provider value={{ menu, setMenu, about, setAbout, administration, setAdministration, admission, setAdmission, services, setServices, login, setLogin }}>
             <Navbar/>
         </NavContext.Provider>
     )

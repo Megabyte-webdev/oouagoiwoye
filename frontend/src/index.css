@@ -10,9 +10,46 @@
   box-sizing: border-box;
 }
 
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
 
+/* Style the entire website's scrollbar */
+::-webkit-scrollbar {
+  width: 6px; /* Set the width of the scrollbar */
+  height: 6px; /* Set the height for horizontal scrollbar (if any) */
+}
 
+/* Style the track (the background of the scrollbar) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light gray track color */
+  border-radius: 10px; /* Rounded corners for the track */
+}
 
+/* Style the thumb (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+  background: #1310bd; /* Dark gray thumb color */
+  border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+/* Style the thumb when it's being hovered */
+::-webkit-scrollbar-thumb:hover {
+  background: #010035; /* Darker color when hovered */
+}
+
+/* Optional: Style for the corner where the vertical and horizontal scrollbars meet */
+::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+@media (max-width:600px){
+::-webkit-scrollbar {
+  width: 0px; /* Set the width of the scrollbar */
+  height: 0px; /* Set the height for horizontal scrollbar (if any) */
+}
+}
+
+/* 
 :root {
   --primary-blue: #010035;
   --secondary-blue: #0B35A2;
@@ -126,4 +163,4 @@ button {
   main {
       --nav-height: 110px;
   }
-}
+} */

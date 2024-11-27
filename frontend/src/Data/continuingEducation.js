@@ -5,7 +5,7 @@ import assets from "../assets/assets";
 const ContinuingEducationData = [
     {
         id: 1,
-        campus: "Pre-Degree Studies",
+        title: "Pre-Degree Studies",
         slug: "pre-degree-studies",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
@@ -41,7 +41,7 @@ const ContinuingEducationData = [
     {
         id: 2,
         slug: "jupeb-programme",
-        campus: "Jupeb Programme",
+        title: "Jupeb Programme",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
         image: assets.Group21,
@@ -76,7 +76,7 @@ const ContinuingEducationData = [
     {
         id: 3,
         slug: "pre-degree-studies",
-        campus: "Part-Time Programme",
+        title: "Part-Time Programme",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
         image: assets.Group21,
@@ -111,7 +111,7 @@ const ContinuingEducationData = [
     {
         id: 4,
         slug: "advanced-certificate-programme",
-        campus: "Advanced Certificate Programme",
+        title: "Advanced Certificate Programme",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
         image: assets.Group21,
@@ -147,7 +147,7 @@ const ContinuingEducationData = [
     {
         id: 5,
         slug: "open-and-distance-learning",
-        campus: "Open and Distance Learning",
+        title: "Open and Distance Learning",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
         image: assets.Group21,
@@ -185,7 +185,7 @@ const ContinuingEducationData = [
 const DirectoratesData = [
     {
         id: 1,
-        campus: "Academic Planning",
+        title: "Academic Planning",
         slug: "Academic Planning",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
@@ -220,7 +220,7 @@ const DirectoratesData = [
     },
     {
         id: 2,
-        campus: "Quality Assurance",
+        title: "Quality Assurance",
         slug: "Quality Assurance",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
@@ -255,7 +255,7 @@ const DirectoratesData = [
     },
     {
         id: 3,
-        campus: "Student Affairs",
+        title: "Student Affairs",
         slug: "Student Affairs",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
@@ -290,7 +290,7 @@ const DirectoratesData = [
     },
     {
         id: 4,
-        campus: "General Nigerian Studies",
+        title: "General Nigerian Studies",
         slug: "General Nigerian Studies",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",
@@ -325,7 +325,7 @@ const DirectoratesData = [
     },
     {
         id: 4,
-        campus: "Entrepreneurial Studies & Innovation",
+        title: "Entrepreneurial Studies & Innovation",
         slug: "Entrepreneurial Studies & Innovation",
         location: "Ago-Iwoye, Ogun State Nigeria.",
         href: "main-campus",

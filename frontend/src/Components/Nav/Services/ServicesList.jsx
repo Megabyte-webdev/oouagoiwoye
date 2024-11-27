@@ -1,21 +1,25 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { NavContext } from '../useContext';
+import { useContext } from 'react';
 
-const ServicesList = ({value, Lnk, headerTitle}) => {
+const ServicesList = ({value, address, headerTitle}) => {
+const navigate=useNavigate();    
+  const {setMenu, setServices}=useContext(NavContext);
     return (
         <div className='flex'>
             <div className='w-full'>
                 <ul className=" flex flex-col gap-6 pt-7 max-lg:px-0 max-lg:pt-3.5 font-500">
                     <div>
-                        <Link to={Lnk} className='font-bold text-blue-800 text-md text-secondaryBlue'>{headerTitle}</Link>
+                        <Link to={address} onClick={()=>{setServices(false)}} className='font-bold text-blue-800 text-md text-secondaryBlue'>{headerTitle}</Link>
                     </div>
                     {
-                        value.map(({ title, href }, index) => {
+                        value?.map(({ title }, index) => {
                             return (
-                                <li className=' font-thin hover:opacity-[.77] w-[100%]' key={index}>
-                                    <NavLink to={href}>
+                                <NavLink to={`${address}/${title}`} onClick={()=>{setMenu(false); setServices(false)}} className='[&.active]:font-medium [&.active]:text-blue-900 cursor-pointer font-thin hover:opacity-[.77] w-[100%]' key={index}>
+                                    
                                         {title}
-                                    </NavLink>
-                                </li>
+                                    
+                                </NavLink>
                             )
                         })
                     }

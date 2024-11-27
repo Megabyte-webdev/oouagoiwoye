@@ -1,54 +1,60 @@
 /* eslint-disable no-unused-vars */
-import {Routes, Route, BrowserRouter} from 'react-router-dom';
-import HomePage from './Pages/HomePage';
-import AboutPage from './Pages/AboutPage';
-import './App.css'
-// import Navbar from './Components/Navbar'
-import Footer from './Components/Footer';
-import Campus from './Pages/services/Campus';
-import CampusElement from './Pages/services/CampusElement';
-// import campusData from "./Data/campus"
-import NavBar from './Components/Nav/useContext';
-import PrincipalOfficers from './Pages/administration/PrincipalOfficers';
-import POfficers from './Pages/administration/POfficers';
-import Administration from './Pages/administration/Administration';
-import AAdministration from './Pages/administration/AAdministration';
-import AdminDash from './Admin/AdminDash';
-import AllFaculty from './Pages/faculties/AllFaculty';
-import Faculty from './Pages/faculties/Faculty';
-import ContinuingEducation from './Pages/services/ContinuingEducation';
-import ContinuingEducationElement from './Pages/services/ContinuingEducationElement';
-import Directorates from './Pages/services/Directorates';
-import DirectoratesElement from './Pages/services/DirectoratesElement';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react';
+import './App.css';
+import FallbackComponent from './utils/FallbackComponent';
+
+// Lazy loaded components
+const NavBar = lazy(() => import('./Components/Nav/useContext'));
+const Footer = lazy(() => import('./Components/Footer'));
+const HomePage = lazy(() => import('./Pages/HomePage'));
+const AboutPage = lazy(() => import('./Pages/AboutPage'));
+const Campus = lazy(() => import('./Pages/services/Campus'));
+const CampusElement = lazy(() => import('./Pages/services/CampusElement'));
+const PrincipalOfficers = lazy(() => import('./Pages/administration/PrincipalOfficers'));
+const POfficers = lazy(() => import('./Pages/administration/POfficers'));
+const Administration = lazy(() => import('./Pages/administration/Administration'));
+const AAdministration = lazy(() => import('./Pages/administration/AAdministration'));
+const AdminDash = lazy(() => import('./Admin/AdminDash'));
+const AllFaculty = lazy(() => import('./Pages/faculties/AllFaculty'));
+const Faculty = lazy(() => import('./Pages/faculties/Faculty'));
+const ContinuingEducation = lazy(() => import('./Pages/services/ContinuingEducation'));
+const ContinuingEducationElement = lazy(() => import('./Pages/services/ContinuingEducationElement'));
+const Directorates = lazy(() => import('./Pages/services/Directorates'));
+const DirectoratesElement = lazy(() => import('./Pages/services/DirectoratesElement'));
+const NoPageFound = lazy(() => import('./Pages/NoPageFound'));
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar/>
-      <Routes>
-          <Route path='/' exact element={<HomePage />} />
-          <Route path='/about' element={<AboutPage />} />
-          {/* Administration Routes*/}
-          <Route path='/administration/admin' element={<Administration />} />
-          <Route path='/administration/admin/:id' element={<AAdministration />} />
-          <Route path='/administration/principal-officers' element={<PrincipalOfficers />} />
-          <Route path='/administration/principal-officers/:id' element={<POfficers />} />
-          {/* SERVICES ROUTES   */}
-          <Route path='/services/campus' element={<Campus />} />
-          <Route path='/services/campus/:id' element={<CampusElement />} />
-          <Route path='/services/faculty' element={<AllFaculty />} />
-          <Route path='/services/faculty/:id' element={<Faculty />} />
-          <Route path='/services/continuing' element={<ContinuingEducation/>} />
-          <Route path='/services/continuing/:id' element={<ContinuingEducationElement/>} />
-          <Route path='/services/directorate' element={<Directorates/>} />
-          <Route path='/services/directorate/:id' element={<DirectoratesElement/>} />
-
+      {/* Move Suspense to wrap NavBar, Routes, and Footer */}
+      <Suspense fallback={<FallbackComponent />}>
+        <NavBar />
+        <Routes>
+          <Route path="/" exact element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          {/* Administration Routes */}
+          <Route path="/administration/admin" element={<Administration />} />
+          <Route path="/administration/admin/:id" element={<AAdministration />} />
+          <Route path="/administration/principal-officers" element={<PrincipalOfficers />} />
+          <Route path="/administration/principal-officers/:id" element={<POfficers />} />
+          {/* SERVICES ROUTES */}
+          <Route path="/services/campus" element={<Campus />} />
+          <Route path="/services/campus/:id" element={<CampusElement />} />
+          <Route path="/services/faculty" element={<AllFaculty />} />
+          <Route path="/services/faculty/:id" element={<Faculty />} />
+          <Route path="/services/continuing" element={<ContinuingEducation />} />
+          <Route path="/services/continuing/:id" element={<ContinuingEducationElement />} />
+          <Route path="/services/directorate" element={<Directorates />} />
+          <Route path="/services/directorate/:id" element={<DirectoratesElement />} />
           {/* Admin CMS routes */}
-          <Route path='/admin-ict/oouagoiwoye-9g4c4h8sh' element={<AdminDash />} />
-      </Routes>
-      <Footer />
+          <Route path="/*" element={<NoPageFound />} />
+          <Route path="/admin-ict/oouagoiwoye-9g4c4h8sh" element={<AdminDash />} />
+        </Routes>
+        <Footer />
+      </Suspense>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App;

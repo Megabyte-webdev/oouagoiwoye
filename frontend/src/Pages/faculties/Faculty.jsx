@@ -23,14 +23,14 @@ export default function Faculty() {
   
     useEffect(() => {
         if(id){
-            setFaculty(facultyData.items[0])
+            setFaculty(facultyData?.items?.find(item=> item.title === id))
         }
     }, [id,faculty])
     
     
     const breadcrumbs = [
-        <p key={1} href='/' className='text-slate-500' >
-            Home
+        <p key={1} className='text-slate-500' >
+            Services
         </p>,
         <Link to='/faculties' className='text-slate-500 cursor-pointer' key={2} >
             Faculties
@@ -97,13 +97,13 @@ export default function Faculty() {
         <div className='mx-3 my-3'>
             <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>Associations/Communities in the faculty</h2>
             
-            <SliderComponent hideBtn={true} data={communityData.items} />
+            <SliderComponent address="community" hideBtn={true} data={communityData.items} />
         </div>
 
         <div className='mx-3 my-3'>
             <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>Recent News related to the faculty</h2>
             
-            <SliderComponent design="news" btnDesc="Read More" data={data.items} />
+            <SliderComponent address="news" btnDesc="Read More" data={data.items} />
         </div>
 
 
