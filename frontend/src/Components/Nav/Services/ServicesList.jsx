@@ -26,15 +26,14 @@ const navigate=useNavigate();
                 </ul>
                 {/* See All Button */}
                 {headerTitle === "Faculties"
-                && 
-                <div className="mt-5 text-center">
+                &&
                     <button
                         onClick={() => navigate(address)}
-                        className="px-4 py-2 bg-blue-700 text-white font-semibold rounded hover:bg-blue-800 transition"
+                        className="mt-5 px-6 py-2 bg-blue-700 text-white font-semibold rounded-2xl hover:bg-blue-800 transition"
                     >
                         See All
                     </button>
-                </div>}
+                }
             </div>
         </div>
     )
