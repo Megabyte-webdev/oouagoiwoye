@@ -119,7 +119,6 @@ const adminData = [
             Youtube: ""
         }
     },
-    {
    {
         id: 3,
         title: "Deputy Vice-Chancellor (Academic)",
