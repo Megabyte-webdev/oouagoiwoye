@@ -49,8 +49,8 @@ export default function Faculty() {
                     {breadcrumbs}
                 </Breadcrumbs>
             </Stack>
-            <div className='w-full flex items-center justify-center relative'>
-                <img src={assets.wireframe} className='w-full ' />
+            <div className='w-full flex items-center justify-center relative min-h-40'>
+                <img src={assets.wireframe} className='w-full h-full' />
                 <h2 className='text-blue-700 text-2xl lg:text-4xl font-semibold z-0 absolute'>{faculty.title}</h2>
             </div>
             
