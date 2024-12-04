@@ -49,11 +49,19 @@ export default function Faculty() {
                     {breadcrumbs}
                 </Breadcrumbs>
             </Stack>
-            <div className='w-full flex items-center justify-center relative min-h-40'>
-                <img src={assets.wireframe} className='w-full h-full' />
-                <h2 className='text-blue-700 text-2xl lg:text-4xl font-semibold z-0 absolute'>{faculty.title}</h2>
-            </div>
             
+            <div className="relative w-full flex items-center justify-center min-h-[200px]">
+    {/* Background Image */}
+    <img 
+        src={assets.wireframe} 
+        alt="Background" 
+        className="w-full h-full object-cover" 
+    />
+    {/* Title */}
+    <h2 className="absolute text-blue-700 text-lg sm:text-xl lg:text-2xl xl:text-4xl font-semibold z-10 text-center px-4">
+        {faculty.title}
+    </h2>
+</div>
         </div>
         <div className='mx-4 h-[400px]'>
             <img src={faculty.image} className='w-full h-full mb-2 object-cover object-top' alt="" />
