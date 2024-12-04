@@ -32,7 +32,7 @@ export default function Faculty() {
         <p key={1} className='text-slate-500' >
             Services
         </p>,
-        <Link to='/faculties' className='text-slate-500 cursor-pointer' key={2} >
+        <Link to='/services/faculty' className='text-slate-500 cursor-pointer' key={2} >
             Faculties
         </Link>,
         <p key={3} className='text-blue-500' >
