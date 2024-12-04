@@ -2,7 +2,7 @@ import React from 'react'
 import assets from '../assets/assets'
 const Footer = () => {
   return (
-    <footer className="bg-bgBlue text-white p-10 lg:p-20">
+    <footer className="bg-bgBlue text-white py-10 px-5 lg:p-20">
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-14">
         <section className="cols">
             <h2 className='text-lg font-semibold'>Contact Us</h2>
