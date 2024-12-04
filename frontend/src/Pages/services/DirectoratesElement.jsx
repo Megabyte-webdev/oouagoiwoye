@@ -64,7 +64,7 @@ const DirectoratesElement = () => {
     />
     {/* Title */}
     <h2 className="relative text-blue-700 text-lg sm:text-xl lg:text-2xl xl:text-4xl font-semibold z-10 text-center px-4">
-        {data.title}
+        {data?.title}
     </h2></div>
 
             </div>
