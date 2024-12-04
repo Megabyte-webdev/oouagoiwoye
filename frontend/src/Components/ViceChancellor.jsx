@@ -4,7 +4,7 @@ import assets from '../assets/assets'
 const ViceChancellor = () => {
     return (
 
-        <section className="w-full h-auto bg-bgBlue p-10 flex flex-col lg:flex-row items-center justify-center">
+        <section className="w-full h-auto bg-bgBlue py-10 px-5 md:p-10 flex flex-col lg:flex-row items-center justify-center">
             <article className='w-full lg:w-1/2'>
                 <span className='flex flex-row items-center justify-center bg-amber-950 p-1 w-56'>
                     <i className='bx bx-buildings mr-1 text-xl text-amber-500'></i>
