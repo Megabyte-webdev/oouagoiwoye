@@ -3,10 +3,10 @@ import assets from '../assets/assets'
 
 const Hero = () => {
   return (
-    <header className="hero-section p-5 md:p-10">
+    <header className="hero-section p-5 md:p-10 my-3">
       {/* <img className="rounded-3xl object-cover" src={assets.hero_img} alt="hero-img" /> */}
       <div className='w-full h-full rounded-3xl relative' style={{ backgroundImage: `url(${assets.hero_img})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
-        <div className='absolute top-0 left-0 w-full h-full rounded-3xl bg-gradient-to-r from-[#000000b5] from-50 to-transparent -z-0' />
+        <div className='absolute top-0 left-0 w-full h-full rounded-3xl bg-gradient-to-r from-[#000000b5] from-50 to-transparent z-0' />
         <div className='absolute bottom-0 left-0 pl-5 lg:pl-10 pb-5 lg:pb-10'>
 
           <img src={assets.welcome_img} className='w-4/5 lg:w-full' alt="welcome-image" />
