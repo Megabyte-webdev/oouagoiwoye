@@ -50,7 +50,7 @@ export default function Faculty() {
                 </Breadcrumbs>
             </Stack>
             
-            <div className="relative w-full flex items-center justify-center min-h-28">
+            <div className="relative w-full flex items-center justify-center min-h-20">
     {/* Background Image */}
     <img 
         src={assets.wireframe} 
