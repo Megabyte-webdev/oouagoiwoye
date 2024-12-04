@@ -23,7 +23,7 @@ const Services = () => {
                 <div className='flex gap-1 items-center max-lg:justify-between max-lg:px-8 max-lg:w-full max-md:px-7 max-lg:border-b-2 max-lg:py-7 z-[22]' onClick={toggleBtn}>
                     <div className='max-lg:w-full max-lg:flex max-lg:gap-2 max-lg:items-center cursor-pointer'>
                         <div className='lg:hidden'><FaAsterisk /></div>
-                        <h1>Services</h1>
+                        <h1>Academics</h1>
                     </div>
                     <div>
                         {services ? <FaCaretUp /> : <FaCaretDown />}
