@@ -68,6 +68,7 @@ const DirectoratesElement = () => {
     </h2>
 
             </div>
+                </div>
             {/* <div className='mx-4'>
             <img src={data.image} className='w-full mb-2 h-[377px] object-cover' alt="" />
         </div> */}
