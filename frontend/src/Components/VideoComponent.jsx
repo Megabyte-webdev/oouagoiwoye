@@ -15,7 +15,7 @@ export default function VideoComponent({data}) {
   
   return (
     <>
-    <section className="w-full h-auto lg:h-screen p-10 lg:p-12 bg-white">
+    <section className="w-full h-auto lg:h-screen py-10 px-5 lg:p-12 bg-white">
             <article>
                 <span className='bg-slate-300 min-w-20 p-2 justify-items-center'>
                     <i className='bx bx-buildings mr-1 text-xl text-blue-800'></i>
