@@ -16,12 +16,12 @@ const HomePage = () => {
   return (
     <div className="">
       <Hero />
+      <ViceChancellor />
       <div className="hidden md:block">
       <Statements />
       </div>
       
       <CardComponent address="services/faculty" data={facultyData} />
-      <ViceChancellor />
       <VideoComponent address="services/testimony" data={testimonyData} />
       <About />   
       <Events/>     
