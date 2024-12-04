@@ -40,7 +40,7 @@ const Services = () => {
                         <div className="flex justify-between max-lg:flex-col max-lg:gap-5">
                             <ServicesList headerTitle='Campus' address="services/campus" value={campusData} />
                             <ServicesList headerTitle='Faculities' address="services/faculty" value={facultyData?.items.slice(0, Math.round(facultyData?.items.length/2))} />
-                            <ServicesList headerTitle='Faculities' address="services/faculty" value={facultyData?.items.slice(Math.round(facultyData?.items.length/2))} />
+                            {/*<ServicesList headerTitle='Faculities' address="services/faculty" value={facultyData?.items.slice(Math.round(facultyData?.items.length/2))} />*/}
                             <ServicesList headerTitle='Continuing Education' address="services/continuing" value={ContinuingEducation} />
                             <ServicesList headerTitle='Directorates' address="services/directorate" value={navListJson.services.directorates} />
                         </div>
