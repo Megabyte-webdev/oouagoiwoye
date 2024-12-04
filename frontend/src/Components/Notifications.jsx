@@ -4,7 +4,7 @@ const Notifications = () => {
     notifications.map((item, index) => {
       return(
         <>
-          <a href=""><li key={index}>{item.notification}</li></a>
+          <a href="" className="divider-x-2 px-3"><li key={index}>{item.notification}</li></a>
         </>
       )
        
