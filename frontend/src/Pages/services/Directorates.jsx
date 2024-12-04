@@ -34,20 +34,12 @@ const Directorates = () => {
                     {breadcrumbs}
                 </Breadcrumbs>
             </Stack>
-            <div className="relative w-full flex items-center justify-center min-h-20">
-    {/* Background Image */}
-    <img 
-        src={assets.wireframe} 
-        alt="Background" 
-        className="absolute w-full h-full z-0 object-cover" 
-    />
-    {/* Title */}
-    <h2 className="relative text-blue-700 text-lg sm:text-xl lg:text-2xl xl:text-4xl font-semibold z-10 text-center px-4">
-        Directorates
-    </h2>
+            <div className='w-full flex items-center justify-center relative'>
+                <img src={assets.wireframe} className='w-full ' />
+                <h2 className='text-blue-700 text-2xl lg:text-4xl font-semibold z-0 absolute'>Directorates</h2>
+            </div>
             
         </div>
-            </div>
         <div className='p-2 px-4'>
             {DirectoratesData.map((item, index)=>(
                 <div key={index} className='w-full bg-white even:bg-blue-50 h-auto border-blue-900 border-t-2 last:border-b-2 p-2 flex items-center justify-between'>
