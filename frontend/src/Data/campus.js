@@ -21,7 +21,7 @@ const campusData = [
     },
     {
         id: 2,
-        title: "Egba Campus",
+        title: "Ibogun Campus",
         location: "Ibogun, Ogun State Nigeria.",
         href: "egba-campus",
         image: assets.place,
@@ -37,7 +37,7 @@ const campusData = [
     },
     {
         id: 3,
-        title: "Yewa Campus",
+        title: "Ayetoro Campus",
         location: "Ayetoro, Ogun State Nigeria.",
         href: "yewa-campus",
         image: assets.place,
@@ -53,7 +53,7 @@ const campusData = [
     },
     {
         id: 4,
-        title: "Remo Campus",
+        title: "Sagamu Campus",
         location: "Sagamu, Ogun State Nigeria.",
         href: "remo-campus",
         image: assets.place,
