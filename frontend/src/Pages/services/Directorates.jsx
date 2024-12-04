@@ -47,6 +47,7 @@ const Directorates = () => {
     </h2>
             
         </div>
+            </div>
         <div className='p-2 px-4'>
             {DirectoratesData.map((item, index)=>(
                 <div key={index} className='w-full bg-white even:bg-blue-50 h-auto border-blue-900 border-t-2 last:border-b-2 p-2 flex items-center justify-between'>
