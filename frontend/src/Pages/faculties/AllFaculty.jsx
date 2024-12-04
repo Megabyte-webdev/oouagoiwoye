@@ -36,10 +36,18 @@ export default function AllFaculty() {
                     {breadcrumbs}
                 </Breadcrumbs>
             </Stack>
-            <div className='w-full flex items-center justify-center relative'>
-                <img src={assets.wireframe} className='w-full ' />
-                <h2 className='text-blue-900 text-2xl lg:text-4xl font-bold z-0 absolute'>Faculties</h2>
-            </div>
+            <div className="relative w-full flex items-center justify-center min-h-20">
+    {/* Background Image */}
+    <img 
+        src={assets.wireframe} 
+        alt="Background" 
+        className="absolute w-full h-full z-0 object-cover" 
+    />
+    {/* Title */}
+    <h2 className="relative text-blue-700 text-lg sm:text-xl lg:text-2xl xl:text-4xl font-semibold z-10 text-center px-4">
+        Faculties
+    </h2>
+</div>
             
         </div>
         <div className='p-2 px-4'>
