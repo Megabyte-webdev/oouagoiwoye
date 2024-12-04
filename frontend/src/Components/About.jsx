@@ -6,8 +6,8 @@ const About = () => {
     const navigate=useNavigate();
   return (
     <div>
-        <section className="w-full bg-blue-100 flex flex-col-reverse lg:flex-row items-center justify-center p-10">
-            <div className="w-full lg:w-1/3 mr-10 mt-10 lg:mt-0">
+        <section className="w-full bg-blue-100 flex flex-col-reverse lg:flex-row items-center justify-center py-10 px-5 md-p-12">
+            <div className="w-full lg:w-1/3 lg:mr-10 mt-10 lg:mt-0">
                 <img src={assets.group4} alt="hero-img-large" />
             </div>
             <article className='w-full lg:w-1/2'>
