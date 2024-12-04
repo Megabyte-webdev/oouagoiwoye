@@ -90,7 +90,7 @@ const Navbar = () => {
       <article className="bg-[#0B35A2] w-full py-5 max-lg:mt-14">
         <Marquee pauseOnHover speed={60}>
           <div className="flex w-full gap-12">
-            <h5>News</h5>
+            {/*<h5>News</h5>*/}
             <ul className="flex justify-evenly gap-12 divide-x-2">
               <Notifications />
             </ul>
