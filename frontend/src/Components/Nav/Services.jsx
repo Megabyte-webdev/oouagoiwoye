@@ -35,7 +35,7 @@ const Services = () => {
                         <div className='hidden lg:block w-5 h-5 -rotate-45 bg-white absolute -top-2 right-1/4 -translate-x-11'/>
                         <div className=' flex gap-2 items-center pb-3 border-b-[3px] w-full max-lg:hidden'>
                             <div><FaAsterisk /></div>
-                            <h1 className='text-xl font-bold '>Services</h1>
+                            <h1 className='text-xl font-bold '>Academics</h1>
                         </div>
                         <div className="flex justify-between max-lg:flex-col max-lg:gap-5">
                             <ServicesList headerTitle='Campus' address="services/campus" value={campusData} />
