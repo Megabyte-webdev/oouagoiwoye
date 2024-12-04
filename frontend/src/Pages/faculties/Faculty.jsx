@@ -55,7 +55,7 @@ export default function Faculty() {
     <img 
         src={assets.wireframe} 
         alt="Background" 
-        className="absolute w-full h-full inset-0 z-0" 
+        className="absolute w-full h-full z-0 object-cover" 
     />
     {/* Title */}
     <h2 className="relative text-blue-700 text-lg sm:text-xl lg:text-2xl xl:text-4xl font-semibold z-10 text-center px-4">
