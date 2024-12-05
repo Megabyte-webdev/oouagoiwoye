@@ -44,7 +44,7 @@ function ContinuingEducation() {
     <h2 className="relative text-blue-700 text-lg sm:text-xl lg:text-2xl xl:text-4xl font-semibold z-10 text-center px-4">
         Continuing Education
     </h2>
-            
+            </div>
         </div>
 
         <div className='p-2 px-4'>
