@@ -67,7 +67,7 @@ export default function CampusElement() {
     <h2 className="relative text-blue-700 text-lg sm:text-xl lg:text-2xl xl:text-4xl font-semibold z-10 text-center px-4">
         {data.title}
     </h2>
-
+</div>
             </div>
             <div className='mx-4'>
                 <img src={data.image} className='w-full mb-2' alt="" />
