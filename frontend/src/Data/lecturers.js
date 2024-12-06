@@ -142,8 +142,8 @@ export const lecturerData = {
     },
     {
       id: 16,
-      image: "https://example.com/images/mr-banjo.jpg",  // Placeholder for actual image URL
-      title: "Mr. Banjo Oluwatobi Oluwaseyi",,
+      image: "https://example.com/images/mr-banjo.jpg"
+      title: "Mr. Banjo Oluwatobi Oluwaseyi",
       subtitle: "Lecturer, Faculty of Science",
       faculty: "Science",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
