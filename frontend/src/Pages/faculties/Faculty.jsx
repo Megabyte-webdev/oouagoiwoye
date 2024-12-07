@@ -63,7 +63,7 @@ export default function Faculty() {
     </h2>
 </div>
         </div>
-        <div className='mx-4 h-[400px]'>
+        <div className='mx-4 h-60 md:h-80'>
             <img src={faculty.image} className='w-full h-full mb-2 object-cover object-top' alt="" />
         </div>
 
