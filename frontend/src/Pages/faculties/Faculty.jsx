@@ -15,7 +15,7 @@ export default function Faculty() {
     const { id } = useParams();
     const [faculty, setFaculty]=useState([])
  
-    const check = facultyData?.items.find(item => item?.href === id)
+    const check = facultyData?.items.find(item => item?.title === id)
     const navigate = useNavigate()
     
 
