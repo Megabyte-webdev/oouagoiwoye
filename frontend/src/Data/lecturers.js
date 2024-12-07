@@ -1,5 +1,3 @@
-import assets from "../assets/assets";
-
 export const lecturerData = {
   tag: "Lecturers",
   darkTag: false,
@@ -7,147 +5,147 @@ export const lecturerData = {
   items: [
     {
       id: 1,
-      image: "https://example.com/images/prof-thanni.jpg",  // Placeholder for actual image URL
+      image: "https://via.placeholder.com/150/0000FF/FFFFFF?text=Prof.+Lateef+Saka+Kasim",
       title: "Prof. Lateef Saka Kasim",
       subtitle: "Dean, Faculty of Pharmacy",
       faculty: "Pharmacy",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Prof. Lateef Saka Kasim is a professor of Pharmaceutical and Medicinal Chemistry and the Dean of the Faculty of Pharmacy at Olabisi Onabanjo University. He is a member of the Pharmaceutical Society of Nigeria and has been pivotal in the faculty's success【60†source】.",
+      body: "Prof. Lateef Saka Kasim is a professor of Pharmaceutical and Medicinal Chemistry and the Dean of the Faculty of Pharmacy at Olabisi Onabanjo University.",
     },
     {
       id: 2,
-      image: "https://example.com/images/prof-ayoade.jpg",  // Placeholder for actual image URL
+      image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Prof.+B.+A.+Ayoade",
       title: "Prof. B. A. Ayoade",
       subtitle: "Dean, Faculty of Clinical Sciences",
       faculty: "Clinical Sciences",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Prof. Ayoade is the Dean of the Faculty of Clinical Sciences with a focus on Breast Cancer and Surgical Oncology. He is affiliated with the West African College of Surgeons and the Royal College of Surgeons in Ireland【61†source】.",
+      body: "Prof. Ayoade is the Dean of the Faculty of Clinical Sciences with a focus on Breast Cancer and Surgical Oncology.",
     },
     {
       id: 3,
-      image: "https://example.com/images/dr-oyinloye.jpg",  // Placeholder for actual image URL
+      image: "https://via.placeholder.com/150/008000/FFFFFF?text=Dr.+Michael+Abiodun+Oyinloye",
       title: "Dr. Michael Abiodun Oyinloye",
       subtitle: "Acting Dean, Faculty of Environmental Studies",
       faculty: "Environmental Studies",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Dr. Oyinloye is a Reader and Acting Dean at the Faculty of Environmental Studies. He specializes in indigenous life, art history, and cultural resource management. His research focuses on the socio-cultural achievements of Nigerian communities【62†source】.",
+      body: "Dr. Oyinloye specializes in indigenous life, art history, and cultural resource management.",
     },
     {
       id: 4,
-      image: "https://example.com/images/prof-adeboye.jpg",  // Placeholder for actual image URL
+      image: "https://via.placeholder.com/150/FFFF00/000000?text=Prof.+Olufunke+Adeboye",
       title: "Prof. Olufunke Adeboye",
       subtitle: "Professor, Faculty of Arts",
       faculty: "Arts",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Prof. Adeboye is an academic in the Faculty of Arts with a focus on the cultural and artistic history of Nigeria. She has contributed extensively to the study of African cultural expressions and visual arts【61†source】.",
+      body: "Prof. Adeboye has contributed extensively to the study of African cultural expressions and visual arts.",
     },
     {
       id: 5,
-      image: "https://example.com/images/prof-akanni.jpg",  // Placeholder for actual image URL
+      image: "https://via.placeholder.com/150/800080/FFFFFF?text=Prof.+Kassim+Adekunle+Akanni",
       title: "Prof. Kassim Adekunle Akanni",
       subtitle: "Professor, Faculty of Social Sciences",
       faculty: "Social Sciences",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Prof. Akanni is a distinguished professor in the Faculty of Social Sciences at Olabisi Onabanjo University. He is known for his work in sociology and has published several influential papers in his field【61†source】【63†source】.",
+      body: "Prof. Akanni is a distinguished professor known for his work in sociology.",
     },
     {
       id: 6,
-      image: "https://example.com/images/prof-thanni.jpg",  // Placeholder for actual image URL
-      title: "Prof. THANNI, Lateef Olatunji Adedokun",
+      image: "https://via.placeholder.com/150/FF7F50/FFFFFF?text=Prof.+Thanni+Lateef+Olatunji+Adedokun",
+      title: "Prof. Thanni Lateef Olatunji Adedokun",
       subtitle: "Professor, Faculty of Postgraduate Studies",
       faculty: "Postgraduate Studies",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Prof. Thanni is a respected academic in the field of postgraduate education, known for his contributions to research and teaching at OOU【73†source】.",
+      body: "Prof. Thanni is a respected academic in postgraduate education.",
     },
     {
       id: 7,
-      image: "https://example.com/images/dr-salami.jpg",  // Placeholder for actual image URL
-      title: "Dr. Salami, Bakare Olawale",
+      image: "https://via.placeholder.com/150/FFD700/000000?text=Dr.+Salami+Bakare+Olawale",
+      title: "Dr. Salami Bakare Olawale",
       subtitle: "Lecturer, Faculty of Education",
       faculty: "Education",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Dr. Salami focuses on educational methodologies and the impact of teaching strategies in the Nigerian education system【75†source】.",
+      body: "Dr. Salami focuses on educational methodologies and teaching strategies.",
     },
     {
       id: 8,
-      image: "https://example.com/images/dr-folorunso.jpg",  // Placeholder for actual image URL
-      title: "Dr. Folorunso, Sakinat Oluwabukonla",
-      subtitle: "Lecturer I, Department of Mathematical Sciences",
+      image: "https://via.placeholder.com/150/228B22/FFFFFF?text=Dr.+Folorunso+Sakinat+Oluwabukonla",
+      title: "Dr. Folorunso Sakinat Oluwabukonla",
+      subtitle: "Lecturer, Department of Mathematical Sciences",
       faculty: "Mathematical Sciences",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Dr. Folorunso is a lecturer in Mathematical Sciences, specializing in computational methods and their application to real-world problems【51†source】【77†source】.",
+      body: "Dr. Folorunso specializes in computational methods and mathematical research.",
     },
     {
       id: 9,
-      image: "https://example.com/images/prof-olurin.jpg",  // Placeholder for actual image URL
-      title: "Prof. Olurin, Kayode Bodunrin",
+      image: "https://via.placeholder.com/150/4169E1/FFFFFF?text=Prof.+Olurin+Kayode+Bodunrin",
+      title: "Prof. Olurin Kayode Bodunrin",
       subtitle: "Professor, Faculty of Science",
       faculty: "Science",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Prof. Olurin has made significant contributions to the Faculty of Science, particularly in advancing scientific research and educational methodologies【61†source】【76†source】.",
+      body: "Prof. Olurin focuses on advancing scientific research and education.",
     },
     {
       id: 10,
-      image: "https://example.com/images/prof-adebayo.jpg",  // Placeholder for actual image URL
-      title: "Prof. Olufunke Adeboye",
-      subtitle: "Professor, Faculty of Arts",
-      faculty: "Arts",
-      socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Prof. Adeboye is a well-respected academic in the Faculty of Arts with significant contributions to the study of African cultural and historical studies【61†source】【75†source】.",
-    },
-    {
-      id: 11,
-      image: "https://example.com/images/dr-shogunle.jpg",  // Placeholder for actual image URL
-      title: "Dr. Shogunle, Nathaniel Oluwaseyi",
-      subtitle: "Lecturer, Postgraduate Studies",
-      faculty: "Postgraduate Studies",
-      socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Dr. Shogunle is a lecturer in the Postgraduate Studies department, specializing in educational and social sciences【73†source】.",
-    },
-    {
-      id: 12,
-      image: "https://example.com/images/prof-dairo.jpg",  // Placeholder for actual image URL
-      title: "Prof. Dairo, Anthony Lekan",
-      subtitle: "Professor, Faculty of Science",
-      faculty: "Science",
-      socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Prof. Dairo is a professor in the Faculty of Science at OOU with an emphasis on environmental science research【76†source】.",
-    },
-    {
-      id: 13,
-      image: "https://example.com/images/prof-sule-odu.jpg",  // Placeholder for actual image URL
+      image: "https://via.placeholder.com/150/8B0000/FFFFFF?text=Prof.+Adewale+Okanlawon+Sule-Odu",
       title: "Prof. Adewale Okanlawon Sule-Odu",
       subtitle: "Professor, Faculty of Science",
       faculty: "Science",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Prof. Sule-Odu has made substantial contributions to scientific research and faculty development【76†source】.",
+      body: "Prof. Sule-Odu has made substantial contributions to scientific research.",
     },
     {
-      id: 14,
-      image: "https://example.com/images/dr-oyenuga.jpg",  // Placeholder for actual image URL
-      title: "Dr. Oyenuga, Olukayode Felix S.",
+      id: 11,
+      image: "https://via.placeholder.com/150/FF4500/FFFFFF?text=Dr.+Oyenuga+Olukayode+Felix",
+      title: "Dr. Oyenuga Olukayode Felix",
       subtitle: "Lecturer, Faculty of Education",
       faculty: "Education",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Dr. Oyenuga specializes in teacher education and its impact on secondary school education【73†source】.",
+      body: "Dr. Oyenuga specializes in teacher education and its impact on secondary schools.",
+    },
+    {
+      id: 12,
+      image: "https://via.placeholder.com/150/2E8B57/FFFFFF?text=Dr.+Onwuegbusi+Martin+Okwu",
+      title: "Dr. Onwuegbusi Martin Okwu",
+      subtitle: "Lecturer, Faculty of Science",
+      faculty: "Science",
+      socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
+      body: "Dr. Onwuegbusi focuses on environmental science and education.",
+    },
+    {
+      id: 13,
+      image: "https://via.placeholder.com/150/8A2BE2/FFFFFF?text=Mr.+Banjo+Oluwatobi+Oluwaseyi",
+      title: "Mr. Banjo Oluwatobi Oluwaseyi",
+      subtitle: "Assistant Lecturer, Faculty of Science",
+      faculty: "Science",
+      socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
+      body: "Mr. Banjo specializes in environmental science and innovation.",
+    },
+    {
+      id: 14,
+      image: "https://via.placeholder.com/150/696969/FFFFFF?text=Dr.+Shogunle+Nathaniel+Oluwaseyi",
+      title: "Dr. Shogunle Nathaniel Oluwaseyi",
+      subtitle: "Lecturer, Postgraduate Studies",
+      faculty: "Postgraduate Studies",
+      socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
+      body: "Dr. Shogunle is a lecturer specializing in educational sciences.",
     },
     {
       id: 15,
-      image: "https://example.com/images/dr-onwuegbusi.jpg",  // Placeholder for actual image URL
-      title: "Dr. Onwuegbusi, Martin Okwu",
-      subtitle: "Lecturer, Faculty of Science",
+      image: "https://via.placeholder.com/150/556B2F/FFFFFF?text=Prof.+Dairo+Anthony+Lekan",
+      title: "Prof. Dairo Anthony Lekan",
+      subtitle: "Professor, Faculty of Science",
       faculty: "Science",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Dr. Onwuegbusi is a lecturer in the Faculty of Science specializing in environmental science and education【73†source】.",
+      body: "Prof. Dairo emphasizes research in environmental science.",
     },
     {
       id: 16,
-      image: "https://example.com/images/mr-banjo.jpg"
-      title: "Mr. Banjo Oluwatobi Oluwaseyi",
-      subtitle: "Lecturer, Faculty of Science",
-      faculty: "Science",
+      image: "https://via.placeholder.com/150/4682B4/FFFFFF?text=Prof.+Olufunke+Adeboye",
+      title: "Prof. Olufunke Adeboye",
+      subtitle: "Professor, Faculty of Arts",
+      faculty: "Arts",
       socials: { linkedin: "https://linkedin.com", twitter: "https://x.com" },
-      body: "Dr. Onwuegbusi is a lecturer in the Faculty of Science specializing in environmental science and education【73†source】.",
+      body: "Prof. Adeboye contributes significantly to African cultural studies.",
     }
   ]
 };
