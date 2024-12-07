@@ -5,9 +5,6 @@ const storage = multer.memoryStorage();
 
 const upload = multer({
     storage: storage,
-    limits: {
-        fileSize: 1024 * 1024 * 5
-    },
     fileFilter: (req, file, cb) => {
         if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg" || file.mimetype == "image/svg+xml") {
             cb(null, true);

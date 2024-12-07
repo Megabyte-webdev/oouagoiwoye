@@ -24,10 +24,12 @@ model admin {
 model campus{
   id              Int @id   @default(autoincrement()) @unique
   title           String
+  location        String
   image           String
+  bannerVideo     String?
   campusInfo      String
   Contact         contact?       
-  faculties       Faculties[] 
+  faculties       Faculties[]
 }
 
 model Faculties {
@@ -40,6 +42,7 @@ model Faculties {
   deanName            String?
   noOfDepartments     String
   body                String
+  bannerImage         String?
   Contact             contact?  
   facultyLecturers   lecturers[]
   departments        departments[]
@@ -64,15 +67,24 @@ model lecturers {
 }
 
 model contact {
-  id            Int         @id @default(autoincrement()) @unique
-  whatsapp      String      
-  facebook      String     
-  youtube       String
-  campus        campus?     @relation(fields: [campusId], references: [id], onDelete: Cascade)
-  campusId      Int?         @unique
-  Faculties     Faculties?  @relation(fields: [facultyId], references: [id], onDelete: Cascade)
-  facultyId     Int?        @unique
+  id                      Int         @id @default(autoincrement()) @unique
+  whatsapp                String      
+  facebook                String     
+  youtube                 String
+  campus                  campus?             @relation(fields: [campusId], references: [id], onDelete: Cascade)
+  campusId                Int?                @unique
+  Faculties               Faculties?          @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+  facultyId               Int?                @unique
+  Administration          Administration?     @relation(fields: [adminId], references: [id], onDelete:Cascade)
+  adminId                 Int?                @unique
+  Principal               Principal?          @relation(fields: [PrincipalId], references: [id], onDelete: Cascade)   
+  PrincipalId             Int                 @unique
+  ContinuingEducation     ContinuingEducation?    @relation(fields: [contEducationId], references: [id], onDelete: Cascade)
+  contEducationId         Int?                @unique
+  Directorate             Directorates?       @relation(fields: [DirectorateId], references: [id], onDelete: Cascade)
+  DirectorateId           Int?                @unique
 }
+
 model news {
   id           Int @id @default(autoincrement()) @unique
   headline     String
@@ -85,4 +97,49 @@ model communities {
   image       String
   title       String
   body        String
+}
+
+model Administration {
+  id                  Int @id @default(autoincrement()) @unique
+  name                String
+  designation         String
+  image               String
+  biography           String
+  contact             contact?
+  responsibilities    String[]
+}
+
+model Principal {
+  id                  Int @id @default(autoincrement()) @unique
+  name                String
+  designation         String
+  image               String
+  biography           String
+  contact             contact?
+  responsibilities    String[]
+}
+
+model ContinuingEducation {
+  id             Int     @id     @default(autoincrement())     @unique
+  program       String
+  image         String
+  headline      String    
+  overview      String
+  requirements      String[]
+  benefits          String[]
+  contact            contact?
+
+}
+
+model Directorates {
+  id      Int     @id     @default(autoincrement())     @unique
+  office          String
+  headline        String
+  message         String
+  image           String
+  history         String?
+  vission         String?
+  mission         String?
+  responsibilities    String[]
+  contact         contact?
 }

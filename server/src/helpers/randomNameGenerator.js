@@ -18,6 +18,8 @@ class RandomName {
             fileExt = '.' + 'png'
         } else if (this.file.mimetype === 'image/jpeg') {
             fileExt = '.' + 'jpg'
+        } else if (this.file.mimetype === 'video/mp4') {
+            fileExt = '.' + 'mp4'
         }
         
         return `${generatedName}${fileExt}`

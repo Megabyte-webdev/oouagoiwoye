@@ -56,6 +56,17 @@ const fetchFaculty = async (req, res, next) => {
                 
                 faculty.deanImage = deanUrl;
             }
+
+            if (faculty.bannerImage  !== null) {
+                const bannercommand = new GetObjectCommand({
+                    Bucket: bucketName,
+                    Key: `web/faculty/${faculty.bannerImage}`
+                })
+                
+                const bannerUrl = await getSignedUrl(client, bannercommand, { expiresIn: 3600 } )
+                
+                faculty.bannerImage = bannerUrl;
+            }
             
             for(const lecturer of faculty.facultyLecturers){
                 if(faculty.facultyLecturers.length !== 0){
@@ -164,6 +175,51 @@ const updateFacultyImage = async (req, res, next) => {
     }
 };
 
+//upsert banner video
+const upsertBannerimage = async (req, res, next) => {
+    const reqBannerImg = req.file;
+    try {
+        const GeneratedName = new RandomName(reqBannerImg)
+        const bannerName = GeneratedName.getFullFileName();
+
+        const prevData = await facultyDB.findUnique({
+            where: {
+                id: parseInt(req.params.id)
+            }
+        })
+        const prevBanner = prevData.bannerImage;
+
+        const deleteCommand = new DeleteObjectCommand({
+            Bucket: bucketName,
+            Key: `web/faculty/${prevBanner}`
+        })
+        await client.send(deleteCommand);
+
+        const updateCommand = new PutObjectCommand({
+            Bucket: bucketName,
+            Key: `web/faculty/${bannerName}`,
+            Body: reqBannerImg.buffer,
+            ContentType: reqBannerImg.mimetype
+        })
+        await client.send(updateCommand);
+
+        const newBanner = await facultyDB.update({
+            where: {
+                id: parseInt(req.params.id)
+            },
+            data:{
+                bannerImage: bannerName
+            }
+        });
+        res.status(200).json({
+            message: "successfully updated faculty banner",
+            data: newBanner
+        });
+
+    } catch (error) {
+        next(error)
+    }
+}
 //update dean image
 const updateDeanImg = async (req, res, next) =>{
     
@@ -233,6 +289,9 @@ const UpdateFacultyContact = async (req, res, next) => {
                 Contact: {
                     update: data
                 }
+            },
+            include:{
+                Contact: true
             }
         })
         res.status(200).json({
@@ -274,6 +333,9 @@ const createFacultyLecturers = async (req, res, next) => {
                 facultyLecturers: {
                     create: data
                 }
+            },
+            include:{
+                facultyLecturers: true
             }
         })
         res.status(200).json({
@@ -313,6 +375,9 @@ const addDepartment = async (req, res, next) => {
                         body
                     }
                 }
+            },
+            include: {
+                departments: true
             }
         })
         res.status(200).json({
@@ -339,6 +404,7 @@ const deleteFaculties = async (req, res, next) => {
 
         const facultyImg = facultyData.image;
         const facultyDeanImg = facultyData.deanImage;
+        const facultyBanner = facultyData.bannerImage;
 
         const delCommand = new DeleteObjectCommand({
             Bucket: bucketName,
@@ -348,8 +414,13 @@ const deleteFaculties = async (req, res, next) => {
             Bucket: bucketName,
             Key: `web/faculty/${facultyDeanImg}`
         })
+        const delCommand3 = new DeleteObjectCommand({
+            Bucket: bucketName,
+            Key: `web/faculty/${facultyBanner}`
+        })
         client.send(delCommand);
         client.send(delCommand2);
+        client.send(delCommand3);
 
         let departmentImages = [];
         let lecturerImages = [];
@@ -409,6 +480,7 @@ module.exports = {
     fetchFaculty,
     updateFaculty,
     updateFacultyImage,
+    upsertBannerimage,
     updateDeanImg,
     UpdateFacultyContact,
     createFacultyLecturers,

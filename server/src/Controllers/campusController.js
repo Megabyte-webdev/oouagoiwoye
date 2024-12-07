@@ -25,7 +25,7 @@ const S3 = new S3Client({
 })
 
 const createCampus = async (req, res) => {
-    const { title , campusInfo,} = req.body;
+    const { title , campusInfo, location} = req.body;
 
     try {
 
@@ -48,6 +48,7 @@ const createCampus = async (req, res) => {
                 title,
                 image: imageName,
                 campusInfo,
+                location,
                 Contact: {
                     create: {
                         whatsapp: "000",
@@ -83,6 +84,13 @@ const fetchCampus = async (req, res) => {
             
             const url = await getSignedUrl(S3, command, { expiresIn: 3600 })
             campus.image = url
+
+            const bannerComand = new GetObjectCommand({
+                Bucket: bucketName,
+                Key: `web/campus/${campus.bannerVideo}`
+            })
+            const Burl = await getSignedUrl(S3, bannerComand, {expiresIn: 3600});
+            campus.bannerVideo = Burl
         }
         for(const campus of campuses){
             if (campus.faculties.length !== 0) {
@@ -162,13 +170,68 @@ const updateCampusImage = async (req, res, next) => {
     }
 }
 
+//add or add campus Banner video
+const upsertCampusBannerVideo = async (req, res, next) =>{
+    const bannerVideo =  req.file;
+    try {
+        const GeneratedName = new RandomName(bannerVideo)
+        const videoName = GeneratedName.getFullFileName();
+
+        const prevdata = await campusDB.findUnique({
+            where:{
+                id: parseInt(req.params.id)
+            }
+        })
+        const prevVid = prevdata.bannerVideo;
+
+        //deleting previous video
+        const deleteCommand = new DeleteObjectCommand({
+            Bucket: bucketName,
+            Key: `web/campus/${prevVid}`,
+        })
+        await S3.send(deleteCommand);
+
+        const putCommand = new PutObjectCommand({
+            Bucket: bucketName,
+            Key: `web/campus/${videoName}`,
+            Body: bannerVideo.buffer,
+            ContentType: bannerVideo.mimetype
+        })
+        await S3.send(putCommand);
+
+        const bannerVid = await campusDB.upsert({
+            where:{
+                id: parseInt(req.params.id)
+            },
+            update:{
+                bannerVideo : videoName
+            },
+            create:{
+                title: prevdata.title,
+                location: prevdata.location,
+                image: prevdata.image,
+                campusInfo: prevdata.campusInfo,
+                bannerVideo : videoName
+            }
+        });
+        res.status(200).json({
+            message: "Successfully updated then banner video",
+            data: bannerVid
+        })
+
+    } catch (error) {
+        next(error)
+    }
+};
+
 //update campus data    
 const updateCampusData = async (req, res, next) => {
-    const { title, campusInfo } = req.body;
+    const { title, campusInfo, location } = req.body;
     try {
         const data = {};
         if(title) data.title = title;
         if(campusInfo) data.campusInfo = campusInfo;
+        if(location) data.location = location;
         if(Object.keys(data).length === 0)(res.status(400).json("No data to update"));
         const updatedData = await campusDB.update({
             where:{
@@ -214,7 +277,7 @@ const updateCampusContact = async (req, res, next) => {
     } catch (error) {
         next(error)
     }
-}
+};
 
 //link / create faculty in campus
 const createFaculty = async (req, res, next) => {
@@ -291,13 +354,21 @@ const deleteCampus = async (req, res, next) => {
         });
         
         const previmg = prevdata.image;
+        const prevBannerVid = prevdata.bannerVideo;
 
         const command = new DeleteObjectCommand({
             Bucket: bucketName,
             Key: `web/campus/${previmg}`
         });
         await S3.send(command);
-
+        if (prevdata.bannerVideo !== null) {
+            const BannerCommand = new DeleteObjectCommand({
+                Bucket: bucketName,
+                Key: `web/campus/${prevBannerVid}`
+            });
+            await S3.send(BannerCommand); 
+        }
+        
         function deleteMiscImg(){
             let facultyImgs = [];
             let departmentImgs = [];
@@ -305,7 +376,7 @@ const deleteCampus = async (req, res, next) => {
 
             if (prevdata.faculties.length !== 0) {
                 for(const faculty of prevdata.faculties){
-                    facultyImgs = prevdata.faculties.map(item =>({image: item.image, dean: item.deanImage})) 
+                    facultyImgs = prevdata.faculties.map(item =>({image: item.image, dean: item.deanImage, videos: item.bannerImage}));    
                 }
 
                 for(const fac of findFac){
@@ -333,6 +404,14 @@ const deleteCampus = async (req, res, next) => {
                     }) 
                     S3.send(delFacCommand)
                 }
+                if (data.bannerImage !== null) {
+                    const delFacCommand = new DeleteObjectCommand({
+                        Bucket: bucketName,
+                        Key: `web/faculty/${data.bannerImage}`
+                    }) 
+                    S3.send(delFacCommand)
+                }
+
             }
             for(const data of departmentImgs){
                 if (data.image !== null) {
@@ -376,6 +455,7 @@ module.exports = {
     createCampus,
     fetchCampus,
     updateCampusImage,
+    upsertCampusBannerVideo,
     updateCampusData,
     updateCampusContact,
     createFaculty,

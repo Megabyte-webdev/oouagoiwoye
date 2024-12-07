@@ -1,6 +1,3 @@
-const cors = require('cors');
-
-
 const whiteList = [""];
 
 const corsOption = {

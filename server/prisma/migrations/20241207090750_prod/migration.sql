@@ -11,7 +11,9 @@ CREATE TABLE "admin" (
 CREATE TABLE "campus" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
+    "location" TEXT NOT NULL,
     "image" TEXT NOT NULL,
+    "bannerVideo" TEXT,
     "campusInfo" TEXT NOT NULL,
 
     CONSTRAINT "campus_pkey" PRIMARY KEY ("id")
@@ -27,6 +29,7 @@ CREATE TABLE "Faculties" (
     "deanName" TEXT,
     "noOfDepartments" TEXT NOT NULL,
     "body" TEXT NOT NULL,
+    "bannerImage" TEXT,
 
     CONSTRAINT "Faculties_pkey" PRIMARY KEY ("id")
 );
@@ -63,6 +66,13 @@ CREATE TABLE "contact" (
     "facultyId" INTEGER,
 
     CONSTRAINT "contact_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "mapdata" (
+    "id" SERIAL NOT NULL,
+
+    CONSTRAINT "mapdata_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -109,6 +119,9 @@ CREATE UNIQUE INDEX "contact_campusId_key" ON "contact"("campusId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "contact_facultyId_key" ON "contact"("facultyId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "mapdata_id_key" ON "mapdata"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "news_id_key" ON "news"("id");

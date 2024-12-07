@@ -63,7 +63,7 @@ const editDepartment = async (req, res, next) => {
             data: data
         })
         res.status(200).json({
-            message: "All Department fetched",
+            message: "Department data successfully updated",
             data: editd
         })
     } catch (error) {
@@ -143,7 +143,7 @@ const deleteDepartment = async (req, res, next)=>{
             }
         }) 
         res.status(200).json({
-            message: "Succssfully dleted the department",
+            message: "Successfully deleted the department",
             data: deletedDepartment
         });
         

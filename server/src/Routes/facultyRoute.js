@@ -12,6 +12,9 @@ router.patch("/data/:id", facultyController.updateFaculty);
 //update faculty image
 router.patch("/image/:id", upload.single("image"), facultyController.updateFacultyImage);
 
+// upsert faculty banner image
+router.patch('/banner/:id', upload.single('bannerImage'), facultyController.upsertBannerimage)
+
 //update dean image
 router.patch("/dean/:id", upload.single("deanImage"), facultyController.updateDeanImg);
 

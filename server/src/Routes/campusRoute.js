@@ -11,8 +11,12 @@ router.get("/", campusController.fetchCampus);
 
 //updat campus contact
 router.patch("/contact/:id", campusController.updateCampusContact);
+
 //updtaing campus image
 router.patch("/image/:id", upload.single("image"), campusController.updateCampusImage);
+
+//updating campus banner
+router.patch('/banner/:id', upload.single('bannerVideo'), campusController.upsertCampusBannerVideo)
 
 //update campus data
 router.patch("/data/:id", campusController.updateCampusData)
