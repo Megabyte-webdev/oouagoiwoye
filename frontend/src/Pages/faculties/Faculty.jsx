@@ -14,7 +14,7 @@ export default function Faculty() {
   
     useEffect(() => {
         if(id){
-            setFaculty(facultyData?.items?.find(item=> item.id === id))
+            setFaculty(facultyData?.items?.find(item=> item?.href === id))
         }
     }, [id,faculty])
     
@@ -27,7 +27,7 @@ export default function Faculty() {
             Faculties
         </Link>,
         <p key={3} className='text-blue-500' >
-            {faculty?.href}
+            {faculty?.title}
         </p>,
       ];
  
