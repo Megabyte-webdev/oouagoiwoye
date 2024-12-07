@@ -51,7 +51,7 @@ export default function AllFaculty() {
             
         </div>
         <div className='p-2 px-4'>
-            {facultyData.items.map((item, index)=>(
+            {facultyData?.items.map((item, index)=>(
                 <div key={index} className='w-full bg-white even:bg-blue-50 h-auto border-blue-900 border-t-2 last:border-b-2 p-2 flex items-center justify-between'>
                     <div className='bg-blue-600 relative w-1/3 lg:w-2/12 h-auto flex items-center justify-center'>
                         <div className='bg-yellow-400 w-20 lg:w-40 h-16 lg:h-36 absolute top-0 left-0 '></div>
