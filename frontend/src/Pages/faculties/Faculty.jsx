@@ -1,33 +1,34 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import {useEffect, useState} from 'react'
-import {facultyData} from '../../Data/faculty'
-import {lecturerData} from '../../Data/lecturers'
-// mui component 
-import Stack from '@mui/material/Stack';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { Breadcrumbs } from '@mui/material';
-import SliderComponent from '../../Components/SliderComponent';
-import assets from '../../assets/assets';
-import { communityData } from '../../Data/communities';
-import { departmentData } from '../../Data/departments';
-import { data } from '../../Data/news';
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { facultyData } from "../../Data/faculty";
+import { lecturerData } from "../../Data/lecturers";
+import Stack from "@mui/material/Stack";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { Breadcrumbs } from "@mui/material";
+import SliderComponent from "../../Components/SliderComponent";
+import assets from "../../assets/assets";
+import { communityData } from "../../Data/communities";
+import { departmentData } from "../../Data/departments";
+import { data } from "../../Data/news";
+
 export default function Faculty() {
-    const { id } = useParams();
-    const [faculty, setFaculty]=useState([])
- 
-    const check = facultyData?.items.find(item => item?.title === id)
-    const navigate = useNavigate()
-    
+  const { id } = useParams();
+  const [faculty, setFaculty] = useState(null);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        console.log(id)
-        if (check) {
-            setFaculty(check)
-        } else {
-            navigate('/notfound')
-        }
-    }, [id, check])
+  const check = facultyData?.items.find((item) => item?.href === id);
 
+  useEffect(() => {
+    console.log("ID from useParams:", id);
+    console.log("Matching Faculty Data:", check);
+    if (check) {
+      setFaculty(check);
+    } else {
+      navigate("/notfound");
+    }
+  }, [id]);
+
+  if (!faculty) return <p>Loading...</p>
 
     const breadcrumbs = [
         <p key={1} className='text-slate-500' >
