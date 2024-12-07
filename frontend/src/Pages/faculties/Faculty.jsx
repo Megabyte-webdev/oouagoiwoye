@@ -27,7 +27,7 @@ export default function Faculty() {
             Faculties
         </Link>,
         <p key={3} className='text-blue-500' >
-            {faculty?.title}
+            {faculty?.href}
         </p>,
       ];
  
