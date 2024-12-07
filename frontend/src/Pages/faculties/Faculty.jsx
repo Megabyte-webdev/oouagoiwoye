@@ -1,97 +1,104 @@
-export const facultyData = {
-  tag: "Our Faculties",
-  darkTag: false,
-  title: "Programs Offered At \n Olabisi Onabanjo University",
-  items: [
-    {
-      id: 1,
-      image: "https://via.placeholder.com/150/0000FF/FFFFFF?text=Faculty+of+Pharmacy",
-      title: "Faculty of Pharmacy",
-      subtitle: "Various Departments",
-      dean: "Prof. Lateef Saka Kasim",
-      departments: ["Pharmaceutical Sciences", "Pharmacology", "Pharmaceutical Chemistry", "Pharmaceutics", "Pharmacognosy", "Pharmaceutical Technology"],
-      body: "The Faculty of Pharmacy offers diverse programs including MSc and PhD, emphasizing academic and clinical training.",
-      link: "/faculty/faculty-of-pharmacy"
-    },
-    {
-      id: 2,
-      image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Faculty+of+Clinical+Sciences",
-      title: "Faculty of Clinical Sciences",
-      subtitle: "7 Clinical Departments",
-      dean: "Prof. B. A. Ayoade",
-      departments: ["Anaesthesia", "Radiology", "Paediatrics", "Obstetrics and Gynaecology", "Community Medicine", "Primary Care", "Medicine and Surgery"],
-      body: "The Faculty focuses on practical medical education with excellent hospital facilities.",
-      link: "/faculty/faculty-of-clinical-sciences"
-    },
-    {
-      id: 3,
-      image: "https://via.placeholder.com/150/008000/FFFFFF?text=Faculty+of+Environmental+Studies",
-      title: "Faculty of Environmental Studies",
-      subtitle: "Various Departments",
-      dean: "Dr. Michael Abiodun Oyinloye",
-      departments: ["Architecture", "Fine and Applied Arts", "Urban and Regional Planning", "Building", "Quantity Surveying", "Estate Management"],
-      body: "This faculty offers programs aimed at sustainable development and advanced training in environmental studies.",
-      link: "/faculty/faculty-of-environmental-studies"
-    },
-    {
-      id: 4,
-      image: "https://via.placeholder.com/150/FFFF00/000000?text=Faculty+of+Science",
-      title: "Faculty of Science",
-      subtitle: "7 Departments",
-      dean: "Prof. John A. Laoye",
-      departments: ["Plant Science", "Chemical Sciences", "Earth Sciences", "Microbiology", "Physics", "Zoology and Environmental Biology", "Mathematical Sciences"],
-      body: "The Faculty focuses on producing scientific and technological manpower for national development.",
-      link: "/faculty/faculty-of-science"
-    },
-    {
-      id: 5,
-      image: "https://via.placeholder.com/150/800080/FFFFFF?text=Faculty+of+Social+Sciences",
-      title: "Faculty of Social Sciences",
-      subtitle: "6 Departments",
-      dean: "Prof. Ayodele Thomas Odunlami",
-      departments: ["Economics", "Geography", "Political Science", "Psychology", "Sociology", "Mass Communication"],
-      body: "This faculty offers diverse programs, including Criminology and Security Studies.",
-      link: "/faculty/faculty-of-social-sciences"
-    },
-    {
-      id: 6,
-      image: "https://via.placeholder.com/150/FF7F50/FFFFFF?text=Faculty+of+Basic+Medical+Sciences",
-      title: "Faculty of Basic Medical Sciences",
-      subtitle: "11 Departments",
-      dean: "Prof. Deji-Agboola Mopelola",
-      departments: ["Anatomy", "Biochemistry", "Physiology", "Nursing", "Medical Laboratory Science", "Forensic Science"],
-      body: "The Faculty offers robust programs addressing health challenges with state-of-the-art research labs.",
-      link: "/faculty/faculty-of-basic-medical-sciences"
-    },
-    {
-      id: 7,
-      image: "https://via.placeholder.com/150/4682B4/FFFFFF?text=Faculty+of+Management+Sciences",
-      title: "Faculty of Administration and Management Sciences",
-      subtitle: "7 Departments",
-      dean: "Prof. Muse Olayiwola Solanke",
-      departments: ["Accounting", "Banking and Finance", "Business Administration", "Public Administration", "Transport Management"],
-      body: "This faculty trains articulate managers with emphasis on research and innovation.",
-      link: "/faculty/faculty-of-administration-and-management-sciences"
-    },
-    {
-      id: 8,
-      image: "https://via.placeholder.com/150/556B2F/FFFFFF?text=Faculty+of+Agricultural+Sciences",
-      title: "Faculty of Agricultural Sciences",
-      subtitle: "4 Departments",
-      dean: "Prof. Hakeem A. Awojobi",
-      departments: ["Animal Production", "Crop Production", "Forestry, Wildlife and Fisheries", "Soil Science"],
-      body: "This faculty focuses on comprehensive agricultural education and research with well-equipped farms and labs.",
-      link: "/faculty/faculty-of-agricultural-sciences"
-    }
-  ]
-};
-
-// Generate href for each faculty item
-facultyData.items.map((item) => {
-  item.href = item.title
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, "") // Remove special characters
-    .trim()
-    .replace(/\s+/g, "-"); // Replace spaces with hyphens
-  return item;
-});
+import {facultyData} from '../../Data/faculty'
+import {lecturerData} from '../../Data/lecturers'
+// mui component 
+import Stack from '@mui/material/Stack';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { Breadcrumbs } from '@mui/material';
+import SliderComponent from '../../Components/SliderComponent';
+import assets from '../../assets/assets';
+import { communityData } from '../../Data/communities';
+import { data } from '../../Data/news';
+export default function Faculty() {
+    const { id } = useParams();
+    const [faculty, setFaculty]=useState([])
+  
+    useEffect(() => {
+        if(id){
+            setFaculty(facultyData?.items?.find(item=> item.title === id))
+        }
+    }, [id,faculty])
+    
+    
+    const breadcrumbs = [
+        <p key={1} className='text-slate-500' >
+            Services
+        </p>,
+        <Link to='/services/faculty' className='text-slate-500 cursor-pointer' key={2} >
+            Faculties
+        </Link>,
+        <p key={3} className='text-blue-500' >
+            {faculty?.href}
+        </p>,
+      ];
+ 
+  return (
+    <div className='w-full h-auto md:min-h-screen px-2'>
+       <div className='p-2 px-4 bg-white'>
+            {/* breadcrumbs */}
+            <Stack spacing={1}>
+                <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
+                    {breadcrumbs}
+                </Breadcrumbs>
+            </Stack>
+            
+            <div className="relative w-full flex items-center justify-center min-h-20">
+    {/* Background Image */}
+    <img 
+        src={assets.wireframe} 
+        alt="Background" 
+        className="absolute w-full h-full z-0 object-cover" 
+    />
+    {/* Title */}
+    <h2 className="relative text-blue-700 text-lg sm:text-xl lg:text-2xl xl:text-4xl font-semibold z-10 text-center px-4">
+        {faculty.title}
+    </h2>
+</div>
+        </div>
+        <div className='mx-4 h-60 md:h-80'>
+            <img src={faculty.image} className='w-full h-full mb-2 object-cover object-top' alt="" />
+        </div>
+        {/* Faculty intro */}
+        <div className='flex flex-col gap-4 md:flex-row justify-between w-full px-4 my-6'>
+            {/* Left side */}
+            <div className='flex-1 w-full md:w-1/2'>
+                <h4 className='text-2xl md:text-3xl text-royal font-medium w-2/3 md:w-1/2 py-5'>Welcome to {faculty.title}</h4>
+                <p className='text-sm md:text-xl text-gray-600'>{faculty.body}</p>
+                <div className='my-5'>
+            <h2 className='capitalize text-blue-900 font-bold text-xl lg:text-2xl my-3'>Contact information</h2>
+            <section className="w-max grid grid-cols-3 gap-10">
+            <a href=""><i className='bx bxl-whatsapp text-green-700 text-2xl border-2 border-green-700 p-2 py-1 rounded-full'></i></a>
+            <a href=""><i className='bx bxl-facebook-square text-blue-700 text-2xl border-2 border-blue-700 p-2 py-1 rounded-full'></i></a>
+            <a href=""><i className='bx bxl-youtube text-red-700 text-2xl border-2 border-red-700 p-2 py-1 rounded-full'></i></a>
+        </section>
+            </div>
+            </div>
+            {/* Right side */}
+            <div className='flex flex-col items-center md:items-end w-full md:w-[40%]'>
+                <img className='w-[80%]' src={assets.vc} alt="" />
+                <p className='capitalize w-[80%] text-2xl font-semibold py-2'>{faculty.dean}</p>
+                <p className='w-[80%] text-xl text-blue-900 font-semibold py-2'>Faculty Dean</p>
+            </div>
+        </div>
+        <div className='mx-3 my-3'>
+            <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>All Departments</h2>
+            
+            <SliderComponent design="department" data={departmentData} />
+        </div>
+        <div className='mx-3 my-3'>
+            <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>Faculty lecturers</h2>
+            
+            <SliderComponent design="lecturer" data={lecturerData.items} />
+        </div>
+        <div className='mx-3 my-3'>
+            <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>Associations/Communities in the faculty</h2>
+            
+            <SliderComponent address="community" hideBtn={true} data={communityData.items} />
+        </div>
+        <div className='mx-3 my-3'>
+            <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>Recent News related to the faculty</h2>
+            
+            <SliderComponent address="news" btnDesc="Read More" data={data.items} />
+        </div>
+    </div>
+  )
+}
