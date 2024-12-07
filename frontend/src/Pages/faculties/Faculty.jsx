@@ -9,6 +9,7 @@ import { Breadcrumbs } from '@mui/material';
 import SliderComponent from '../../Components/SliderComponent';
 import assets from '../../assets/assets';
 import { communityData } from '../../Data/communities';
+import { departmentData } from '../../Data/departments';
 import { data } from '../../Data/news';
 export default function Faculty() {
     const { id } = useParams();
