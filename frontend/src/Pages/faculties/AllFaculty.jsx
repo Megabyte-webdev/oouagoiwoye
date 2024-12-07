@@ -36,14 +36,22 @@ export default function AllFaculty() {
                     {breadcrumbs}
                 </Breadcrumbs>
             </Stack>
-            <div className='w-full flex items-center justify-center relative'>
-                <img src={assets.wireframe} className='w-full ' />
-                <h2 className='text-blue-900 text-2xl lg:text-4xl font-bold z-0 absolute'>Faculties</h2>
-            </div>
+            <div className="relative w-full flex items-center justify-center min-h-20">
+    {/* Background Image */}
+    <img 
+        src={assets.wireframe} 
+        alt="Background" 
+        className="absolute w-full h-full z-0 object-cover" 
+    />
+    {/* Title */}
+    <h2 className="relative text-blue-700 text-lg sm:text-xl lg:text-2xl xl:text-4xl font-semibold z-10 text-center px-4">
+        Faculties
+    </h2>
+</div>
             
         </div>
         <div className='p-2 px-4'>
-            {facultyData.items.map((item, index)=>(
+            {facultyData?.items.map((item, index)=>(
                 <div key={index} className='w-full bg-white even:bg-blue-50 h-auto border-blue-900 border-t-2 last:border-b-2 p-2 flex items-center justify-between'>
                     <div className='bg-blue-600 relative w-1/3 lg:w-2/12 h-auto flex items-center justify-center'>
                         <div className='bg-yellow-400 w-20 lg:w-40 h-16 lg:h-36 absolute top-0 left-0 '></div>
@@ -58,7 +66,7 @@ export default function AllFaculty() {
                         <p className='flex items-center text-sm md:text-xl text-royal font-semibold mt-2 mb-3 lg:mb-8'>
                             {item?.subtitle && item?.subtitle}
                         </p>
-                        <CustomButton handleClick={() => {navigate(`/services/faculty/${item?.title}`); scrollTo(0,0)}} />
+                        <CustomButton handleClick={() => {navigate(`/services/faculty/${item?.href}`); scrollTo(0,0)}} />
                     </div>
                 </div>
             ))}

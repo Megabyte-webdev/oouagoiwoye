@@ -4,7 +4,7 @@ import SliderComponent from "./SliderComponent"
 
 export default function Events() {
   return (
-    <section className={`p-10 lg:p-20 bg-bgBlue`} id="faculties">
+    <section className={`py-10 px-5 lg:p-20 bg-bgBlue`} id="faculties">
             <article>
             <div className='flex flex-row items-center justify-center bg-amber-950 p-1 w-56'>
                     <i className='bx bx-buildings mr-1 text-xl text-amber-500'></i>

@@ -53,7 +53,7 @@ const Navbar = () => {
 
   return (
     <div className="text-white relative">
-      <nav className="bg-[#010035]" ref={nav}>
+      <nav className="bg-[#010035] capitalize" ref={nav}>
         <div className="py-4 flex justify-between w-11/12 mx-auto items-center max-2xl:w-[94%] max-xl:w-[93%] max-lg:w-full max-xl:justify-between">
           <div className="max-lg:px-5 max-lg:h-[90px] max-lg:bg-[#010035] max-lg:flex max-lg:items-center max-lg:justify-between max-lg:w-full max-lg:absolute max-lg:top-0 max-lg:z-[99]">
             <img src={assets.logo} className="max-md:scale-[1]" alt="logo" />
@@ -90,8 +90,8 @@ const Navbar = () => {
       <article className="bg-[#0B35A2] w-full py-5 max-lg:mt-14">
         <Marquee pauseOnHover speed={60}>
           <div className="flex w-full gap-12">
-            <h5>News</h5>
-            <ul className="flex justify-evenly gap-12">
+            {/*<h5>News</h5>*/}
+            <ul className="flex justify-evenly gap-12 divide-x-2 divide-reverse">
               <Notifications />
             </ul>
           </div>

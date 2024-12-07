@@ -1,42 +1,44 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import {departmentData} from '../../Data/departments'
-
-import {facultyData} from '../../Data/faculty'
-import {lecturerData} from '../../Data/lecturers'
-
-
-// mui component 
-import Stack from '@mui/material/Stack';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { Breadcrumbs } from '@mui/material';
-
-import SliderComponent from '../../Components/SliderComponent';
-
-import assets from '../../assets/assets';
-import { communityData } from '../../Data/communities';
-import { data } from '../../Data/news';
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { facultyData } from "../../Data/faculty";
+import { lecturerData } from "../../Data/lecturers";
+import Stack from "@mui/material/Stack";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { Breadcrumbs } from "@mui/material";
+import SliderComponent from "../../Components/SliderComponent";
+import assets from "../../assets/assets";
+import { communityData } from "../../Data/communities";
+import { departmentData } from "../../Data/departments";
+import { data } from "../../Data/news";
 
 export default function Faculty() {
-    const { id } = useParams();
-    const [faculty, setFaculty]=useState([])
-  
-    useEffect(() => {
-        if(id){
-            setFaculty(facultyData?.items?.find(item=> item.title === id))
-        }
-    }, [id,faculty])
-    
-    
+  const { id } = useParams();
+  const [faculty, setFaculty] = useState(null);
+  const navigate = useNavigate();
+
+  const check = facultyData?.items.find((item) => item?.href === id);
+
+  useEffect(() => {
+    console.log("ID from useParams:", id);
+    console.log("Matching Faculty Data:", check);
+    if (check) {
+      setFaculty(check);
+    } else {
+      navigate("/notfound");
+    }
+  }, [id]);
+
+  if (!faculty) return <p>Loading...</p>
+
     const breadcrumbs = [
         <p key={1} className='text-slate-500' >
             Services
         </p>,
-        <Link to='/faculties' className='text-slate-500 cursor-pointer' key={2} >
+        <Link to='/services/faculty' className='text-slate-500 cursor-pointer' key={2} >
             Faculties
         </Link>,
         <p key={3} className='text-blue-500' >
-            {faculty.title}
+            {faculty?.title}
         </p>,
       ];
  
@@ -49,16 +51,23 @@ export default function Faculty() {
                     {breadcrumbs}
                 </Breadcrumbs>
             </Stack>
-            <div className='w-full flex items-center justify-center relative'>
-                <img src={assets.wireframe} className='w-full ' />
-                <h2 className='text-blue-700 text-2xl lg:text-4xl font-semibold z-0 absolute'>{faculty.title}</h2>
-            </div>
             
+            <div className="relative w-full flex items-center justify-center min-h-20">
+    {/* Background Image */}
+    <img 
+        src={assets.wireframe} 
+        alt="Background" 
+        className="absolute w-full h-full z-0 object-cover" 
+    />
+    {/* Title */}
+    <h2 className="relative text-blue-700 text-lg sm:text-xl lg:text-2xl xl:text-4xl font-semibold z-10 text-center px-4">
+        {faculty.title}
+    </h2>
+</div>
         </div>
-        <div className='mx-4 h-[400px]'>
+        <div className='mx-4 h-60 md:h-80'>
             <img src={faculty.image} className='w-full h-full mb-2 object-cover object-top' alt="" />
         </div>
-
         {/* Faculty intro */}
         <div className='flex flex-col gap-4 md:flex-row justify-between w-full px-4 my-6'>
             {/* Left side */}
@@ -81,32 +90,26 @@ export default function Faculty() {
                 <p className='w-[80%] text-xl text-blue-900 font-semibold py-2'>Faculty Dean</p>
             </div>
         </div>
-
         <div className='mx-3 my-3'>
             <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>All Departments</h2>
             
             <SliderComponent design="department" data={departmentData} />
         </div>
-
         <div className='mx-3 my-3'>
             <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>Faculty lecturers</h2>
             
             <SliderComponent design="lecturer" data={lecturerData.items} />
         </div>
-
         <div className='mx-3 my-3'>
             <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>Associations/Communities in the faculty</h2>
             
             <SliderComponent address="community" hideBtn={true} data={communityData.items} />
         </div>
-
         <div className='mx-3 my-3'>
             <h2 className='capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8'>Recent News related to the faculty</h2>
             
             <SliderComponent address="news" btnDesc="Read More" data={data.items} />
         </div>
-
-
     </div>
   )
 }

@@ -16,9 +16,12 @@ const HomePage = () => {
   return (
     <div className="">
       <Hero />
-      <Statements />
-      <CardComponent address="services/faculty" data={facultyData} />
       <ViceChancellor />
+      <div className="hidden md:block">
+      <Statements />
+      </div>
+      
+      <CardComponent address="services/faculty" data={facultyData} />
       <VideoComponent address="services/testimony" data={testimonyData} />
       <About />   
       <Events/>     
