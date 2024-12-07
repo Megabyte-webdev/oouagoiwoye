@@ -13,8 +13,7 @@ import { data } from '../../Data/news';
 export default function Faculty() {
     const { id } = useParams();
     const [faculty, setFaculty]=useState([])
-  
-    const { id } = useParams()
+ 
     const check = facultyData?.items.find(item => item?.href === id)
     const navigate = useNavigate()
     
