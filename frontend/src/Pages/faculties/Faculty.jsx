@@ -1,3 +1,5 @@
+import { useNavigate, useParams } from 'react-router-dom';
+
 import {facultyData} from '../../Data/faculty'
 import {lecturerData} from '../../Data/lecturers'
 // mui component 
@@ -12,13 +14,21 @@ export default function Faculty() {
     const { id } = useParams();
     const [faculty, setFaculty]=useState([])
   
+    const { id } = useParams()
+    const check = facultyData?.items.find(item => item?.href === id)
+    const navigate = useNavigate()
+    
+
     useEffect(() => {
-        if(id){
-            setFaculty(facultyData?.items?.find(item=> item?.href === id))
+        console.log(id)
+        if (check) {
+            setFaculty(check)
+        } else {
+            navigate('/notfound')
         }
-    }, [id,faculty])
-    
-    
+    }, [id, check])
+
+
     const breadcrumbs = [
         <p key={1} className='text-slate-500' >
             Services
