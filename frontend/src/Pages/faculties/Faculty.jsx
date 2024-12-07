@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-
+import {useEffect, useState} from 'react'
 import {facultyData} from '../../Data/faculty'
 import {lecturerData} from '../../Data/lecturers'
 // mui component 
