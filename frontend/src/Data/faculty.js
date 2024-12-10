@@ -1,3 +1,4 @@
+import assets from "../assets/assets"
 export const facultyData = {
   tag: "Our Faculties",
   darkTag: false,
@@ -5,7 +6,6 @@ export const facultyData = {
   items: [
     {
       id: 1,
-      image: "https://via.placeholder.com/150/0000FF/FFFFFF?text=Faculty+of+Pharmacy",
       title: "Faculty of Pharmacy",
       subtitle: "Various Departments",
       dean: "Prof. Lateef Saka Kasim",
@@ -15,7 +15,6 @@ export const facultyData = {
     },
     {
       id: 2,
-      image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Faculty+of+Clinical+Sciences",
       title: "Faculty of Clinical Sciences",
       subtitle: "7 Clinical Departments",
       dean: "Prof. B. A. Ayoade",
@@ -25,7 +24,6 @@ export const facultyData = {
     },
     {
       id: 3,
-      image: "https://via.placeholder.com/150/008000/FFFFFF?text=Faculty+of+Environmental+Studies",
       title: "Faculty of Environmental Studies",
       subtitle: "Various Departments",
       dean: "Dr. Michael Abiodun Oyinloye",
@@ -35,7 +33,6 @@ export const facultyData = {
     },
     {
       id: 4,
-      image: "https://via.placeholder.com/150/FFFF00/000000?text=Faculty+of+Science",
       title: "Faculty of Science",
       subtitle: "7 Departments",
       dean: "Prof. John A. Laoye",
@@ -45,7 +42,6 @@ export const facultyData = {
     },
     {
       id: 5,
-      image: "https://via.placeholder.com/150/800080/FFFFFF?text=Faculty+of+Social+Sciences",
       title: "Faculty of Social Sciences",
       subtitle: "6 Departments",
       dean: "Prof. Ayodele Thomas Odunlami",
@@ -55,7 +51,6 @@ export const facultyData = {
     },
     {
       id: 6,
-      image: "https://via.placeholder.com/150/FF7F50/FFFFFF?text=Faculty+of+Basic+Medical+Sciences",
       title: "Faculty of Basic Medical Sciences",
       subtitle: "11 Departments",
       dean: "Prof. Deji-Agboola Mopelola",
@@ -65,7 +60,6 @@ export const facultyData = {
     },
     {
       id: 7,
-      image: "https://via.placeholder.com/150/4682B4/FFFFFF?text=Faculty+of+Management+Sciences",
       title: "Faculty of Administration and Management Sciences",
       subtitle: "7 Departments",
       dean: "Prof. Muse Olayiwola Solanke",
@@ -75,7 +69,6 @@ export const facultyData = {
     },
     {
       id: 8,
-      image: "https://via.placeholder.com/150/556B2F/FFFFFF?text=Faculty+of+Agricultural+Sciences",
       title: "Faculty of Agricultural Sciences",
       subtitle: "4 Departments",
       dean: "Prof. Hakeem A. Awojobi",
@@ -86,12 +79,15 @@ export const facultyData = {
   ]
 };
 
-// Generate href for each faculty item
-facultyData.items.map((item) => {
+// Generate href and image for each faculty item
+facultyData.items = facultyData.items.map((item) => {
   item.href = item.title
     .toLowerCase()
+    .replace("faculty of", "")
     .replace(/[^a-z0-9\s]/g, "") // Remove special characters
     .trim()
-    .replace(/\s+/g, "-"); // Replace spaces with hyphens
+    
+  item.image = assets.faculty;
+
   return item;
 });

@@ -16,13 +16,13 @@ const LoginDeskTop = () => {
         setLogin(!login);
     };
     return (
-        <div className=' relative max-lg:hidden '>
+        <div className=' relative max-lg:hidden'>
             <button className='bg-[#0B35A2] px-4 py-2 rounded-sm shadow-3xl shadow-[goldenrod] shadow-[7px_7px] pointer w-full flex items-center gap-3' onClick={toggleBtn}>Login Here
                 <div>
                     {login ? <FaCaretUp /> : <FaCaretDown />}
                 </div>
             </button>
-            {login &&  <div className={` bg-white text-[#010035]  font-light z-50 py-8 text-md absolute px-8 w-[155%] left-[45%] translate-x-[-60%] top-[63px] group-hover:block max-lg:top-[0%] max-lg:left-[0%] max-lg:translate-x-[0%] max-lg:translate-y-[0%] max-lg:py-4 max-lg:static`} >
+            {login &&  <div className={` bg-white text-[#010035] font-light z-50 py-8 text-md absolute px-8 w-[155%] left-[45%] translate-x-[-60%] top-[63px] group-hover:block max-lg:top-[0%] max-lg:left-[0%] max-lg:translate-x-[0%] max-lg:translate-y-[0%] max-lg:py-4 max-lg:static`} >
                 <div className='block w-full max-lg:hidden'>
                     <h1 className='text-xl font-bold pb-2 border-b-[3px]'>Login</h1>
                 </div>
