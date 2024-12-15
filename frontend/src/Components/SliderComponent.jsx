@@ -67,7 +67,7 @@ export default function sliderComponent({ data, design = "", hideBtn=false, btnD
                     {item?.author}
                   </h2>
                 </div>
-                {!hideBtn && <CustomButton handleClick={()=>{navigate(`${address}/${item?.title}`); scrollTo(0,0)}} text={btnDesc && btnDesc} />}
+                {!hideBtn && <CustomButton handleClick={()=>{navigate(`${address}/${item?.href}`); scrollTo(0,0)}} text={btnDesc && btnDesc} />}
               </SwiperSlide>
             )
             }
