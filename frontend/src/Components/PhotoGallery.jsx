@@ -18,7 +18,7 @@ const PhotoGallery = () => {
       <Swiper
         modules={[Navigation]}
         spaceBetween={20}
-        slidesPerView={2.5} // Show only 1 slide at a time
+        slidesPerView={1} // Show only 1 slide at a time
         centeredSlides={true} // Center the main slide
         navigation
         className="w-full"
