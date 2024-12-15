@@ -4,7 +4,7 @@ import { useContext } from 'react';
 
 const ServicesList = ({value, address, headerTitle}) => {
 const navigate=useNavigate();    
-  const {setMenu, setServices}=useContext(NavContext);
+  const {setMenu, setServices, setFaculty}=useContext(NavContext);
     return (
         <div className='flex'>
             <div className='w-full'>
@@ -28,7 +28,7 @@ const navigate=useNavigate();
                 {headerTitle === "Faculties"
                 &&
                     <button
-                        onClick={() => {navigate(address); setServices(false); setMenu(false);}}
+                        onClick={() => {navigate(address); setServices(false); setMenu(false); setFaculty(false)}}
                         className="mt-5 px-6 py-2 bg-blue-700 text-white font-semibold rounded-2xl hover:bg-blue-800 transition"
                     >
                         See All
