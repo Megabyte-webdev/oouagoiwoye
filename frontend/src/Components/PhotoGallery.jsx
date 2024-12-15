@@ -3,13 +3,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import assets from "../assets/assets";
+import collaboration1 from "../assets/collaboration1.jpg";
+import collaboration2 from "../assets/collaboration2.jpg" 
+import collaboration3 from "../assets/collaboration3.jpg";
 
 const PhotoGallery = () => {
   const images = [
-    assets.hero_img, // Replace with your image paths
-    assets.imaage,
-    assets.imaage,
+    collaboration1,
+    collaboration2,
+    collaboration3,
   ];
 
   return (
