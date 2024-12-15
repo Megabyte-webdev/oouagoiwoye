@@ -16,7 +16,7 @@ const PhotoGallery = () => {
 
   return (
     <div className="w-full px-4 py-8 bg-white">
-      <h2 className="text-2xl font-bold text-blue-700 mb-4">Photo Gallery</h2>
+      <h2 className="text-2xl font-bold text-blue-700 mb-4">Collaborations</h2>
       <Swiper
         modules={[Navigation]}
         spaceBetween={20}
