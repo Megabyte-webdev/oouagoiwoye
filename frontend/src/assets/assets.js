@@ -54,7 +54,8 @@ const assets = {
     imaage,
     faculty,
     schoolImg,
-    altFooter1
+    altFooter1,
+    altFooter
 }
 
 export default assets;

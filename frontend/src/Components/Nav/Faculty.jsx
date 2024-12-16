@@ -37,7 +37,7 @@ const Faculty = () => {
                     <div className='hidden lg:block w-5 h-5 -rotate-45 bg-white absolute -top-2 right-1/2 translate-x-1/2 ' />
                     <div className='flex gap-2 items-center pb-3 border-b-[3px] w-full max-lg:hidden'>
                         <div><FaAsterisk /></div>
-                        <Link to="/services/faculty" className='text-xl font-bold'>Faculties</Link>
+                        <Link to="/services/faculty" onClick={()=>{setMenu(false); setFaculty(false)}} className='text-xl font-bold'>Faculties</Link>
                     </div>
 
                     <div>

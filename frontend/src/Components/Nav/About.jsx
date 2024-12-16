@@ -32,7 +32,7 @@ const About = () => {
                     <div className='hidden lg:block w-5 h-5 -rotate-45 bg-white absolute -top-2 right-1/2 translate-x-1/2 ' />
                     <div className='w-full max-lg:hidden flex gap-2 items-center pb-3 border-b-[3px]'>
                         <div className='hidden lg:inline'><FaAsterisk /></div>
-                        <Link to='/about' className='text-xl font-bold' > About Us</Link>
+                        <Link Link to="/about" onClick={()=>{setMenu(false); setAbout(false)}} className='text-xl font-bold' > About Us</Link>
                     </div>
                     <ul className=" flex flex-col gap-7 pt-7 max-lg:px-0 max-lg:pt-0 font-500" >
                         {

@@ -9,15 +9,15 @@ const navigate=useNavigate();
         <div className='flex'>
             <div className='w-full'>
                 <ul className=" flex flex-col gap-6 pt-7 max-lg:px-0 max-lg:pt-3.5 font-500">
-                    <div>
-                        <Link to={address} onClick={()=>{setServices(false);setMenu(false)}} className='font-bold text-blue-800 text-md text-secondaryBlue'>{headerTitle}</Link>
-                    </div>
+                    {!address.match("faculty") && <div>
+                        <Link to={address} onClick={()=>{setServices(false); setFaculty(false); setMenu(false)}} className='font-bold text-blue-800 text-md text-secondaryBlue'>{headerTitle}</Link>
+                    </div>}
                     {
-                        value?.map(({ title }, index) => {
+                        value?.map((item, index) => {
                             return (
-                                <NavLink to={`${address}/${title}`} onClick={()=>{setMenu(false); setServices(false)}} className='[&.active]:font-medium [&.active]:text-blue-900 cursor-pointer font-thin hover:opacity-[.77] w-[100%]' key={index}>
+                                <NavLink to={`${address}/${address.match("faculty") ? item?.href : item?.title}`} onClick={()=>{setMenu(false); setServices(false)}} className='[&.active]:font-medium [&.active]:text-blue-900 cursor-pointer font-thin hover:opacity-[.77] w-[100%]' key={index}>
                                     
-                                        {title}
+                                        {item?.title}
                                     
                                 </NavLink>
                             )
