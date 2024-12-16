@@ -67,8 +67,8 @@ export default function Admission() {
         <p key={1} className="text-slate-500">
             Services
         </p>,
-        <Link to="/services/admissions" className="text-slate-500 cursor-pointer" key={2}>
-            Faculties
+        <Link to="/admissions" className="text-slate-500 cursor-pointer" key={2}>
+            Admissions
         </Link>,
         <p key={3} className="text-blue-500">
             {admissions?.href}
