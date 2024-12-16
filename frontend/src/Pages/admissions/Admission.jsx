@@ -77,7 +77,7 @@ export default function Admission() {
 
     return (
         admissions && (
-            <div className="w-full h-auto md:min-h-screen px-3 md:px-5">
+            <div className="w-full h-auto md:min-h-screen px-2 md:px-5">
                 <div className="p-2 px-4 bg-white">
                     {/* Breadcrumbs */}
                     <Stack spacing={1}>
@@ -103,10 +103,10 @@ export default function Admission() {
                     <img src={admissions.image} className="w-full h-full mb-2 object-cover" alt="" />
                 </div>
                 {/* admission program tabs */}
-                <div className="flex space-x-4 my-10 border-b-[1px] border-b-gray-400 overflow-x-auto">
+                <div className="flex space-x-2 md:space-x-4 my-10 border-b-[1px] border-b-gray-400 overflow-x-auto">
                     {
                         admissions?.programs?.map((item) => (
-                            <button key={item?.id} onClick={() => setSelected(item?.id)} className={`capitalize text-sm px-6 w-full whitespace-nowrap py-2 ${selected === item?.id ? "text-blue-600 border-b-[2px] border-b-blue-600" : "text-gray-700"} font-bold`}>
+                            <button key={item?.id} onClick={() => setSelected(item?.id)} className={`capitalize text-sm px-4 w-full whitespace-nowrap py-2 ${selected === item?.id ? "text-blue-600 border-b-[2px] border-b-blue-600" : "text-gray-700"} font-bold`}>
                                 {item?.title}
                             </button>
                         ))
