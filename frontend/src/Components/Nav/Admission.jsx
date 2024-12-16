@@ -33,13 +33,13 @@ const Admission = () => {
                     <div className='hidden lg:block w-5 h-5 -rotate-45 bg-white absolute -top-2 right-1/2 translate-x-1/2 '/>
                     <div className='flex gap-2 items-center pb-3 border-b-[3px] w-full max-lg:hidden'>
                         <div><FaAsterisk /></div>
-                        <Link to={""} className='text-xl font-bold'>Admission</Link>
+                        <Link to="/admissions" className='text-xl font-bold'>Admission</Link>
                     </div>
 
                     <ul className=" flex flex-col pt-7 gap-7 max-lg:px-0 max-lg:pt-3.5 font-500" >
                         {
                             navListJson.admissions.map(({ title }, index) => {
-                                return <NavLink to={`admission/${title}`} onClick={()=>{setMenu(false); setAdmission(false)}} className='[&.active]:font-medium [&.active]:text-blue-900 font-thin cursor-pointer hover:opacity-[.77] w-[100%]' key={index}>
+                                return <NavLink to={`admissions/${title?.toLowerCase()}`} onClick={()=>{setMenu(false); setAdmission(false)}} className='[&.active]:font-medium [&.active]:text-blue-900 font-thin cursor-pointer hover:opacity-[.77] w-[100%]' key={index}>
                                     {title}</NavLink>
                             })
                         }

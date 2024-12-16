@@ -23,6 +23,8 @@ const ContinuingEducationElement = lazy(() => import('./Pages/services/Continuin
 const Directorates = lazy(() => import('./Pages/services/Directorates'));
 const DirectoratesElement = lazy(() => import('./Pages/services/DirectoratesElement'));
 const NoPageFound = lazy(() => import('./Pages/NoPageFound'));
+const Admissions = lazy(() => import('./Pages/admissions/Admissions'));
+const Admission = lazy(() => import('./Pages/admissions/Admission'));
 
 function App() {
   return (
@@ -50,6 +52,10 @@ function App() {
           {/* Admin CMS routes */}
           <Route path="/*" element={<NoPageFound />} />
           <Route path="/admin-ict/oouagoiwoye-9g4c4h8sh" element={<AdminDash />} />
+        {/* Admmissions routes */}
+        <Route path="/admissions" element={<Admissions />} />
+        <Route path="/admissions/:id" element={<Admission />} />
+  
         </Routes>
         <Footer />
       </Suspense>
