@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <div className="text-white relative">
       <nav className="bg-[#010035] capitalize" ref={nav}>
-        <div className="py-4 flex justify-between w-11/12 mx-auto items-center max-2xl:w-[96%] max-lg:w-full max-xl:justify-between">
+        <div className="py-4 flex justify-between w-11/12 mx-auto items-center max-2xl:w-[96%] max-lg:pb-10 max-lg:w-full max-xl:justify-between">
           <div className="px-5 lg:px-0 max-lg:h-[90px] max-lg:bg-[#010035] max-lg:flex max-lg:items-center max-lg:justify-between max-lg:w-full max-lg:absolute max-lg:top-0 max-lg:z-[99]">
             <img src={assets.logo} className="w-32 md:w-40" alt="logo" />
             <div className="hidden max-lg:text-3xl max-lg:block" onClick={navBtnClick}>
@@ -64,7 +64,7 @@ const Navbar = () => {
           </div>
 
           <div
-            className={`relative h-auto max-lg:${menu ? 'block min-h-screen overflow-y-auto pb-10' : 'hidden'} max-lg:w-full`}
+            className={`relative h-auto max-lg:${menu ? 'block min-h-screen overflow-y-auto' : 'hidden'} max-lg:w-full`}
           >
             <ul className="gap-3 lg:gap-5 flex items-center font-bold max-lg:flex-col max-lg:bg-white max-lg:text-[#010035] max-lg:gap-y-1 max-lg:absolute max-lg:top-[75px] max-lg:w-full max-lg:pt-8 max-lg:pb-0 max-lg:items-start">
               <li className="xl:px-2 max-lg:px-8 max-lg:border-b-2 max-lg:w-full max-lg:pb-6">
