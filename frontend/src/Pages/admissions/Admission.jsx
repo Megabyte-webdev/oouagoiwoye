@@ -106,7 +106,7 @@ export default function Admission() {
                 <div className="flex space-x-2 md:space-x-4 my-10 border-b-[1px] border-b-gray-400 overflow-x-auto">
                     {
                         admissions?.programs?.map((item) => (
-                            <button key={item?.id} onClick={() => setSelected(item?.id)} className={`capitalize text-sm px-4 w-full whitespace-nowrap py-2 ${selected === item?.id ? "text-blue-600 border-b-[2px] border-b-blue-600" : "text-gray-700"} font-bold`}>
+                            <button key={item?.id} onClick={() => setSelected(item?.id)} className={`capitalize text-sm px-2 md:px-4 w-full whitespace-nowrap py-2 ${selected === item?.id ? "text-blue-600 border-b-[2px] border-b-blue-600" : "text-gray-700"} font-bold`}>
                                 {item?.title}
                             </button>
                         ))
