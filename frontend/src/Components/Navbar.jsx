@@ -64,7 +64,7 @@ const Navbar = () => {
           </div>
 
           <div
-            className={`relative h-auto max-lg:${menu ? 'block min-h-full overflow-y-auto pb-10' : 'hidden'} max-lg:w-full`}
+            className={`relative h-auto max-lg:${menu ? 'block min-h-screen overflow-y-auto pb-10' : 'hidden'} max-lg:w-full`}
           >
             <ul className="gap-3 lg:gap-5 flex items-center font-bold max-lg:flex-col max-lg:bg-white max-lg:text-[#010035] max-lg:gap-y-1 max-lg:absolute max-lg:top-[75px] max-lg:w-full max-lg:pt-8 max-lg:pb-0 max-lg:items-start">
               <li className="xl:px-2 max-lg:px-8 max-lg:border-b-2 max-lg:w-full max-lg:pb-6">
