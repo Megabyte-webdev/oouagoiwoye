@@ -77,8 +77,8 @@ export default function Admission() {
 
     return (
         admissions && (
-            <div className="w-full h-auto md:min-h-screen px-2 md:px-5">
-                <div className="p-2 px-4 bg-white">
+            <div className="w-full h-auto md:min-h-screen px-3 md:px-5">
+                <div className="py-2  bg-white">
                     {/* Breadcrumbs */}
                     <Stack spacing={1}>
                         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
