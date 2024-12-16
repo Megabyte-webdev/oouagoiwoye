@@ -77,7 +77,7 @@ export default function Admission() {
 
     return (
         admissions && (
-            <div className="w-full h-auto md:min-h-screen px-3 md:px-5">
+            <div className="w-full h-auto md:min-h-screen px-5">
                 <div className="py-2  bg-white">
                     {/* Breadcrumbs */}
                     <Stack spacing={1}>
