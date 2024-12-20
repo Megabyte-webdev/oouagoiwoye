@@ -6,18 +6,19 @@ import { useContext } from 'react';
 
 const Login = () => {
 
-    const { setAbout, setAdministration, setAdmission, setServices, login, setLogin } = useContext(NavContext);
+    const { setAbout, setAdministration, setAdmission, setServices,setFaculty, login, setLogin } = useContext(NavContext);
 
     const toggleBtn = () => {
         setAbout(false);
         setAdministration(false);
         setAdmission(false);
+        setFaculty(false);
         setServices(false);
         setLogin(!login);
     };
     return (
         <div className='lg:hidden max-lg:w-full max-lg:block '>
-            <li className={`group xl:px-1 px-3.5  flex flex-col items-center relative max-lg:items-start max-lg:px-0 max-lg:w-full`}>
+            <li className={`group xl:px-1 px-3.5 flex flex-col items-center relative max-lg:items-start max-lg:px-0 max-lg:w-full`}>
                 <div className={`lg:hidden max-lg:px-8 bg-[#0B35A2] max-lg:w-full py-3 flex justify-between items-center max-md:px-7 my-0 `} onClick={toggleBtn} >
                     <div className='max-lg:w-full max-lg:flex max-lg:gap-2 max-lg:items-center'>
                         <div className='lg:hidden'><FaAsterisk color='white' /></div>

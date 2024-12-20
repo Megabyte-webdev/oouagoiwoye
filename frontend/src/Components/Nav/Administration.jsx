@@ -6,12 +6,13 @@ import { adminData, principalData } from '../../Data/administration'
 import { NavContext } from './useContext';
 const Administration = () => {
 
-    const { setAbout, administration, setAdministration, setAdmission, setServices, setLogin } = useContext(NavContext);
+    const { setAbout, administration, setAdministration, setAdmission, setServices, setFaculty, setLogin } = useContext(NavContext);
 
     const toggleBtn = () => {
         setAbout(false);
         setAdministration(!administration);
         setAdmission(false);
+        setFaculty(false);
         setServices(false);
         setLogin(false);
     };

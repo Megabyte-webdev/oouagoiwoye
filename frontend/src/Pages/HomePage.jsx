@@ -9,6 +9,8 @@ import { facultyData } from "../Data/faculty.js"
 import testimonyData from "../Data/testimonial.json"
 import VideoComponent from "../Components/VideoComponent";
 import {communityData} from "../Data/communities.js" 
+import PhotoGallery from "../Components/PhotoGallery";
+
 
 
 
@@ -17,6 +19,7 @@ const HomePage = () => {
     <div className="">
       <Hero />
       <ViceChancellor />
+      <PhotoGallery />
       <div className="hidden md:block">
       <Statements />
       </div>

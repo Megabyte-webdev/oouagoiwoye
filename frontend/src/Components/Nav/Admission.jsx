@@ -6,18 +6,19 @@ import { useContext } from 'react';
 
 const Admission = () => {
 
-    const { setMenu, setAbout, setAdministration, admission, setAdmission, setServices, setLogin } = useContext(NavContext);
+    const { setMenu, setAbout, setAdministration, admission, setAdmission, setServices, setFaculty, setLogin } = useContext(NavContext);
 
     const toggleBtn = () => {
         setAbout(false);
         setAdministration(false);
         setAdmission(!admission);
+        setFaculty(false);
         setServices(false);
         setLogin(false);
     };
     return (
-        <div className='max-lg:w-full '>
-            <li className={`group xl:px-2 px-3.5  flex flex-col items-center relative max-lg:items-start max-lg:px-0 max-lg:w-full`}>
+        <div className='max-lg:w-full'>
+            <li className={`group flex flex-col items-center relative max-lg:items-start max-lg:px-0 max-lg:w-full`}>
                 <div className='flex gap-1 items-center max-lg:justify-between max-lg:px-8 max-lg:w-full max-md:px-7 max-lg:border-b-2 max-lg:py-7 z-[22]' onClick={toggleBtn}>
                     <div className='max-lg:w-full max-lg:flex max-lg:gap-2 max-lg:items-center cursor-pointer'>
                         <div className='lg:hidden'><FaAsterisk/></div>
@@ -32,13 +33,13 @@ const Admission = () => {
                     <div className='hidden lg:block w-5 h-5 -rotate-45 bg-white absolute -top-2 right-1/2 translate-x-1/2 '/>
                     <div className='flex gap-2 items-center pb-3 border-b-[3px] w-full max-lg:hidden'>
                         <div><FaAsterisk /></div>
-                        <Link to={""} className='text-xl font-bold'>Admission</Link>
+                        <Link to="/admissions" className='text-xl font-bold'>Admission</Link>
                     </div>
 
                     <ul className=" flex flex-col pt-7 gap-7 max-lg:px-0 max-lg:pt-3.5 font-500" >
                         {
                             navListJson.admissions.map(({ title }, index) => {
-                                return <NavLink to={`admission/${title}`} onClick={()=>{setMenu(false); setAdmission(false)}} className='[&.active]:font-medium [&.active]:text-blue-900 font-thin cursor-pointer hover:opacity-[.77] w-[100%]' key={index}>
+                                return <NavLink to={`admissions/${title?.toLowerCase()}`} onClick={()=>{setMenu(false); setAdmission(false)}} className='[&.active]:font-medium [&.active]:text-blue-900 font-thin cursor-pointer hover:opacity-[.77] w-[100%]' key={index}>
                                     {title}</NavLink>
                             })
                         }
