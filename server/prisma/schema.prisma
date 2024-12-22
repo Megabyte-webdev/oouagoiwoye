@@ -77,7 +77,7 @@ model contact {
   facultyId               Int?                @unique
   Administration          Administration?     @relation(fields: [adminId], references: [id], onDelete:Cascade)
   adminId                 Int?                @unique
-  Principal               Principal?          @relation(fields: [PrincipalId], references: [id], onDelete: Cascade)   
+  Principal               Principal?          @relation(fields: [PrincipalId], references: [id], onDelete:Cascade)   
   PrincipalId             Int                 @unique
   ContinuingEducation     ContinuingEducation?    @relation(fields: [contEducationId], references: [id], onDelete: Cascade)
   contEducationId         Int?                @unique
@@ -138,8 +138,8 @@ model Directorates {
   message         String
   image           String
   history         String?
-  vission         String?
-  mission         String?
+  vission             String?
+  mission             String?
   responsibilities    String[]
-  contact         contact?
+  contact             contact?
 }

@@ -4,7 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const corsOption = require('./src/middleware/cors');
 const errorHandler = require("./src/middleware/errorHandler")
-const { swaggerUi, swaggerSpec } = require("./src/documentation/swagger");
+const { swaggerDocument, swaggerUi } = require("./src/documentation/swagger");
 
 // initializations 
 const app = express();
@@ -20,7 +20,7 @@ app.use(express.static('public'));
 
 
 //swagger UI 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // routes
 app.use("/api/oouweb/communities", require("./src/Routes/communityRoute"));
@@ -29,6 +29,10 @@ app.use("/api/oouweb/campus", require("./src/Routes/campusRoute"));
 app.use("/api/oouweb/faculty", require("./src/Routes/facultyRoute"));
 app.use("/api/oouweb/department", require("./src/Routes/departmentRoute"));
 app.use("/api/oouweb/lecturer", require("./src/Routes/lecturerRoute"));
+app.use('/api/oouweb/administration', require('./src/Routes/administrationRoute'));
+app.use('/api/oouweb/principal', require("./src/Routes/principalORoute"));
+app.use('/api/oouweb/ceducation', require("./src/Routes/CEducationRoute"));
+
 
 
 // error handler
@@ -36,6 +40,6 @@ app.use(errorHandler);
 
 // port
 app.listen(port, ()=>{
-    console.log(`server running on port ${port}`)
+    console.log(`server running on port ${port}`);
     console.log(`API Docs available at http://localhost:${port}/api-docs`);
 })

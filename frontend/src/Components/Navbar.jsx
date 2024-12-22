@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <div className="text-white relative">
       <nav className="bg-[#010035] capitalize" ref={nav}>
-        <div className="py-4 flex justify-between w-11/12 mx-auto items-center max-2xl:w-[96%] max-lg:w-full max-xl:justify-between">
+        <div className="py-4 flex justify-between w-11/12 mx-auto items-center max-2xl:w-[96%]  max-lg:w-full max-xl:justify-between">
           <div className="px-5 lg:px-0 max-lg:h-[90px] max-lg:bg-[#010035] max-lg:flex max-lg:items-center max-lg:justify-between max-lg:w-full max-lg:absolute max-lg:top-0 max-lg:z-[99]">
             <img src={assets.logo} className="w-32 md:w-40" alt="logo" />
             <div className="hidden max-lg:text-3xl max-lg:block" onClick={navBtnClick}>
