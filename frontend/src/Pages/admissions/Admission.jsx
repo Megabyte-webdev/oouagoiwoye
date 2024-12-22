@@ -86,7 +86,7 @@ export default function Admission() {
 
     return (
         admissions && (
-            <div className="w-full h-auto md:min-h-screen px-5">
+            <div className="w-full h-auto md:min-h-screen px-4">
                 <div className="p-2 px-4 bg-white">
                     <Stack spacing={1}>
                         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
