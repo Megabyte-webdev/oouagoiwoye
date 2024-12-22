@@ -96,7 +96,7 @@ export default function Admission() {
 
                     <div className="relative w-full flex items-center justify-center min-h-20">
                         <img src={assets.wireframe} alt="Background" className="absolute w-full h-full z-0 object-cover" />
-                        <h2 className="relative text-blue-700 text-lg sm:text-xl lg:text-2xl xl:text-4xl font-semibold z-10 text-center px-4">
+                        <h2 className="relative text-blue-700 text-lg sm:text-xl lg:text-2xl xl:text-4xl font-semibold z-10 text-center px-4 capitalize">
                             {admissions.title}
                         </h2>
                     </div>
