@@ -29,16 +29,10 @@ export const admissionData = {
       programs:[
         {
           id: 1,
-          title:"Admission Requirements",
+          title:"Available Programs an Requirements",
         },{
           id:2,
-          title:"Available Programs"
-        },{
-          id: 3,
-          title:"School Fees"
-        },{
-          id: 4,
-          title:"FAQS"
+          title:"FAQs"
         }
       ]
     },
