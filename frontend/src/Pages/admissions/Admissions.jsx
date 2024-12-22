@@ -61,7 +61,7 @@ export default function Admissions() {
                         </figure>
                     </div>
                     <div className='w-10/12 h-full p-3 pl-5 lg:pl-10'>
-                        <h1 className='text-black text-xl md:text-2xl font-bold'>
+                        <h1 className='text-black text-xl md:text-2xl font-bold capitalize'>
                             {item?.title && item?.title}
                         </h1>
                         <p className='flex items-center text-sm md:text-xl text-royal font-semibold mt-2 mb-3 lg:mb-8'>
