@@ -23,7 +23,7 @@ export default function Admissions() {
         <p key={1} className='text-slate-500 text-bold' >
             Home
         </p>,
-        <Link key={2} className='text-blue-700 text-bold' href="/faculties" onClick={handleClick} >
+        <Link key={2} className='text-blue-700 text-bold' href="/admissions" onClick={handleClick} >
             Admissions
         </Link>
       ];
