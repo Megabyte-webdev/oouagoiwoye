@@ -44,8 +44,10 @@ model Faculties {
   body                String
   bannerImage         String?
   Contact             contact?  
-  facultyLecturers   lecturers[]
-  departments        departments[]
+  facultyLecturers    lecturers[]
+  departments         departments[]
+  admissionReq        AdmissionReq[]
+  schoolFee            SchoolFee[]
 }
 
 model departments {
@@ -68,9 +70,9 @@ model lecturers {
 
 model contact {
   id                      Int         @id @default(autoincrement()) @unique
-  whatsapp                String      
-  facebook                String     
-  youtube                 String
+  whatsapp                String?      
+  facebook                String?     
+  youtube                 String?
   campus                  campus?             @relation(fields: [campusId], references: [id], onDelete: Cascade)
   campusId                Int?                @unique
   Faculties               Faculties?          @relation(fields: [facultyId], references: [id], onDelete: Cascade)
@@ -78,7 +80,7 @@ model contact {
   Administration          Administration?     @relation(fields: [adminId], references: [id], onDelete:Cascade)
   adminId                 Int?                @unique
   Principal               Principal?          @relation(fields: [PrincipalId], references: [id], onDelete:Cascade)   
-  PrincipalId             Int                 @unique
+  PrincipalId             Int?                 @unique
   ContinuingEducation     ContinuingEducation?    @relation(fields: [contEducationId], references: [id], onDelete: Cascade)
   contEducationId         Int?                @unique
   Directorate             Directorates?       @relation(fields: [DirectorateId], references: [id], onDelete: Cascade)
@@ -142,4 +144,37 @@ model Directorates {
   mission             String?
   responsibilities    String[]
   contact             contact?
+}
+
+model AdmissionReq {
+  id          Int     @id     @default(autoincrement())     @unique
+  course      String
+  utmeReq     String[]
+  olevelReq   String[]
+  DEReq       String[]
+  facultyId    Int 
+  faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+}
+
+model SchoolFee {
+  id                    Int     @id     @default(autoincrement())     @unique
+  course                String
+  acceptanceFee         String
+  admissionSchFee       String
+  returningSchFee       String
+  facultyId             Int
+  faculty               Faculties   @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+  @@map("schoolFees")
+}
+
+model Faq{
+  id          Int     @id     @default(autoincrement())     @unique
+  question    String
+  answer      String
+  type        Type
+}
+
+enum Type {
+  UNDERGRADUATE
+  POSTGRADUATE
 }

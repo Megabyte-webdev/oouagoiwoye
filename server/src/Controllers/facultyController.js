@@ -1,7 +1,8 @@
 const prismaClient = require("@prisma/client");
 
 const prisma = new prismaClient.PrismaClient();
-const RandomName = require("../helpers/randomNameGenerator")
+const RandomName = require("../helpers/randomNameGenerator");
+const { currencyFormatter } = require("../helpers/utils");
 
 
 const { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand, S3 } = require("@aws-sdk/client-s3");
@@ -31,7 +32,9 @@ const fetchFaculty = async (req, res, next) => {
             include:{
                 Contact: true,
                 departments: true,
-                facultyLecturers: true
+                facultyLecturers: true,
+                // admissionReq: true,
+                // schoolFee: true
             }
         }) 
         //faculty for loop
@@ -265,10 +268,7 @@ const updateDeanImg = async (req, res, next) =>{
         })
     } catch (error) {
        next(error) 
-    }
-
-
-    
+    }  
 }
 
 
@@ -389,6 +389,76 @@ const addDepartment = async (req, res, next) => {
     }
 }
 
+//adding admission requirements
+const createAdmissonRequirements = async (req, res, next) => {
+    const { course, utmeReq, olevelReq, DEReq } = req.body;
+    const { id } = req.params;
+    try {
+        const data = {};
+        if(course) data.course = course;
+        if(utmeReq) data.utmeReq = utmeReq.split('#');
+        if(olevelReq) data.olevelReq = olevelReq.split('#');
+        if(DEReq) data.DEReq = DEReq.split('#');
+        if(Object.keys(data).length < 1) res.status(404).json("Enter a Value to send");
+
+        const newRequirements = await prisma.faculties.update({
+            where: {
+                id: parseInt(id)
+            },
+            data: {
+                admissionReq: {
+                create: data
+                }
+            },
+            include: {
+                admissionReq: true
+            }
+        });
+        res.status(200).json({
+            message: "Added Admission requirements",
+            data: newRequirements
+        })
+    } catch (error) {
+        next(error)
+    }
+};
+
+// creating school fee
+const creatScchoolFee = async (req, res, next) => {
+    const { course, acceptanceFee, admissionSchFee, returningSchFee } = req.body;
+    const { id } = req.params;
+
+    const data = {};
+    try {
+        if(course) data.course = course;
+        if(acceptanceFee) data.acceptanceFee = currencyFormatter(acceptanceFee);
+        if(admissionSchFee) data.admissionSchFee = currencyFormatter(admissionSchFee);
+        if(returningSchFee) data.returningSchFee = currencyFormatter(returningSchFee);
+        if(Object.keys(data).length < 1) res.status(404).json("Add a data to continue");
+        
+        const newSchoolFees = await prisma.faculties.update({
+            where: {
+                id: parseInt(id)
+            },
+            data: {
+                schoolFee: {
+                    create: data
+                }
+            },
+            include: {
+                schoolFee: true
+            }
+        });
+        res.status(200).json({
+            message: "Successfully added course school fee",
+            data: newSchoolFees
+        });
+
+    } catch (error) {
+        next(error);
+    }
+} 
+
 //deleting faculties
 const deleteFaculties = async (req, res, next) => {
     try {
@@ -485,5 +555,7 @@ module.exports = {
     UpdateFacultyContact,
     createFacultyLecturers,
     addDepartment,
+    createAdmissonRequirements,
+    creatScchoolFee,
     deleteFaculties
 }

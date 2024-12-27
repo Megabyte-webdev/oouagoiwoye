@@ -27,6 +27,12 @@ router.patch("/lecturer/:id", upload.single("image"), facultyController.createFa
 //creating departments
 router.patch("/department/:id",upload.single("image"), facultyController.addDepartment )
 
+//create or update admission requirments
+router.patch("/admissionReq/:id", facultyController.createAdmissonRequirements)
+
+//create school fee
+router.patch("/schoolFee/:id", facultyController.creatScchoolFee);
+
 //delete faculty
 router.delete("/:id", facultyController.deleteFaculties)
 

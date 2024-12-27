@@ -32,7 +32,9 @@ app.use("/api/oouweb/lecturer", require("./src/Routes/lecturerRoute"));
 app.use('/api/oouweb/administration', require('./src/Routes/administrationRoute'));
 app.use('/api/oouweb/principal', require("./src/Routes/principalORoute"));
 app.use('/api/oouweb/ceducation', require("./src/Routes/CEducationRoute"));
-
+app.use('/api/oouweb/directorates', require("./src/Routes/DirctoratesRoute"));
+app.use('/api/oouweb/admission', require("./src/Routes/admissionRequirementRoute"));
+app.use("/api/oouweb/schoolfee", require("./src/Routes/schoolFeeRoute"));
 
 
 // error handler

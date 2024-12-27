@@ -49,13 +49,6 @@ const createCampus = async (req, res) => {
                 image: imageName,
                 campusInfo,
                 location,
-                Contact: {
-                    create: {
-                        whatsapp: "000",
-                        facebook: "000",
-                        youtube: "000"
-                    }
-                }
             }
         });
         res.status(201).json({
@@ -84,7 +77,7 @@ const fetchCampus = async (req, res) => {
             
             const url = await getSignedUrl(S3, command, { expiresIn: 3600 })
             campus.image = url
-
+            
             const bannerComand = new GetObjectCommand({
                 Bucket: bucketName,
                 Key: `web/campus/${campus.bannerVideo}`
@@ -256,14 +249,17 @@ const updateCampusContact = async (req, res, next) => {
         if(whatsapp) data.whatsapp = whatsapp;
         if(facebook) data.facebook = facebook;
         if(youtube) data.youtube = youtube;
-        if(Object.keys(data).length === 0) res.status(400).json("No data to update");
+        if(Object.keys(data).length < 1) res.status(400).json("No data to update");
         const updatedData = await campusDB.update({
             where:{
                 id: parseInt(req.params.id)
             },
             data: {
                 Contact:{
-                    update: data
+                    upsert:{
+                        update:data,
+                        create: data
+                    }
                 }
             },
             include:{
