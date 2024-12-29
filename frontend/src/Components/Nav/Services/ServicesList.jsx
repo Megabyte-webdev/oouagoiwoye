@@ -15,7 +15,7 @@ const navigate=useNavigate();
                     {
                         value?.map((item, index) => {
                             return (
-                                <NavLink to={`${address}/${address.match("faculty") ? item?.href : item?.title}`} onClick={()=>{setMenu(false); setServices(false)}} className='[&.active]:font-medium [&.active]:text-blue-900 cursor-pointer font-thin hover:opacity-[.77] w-[100%]' key={index}>
+                                <NavLink to={`${address}/${address.match("faculty") ? item?.href : item?.title}`} onClick={()=>{setMenu(false); setServices(false); setFaculty(false)}} className='[&.active]:font-medium [&.active]:text-blue-900 cursor-pointer font-thin hover:opacity-[.77] w-[100%]' key={index}>
                                     
                                         {item?.title}
                                     

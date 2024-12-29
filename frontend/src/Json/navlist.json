@@ -57,11 +57,11 @@
   "admissions": [
     {
       "title": "Undergraduate",
-      "href": "/"
+      "href": "/undergraduate"
     },
     {
       "title": "Postgraduate",
-      "href": "/"
+      "href": "/postgraduate"
     }
   ],
   "services": {

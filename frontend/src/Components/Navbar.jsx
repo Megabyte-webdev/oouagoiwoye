@@ -64,9 +64,9 @@ const Navbar = () => {
           </div>
 
           <div
-            className={`relative h-auto max-lg:${menu ? 'block min-h-screen overflow-y-auto' : 'hidden'} max-lg:w-full`}
+            className={`relative h-max ${menu ? 'max-lg:block max-lg:min-h-screen max-lg:overflow-y-auto' : 'max-lg:hidden'} max-lg:w-full`}
           >
-            <ul className="gap-3 lg:gap-5 flex items-center font-bold max-lg:flex-col max-lg:bg-white max-lg:text-[#010035] max-lg:gap-y-1 max-lg:absolute max-lg:top-[75px] max-lg:w-full max-lg:pt-8 max-lg:pb-0 max-lg:items-start">
+            <ul className="gap-3 lg:gap-5 flex items-center font-bold max-lg:flex-col max-lg:bg-white max-lg:text-[#010035] max-lg:gap-y-1 max-lg:absolute max-lg:top-[75px] max-lg:w-full max-lg:py-8 max-lg:items-start">
               <li className="xl:px-2 max-lg:px-8 max-lg:border-b-2 max-lg:w-full max-lg:pb-6">
                 <NavLink to="/">
                   <div className="max-lg:w-full max-lg:flex max-lg:gap-2 max-lg:items-center">
