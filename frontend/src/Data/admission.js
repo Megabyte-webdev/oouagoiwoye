@@ -7,6 +7,7 @@ export const admissionData = {
     {
       id: 1,
       title: "undergraduate",
+      href:"undergraduate",
       programs:[
         {
           id: 1,
@@ -26,6 +27,7 @@ export const admissionData = {
     {
       id: 2,
       title: "postgraduate",
+      href:"postgraduate",
       programs:[
         {
           id: 1,
