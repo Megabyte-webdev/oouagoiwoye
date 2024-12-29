@@ -16,7 +16,7 @@ const AboutPage = () => {
       </section>
 
       {/* History Section */}
-      <section className="py-12 bg-white px-5">
+      <section className="py-12 bg-white px-5" id="history">
         <div className="">
           <h2 className="text-3xl font-bold mb-6 text-center">Our Journey Through Time</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -75,7 +75,7 @@ const AboutPage = () => {
       </section>
 
       {/* Vision, Mission, and Philosophy */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-gray-50" id="mission">
         <div className="mx-auto">
           <h2 className="text-3xl font-bold mb-6 text-center">Guiding Principles</h2>
           <Statements />
@@ -83,7 +83,7 @@ const AboutPage = () => {
       </section>
 
     {/* Core Values Section */}
-<section className="py-12 bg-white px-5">
+<section className="py-12 bg-white px-5" id="values">
   <div className="mx-auto">
     <h2 className="text-3xl font-bold mb-6 text-center">Our Core Values</h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

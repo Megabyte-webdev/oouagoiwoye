@@ -36,9 +36,9 @@ const About = () => {
                     </div>
                     <ul className=" flex flex-col gap-7 pt-7 max-lg:px-0 max-lg:pt-0 font-500" >
                         {
-                            navListJson.about.map(({ title }, index) => (
-                                <NavLink to={`/about#${title}`} onClick={() => { setMenu(false); setAbout(false) }} className='[&.active]:font-medium [&.active]:text-blue-900 cursor-pointer font-thin hover:opacity-[.77] w-[100%]' key={index}>
-                                    {title}
+                            navListJson.about.map((item, index) => (
+                                <NavLink to={`/about#${item?.href}`} onClick={() => { setMenu(false); setAbout(false) }} className='[&.active]:font-medium [&.active]:text-blue-900 cursor-pointer font-thin hover:opacity-[.77] w-[100%]' key={index}>
+                                    {item?.title}
                                 </NavLink>
                             ))
                         }

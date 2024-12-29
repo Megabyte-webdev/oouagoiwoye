@@ -1,13 +1,16 @@
 {
   "about": [
     {
-      "title": "History of the University"
+      "title": "History of the University",
+      "href":"history"
     },
     {
-      "title": "Our Vision/Mission/Philosophy"
+      "title": "Our Vision/Mission/Philosophy",
+      "href":"mission"
     },
     {
-      "title": "Core Values"
+      "title": "Core Values",
+      "href":"values"
     }
   ],
   "administration": {
