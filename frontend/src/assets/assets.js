@@ -22,6 +22,10 @@ import place from "./place.svg"
 import wireframe from "./wireframe.svg"
 import ooupics from "./ooupics.png";
 import imaage from "./imaage.jpg"
+import chief from "./chief.jpg"
+import integrity from "./integrity.jpeg"
+import service from "./service.jpeg"
+import excellence from "./excellence.jpeg"
 import faculty from "./faculty.jpg";
 import schoolImg from "./school-img.jpg"
 import altFooter1 from "./Frame 127.png"
@@ -52,10 +56,14 @@ const assets = {
     wireframe,
     ooupics,
     imaage,
+    chief,
     faculty,
     schoolImg,
     altFooter1,
-    altFooter
+    altFooter,
+    integrity,
+    excellence,
+    service
 }
 
 export default assets;
