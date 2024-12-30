@@ -4,7 +4,7 @@ import pin from "../assets/pin.svg"
 const Statements = () => {
   return (
     <section className="w-full h-auto p-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
-        {statement.map((item, index)=>(
+        {statement.map((item)=>(
             <div key={item.id} className='flex flex-row items-center w-full bg-blue-50 p-8 relative'>
                 <img src={side} className='mr-4' />
                 <img src={pin} className='absolute top-4 right-4' />

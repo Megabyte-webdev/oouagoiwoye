@@ -13,6 +13,8 @@ import { departmentData } from "../../Data/departments";
 import { data } from "../../Data/news";
 import { FaSearch } from 'react-icons/fa';
 import { facultyRequirements, feeRequirements } from '../../Data/facultyRequirements'
+import { postgraduateData } from '../../Data/postgraduate'
+
 import FAQ from './FAQ'
 const columns = [
     { header: "S/N", field: "serialNo" },
@@ -21,7 +23,7 @@ const columns = [
     { header: "O Level Requirements", field: "oLevelRequirements" },
     { header: "Direct Entry Requirements", field: "directEntryRequirements" },
 ];
-const feeColumns= [
+const feeColumns = [
     { header: "S/N", field: "serialNo" },
     { header: "Course/Program", field: "course" },
     { header: "Acceptance Fee", field: "acceptancefee" },
@@ -38,8 +40,7 @@ export default function Admission() {
     const [selected, setSelected] = useState(1);
     const navigate = useNavigate();
 
-    const check = admissionData?.items.find((item) => item?.title === id);
-
+    const check = admissionData?.items.find((item) => item?.href === id);
     useEffect(() => {
         console.log("ID from useParams:", id);
         console.log("Matching admissions Data:", check);
@@ -113,7 +114,7 @@ export default function Admission() {
                     ))}
                 </div>
 
-                { selected !== 4 && <div>
+                {selected !== 4 && <div>
                     <h3 className="font-bold text-xl md:text-2xl mb-2">Select Program</h3>
                     <div className="relative w-full mb-2">
                         <input type="text" className="w-full px-10 py-2 h-10 md:h-12 border bg-gray-100 text-sm md:text-xl" placeholder="Search here" />
@@ -121,54 +122,95 @@ export default function Admission() {
                     </div>
                 </div>}
 
-{
-    id === "undergraduate" && 
-    <>
+                {
+                    id === "postgraduate" &&
+                    <>
+                       { (selected === 1 &&
+                        <div className="max-w-6xl mx-auto px-6 py-10">
+                            {/* <h1 className="text-4xl font-bold text-center mb-8">Postgraduate Programs</h1> */}
+                            {postgraduateData?.map((program, index) => (
+                                <div key={index} className="border-b border-gray-300 pb-6 mb-6">
+                                    <h2 className="text-2xl font-semibold mb-4 text-blue-800 text-center">{program.title}</h2>
+                                    <div className="text-gray-700 mb-4">
+                                        <h3 className="text-xl font-medium text-black mb-2">Programme Outline:</h3>
+                                        <p>{program.programOutline}</p>
+                                    </div>
+                                    <div className="text-gray-700 mb-4">
+                                        <h3 className="text-xl font-medium text-black mb-2">Duration:</h3>
+                                        <p>{program.duration}</p>
+                                    </div>
+                                    <div className="text-gray-700 mb-4">
+                                        <h3 className="text-xl font-medium text-black mb-2">Entry Requirements:</h3>
+                                        <ul className="list-disc list-inside">
+                                            {program?.entryRequirements?.map((requirement, reqIndex) => (
+                                                <li key={reqIndex}>{requirement}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div className="text-gray-700 mb-4">
+                                        <h3 className="text-xl font-medium text-black mb-2">School Fees:</h3>
+                                        <p>{program.fees}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
 
-                     {selected === 1 &&
-                    facultyData?.items?.map(faculty=>(
-                        <div key={faculty?.id} className="my-5">
-                    <FacultyRequirements
-                    data={facultyRequirements}
-                    columns={columns}
-                    title={faculty?.title}
-                     />
-                </div>
-                    ))
-                }
-                {selected === 2 && facultyData?.items?.map((faculty) => (
-                    <div key={faculty?.id} className="mx-3 my-3">
-                        <h2 className="capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8">{faculty?.title}</h2>
-                        {departmentData?.find((item) => item?.faculty?.toLowerCase() === faculty?.href?.toLowerCase()) ? (
-                            <SliderComponent
-                                design="department"
-                                data={departmentData?.filter((item) => item?.faculty?.toLowerCase() === faculty?.href?.toLowerCase())}
-                            />
-                        ) : (
-                            <div className="flex justify-center items-center mt-10 min-h-80 bg-gray-100">
-                                <div className="text-gray-800 text-xl">No data Available for now</div>
-                            </div>
                         )}
-                    </div>
-                ))}
-                {selected === 3 &&
-                    facultyData?.items?.map(faculty=>(
-                        <div key={faculty?.id} className="my-5">
-                    <FacultyRequirements
-                    data={feeRequirements}
-                    columns={feeColumns}
-                    title={faculty?.title}
-                     />
-                </div>
-                    ))
+                        {selected === 2 &&
+                            <FAQ />
+
+                        }
+                    </>
                 }
 
-                {selected === 4 &&
-                    <FAQ />
-                   
+                {
+                    id === "undergraduate" &&
+                    <>
+
+                        {selected === 1 &&
+                            facultyData?.items?.map(faculty => (
+                                <div key={faculty?.id} className="my-5">
+                                    <FacultyRequirements
+                                        data={facultyRequirements}
+                                        columns={columns}
+                                        title={faculty?.title}
+                                    />
+                                </div>
+                            ))
+                        }
+                        {selected === 2 && facultyData?.items?.map((faculty) => (
+                            <div key={faculty?.id} className="mx-3 my-3">
+                                <h2 className="capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8">{faculty?.title}</h2>
+                                {departmentData?.find((item) => item?.faculty?.toLowerCase() === faculty?.href?.toLowerCase()) ? (
+                                    <SliderComponent
+                                        design="department"
+                                        data={departmentData?.filter((item) => item?.faculty?.toLowerCase() === faculty?.href?.toLowerCase())}
+                                    />
+                                ) : (
+                                    <div className="flex justify-center items-center mt-10 min-h-80 bg-gray-100">
+                                        <div className="text-gray-800 text-xl">No data Available for now</div>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                        {selected === 3 &&
+                            facultyData?.items?.map(faculty => (
+                                <div key={faculty?.id} className="my-5">
+                                    <FacultyRequirements
+                                        data={feeRequirements}
+                                        columns={feeColumns}
+                                        title={faculty?.title}
+                                    />
+                                </div>
+                            ))
+                        }
+
+                        {selected === 4 &&
+                            <FAQ />
+
+                        }
+                    </>
                 }
-                </>
-}
                 <div className="w-full flex items-center justify-center relative bg-cover bg-center h-[300px]" style={{ backgroundImage: `url(${assets.altFooter})` }}>
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
                         <h2 className="font-bold mb-2 text-[25px]">Do you want to apply for this program?</h2>

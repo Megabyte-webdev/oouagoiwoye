@@ -38,9 +38,9 @@ const Admission = () => {
 
                     <ul className=" flex flex-col pt-7 gap-7 max-lg:px-0 max-lg:pt-3.5 font-500" >
                         {
-                            navListJson.admissions.map(({ title }, index) => {
-                                return <NavLink to={`admissions/${title?.toLowerCase()}`} onClick={()=>{setMenu(false); setAdmission(false)}} className='[&.active]:font-medium [&.active]:text-blue-900 font-thin cursor-pointer hover:opacity-[.77] w-[100%]' key={index}>
-                                    {title}</NavLink>
+                            navListJson.admissions.map((item, index) => {
+                                return <NavLink to={`admissions${item?.href}`} onClick={()=>{setMenu(false); setAdmission(false)}} className='[&.active]:font-medium [&.active]:text-blue-900 font-thin cursor-pointer hover:opacity-[.77] w-[100%]' key={index}>
+                                    {item?.title}</NavLink>
                             })
                         }
                     </ul>
