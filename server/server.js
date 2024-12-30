@@ -38,6 +38,7 @@ app.use('/api/oouweb/directorates', require("./src/Routes/DirctoratesRoute"));
 app.use('/api/oouweb/admission', require("./src/Routes/admissionRequirementRoute"));
 app.use("/api/oouweb/schoolfee", require("./src/Routes/schoolFeeRoute"));
 app.use('/api/oouweb/admin', require("./src/Routes/AdminRoutes"));
+app.use("/api/oouweb/faqs", require("./src/Routes/faqRoute"));
 
 
 // error handler
