@@ -40,10 +40,13 @@ const fetchFaqs = async (req, res, next) => {
 
 
 const fetchSingleFaq = async (req, res, next) => {
+    const { id } = req.params; 
 
     try {
         const faq = await faqsDB.findUnique({
-            where: parseInt(req.params.id)
+            where: {
+                id: parseInt(id)
+            }
         });
 
         if (faq) {
@@ -69,7 +72,7 @@ const updateFaq = async (req, res) => {
 
         if (answer) data.answer = answer;
         if (question) data.question = question;
-        if (type) data.type = type;
+        if(type) data.type = type.toUpperCase();
 
         if (Object.keys(data).length === 0) {
             return res.status(204).json("No data was found for update");
@@ -103,7 +106,7 @@ const deleteFaq = async (req, res, next) => {
 
         res.status(200).json({
             message: "Successfully deleted faq",
-            data: deleteFaq
+            data: deletedFaq
         });
     } catch (error) {
         next(error);
