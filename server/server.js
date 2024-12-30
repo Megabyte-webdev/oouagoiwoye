@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 const corsOption = require('./src/middleware/cors');
 const errorHandler = require("./src/middleware/errorHandler")
 const { swaggerDocument, swaggerUi } = require("./src/documentation/swagger");
@@ -13,6 +14,7 @@ const port = process.env.PORT || 5000;
 
 //middlewares
 app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
 app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.static('public'));
@@ -35,6 +37,7 @@ app.use('/api/oouweb/ceducation', require("./src/Routes/CEducationRoute"));
 app.use('/api/oouweb/directorates', require("./src/Routes/DirctoratesRoute"));
 app.use('/api/oouweb/admission', require("./src/Routes/admissionRequirementRoute"));
 app.use("/api/oouweb/schoolfee", require("./src/Routes/schoolFeeRoute"));
+app.use('/api/oouweb/admin', require("./src/Routes/AdminRoutes"));
 
 
 // error handler
