@@ -5,11 +5,11 @@
       "href":"history"
     },
     {
-      "title": "Our Vision/Mission/Philosophy",
+      "title": "Our Vision/Mission",
       "href":"mission"
     },
     {
-      "title": "Core Values",
+      "title": "Core Values/Philosophy",
       "href":"values"
     }
   ],
@@ -48,12 +48,12 @@
         "href": "/principal-officers/registrar"
       },
       {
-        "title": "University Bursar",
-        "href": "/principal-officers/bursar"
-      },
-      {
         "title": "University Librarian",
         "href": "/principal-officers/libarian"
+      },
+      {
+         "title": "University Bursar",
+        "href": "/principal-officers/bursar"
       }
     ]
   },
@@ -74,16 +74,16 @@
         "href": "/services/campus/main-campus"
       },
       {
-        "title": "Egba Campus",
-        "href": "/services/campus/egba-campus"
+        "title": "Ibogun Campus",
+        "href": "/services/campus/ibogun-campus"
       },
       {
-        "title": "Yewa Campus",
-        "href": "/services/campus/yewa-campus"
+        "title": "Aiyetoro Campus",
+        "href": "/services/campus/aiyetoro-campus"
       },
       {
-        "title": "Remo Campus",
-        "href": "/services/campus/remo-campus"
+        "title": "Sagamu Campus",
+        "href": "/services/campus/sagamu-campus"
       }
     ]
   ,
