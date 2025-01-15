@@ -7,7 +7,7 @@ const principalData = [
     {
         id: 1,
         title: "University Registrar",
-        name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
+        name: "Mr. Ogunwomoju Olufemi Ayodele.",
         href: "main-campus",
         image: assets.imaage,
         video: "",
@@ -15,7 +15,7 @@ const principalData = [
         roles: [
             "Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research.", 
             "Olabisi Onabanjo University is a prominent institution", 
-            "Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research.", 
+            "Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research.",
             "Olabisi Onabanjo University is a prominent institution", 
             "Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research.", 
             "Olabisi Onabanjo University is a prominent institution"
@@ -28,8 +28,8 @@ const principalData = [
     },
     {
         id: 2,
-        title: "University Bursar",
-        name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
+        title: "University Libarian",
+        name: "Dr. Adebambo Adewale Oduwole.",
         href: "main-campus",
         image: assets.imaage,
         video: "",
@@ -50,12 +50,12 @@ const principalData = [
     },
     {
         id: 3,
-        title: "University Libarian",
-        name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
+        title: "University Bursar",
+        name: "Mr. Olufemi Stephen Sowunmi.",
         href: "main-campus",
         image: assets.imaage,
         video: "",
-        biography: "Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research, and community engagement. Over the past few years, we have nurtured leaders across a multitude of disciplines through our diverse programs. Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research, and community engagement. Over the past few years, we have nurtured leaders across a multitude of disciplines through our diverse programs.",
+        biography: "Mr Sowunmi, a distinguished Fellow of the Institute of Chartered Accountants of Nigeria, brings with him a wealth of experience and an impressive educational background.",
         roles: [
             "Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research.", 
             "Olabisi Onabanjo University is a prominent institution", 
@@ -77,7 +77,7 @@ const principalData = [
 const adminData = [
     {
         id: 1,
-        title: "The Vice Chancellor",
+        title: "Pro-Chancellor",
         name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
         href: "",
         image: assets.imaage,
@@ -99,7 +99,7 @@ const adminData = [
     },
     {
         id: 2,
-        title: "Pro-Chancellor",
+        title: "The Vice Chancellor",
         name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
         href: "",
         image: assets.imaage,
@@ -122,7 +122,7 @@ const adminData = [
    {
         id: 3,
         title: "Deputy Vice-Chancellor (Academic)",
-        name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
+        name: "Prof. Olatundun Abosede Oderinde.",
         href: "main-campus",
         image: assets.imaage,
         video: "",
@@ -144,7 +144,7 @@ const adminData = [
     {
         id: 4,
         title: "Deputy Vice-Chancellor (Administration)",
-        name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
+        name: "Prof. Charles Olufemi Adekoya.",
         href: "main-campus",
         image: assets.imaage,
         video: "",
