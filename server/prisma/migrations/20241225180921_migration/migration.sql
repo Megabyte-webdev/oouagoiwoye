@@ -1,4 +1,0 @@
--- AlterTable
-ALTER TABLE "contact" ALTER COLUMN "whatsapp" DROP NOT NULL,
-ALTER COLUMN "facebook" DROP NOT NULL,
-ALTER COLUMN "youtube" DROP NOT NULL;

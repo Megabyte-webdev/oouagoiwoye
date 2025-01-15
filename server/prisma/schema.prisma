@@ -10,19 +10,19 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 
 model admin {
-  id        Int     @id @default(autoincrement()) @unique
+  id        String     @id  @map("_id")   @db.ObjectId 
   username  String      @unique
   password  String?
 }
 
 model campus{
-  id              Int @id   @default(autoincrement()) @unique
+  id              String     @id  @map("_id")   @db.ObjectId 
   title           String
   location        String
   image           String
@@ -33,9 +33,9 @@ model campus{
 }
 
 model Faculties {
-  id                  Int @id @default(autoincrement()) @unique 
-  campusId            Int
-  campus              campus @relation(fields: [campusId], references: [id], onDelete: Cascade)
+  id                  String      @id  @map("_id")   @db.ObjectId 
+  campusId            String      @db.ObjectId
+  campus              campus      @relation(fields: [campusId], references: [id], onDelete: Cascade)
   title               String
   image               String
   deanImage           String?
@@ -51,58 +51,58 @@ model Faculties {
 }
 
 model departments {
-  id           Int @id @default(autoincrement()) @unique
+  id           String     @id  @map("_id")   @db.ObjectId 
   title        String
   image        String
   body         String
-  facultyId    Int 
+  facultyId    String   @db.ObjectId 
   faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
 }
 
 model lecturers {
-  id           Int @id @default(autoincrement()) @unique
+  id           String     @id  @map("_id")   @db.ObjectId 
   name         String
   designation  String
   image        String
-  facultyId    Int 
+  facultyId    String   @db.ObjectId 
   faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
 }
 
 model contact {
-  id                      Int         @id @default(autoincrement()) @unique
+  id                      String     @id  @map("_id")   @db.ObjectId 
   whatsapp                String?      
   facebook                String?     
   youtube                 String?
-  campus                  campus?             @relation(fields: [campusId], references: [id], onDelete: Cascade)
-  campusId                Int?                @unique
+  campus                  campus?             @relation(fields: [campusId], references: [id])
+  campusId                String?             @db.ObjectId    @unique
   Faculties               Faculties?          @relation(fields: [facultyId], references: [id], onDelete: Cascade)
-  facultyId               Int?                @unique
+  facultyId               String?             @db.ObjectId     @unique
   Administration          Administration?     @relation(fields: [adminId], references: [id], onDelete:Cascade)
-  adminId                 Int?                @unique
+  adminId                 String?             @db.ObjectId     @unique
   Principal               Principal?          @relation(fields: [PrincipalId], references: [id], onDelete:Cascade)   
-  PrincipalId             Int?                 @unique
+  PrincipalId             String?             @db.ObjectId     @unique
   ContinuingEducation     ContinuingEducation?    @relation(fields: [contEducationId], references: [id], onDelete: Cascade)
-  contEducationId         Int?                @unique
+  contEducationId         String?             @db.ObjectId     @unique
   Directorate             Directorates?       @relation(fields: [DirectorateId], references: [id], onDelete: Cascade)
-  DirectorateId           Int?                @unique
+  DirectorateId           String?             @db.ObjectId     @unique
 }
 
 model news {
-  id           Int @id @default(autoincrement()) @unique
+  id           String     @id  @map("_id")   @db.ObjectId 
   headline     String
   image        String
   body         String
   author       String
 }
 model communities {
-  id          Int @id @default(autoincrement()) @unique
+  id          String     @id  @map("_id")   @db.ObjectId 
   image       String
   title       String
   body        String
 }
 
 model Administration {
-  id                  Int @id @default(autoincrement()) @unique
+  id                  String     @id  @map("_id")   @db.ObjectId 
   name                String
   designation         String
   image               String
@@ -112,7 +112,7 @@ model Administration {
 }
 
 model Principal {
-  id                  Int @id @default(autoincrement()) @unique
+  id                  String     @id  @map("_id")   @db.ObjectId 
   name                String
   designation         String
   image               String
@@ -122,11 +122,11 @@ model Principal {
 }
 
 model ContinuingEducation {
-  id             Int     @id     @default(autoincrement())     @unique
-  program       String
-  image         String
-  headline      String    
-  overview      String
+  id                 String     @id  @map("_id")   @db.ObjectId 
+  program            String
+  image             String
+  headline          String    
+  overview          String
   requirements      String[]
   benefits          String[]
   contact            contact?
@@ -134,7 +134,7 @@ model ContinuingEducation {
 }
 
 model Directorates {
-  id      Int     @id     @default(autoincrement())     @unique
+  id              String     @id  @map("_id")   @db.ObjectId 
   office          String
   headline        String
   message         String
@@ -147,28 +147,28 @@ model Directorates {
 }
 
 model AdmissionReq {
-  id          Int     @id     @default(autoincrement())     @unique
+  id          String     @id  @map("_id")   @db.ObjectId 
   course      String
   utmeReq     String[]
   olevelReq   String[]
   DEReq       String[]
-  facultyId    Int 
-  faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+  facultyId    String     @db.ObjectId 
+  faculty      Faculties @relation(fields: [facultyId], references: [id])
 }
 
 model SchoolFee {
-  id                    Int     @id     @default(autoincrement())     @unique
+  id                      String     @id  @map("_id")   @db.ObjectId 
   course                String
   acceptanceFee         String
   admissionSchFee       String
   returningSchFee       String
-  facultyId             Int
+  facultyId             String      @db.ObjectId
   faculty               Faculties   @relation(fields: [facultyId], references: [id], onDelete: Cascade)
   @@map("schoolFees")
 }
 
 model Faq{
-  id          Int     @id     @default(autoincrement())     @unique
+  id          String     @id  @map("_id")   @db.ObjectId 
   question    String
   answer      String
   type        Type
