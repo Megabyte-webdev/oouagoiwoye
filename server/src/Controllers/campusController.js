@@ -12,7 +12,7 @@ const createCampus = async (req, res) => {
         const newCampus = await campusDB.create({
             data:{
                 title,
-                image: image.filename,
+                image: image?.filename,
                 campusInfo,
                 location,
             }
@@ -60,7 +60,7 @@ const updateCampusImage = async (req, res, next) => {
                 id: req.params.id
             },
             data:{
-                image: reqImage.filename
+                image: reqImage?.filename
             }
         })
         deleteFile(`public/uploads/${previmg}`)
@@ -89,7 +89,7 @@ const upsertCampusBannerVideo = async (req, res, next) =>{
                 id: req.params.id
             },
             update:{
-                bannerVideo : bannerVideo.filename
+                bannerVideo : bannerVideo?.filename
             },
             create:{
                 title: prevdata.title,
@@ -182,7 +182,7 @@ const createFaculty = async (req, res, next) => {
                 faculties:{
                     create: {
                         title,
-                        image:  imageName.filename,
+                        image:  imageName?.filename,
                         noOfDepartments,
                         body,
                         Contact:{

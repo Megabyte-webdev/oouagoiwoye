@@ -61,7 +61,7 @@ const editDepartmentImage = async (req, res, next) => {
                 id: req.params.id
             },
             data:{
-                image: req.file.filename 
+                image: req.file?.filename 
             }
         })
         res.status(200).json({

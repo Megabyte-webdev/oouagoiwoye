@@ -11,7 +11,7 @@ const createCommunity = async (req, res) => {
         
         const newCommunity = await communityDB.create({
             data: {
-                image: req.file.filename,
+                image: req.file?.filename,
                 title: title,
                 body: body
             }
@@ -81,7 +81,7 @@ const updateCommunityImage = async (req, res) => {
                 id: req.params.id,
             },
             data: {
-                image: reqfile.filename
+                image: reqfile?.filename
             }
         })
         res.status(200).json({

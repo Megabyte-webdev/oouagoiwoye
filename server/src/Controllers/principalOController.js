@@ -7,7 +7,7 @@ const createAPrincipalOfficer = async (req, res, next) => {
     const image = req.file;
     try {
 
-        const newMmber = await createPrincipalOfficerModel({name, designation, image: image.filename, biography});
+        const newMmber = await createPrincipalOfficerModel({name, designation, image: image?.filename, biography});
 
         res.status(201).json({
             message: "Successfully created Principal Officer",
@@ -61,7 +61,7 @@ const updatePrincipalOfficerImage = async (req, res, next) => {
     const prevData = await fetchPrincipalOfficerByIdModel(id);
     const prevImg = prevData.image;
     try{
-        const newImage = await updatePrincipalOfficerImageModel({id: id, image: image.filename})
+        const newImage = await updatePrincipalOfficerImageModel({id: id, image: image?.filename})
 
         image !== null ? deleteFile(`public/uploads/${prevImg}`) : '';
         res.status(200).json({

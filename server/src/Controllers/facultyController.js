@@ -69,7 +69,7 @@ const updateFacultyImage = async (req, res, next) => {
                 id: req.params.id
             },
             data: {
-                image: reqImg.filename
+                image: reqImg?.filename
             }
         })
         deleteFile(`public/uploads/${previmg}`);
@@ -98,7 +98,7 @@ const upsertBannerimage = async (req, res, next) => {
                 id: req.params.id
             },
             data:{
-                bannerImage: reqBannerImg.filename
+                bannerImage: reqBannerImg?.filename
             }
         });
         deleteFile(`public/uploads/${prevBanner}`)
@@ -128,7 +128,7 @@ const updateDeanImg = async (req, res, next) =>{
                 id: req.params.id
             },
             data: {
-                deanImage: imageName.filename
+                deanImage: imageName?.filename
             }
         })
         
@@ -185,7 +185,7 @@ const createFacultyLecturers = async (req, res, next) => {
         const data = {};
         if(name) data.name = name;
         if(designation) data.designation = designation;
-        if(imageReq) data.image = imageReq.filename;
+        if(imageReq) data.image = imageReq?.filename;
         if(Object.keys(data).length === 0) res.status(400).json("No data to update");
 
         const updated = await facultyDB.update({
@@ -223,7 +223,7 @@ const addDepartment = async (req, res, next) => {
                 departments:{
                     create: {
                         title,
-                        image: req.file.filename,
+                        image: req.file?.filename,
                         body
                     }
                 }

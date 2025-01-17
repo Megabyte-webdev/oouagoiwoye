@@ -6,7 +6,7 @@ const createMember = async (req, res, next) => {
     const { name, designation, biography } = req.body;
     const image = req.file;
     try {
-        const member = await createAdminMemberModel({name, designation, image: image.filename, biography})
+        const member = await createAdminMemberModel({name, designation, image: image?.filename, biography})
 
         res.status(201).json({
             message: "Successfully created Administration data",
@@ -33,7 +33,7 @@ const createMember = async (req, res, next) => {
     try {
         const prevData = await fetchAdminMemberByIdModel(id);
 
-        const updatedImage = await updateAdminImageModel({id, image: reqImage.filename});
+        const updatedImage = await updateAdminImageModel({id, image: reqImage?.filename});
         deleteFile(`public/uploads/${prevData.image}`);
         res.status(200).json({
             message: "Updated image successfully",

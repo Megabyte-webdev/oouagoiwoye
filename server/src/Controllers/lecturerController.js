@@ -45,7 +45,7 @@ const editLecturers = async (req, res, next) => {
 
 //edit lecturers image
 const editLecturerImage = async (req, res, next) => {
-    const image = req.file.filename;
+    const image = req.file?.filename;
 
     try {
         const prevData = await lecturerDB.findUnique({

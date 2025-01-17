@@ -25,7 +25,7 @@ model campus{
   id              String     @id @default(auto()) @map("_id") @db.ObjectId
   title           String
   location        String
-  image           String
+  image           String?
   bannerVideo     String?
   campusInfo      String
   Contact         contact?       
@@ -37,7 +37,7 @@ model Faculties {
   campusId            String      @db.ObjectId
   campus              campus      @relation(fields: [campusId], references: [id], onDelete: Cascade)
   title               String
-  image               String
+  image               String?
   deanImage           String?
   deanName            String?
   noOfDepartments     String
@@ -53,7 +53,7 @@ model Faculties {
 model departments {
   id           String     @id @default(auto()) @map("_id") @db.ObjectId
   title        String
-  image        String
+  image        String?
   body         String
   facultyId    String   @db.ObjectId 
   faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
@@ -63,7 +63,7 @@ model lecturers {
   id           String     @id @default(auto()) @map("_id") @db.ObjectId
   name         String
   designation  String
-  image        String
+  image        String?
   facultyId    String   @db.ObjectId 
   faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
 }
@@ -90,13 +90,13 @@ model contact {
 model news {
   id           String     @id @default(auto()) @map("_id") @db.ObjectId
   headline     String
-  image        String
+  image        String?
   body         String
   author       String
 }
 model communities {
   id          String     @id @default(auto()) @map("_id") @db.ObjectId
-  image       String
+  image       String?
   title       String
   body        String
 }
@@ -105,7 +105,7 @@ model Administration {
   id                  String     @id @default(auto()) @map("_id") @db.ObjectId
   name                String
   designation         String
-  image               String
+  image               String?
   biography           String
   contact             contact?
   responsibilities    String[]
@@ -115,7 +115,7 @@ model Principal {
   id                  String     @id @default(auto()) @map("_id") @db.ObjectId
   name                String
   designation         String
-  image               String
+  image               String?
   biography           String
   contact             contact?
   responsibilities    String[]
@@ -124,7 +124,7 @@ model Principal {
 model ContinuingEducation {
   id                 String    @id @default(auto()) @map("_id") @db.ObjectId
   program            String
-  image             String
+  image             String?
   headline          String    
   overview          String
   requirements      String[]
@@ -138,7 +138,7 @@ model Directorates {
   office          String
   headline        String
   message         String
-  image           String
+  image           String?
   history         String?
   vission             String?
   mission             String?

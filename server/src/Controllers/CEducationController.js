@@ -8,7 +8,7 @@ const createProgram = async (req, res, next) => {
     try {
         const data= {};
         data.program = program;
-        data.image = reqImage.filename;
+        data.image = reqImage?.filename;
         data.headline = headline;
         data.overview = overview;
 
@@ -68,7 +68,7 @@ const updateCEImage = async (req, res, next) => {
         const prevdata = await fetchCEByIdModel(id);
         const prevImg = prevdata.image;
 
-        const newImage = await updateCEducationImageModel({id: id, image: reqImage.filename });
+        const newImage = await updateCEducationImageModel({id: id, image: reqImage?.filename });
 
         prevImg !== null ? deleteFile(`public/uploads/${prevImg}`) : ''
         res.status(200).json({

@@ -6,7 +6,7 @@ const createDirectorateMember = async (req, res, next) => {
     const reqImage = req.file;
 
     try {
-        const newMember = await CreateDirectoratesModel({office, headline, message, image: reqImage.filename, history});
+        const newMember = await CreateDirectoratesModel({office, headline, message, image: reqImage?.filename, history});
         
         res.status(201).json({
             message: "Successfully created directorates member",
@@ -38,7 +38,7 @@ const updateDirectoratesImage = async (req, res, next) => {
     try {
         const {image} = await FetchDirectoratesByIdModel(id);
 
-        const newImage = await UpdateDirectorateImageModel({id: id, image: reqImage.filename});
+        const newImage = await UpdateDirectorateImageModel({id: id, image: reqImage?.filename});
 
         image !== null ? deleteFile(`public/uploads/${image}`) : '';
         res.status(200).json({

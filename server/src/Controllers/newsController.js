@@ -13,7 +13,7 @@ const createNews = async (req, res, next) => {
         const newNews = await newsDB.create({
             data:{
                 headline: headline,
-                image: reqImage.filename,
+                image: reqImage?.filename,
                 body: body,
                 author: author
             }
@@ -86,7 +86,7 @@ const updateNewsImage = async (req, res)=>{
                 id: req.params.id
             },
             data:{
-                image: reqImg.filename
+                image: reqImg?.filename
             }
         })
         prevImage ? deleteFile(`public/uploads/${prevImage}`) : '';
