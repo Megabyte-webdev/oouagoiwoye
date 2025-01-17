@@ -35,7 +35,7 @@ const updateRequirements = async (req, res, next) => {
 
         const updatedData = await prisma.admissionReq.update({
             where: {
-                id: parseInt(id)
+                id: id
             },
             data: data
         });
@@ -50,11 +50,11 @@ const updateRequirements = async (req, res, next) => {
 
 const deleteRequirement = async (req, res, next) => {
     const { id } = req.params;
-
+    
     try {
         const deletedData = await prisma.admissionReq.delete({
             where: {
-                id: parseInt(id)
+                id: id
             }
         });
         res.status(200).json({

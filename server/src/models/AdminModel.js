@@ -27,7 +27,7 @@ const findUniqueUsernameModel = async (username) => {
 const updateAdminDataModel = async ({id, data}) => {
     const updatedData = await prisma.admin.update({
         where:{
-            id: parseInt(id)
+            id: id
         },
         data: data
     });
@@ -37,7 +37,7 @@ const updateAdminDataModel = async ({id, data}) => {
 const deleteAdminModel = async (id) => {
     const deletedAdmin = await prisma.admin.delete({
         where: {
-            id: parseInt(id)
+            id: id
         }
     });
     return deletedAdmin;

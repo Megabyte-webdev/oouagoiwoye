@@ -1,7 +1,22 @@
 const multer = require('multer');
 const path = require('path');
+const RandomName = require('../helpers/randomNameGenerator');
 
-const storage = multer.memoryStorage();
+function getExt(file) {
+    const generate = new RandomName(file)
+    return generate.getFullFileName()
+};
+
+const storage = multer.diskStorage({
+    
+    destination: function (req, file, cb) {
+        cb(null, 'public/uploads')
+    },
+    filename: function (req, file, cb) {
+        cb(null, getExt(file));
+    }
+
+})
 
 const upload = multer({
     storage: storage,

@@ -30,7 +30,7 @@ const editSchoolFee = async (req, res, next) => {
 
         const updatedSchholFee = await prisma.schoolFee.update({
             where:{
-                id: parseInt(id)
+                id: id
             },
             data: data
         });
@@ -50,7 +50,7 @@ const deleteSchoolFee = async (req, res, next) => {
     try {
         const deletedSchoolFee = await prisma.schoolFee.delete({
             where: {
-                id: parseInt(id)
+                id: id
             }
         })
         res.status(200).json({
