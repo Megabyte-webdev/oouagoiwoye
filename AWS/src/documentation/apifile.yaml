@@ -1,0 +1,518 @@
+openapi: 3.0.3
+info:
+  title: OOU Web API Documentation
+  description: |-
+    Api doccumentation for OOU websitee.
+    
+    N.B: The base url **localhost:5000** is only for the development environment 
+    
+    Switch to production api base url for testing on aws  
+    
+  version: 1.0.0
+servers:
+- url: http://localhost:5000
+- url: http://oouwebapp.us-east-2.elasticbeanstalk.com
+paths:
+    /api/oouweb/campus:
+      post:
+        tags:
+        - Campus
+        summary: Create campus
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  location:
+                    type: string
+                  image:
+                    type: string
+                  campusInfo:
+                    type: string
+      get:
+        tags:
+        - Campus
+        summary: Get All campuses
+        description: ''
+        responses:
+          default:
+            description: Default response
+    /api/oouweb/campus/image/1:
+      patch:
+        tags:
+        - Campus
+        summary: Update Campus Image
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  image:
+                    type: string
+    /api/oouweb/campus/banner/1:
+      patch:
+        tags:
+        - Campus
+        summary: Updating Campus banner Video
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  bannerVideo:
+                    type: string
+    /api/oouweb/campus/data/1:
+      patch:
+        tags:
+        - Campus
+        summary: Updating  Campus data
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+    /api/oouweb/campus/contact/1:
+      patch:
+        tags:
+        - Campus
+        summary: Update Campus contact
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+    /api/oouweb/campus/faculty/1:
+      patch:
+        tags:
+        - Campus
+        summary: Creating Faculty in a Campus
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  image:
+                    type: string
+                  noOfDepartments:
+                    type: string
+                  body:
+                    type: string
+    /api/oouweb/campus/3:
+      delete:
+        tags:
+        - Campus
+        summary: Delete campus
+        description: ''
+        responses:
+          default:
+            description: Default response
+    /api/oouweb/faculty:
+      get:
+        tags:
+        - Faculty
+        summary: Fetch all faculty
+        description: ''
+        responses:
+          default:
+            description: Default response
+    /api/oouweb/faculty/data/1:
+      patch:
+        tags:
+        - Faculty
+        summary: Update Faculty Data
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+    /api/oouweb/faculty/image/1:
+      patch:
+        tags:
+        - Faculty
+        summary: Update Faculty Image
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  image:
+                    type: string
+    /api/oouweb/faculty/banner/1:
+      patch:
+        tags:
+        - Faculty
+        summary: Update Faculty Banner Image
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  bannerImage:
+                    type: string
+    /api/oouweb/faculty/dean/1:
+      patch:
+        tags:
+        - Faculty
+        summary: Update Dean Image
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  deanImage:
+                    type: string
+    /api/oouweb/faculty/contact/1:
+      patch:
+        tags:
+        - Faculty
+        summary: Update Faculty Contact
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+    /api/oouweb/faculty/lecturer/1:
+      patch:
+        tags:
+        - Faculty
+        summary: Add lecturer
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  designation:
+                    type: string
+                  image:
+                    type: string
+    /api/oouweb/faculty/department/1:
+      patch:
+        tags:
+        - Faculty
+        summary: Adding department
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  image:
+                    type: string
+                  body:
+                    type: string
+    /api/oouweb/faculty/2:
+      delete:
+        tags:
+        - Faculty
+        summary: Delete faculty
+        description: ''
+        responses:
+          default:
+            description: Default response
+    /api/oouweb/lecturer:
+      get:
+        tags:
+        - Lecturer
+        summary: Fetch lecturers
+        description: ''
+        responses:
+          default:
+            description: Default response
+    /api/oouweb/lecturer/data/2:
+      patch:
+        tags:
+        - Lecturer
+        summary: Edit lecturer data
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+    /api/oouweb/lecturer/image/2:
+      patch:
+        tags:
+        - Lecturer
+        summary: Edit Lecturer Image
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  image:
+                    type: string
+    /api/oouweb/lecturer/1:
+      delete:
+        tags:
+        - Lecturer
+        summary: Delete lecturer
+        description: ''
+        responses:
+          default:
+            description: Default response
+    /api/oouweb/department:
+      get:
+        tags:
+        - Department
+        summary: Fetch departments
+        description: ''
+        responses:
+          default:
+            description: Default response
+    /api/oouweb/department/data/2:
+      patch:
+        tags:
+        - Department
+        summary: Updating department data
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+    /api/oouweb/department/image/2:
+      patch:
+        tags:
+        - Department
+        summary: Updating Department image
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  image:
+                    type: string
+    /api/oouweb/department/4:
+      delete:
+        tags:
+        - Department
+        summary: Delete department
+        description: ''
+        responses:
+          default:
+            description: Default response
+    /api/oouweb/news:
+      post:
+        tags:
+        - News
+        summary: Uploading news
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  headline:
+                    type: string
+                  image:
+                    type: string
+                  body:
+                    type: string
+                  author:
+                    type: string
+      get:
+        tags:
+        - News
+        summary: Fetch news
+        description: ''
+        responses:
+          default:
+            description: Default response
+    /api/oouweb/news/1:
+      patch:
+        tags:
+        - News
+        summary: Updating news
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+    /api/oouweb/news/image/1:
+      patch:
+        tags:
+        - News
+        summary: Update News img
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  image:
+                    type: string
+    /api/oouweb/news/2:
+      delete:
+        tags:
+        - News
+        summary: Delete news
+        description: ''
+        responses:
+          default:
+            description: Default response
+    /api/oouweb/communities:
+      post:
+        tags:
+        - Community
+        summary: Create communities
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  image:
+                    type: string
+                  body:
+                    type: string
+      get:
+        tags:
+        - Community
+        summary: Fetch Communities
+        description: ''
+        responses:
+          default:
+            description: Default response
+    /api/oouweb/communities/data/1:
+      patch:
+        tags:
+        - Community
+        summary: Update Community Data
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+    /api/oouweb/communities/image/1:
+      patch:
+        tags:
+        - Community
+        summary: Update Community Image
+        description: ''
+        responses:
+          default:
+            description: Default response
+        requestBody:
+          content:
+            multipart/form-data:
+              schema:
+                type: object
+                properties:
+                  image:
+                    type: string
+    /api/oouweb/communities/1:
+      delete:
+        tags:
+        - Community
+        summary: Delete Community
+        description: ''
+        responses:
+          default:
+            description: Default response
+

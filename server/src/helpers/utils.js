@@ -11,11 +11,13 @@ const currencyFormatter = (amount) => {
     });
     return formatter.format(amount);
 }
+const BASE_URL = 'http://localhost:5000/uploads';
 
 module.exports ={
     bucketName,
     bucketLocation,
     accessKey,
     secretAccessKey,
-    currencyFormatter
+    currencyFormatter,
+    BASE_URL
 }

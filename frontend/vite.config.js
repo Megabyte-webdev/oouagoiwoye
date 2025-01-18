@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     port: 8020,
     proxy: {
-      "/api" : "http://oouwebapp.us-east-2.elasticbeanstalk.com"
+      "/api" : "https://oouagoiwoye.onrender.com"
     }
   }
 })

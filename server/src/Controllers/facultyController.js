@@ -1,29 +1,9 @@
 const prismaClient = require("@prisma/client");
-
+const deleteFile = require("../helpers/fileSystem");
 const prisma = new prismaClient.PrismaClient();
-const RandomName = require("../helpers/randomNameGenerator");
 const { currencyFormatter } = require("../helpers/utils");
 
-
-const { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand, S3 } = require("@aws-sdk/client-s3");
-const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
-
-
 const facultyDB = prisma.faculties;
-
-const bucketName = process.env.AWS_BUCKET_NAME;
-const bucketRegion = process.env.AWS_BUCKET_LOCATION;
-const accessKey = process.env.AWS_ACCESS_KEY;
-const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
-
-
-const client =  new S3Client({
-    region: bucketRegion,
-    credentials: {
-        accessKeyId: accessKey,
-        secretAccessKey: secretAccessKey
-    }
-})
 
 //fetch faculty
 const fetchFaculty = async (req, res, next) => {
@@ -36,66 +16,7 @@ const fetchFaculty = async (req, res, next) => {
                 // admissionReq: true,
                 // schoolFee: true
             }
-        }) 
-        //faculty for loop
-        for (const faculty of allFaculties){
-            if(faculty.image !== null ){
-                const command = new GetObjectCommand({
-                    Bucket: bucketName,
-                    Key: `web/faculty/${faculty.image}`
-                });
-                
-                const imgUrl = await getSignedUrl(client, command, { expiresIn: 3600 } )
-                faculty.image = imgUrl;
-            }
-
-            if(faculty.deanImage !== null){
-                const deanComd = new GetObjectCommand({
-                    Bucket: bucketName,
-                    Key: `web/faculty/${faculty.deanImage}`
-                })
-                
-                const deanUrl = await getSignedUrl(client, deanComd, { expiresIn: 3600 } )
-                
-                faculty.deanImage = deanUrl;
-            }
-
-            if (faculty.bannerImage  !== null) {
-                const bannercommand = new GetObjectCommand({
-                    Bucket: bucketName,
-                    Key: `web/faculty/${faculty.bannerImage}`
-                })
-                
-                const bannerUrl = await getSignedUrl(client, bannercommand, { expiresIn: 3600 } )
-                
-                faculty.bannerImage = bannerUrl;
-            }
-            
-            for(const lecturer of faculty.facultyLecturers){
-                if(faculty.facultyLecturers.length !== 0){
-                    const lecturerComd = new GetObjectCommand({
-                        Bucket: bucketName,
-                        Key: `web/lecturer/${lecturer.image}`
-                    })
-                    
-                    const lecturerUrl = await getSignedUrl(client, lecturerComd, { expiresIn: 3600 } )
-                    
-                    lecturer.image = lecturerUrl
-                }
-            }
-            for(const department of faculty.departments ){
-                if(faculty.departments.length !== 0){
-                    const departmentComd = new GetObjectCommand({
-                        Bucket: bucketName,
-                        Key: `web/department/${department.image}`
-                    })
-                    
-                    const url = await getSignedUrl(client, departmentComd, { expiresIn: 3600 } )
-                    
-                    department.image = url
-                }
-            }
-        }
+        })
        
         res.status(200).json({
             message: "Faculties data fetched successfully",
@@ -119,7 +40,7 @@ const updateFaculty = async (req, res, next) => {
     try {
         const newData = await facultyDB.update({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             },
             data
         });
@@ -136,39 +57,22 @@ const updateFaculty = async (req, res, next) => {
 const updateFacultyImage = async (req, res, next) => {
     const reqImg = req.file;
     try {
-        const GeneratedName = new RandomName(reqImg)
-        const imageName = GeneratedName.getFullFileName();
-
         const prevdata = await facultyDB.findUnique({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             }
         })
         const previmg = prevdata.image;
 
-        const deleteCommand = new DeleteObjectCommand({
-            Bucket: bucketName,
-            Key: `web/faculty/${previmg}`
-        })
-        await client.send(deleteCommand);
-
-        const updateCommand = new PutObjectCommand({
-            Bucket: bucketName,
-            Key: `web/faculty/${imageName}`,
-            Body: reqImg.buffer,
-            ContentType: reqImg.mimetype
-        })
-        await client.send(updateCommand);
-
         const newImage = await facultyDB.update({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             },
             data: {
-                image: imageName
+                image: reqImg?.filename
             }
         })
-       
+        deleteFile(`public/uploads/${previmg}`);
         res.status(200).json({
             message: "Image updated successfully",
             data: newImage
@@ -182,38 +86,22 @@ const updateFacultyImage = async (req, res, next) => {
 const upsertBannerimage = async (req, res, next) => {
     const reqBannerImg = req.file;
     try {
-        const GeneratedName = new RandomName(reqBannerImg)
-        const bannerName = GeneratedName.getFullFileName();
-
         const prevData = await facultyDB.findUnique({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             }
         })
         const prevBanner = prevData.bannerImage;
 
-        const deleteCommand = new DeleteObjectCommand({
-            Bucket: bucketName,
-            Key: `web/faculty/${prevBanner}`
-        })
-        await client.send(deleteCommand);
-
-        const updateCommand = new PutObjectCommand({
-            Bucket: bucketName,
-            Key: `web/faculty/${bannerName}`,
-            Body: reqBannerImg.buffer,
-            ContentType: reqBannerImg.mimetype
-        })
-        await client.send(updateCommand);
-
         const newBanner = await facultyDB.update({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             },
             data:{
-                bannerImage: bannerName
+                bannerImage: reqBannerImg?.filename
             }
         });
+        deleteFile(`public/uploads/${prevBanner}`)
         res.status(200).json({
             message: "successfully updated faculty banner",
             data: newBanner
@@ -225,43 +113,28 @@ const upsertBannerimage = async (req, res, next) => {
 }
 //update dean image
 const updateDeanImg = async (req, res, next) =>{
-    
+    const imageName = req.file;
     try {
-        const GeneratedName = new RandomName(req.file)
-        const imageName = GeneratedName.getFullFileName();
-
         const prevdata = await facultyDB.findUnique({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             }
         })
         const previmg = prevdata.deanImage;
 
-        if(previmg != null ){
-            const command = new DeleteObjectCommand({
-                Bucket: bucketName,
-                Key: `web/faculty/${previmg}`
-            });
-            await client.send(command);
-        }
-
-        const updateCommand = new PutObjectCommand({
-            Bucket: bucketName,
-            Key: `web/faculty/${imageName}`,
-            Body: req.file.buffer,
-            ContentType: req.file.mimetype
-        })
-        await client.send(updateCommand);
-
+        
         const newImage = await facultyDB.update({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             },
             data: {
-                deanImage: imageName
+                deanImage: imageName?.filename
             }
         })
         
+        if(previmg != null ){
+            deleteFile(`public/uploads/${previmg}`);
+        }
         res.status(200).json({
             message: "successfully updated dean's image",
             data: newImage
@@ -283,7 +156,7 @@ const UpdateFacultyContact = async (req, res, next) => {
         if(Object.keys(data).length === 0) res.status(400).json("No data to update");
         const updatedData = await facultyDB.update({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             },
             data: {
                 Contact: {
@@ -308,26 +181,16 @@ const createFacultyLecturers = async (req, res, next) => {
     const imageReq = req.file;
     
     try {
-        const GeneratedName = new RandomName(imageReq)
-        const imageName =GeneratedName.getFullFileName();
 
         const data = {};
         if(name) data.name = name;
         if(designation) data.designation = designation;
-        if(imageReq) data.image = imageName;
+        if(imageReq) data.image = imageReq?.filename;
         if(Object.keys(data).length === 0) res.status(400).json("No data to update");
-    
-        const comand = new PutObjectCommand({
-            Bucket: bucketName,
-            Key: `web/lecturer/${imageName}`,
-            Body: imageReq.buffer,
-            ContentType: imageReq.mimetype
-        })
-        await client.send(comand);
 
         const updated = await facultyDB.update({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             },
             data: {
                 facultyLecturers: {
@@ -352,26 +215,15 @@ const addDepartment = async (req, res, next) => {
     const {title, body} = req.body;
 
     try {
-        const GeneratedName = new RandomName(req.file);
-        const imageName = GeneratedName.getFullFileName();
-
-        const command = new PutObjectCommand({
-            Bucket: bucketName,
-            Key: `web/department/${imageName}`,
-            Body: req.file.buffer,
-            ContentType: req.file.mimetype
-        })
-        await client.send(command);
-
         const newDepartment = await facultyDB.update({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             },
             data:{
                 departments:{
                     create: {
                         title,
-                        image: imageName,
+                        image: req.file?.filename,
                         body
                     }
                 }
@@ -403,7 +255,7 @@ const createAdmissonRequirements = async (req, res, next) => {
 
         const newRequirements = await prisma.faculties.update({
             where: {
-                id: parseInt(id)
+                id: id
             },
             data: {
                 admissionReq: {
@@ -438,7 +290,7 @@ const creatScchoolFee = async (req, res, next) => {
         
         const newSchoolFees = await prisma.faculties.update({
             where: {
-                id: parseInt(id)
+                id: id
             },
             data: {
                 schoolFee: {
@@ -464,7 +316,7 @@ const deleteFaculties = async (req, res, next) => {
     try {
         const facultyData = await prisma.faculties.findUnique({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             },
             include:{
                 facultyLecturers: true,
@@ -476,21 +328,9 @@ const deleteFaculties = async (req, res, next) => {
         const facultyDeanImg = facultyData.deanImage;
         const facultyBanner = facultyData.bannerImage;
 
-        const delCommand = new DeleteObjectCommand({
-            Bucket: bucketName,
-            Key: `web/faculty/${facultyImg}`
-        })
-        const delCommand2 = new DeleteObjectCommand({
-            Bucket: bucketName,
-            Key: `web/faculty/${facultyDeanImg}`
-        })
-        const delCommand3 = new DeleteObjectCommand({
-            Bucket: bucketName,
-            Key: `web/faculty/${facultyBanner}`
-        })
-        client.send(delCommand);
-        client.send(delCommand2);
-        client.send(delCommand3);
+        facultyImg !== null ? deleteFile(`public/uploads/${facultyImg}`) : '';
+        facultyDeanImg !== null ? deleteFile(`public/uploads/${facultyDeanImg}`) : '';
+        facultyBanner !== null ? deleteFile(`public/uploads/${facultyBanner}`) : '';
 
         let departmentImages = [];
         let lecturerImages = [];
@@ -510,22 +350,13 @@ const deleteFaculties = async (req, res, next) => {
             
             for(const data of departmentImages){
                 if (data.image !== null) {
-                    const delDepCommand = new DeleteObjectCommand({
-                        Bucket: bucketName,
-                        Key: `web/department/${data.image}`
-                    }) 
-                    client.send(delDepCommand);
-                    
+                    data.image !== null ? deleteFile(`public/uploads/${data.image}`) : '';
                 }
             }
             for(const data of lecturerImages){
                 if (data.image !== null) {
-                    const delLecCommand = new DeleteObjectCommand({
-                        Bucket: bucketName,
-                        Key: `web/lecturer/${data.image}`
-                    }) 
-                    client.send(delLecCommand);
-                    
+                    data.image !== null ? deleteFile(`public/uploads/${data.image}`) : '';
+
                 }
             }
         }
@@ -533,7 +364,7 @@ const deleteFaculties = async (req, res, next) => {
 
         const deleteFaculty = await facultyDB.delete({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             }
         });
 

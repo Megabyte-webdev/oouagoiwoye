@@ -1,24 +1,8 @@
 const prismaClient = require("@prisma/client");
+const deleteFile = require("../helpers/fileSystem");
 const prisma = new prismaClient.PrismaClient();
-const RandomName =  require("../helpers/randomNameGenerator");
-
-const { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } = require("@aws-sdk/client-s3");
-const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 
 const newsDB = prisma.news;
-
-const bucketName = process.env.AWS_BUCKET_NAME;
-const bucketRegion = process.env.AWS_BUCKET_LOCATION;
-const accessKey = process.env.AWS_ACCESS_KEY;
-const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
-
-const Client = new S3Client({
-    region: bucketRegion,
-    credentials: {
-        accessKeyId: accessKey,
-        secretAccessKey: secretAccessKey
-    }
-})
 
 const createNews = async (req, res, next) => {
     const { headline, body, author } = req.body;
@@ -26,21 +10,10 @@ const createNews = async (req, res, next) => {
 
     
     try {
-        const randomImageName = new RandomName(reqImage)
-        const imageName = randomImageName.getFullFileName()
-
-        const command = new PutObjectCommand({
-            Bucket: bucketName,
-            Key: `web/news/${imageName}`,
-            Body: reqImage.buffer,
-            ContentType: reqImage.mimetype
-        })
-        await Client.send(command);
-
         const newNews = await newsDB.create({
             data:{
                 headline: headline,
-                image: imageName,
+                image: reqImage?.filename,
                 body: body,
                 author: author
             }
@@ -58,15 +31,6 @@ const fetchNews = async (req, res)=>{
     try {
         const News = await newsDB.findMany();
 
-        for(const news of News){
-            const command = new GetObjectCommand({
-                Bucket: bucketName,
-                Key: `web/news/${news.image}`
-            });
-            const url = await getSignedUrl(Client, command, { expiresIn: 3600 });
-            news.image = url
-        }
-
         res.status(200).json({
             message: "successfully fetched all news",
             data: News
@@ -74,7 +38,7 @@ const fetchNews = async (req, res)=>{
     } catch (error) {
         res.status(400).json("internal server error")
     }
-}
+};
 
 const updateNews = async (req, res)=>{
     const {headline, body, author} = req.body;
@@ -92,7 +56,7 @@ const updateNews = async (req, res)=>{
 
         const updatedData = await newsDB.update({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             },
             data: data
         })
@@ -109,40 +73,23 @@ const updateNews = async (req, res)=>{
 const updateNewsImage = async (req, res)=>{
     const reqImg = req.file
     try {
-        const randomImageName = new RandomName(reqImg)
-        const imageName = randomImageName.getFullFileName();
-        
         const news = await newsDB.findUnique({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             }
         })
         
         const prevImage = news.image;
         
-        const deleteCommand = new DeleteObjectCommand({
-            Bucket: bucketName,
-            Key: `web/news/${prevImage}`
-        });
-        await Client.send(deleteCommand);
-
-        const updateCommand = new PutObjectCommand({
-            Bucket: bucketName,
-            Key: `web/news/${imageName}`,
-            Body: reqImg.buffer,
-            ContentType: reqImg.mimetype
-        });
-        await Client.send(updateCommand);
-
         const updatedImage = await newsDB.update({
             where:{
-                id: parseInt(req.params.id)
+                id: req.params.id
             },
             data:{
-                image: imageName
+                image: reqImg?.filename
             }
         })
-
+        prevImage ? deleteFile(`public/uploads/${prevImage}`) : '';
         res.status(200).json({
             message: "News image successfully updated",
             data: updatedImage
@@ -157,23 +104,17 @@ const deleteNews = async (req, res, next) => {
     try {
         const prevNews = await newsDB.findUnique({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             }
         })
         const prevImage = prevNews.image;
     
         const deletedNews = await newsDB.delete({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             }
         });
-    
-        const deleteCommand = new DeleteObjectCommand({
-            Bucket: bucketName,
-            Key: `web/news/${prevImage}`
-        })
-        await Client.send(deleteCommand);
-    
+        prevImage !== null ? deleteFile(`public/uploads/${prevImage}`) : '';
         res.status(200).json({
             message: "successfully deleted news",
             data: deletedNews

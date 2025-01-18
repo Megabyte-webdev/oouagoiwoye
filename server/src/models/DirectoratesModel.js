@@ -23,7 +23,7 @@ const FetchDirectoratesModel = async () => {
 const FetchDirectoratesByIdModel = async (id) => {
     const reqData = prisma.directorates.findUnique({
         where: {
-            id: parseInt(id)
+            id: id
         }
     });
     return reqData;

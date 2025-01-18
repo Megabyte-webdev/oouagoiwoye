@@ -45,7 +45,7 @@ const fetchSingleFaq = async (req, res, next) => {
     try {
         const faq = await faqsDB.findUnique({
             where: {
-                id: parseInt(id)
+                id: id
             }
         });
 
@@ -80,7 +80,7 @@ const updateFaq = async (req, res) => {
 
         const updatedData = await faqsDB.update({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             },
             data: data
         })
@@ -100,7 +100,7 @@ const deleteFaq = async (req, res, next) => {
     try {
         const deletedFaq = await faqsDB.delete({
             where: {
-                id: parseInt(req.params.id)
+                id: req.params.id
             }
         });
 

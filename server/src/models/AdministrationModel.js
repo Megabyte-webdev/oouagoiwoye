@@ -20,18 +20,16 @@ const fetchAllAdminMembersModel = async () => {
 }
 
 const fetchAdminMemberByIdModel = async (id) => {
-    const newId = parseInt(id)
     const member = await prisma.administration.findUnique({
-        where: {id: newId}
+        where: {id: id}
     })
     return member
 }
 
 const updateAdminImageModel = async ({id, image}) => {
-    const parsedId = parseInt(id);
     const updateImage = await prisma.administration.update({
         where: {
-            id: parsedId
+            id: id
         },
         data: {
             image: image
@@ -44,11 +42,8 @@ const updateAdminImageModel = async ({id, image}) => {
 }
 
 const updateAdministrationDataModel = async ({id, data}) => {
-    const newId = parseInt(id)
     const adminData = await prisma.administration.update({
-        where: {
-            id: newId
-        },
+        where: {id},
         data: data
     })
     return adminData;

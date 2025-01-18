@@ -74,8 +74,8 @@ const updateAdminDetails = async (req, res, next) => {
 
         if(username) data.username = username;
         if (password) data.password = bcrypt.hashSync(password, 10);
-
-        const updatedAccount = await updateAdminDataModel({id: parseInt(id), data: data});
+        if(Object.keys(data).length === 0) res.status(400).json('No data to update');
+        const updatedAccount = await updateAdminDataModel({id, data: data});
 
         res.status(200).json({
             message: "Updated details successfully",
@@ -89,7 +89,7 @@ const updateAdminDetails = async (req, res, next) => {
 const deleteAdminDetails = async (req, res, next) => {
     const { id } = req.params;
 
-    const deletedAccount = await deleteAdminModel(parseInt(id));
+    const deletedAccount = await deleteAdminModel(id);
 
     res.status(200).json({
         message: "Deleted Account Sucessfully",
