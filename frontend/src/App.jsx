@@ -27,6 +27,7 @@ const Admissions = lazy(() => import('./Pages/admissions/Admissions'));
 const Admission = lazy(() => import('./Pages/admissions/Admission'));
 
 function App() {
+
   return (
     <BrowserRouter>
       {/* Move Suspense to wrap NavBar, Routes, and Footer */}
