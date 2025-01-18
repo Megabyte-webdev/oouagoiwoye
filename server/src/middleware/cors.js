@@ -1,4 +1,4 @@
-const whiteList = ["localhost:8020", "localhost:5000"];
+const whiteList = ["http://localhost:8020", "http://localhost:5000"];
 
 const corsOption = {
     origin:(origin, cb) => {
