@@ -1,30 +1,121 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "../../AxiosInstance/axiosinstance";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import API from '../../src/utils/axiosinstance'; 
 
-// Thunks for API actions
-export const fetchCampuses = createAsyncThunk("campus/fetch", async () => {
-  const response = await axios.get("/campus");
-  return response.data.data;
-});
+// Create campus
+export const createCampus = createAsyncThunk(
+  'campus/createCampus',
+  async (formData, { rejectWithValue }) => {
+    try {
+      const response = await API.post('/', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
-export const createCampus = createAsyncThunk("campus/create", async (formData) => {
-  const response = await axios.post("/campus", formData);
-  return response.data.data;
-});
+// Fetch all campuses
+export const fetchCampus = createAsyncThunk(
+  'campus/fetchCampus',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await API.get('/');
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
-export const deleteCampus = createAsyncThunk("campus/delete", async (id) => {
-  await axios.delete(`/campus/${id}`);
-  return id;
-});
+// Update campus contact
+export const updateCampusContact = createAsyncThunk(
+  'campus/updateCampusContact',
+  async ({ id, data }, { rejectWithValue }) => {
+    try {
+      const response = await API.patch(`/contact/${id}`, data);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
-export const updateCampus = createAsyncThunk("campus/update", async ({ id, data }) => {
-  const response = await axios.patch(`/campus/data/${id}`, data);
-  return response.data.data;
-});
+// Update campus image
+export const updateCampusImage = createAsyncThunk(
+  'campus/updateCampusImage',
+  async ({ id, formData }, { rejectWithValue }) => {
+    try {
+      const response = await API.patch(`/image/${id}`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
-// Slice
+// Upsert campus banner video
+export const upsertCampusBannerVideo = createAsyncThunk(
+  'campus/upsertCampusBannerVideo',
+  async ({ id, formData }, { rejectWithValue }) => {
+    try {
+      const response = await API.patch(`/banner/${id}`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+// Update campus data
+export const updateCampusData = createAsyncThunk(
+  'campus/updateCampusData',
+  async ({ id, data }, { rejectWithValue }) => {
+    try {
+      const response = await API.patch(`/data/${id}`, data);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+// Create faculty
+export const createFaculty = createAsyncThunk(
+  'campus/createFaculty',
+  async ({ id, formData }, { rejectWithValue }) => {
+    try {
+      const response = await API.patch(`/faculty/${id}`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+// Delete campus
+export const deleteCampus = createAsyncThunk(
+  'campus/deleteCampus',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await API.delete(`/${id}`);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+// Campus slice
 const campusSlice = createSlice({
-  name: "campus",
+  name: 'campus',
   initialState: {
     campuses: [],
     loading: false,
@@ -33,28 +124,65 @@ const campusSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCampuses.pending, (state) => {
+      .addCase(createCampus.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
-      .addCase(fetchCampuses.fulfilled, (state, action) => {
+      .addCase(createCampus.fulfilled, (state, action) => {
+        state.loading = false;
+        state.campuses.push(action.payload);
+      })
+      .addCase(createCampus.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchCampus.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchCampus.fulfilled, (state, action) => {
         state.loading = false;
         state.campuses = action.payload;
       })
-      .addCase(fetchCampuses.rejected, (state, action) => {
+      .addCase(fetchCampus.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
-      .addCase(createCampus.fulfilled, (state, action) => {
-        state.campuses.push(action.payload);
+      .addCase(updateCampusContact.fulfilled, (state, action) => {
+        const index = state.campuses.findIndex((campus) => campus.id === action.meta.arg.id);
+        if (index !== -1) {
+          state.campuses[index] = { ...state.campuses[index], ...action.payload };
+        }
+      })
+      .addCase(updateCampusImage.fulfilled, (state, action) => {
+        const index = state.campuses.findIndex((campus) => campus.id === action.meta.arg.id);
+        if (index !== -1) {
+          state.campuses[index] = { ...state.campuses[index], ...action.payload };
+        }
+      })
+      .addCase(upsertCampusBannerVideo.fulfilled, (state, action) => {
+        const index = state.campuses.findIndex((campus) => campus.id === action.meta.arg.id);
+        if (index !== -1) {
+          state.campuses[index] = { ...state.campuses[index], ...action.payload };
+        }
+      })
+      .addCase(updateCampusData.fulfilled, (state, action) => {
+        const index = state.campuses.findIndex((campus) => campus.id === action.meta.arg.id);
+        if (index !== -1) {
+          state.campuses[index] = { ...state.campuses[index], ...action.payload };
+        }
+      })
+      .addCase(createFaculty.fulfilled, (state, action) => {
+        const index = state.campuses.findIndex((campus) => campus.id === action.meta.arg.id);
+        if (index !== -1) {
+          if (!state.campuses[index].faculties) {
+            state.campuses[index].faculties = [];
+          }
+          state.campuses[index].faculties.push(action.payload);
+        }
       })
       .addCase(deleteCampus.fulfilled, (state, action) => {
-        state.campuses = state.campuses.filter((campus) => campus.id !== action.payload);
-      })
-      .addCase(updateCampus.fulfilled, (state, action) => {
-        const index = state.campuses.findIndex((campus) => campus.id === action.payload.id);
-        if (index !== -1) {
-          state.campuses[index] = action.payload;
-        }
+        state.campuses = state.campuses.filter((campus) => campus.id !== action.meta.arg);
       });
   },
 });

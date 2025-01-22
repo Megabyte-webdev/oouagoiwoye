@@ -1,16 +1,19 @@
 import notifications from '../briefs.json'
+
 const Notifications = () => {
   return (
-    notifications.map((item, index) => {
-      return(
-        <>
-          <a href="" className="px-5"><li key={index}>{item.notification}</li></a>
-        </>
-      )
-       
-    })
+    <>
+      {notifications.map((item) => (
+        <li key={item.id}>
+          <a href="" className="px-5">
+            {item.notification}
+          </a>
+        </li>
+      ))}
+    </>
   )
 };
+
 
 export default Notifications;
 
