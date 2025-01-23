@@ -1,4 +1,4 @@
-const whiteList = [""];
+const whiteList = ["http://localhost:8020", "http://localhost:5000", "https://oouagoiwoye.onrender.com"];
 
 const corsOption = {
     origin:(origin, cb) => {

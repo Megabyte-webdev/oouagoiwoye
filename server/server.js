@@ -18,6 +18,7 @@ app.use(cookieParser());
 app.use(cors(corsOption));
 app.use(express.json());
 app.use(express.static('public'));
+app.options('*', cors(corsOption))
 
 
 
