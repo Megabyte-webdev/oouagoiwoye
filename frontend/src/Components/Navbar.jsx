@@ -13,8 +13,10 @@ import LoginDeskTop from './Nav/LoginDeskTop';
 import { NavContext } from './Nav/useContext';
 import Faculty from './Nav/Faculty';
 
+
+
 const Navbar = () => {
-  const {menu, setMenu, setAbout, setAdministration, setAdmission, setServices, setLogin}=useContext(NavContext);
+  const { menu, setMenu, setAbout, setAdministration, setAdmission, setServices, setLogin } = useContext(NavContext);
   const [isScrolled, setIsScrolled] = useState(false);
   const nav = useRef();
 
@@ -67,16 +69,28 @@ const Navbar = () => {
             className={`relative h-max ${menu ? 'max-lg:block max-lg:min-h-screen max-lg:overflow-y-auto' : 'max-lg:hidden'} max-lg:w-full`}
           >
             <ul className="gap-3 lg:gap-5 flex items-center font-bold max-lg:flex-col max-lg:bg-white max-lg:text-[#010035] max-lg:gap-y-1 max-lg:absolute max-lg:top-[75px] max-lg:w-full max-lg:py-8 max-lg:items-start">
+
               <li className="xl:px-2 max-lg:px-8 max-lg:border-b-2 max-lg:w-full max-lg:pb-6">
-                <NavLink to="/">
+                <NavLink
+                  to="/"
+                  onClick={() => {
+                    setMenu(false);
+                    setAbout(false);
+                    setAdministration(false);
+                    setAdmission(false);
+                    setServices(false);
+                    setLogin(false);
+                  }}
+                >
                   <div className="max-lg:w-full max-lg:flex max-lg:gap-2 max-lg:items-center">
                     <div className="lg:hidden">
                       <FaAsterisk />
                     </div>
-                    <Link to="/" onClick={()=>{setMenu(false); setAbout(false); setAdministration(false); setAdmission(false); setServices(false); setLogin(false)}}>Home</Link>
+                    Home
                   </div>
                 </NavLink>
               </li>
+
               <About />
               <Administration />
               <Faculty />

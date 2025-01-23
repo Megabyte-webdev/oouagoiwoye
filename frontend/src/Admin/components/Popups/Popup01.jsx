@@ -1,72 +1,168 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaTimes } from 'react-icons/fa';
+import SuccessModal from '../../Auth/SuccessModal'; // Assuming this is the success modal component.
 
-import { FaTimes } from "react-icons/fa";
+export default function Popup01({ close, id }) {
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [currentPage, setCurrentPage] = useState(1); 
 
-export default function Popup01({close, id}) {
+  const handleFormSubmit = (e, formType) => {
+    e.preventDefault();
+    // Simulated form submission logic
+    if (formType === 'details') {
+      setSuccessMessage('Campus details updated successfully!');
+    } else if (formType === 'image') {
+      setSuccessMessage('Campus image updated successfully!');
+    } else if (formType === 'contact') {
+      setSuccessMessage('Campus contact updated successfully!');
+    } else if (formType === 'location') {
+      setSuccessMessage('Campus location updated successfully!');
+    } else {
+      setErrorMessage('An error occurred while updating the campus.');
+      return;
+    }
+    setShowSuccess(true);
+  };
+
   return (
-    <div className='w-full h-full absolute top-0 left-0 bg-white bg-opacity-80 backdrop-blur-md' onClick={close}>
-        <FaTimes className='absolute top-10 right-10 text-3xl' />
-		<h1 className='text-center text-deep mt-5 text-3xl font-semibold'>Update Campus</h1>
-        <div className='w-full p-10 grid grid-cols-2 gap-7 mx-auto '>
-            <div className='w-full h-full overflow-auto'>
-				<form action="" className='w-full font-sans p-5 shadow-xl rounded-lg'>
-					<p className='font-semibold text-xl text-center mb-5'>Update Campus Details</p>
-					<div className='flex flex-row items-center font-semibold my-2'>
-						<label htmlFor="title" className='mr-3 w-2/12'>Title:</label>
-						<input type="text" name='title' placeholder='Enter campus title' className='border-thin shadow-md focus:outline-none p-1 rounded-md w-9/12'/>
-					</div>
-					<div className='flex flex-row items-center font-semibold my-2'>
-						<label htmlFor="campusInfo" className='mr-3 w-2/12'>campus History:</label>
-						<input type="text" name='campusInfo' id='campusInfo' placeholder='Enter campus information' className='border-thin shadow-md focus:outline-none p-1 rounded-md w-9/12'/>
-					</div>
-					<button className='p-1 px-5 w-10/12 my-5 hover:shadow-xl bg-orange-500 text-white rounded-md flex flex-row items-center justify-center mx-auto'>Update </button>
-				</form>
+    <div
+      className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50"
+      onClick={close}
+    >
+      <div
+        className="bg-white p-6 rounded-lg shadow-lg max-w-3xl w-full relative"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <FaTimes
+          className="absolute top-4 right-4 text-2xl text-gray-500 cursor-pointer hover:text-gray-800"
+          onClick={close}
+        />
+        <h2 className="text-2xl font-bold mb-6 text-center">Update Campus</h2>
 
-				<form action="" encType='multipart/form-data' className='w-full font-sans p-5 shadow-xl rounded-lg mt-5'>
-					<p className='font-semibold text-xl text-center mb-5'>Update Campus image</p>
-					<div className='flex flex-row items-center font-semibold my-2'>
-						<label htmlFor="image" className='mr-3 w-2/12'>Image:</label>
-						<input type="file" name='image' className='border-thin shadow-md focus:outline-none p-1 rounded-md w-9/12'/>
-					</div>
-					<button className='p-1 px-5 w-10/12 my-5 hover:shadow-xl bg-orange-500 text-white rounded-md flex flex-row items-center justify-center mx-auto'>Update </button>
-				</form>
+        {/* Page 1: Campus Details and Image */}
+        {currentPage === 1 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Form 1: Update Campus Details */}
+            <form className="space-y-4" onSubmit={(e) => handleFormSubmit(e, 'details')}>
+              <h3 className="text-lg font-semibold">Update Campus Details</h3>
+              <div>
+                <label className="block font-medium mb-1">Title:</label>
+                <input
+                  type="text"
+                  placeholder="Enter campus title"
+                  className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-orange-500"
+                />
+              </div>
+              <div>
+                <label className="block font-medium mb-1">History:</label>
+                <input
+                  type="text"
+                  placeholder="Enter campus history"
+                  className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none"
+                />
+              </div>
+              <button className="w-full bg-orange-500 text-white font-bold py-2 rounded-lg hover:bg-orange-600">
+                Update Details
+              </button>
+            </form>
 
-				
-			</div>
+            {/* Form 2: Update Campus Image */}
+            <form className="space-y-4" onSubmit={(e) => handleFormSubmit(e, 'image')}>
+              <h3 className="text-lg font-semibold">Update Campus Image</h3>
+              <div>
+                <label className="block font-medium mb-1">Image:</label>
+                <input
+                  type="file"
+                  className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none"
+                />
+              </div>
+              <button className="w-full bg-orange-500 text-white font-bold py-2 rounded-lg hover:bg-orange-600">
+                Update Image
+              </button>
+            </form>
 
-			<div className='col-span-1' >
-				<form action="" className='w-full font-sans p-5 shadow-xl rounded-lg'>
-					<p className='font-semibold text-xl text-center mb-5'>Update Campus Contact</p>
-					<div className='flex flex-row items-center font-semibold my-2'>
-						<label htmlFor="whatsapp" className='mr-3 w-2/12'>whatasapp:</label>
-						<input type="text" name='whatsapp' placeholder='Enter whatsapp link' className='border-thin shadow-md focus:outline-none p-1 rounded-md w-9/12'/>
-					</div>
-					<div className='flex flex-row items-center font-semibold my-2'>
-						<label htmlFor="facebook" className='mr-3 w-2/12'>Facebook:</label>
-						<input type="text" name='facebook' id='facebook' placeholder='Enter facebook link here' className='border-thin shadow-md focus:outline-none p-1 rounded-md w-9/12'/>
-					</div>
-					<div className='flex flex-row items-center font-semibold my-2'>
-						<label htmlFor="youtube" className='mr-3 w-2/12'>Youtube:</label>
-						<input type="text" name='youtube' id='youtube' placeholder='Enter youtube link here' className='border-thin shadow-md focus:outline-none p-1 rounded-md w-9/12'/>
-					</div>
-					<button className='p-1 px-5 w-10/12 my-5 hover:shadow-xl bg-orange-500 text-white rounded-md flex flex-row items-center justify-center mx-auto'>Update </button>
-				</form>
+            {/* Next Button */}
+            <div className="col-span-2 text-center mt-6">
+              <button
+                onClick={() => setCurrentPage(2)}
+                className="bg-blue-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-600"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )}
 
-				<form action="" className='w-full font-sans p-5 shadow-xl rounded-lg'>
-					<p className='font-semibold text-xl text-center mb-5'>Create Faculty in Campus</p>
-					<div className='flex flex-row items-center font-semibold my-2'>
-						<label htmlFor="title" className='mr-3 w-2/12'>Title:</label>
-						<input type="text" name='title' placeholder='Enter campus title' className='border-thin shadow-md focus:outline-none p-1 rounded-md w-9/12'/>
-					</div>
-					<div className='flex flex-row items-center font-semibold my-2'>
-						<label htmlFor="campusInfo" className='mr-3 w-2/12'>campus History:</label>
-						<input type="text" name='campusInfo' id='campusInfo' placeholder='Enter campus information' className='border-thin shadow-md focus:outline-none p-1 rounded-md w-9/12'/>
-					</div>
-					<button className='p-1 px-5 w-10/12 my-5 hover:shadow-xl bg-orange-500 text-white rounded-md flex flex-row items-center justify-center mx-auto'>Update </button>
-				</form>
-			</div>
-        </div>
-        
+        {/* Page 2: Campus Contact and Location */}
+        {currentPage === 2 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Form 3: Update Campus Contact */}
+            <form className="space-y-4" onSubmit={(e) => handleFormSubmit(e, 'contact')}>
+              <h3 className="text-lg font-semibold">Update Campus Contact</h3>
+              <div>
+                <label className="block font-medium mb-1">Contact Email:</label>
+                <input
+                  type="email"
+                  placeholder="Enter campus contact email"
+                  className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-orange-500"
+                />
+              </div>
+              <div>
+                <label className="block font-medium mb-1">Contact Phone:</label>
+                <input
+                  type="tel"
+                  placeholder="Enter campus contact phone"
+                  className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none"
+                />
+              </div>
+              <button className="w-full bg-orange-500 text-white font-bold py-2 rounded-lg hover:bg-orange-600">
+                Update Contact
+              </button>
+            </form>
+
+            {/* Form 4: Update Campus Location */}
+            <form className="space-y-4" onSubmit={(e) => handleFormSubmit(e, 'location')}>
+              <h3 className="text-lg font-semibold">Update Campus Location</h3>
+              <div>
+                <label className="block font-medium mb-1">Location:</label>
+                <input
+                  type="text"
+                  placeholder="Enter campus location"
+                  className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-orange-500"
+                />
+              </div>
+              <button className="w-full bg-orange-500 text-white font-bold py-2 rounded-lg hover:bg-orange-600">
+                Update Location
+              </button>
+            </form>
+
+            {/* Previous Button */}
+            <div className="col-span-2 text-center mt-6">
+              <button
+                onClick={() => setCurrentPage(1)}
+                className="bg-gray-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-600"
+              >
+                Previous
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Success Modal */}
+        {showSuccess && (
+          <SuccessModal
+            message={successMessage}
+            closeModal={() => setShowSuccess(false)}
+          />
+        )}
+
+        {/* Error Handling */}
+        {errorMessage && (
+          <div className="text-red-500 font-semibold mt-4 text-center">{errorMessage}</div>
+        )}
+      </div>
     </div>
-  )
+  );
 }
