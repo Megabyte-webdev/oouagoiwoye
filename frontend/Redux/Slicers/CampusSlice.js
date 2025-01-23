@@ -21,7 +21,7 @@ export const fetchCampus = createAsyncThunk(
   'campus/fetchCampus',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await API.get('/');
+      const response = await API.get('/campus');
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -34,7 +34,7 @@ export const updateCampusContact = createAsyncThunk(
   'campus/updateCampusContact',
   async ({ id, data }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/contact/${id}`, data);
+      const response = await API.patch(`/campus/contact/${id}`, data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -47,7 +47,7 @@ export const updateCampusImage = createAsyncThunk(
   'campus/updateCampusImage',
   async ({ id, formData }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/image/${id}`, formData, {
+      const response = await API.patch(`/campus/image/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return response.data;
@@ -62,7 +62,7 @@ export const upsertCampusBannerVideo = createAsyncThunk(
   'campus/upsertCampusBannerVideo',
   async ({ id, formData }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/banner/${id}`, formData, {
+      const response = await API.patch(`/campus/banner/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return response.data;
@@ -77,7 +77,7 @@ export const updateCampusData = createAsyncThunk(
   'campus/updateCampusData',
   async ({ id, data }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/data/${id}`, data);
+      const response = await API.patch(`/campus/data/${id}`, data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -90,7 +90,7 @@ export const createFaculty = createAsyncThunk(
   'campus/createFaculty',
   async ({ id, formData }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/faculty/${id}`, formData, {
+      const response = await API.patch(`/campus/faculty/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return response.data;
@@ -105,7 +105,7 @@ export const deleteCampus = createAsyncThunk(
   'campus/deleteCampus',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await API.delete(`/${id}`);
+      const response = await API.delete(`/campus/${id}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

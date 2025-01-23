@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 const ProtectedRoute = () => {
   const authToken = Cookies.get("authToken");
 
-  console.log("AuthToken:", authToken); // Debugging: Check if the token exists
+  console.log("AuthToken:", authToken); 
 
   if (!authToken) {
     console.log("Redirecting to login...");

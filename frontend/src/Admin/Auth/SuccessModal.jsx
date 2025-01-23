@@ -1,17 +1,15 @@
 import React from "react";
 import { Modal } from "antd";
 
-const SuccessModal = ({ isVisible, onClose }) => {
+const SuccessModal = ({ isVisible, message, onClose }) => {
   return (
     <Modal
-      title="Login Successful"
+      title="Notification"
       open={isVisible}
-      onOk={onClose}
       onCancel={onClose}
       footer={null}
-      
     >
-      <p className="text-gray-600">You have logged in successfully! 🎉</p>
+      <p className="text-gray-600">{message}</p>
     </Modal>
   );
 };

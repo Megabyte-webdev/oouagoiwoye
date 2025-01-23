@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import API from '../api'; // Import your Axios instance
+import API from '../../src/utils/axiosinstance';
 
 // Create a program in continuous education
 export const createProgram = createAsyncThunk(
   'continuousEducation/createProgram',
   async (formData, { rejectWithValue }) => {
     try {
-      const response = await API.post('/', formData, {
+      const response = await API.post('/ceducation', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return response.data;
@@ -21,7 +21,7 @@ export const fetchAllPrograms = createAsyncThunk(
   'continuousEducation/fetchAllPrograms',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await API.get('/');
+      const response = await API.get('/ceducation');
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -34,7 +34,7 @@ export const updateCEdata = createAsyncThunk(
   'continuousEducation/updateCEdata',
   async ({ id, data }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/data/${id}`, data);
+      const response = await API.patch(`/ceducation/data/${id}`, data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -47,7 +47,7 @@ export const updateCEImage = createAsyncThunk(
   'continuousEducation/updateCEImage',
   async ({ id, formData }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/image/${id}`, formData, {
+      const response = await API.patch(`/ceducation/image/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return response.data;
@@ -62,7 +62,7 @@ export const deleteCE = createAsyncThunk(
   'continuousEducation/deleteCE',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await API.delete(`/${id}`);
+      const response = await API.delete(`/ceducation/${id}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

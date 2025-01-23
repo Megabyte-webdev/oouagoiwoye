@@ -6,7 +6,7 @@ export const fetchDirectorates = createAsyncThunk(
   'directorates/fetchDirectorates',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await API.get('/');
+      const response = await API.get('/directorates');
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -19,7 +19,7 @@ export const createDirectorateMember = createAsyncThunk(
   'directorates/createDirectorateMember',
   async (formData, { rejectWithValue }) => {
     try {
-      const response = await API.post('/', formData, {
+      const response = await API.post('/directorates', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return response.data;
@@ -34,7 +34,7 @@ export const updateDirectoratesImage = createAsyncThunk(
   'directorates/updateDirectoratesImage',
   async ({ id, formData }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/image/${id}`, formData, {
+      const response = await API.patch(`/directorates/image/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return response.data;
@@ -49,7 +49,7 @@ export const updateDirectoratesData = createAsyncThunk(
   'directorates/updateDirectoratesData',
   async ({ id, data }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/data/${id}`, data);
+      const response = await API.patch(`/directorates/data/${id}`, data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -62,7 +62,7 @@ export const deleteDirectoratesData = createAsyncThunk(
   'directorates/deleteDirectoratesData',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await API.delete(`/${id}`);
+      const response = await API.delete(`/directorates/${id}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

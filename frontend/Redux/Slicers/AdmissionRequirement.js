@@ -6,7 +6,7 @@ export const fetchAllRequirements = createAsyncThunk(
   'admissionRequirements/fetchAllRequirements',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await API.get('/');
+      const response = await API.get('/admission');
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -19,7 +19,7 @@ export const updateRequirement = createAsyncThunk(
   'admissionRequirements/updateRequirement',
   async ({ id, data }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/${id}`, data);
+      const response = await API.patch(`/admission/${id}`, data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -32,7 +32,7 @@ export const deleteRequirement = createAsyncThunk(
   'admissionRequirements/deleteRequirement',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await API.delete(`/${id}`);
+      const response = await API.delete(`/admission/${id}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

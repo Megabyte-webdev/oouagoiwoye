@@ -6,7 +6,7 @@ export const createMember = createAsyncThunk(
   'administration/createMember',
   async (formData, { rejectWithValue }) => {
     try {
-      const response = await API.post('/', formData, {
+      const response = await API.post('/administration', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return response.data;
@@ -21,7 +21,7 @@ export const fetchAllMembers = createAsyncThunk(
   'administration/fetchAllMembers',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await API.get('/');
+      const response = await API.get('/administration');
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -34,7 +34,7 @@ export const updateAdminImage = createAsyncThunk(
   'administration/updateAdminImage',
   async ({ id, formData }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/image/${id}`, formData, {
+      const response = await API.patch(`/administration/image/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return response.data;
@@ -49,7 +49,7 @@ export const updateAdminData = createAsyncThunk(
   'administration/updateAdminData',
   async ({ id, data }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/data/${id}`, data);
+      const response = await API.patch(`/administration/data/${id}`, data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -62,7 +62,7 @@ export const updateAdminResponsibilities = createAsyncThunk(
   'administration/updateAdminResponsibilities',
   async ({ id, data }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/responsibilities/${id}`, data);
+      const response = await API.patch(`/administration/responsibilities/${id}`, data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -75,7 +75,7 @@ export const updateAdminContact = createAsyncThunk(
   'administration/updateAdminContact',
   async ({ id, data }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/contact/${id}`, data);
+      const response = await API.patch(`/administration/contact/${id}`, data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -88,7 +88,7 @@ export const deleteAdminMember = createAsyncThunk(
   'administration/deleteAdminMember',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await API.delete(`/${id}`);
+      const response = await API.delete(`/administration/${id}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

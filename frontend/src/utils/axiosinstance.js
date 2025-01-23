@@ -6,7 +6,7 @@ const API = axios.create({
   withCredentials: true,  
 });
 
-// Add an interceptor to include the authToken in headers for all requests
+
 API.interceptors.request.use(
   (config) => {
     const authToken = document.cookie

@@ -4,6 +4,7 @@ import React, { Suspense, lazy } from 'react';
 import './App.css';
 import FallbackComponent from './utils/FallbackComponent';
 import ProtectedRoute from './utils/ProtectRoutes';
+import PopupCampusDetails from './Admin/components/Popups/CampusDetailsPopup';
 // import Login from '../src/Admin/Auth/Login';
 
 // Lazy loaded components
@@ -58,9 +59,11 @@ function App() {
           <Route path="/admin/auth" element={<Login />} />
 
           {/* Protected admin routes */}
-          <Route path="/admin-ict/*" element={<ProtectedRoute />}>
+          <Route path="/admin-ict/oouagoiwoye-9g4c4h8sh" element={<AdminDash />} />
+          
+          {/* <Route path="/admin-ict/*" element= {<ProtectedRoute />}>
             <Route path="oouagoiwoye-9g4c4h8sh" element={<AdminDash />} />
-          </Route>
+          </Route> */}
           {/* Admmissions routes */}
           <Route path="/admissions" element={<Admissions />} />
           <Route path="/admissions/:id" element={<Admission />} />

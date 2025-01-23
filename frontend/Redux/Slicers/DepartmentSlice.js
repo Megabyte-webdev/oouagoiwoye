@@ -6,7 +6,7 @@ export const fetchAllDepartments = createAsyncThunk(
   'department/fetchAllDepartments',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await API.get('/');
+      const response = await API.get('/department');
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -19,7 +19,7 @@ export const editDepartment = createAsyncThunk(
   'department/editDepartment',
   async ({ id, data }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/data/${id}`, data);
+      const response = await API.patch(`/department/data/${id}`, data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -32,7 +32,7 @@ export const editDepartmentImage = createAsyncThunk(
   'department/editDepartmentImage',
   async ({ id, formData }, { rejectWithValue }) => {
     try {
-      const response = await API.patch(`/image/${id}`, formData, {
+      const response = await API.patch(`/department/image/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return response.data;
@@ -47,7 +47,7 @@ export const deleteDepartment = createAsyncThunk(
   'department/deleteDepartment',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await API.delete(`/${id}`);
+      const response = await API.delete(`/department/${id}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
