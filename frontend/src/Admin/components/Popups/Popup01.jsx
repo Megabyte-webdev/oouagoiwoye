@@ -6,7 +6,7 @@ export default function Popup01({ close, id }) {
   const [showSuccess, setShowSuccess] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [currentPage, setCurrentPage] = useState(1); // To manage which page is being shown
+  const [currentPage, setCurrentPage] = useState(1); 
 
   const handleFormSubmit = (e, formType) => {
     e.preventDefault();
