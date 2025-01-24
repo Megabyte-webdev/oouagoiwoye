@@ -9,6 +9,7 @@ import { Breadcrumbs } from '@mui/material';
 import assets from '../../assets/assets';
 import { IoLogoWhatsapp } from 'react-icons/io5';
 import { FaAsterisk, FaFacebookSquare, FaYoutube } from 'react-icons/fa';
+import { MetaHelmet } from '../../Components/PageAttributes';
 
 const AAdministration = () => {
     const { id } = useParams()
@@ -33,7 +34,7 @@ const AAdministration = () => {
             Administration
         </p>,
         <a className='text-slate-500 cursor-pointer text-xs lg:text-base' key={2} onClick={handleClick} >
-            Principal Officers
+            Admin
         </a>,
         <p key={3} className='text-blue-500 text-xs lg:text-base' >
             {data?.title}
@@ -41,8 +42,11 @@ const AAdministration = () => {
     ];
 
     return (
-        data &&
+        <>
+        <MetaHelmet title={data?.title || "Admin"} />
+        {data &&
         <div className='w-full h-auto lg:min-h-[calc(100vh-150.39px)] font-sans pb-5'>
+        
             <div className='p-2 px-4 bg-white'>
                 {/* breadcrumbs */}
                 <Stack spacing={1}>
@@ -110,7 +114,8 @@ const AAdministration = () => {
                 </div>
 
             </div>
-        </div>
+        </div>}
+        </>
     )
 }
 

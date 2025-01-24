@@ -11,6 +11,7 @@ import { Breadcrumbs } from '@mui/material';
 
 import {admissionData} from "../../Data/admission"
 
+import { MetaHelmet } from '../../Components/PageAttributes';
 
 export default function Admissions() {
     // console.log(admissionData.items)
@@ -29,6 +30,8 @@ export default function Admissions() {
       ];
 
   return (
+    <>
+    <MetaHelmet title="Admission" />
     <div className='w-full h-auto lg:h-auto lg:min-h-screen px-2'>
         <div className='p-2 px-4 bg-white'>
             {/* breadcrumbs */}
@@ -73,5 +76,6 @@ export default function Admissions() {
             ))}
         </div>
     </div>
+    </>
   )
 }

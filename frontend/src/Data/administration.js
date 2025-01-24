@@ -31,7 +31,7 @@ const principalData = [
         title: "University Libarian",
         name: "Dr. Adebambo Adewale Oduwole.",
         href: "main-campus",
-        image: assets.imaage,
+        image: assets.facilty_img,
         video: "",
         biography: "Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research, and community engagement. Over the past few years, we have nurtured leaders across a multitude of disciplines through our diverse programs. Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research, and community engagement. Over the past few years, we have nurtured leaders across a multitude of disciplines through our diverse programs.",
         roles: [
@@ -53,7 +53,7 @@ const principalData = [
         title: "University Bursar",
         name: "Mr. Olufemi Stephen Sowunmi.",
         href: "main-campus",
-        image: assets.imaage,
+        image: assets.faculty,
         video: "",
         biography: "Mr Sowunmi, a distinguished Fellow of the Institute of Chartered Accountants of Nigeria, brings with him a wealth of experience and an impressive educational background.",
         roles: [
@@ -80,7 +80,7 @@ const adminData = [
         title: "Pro-Chancellor",
         name: "Prof. AGBOOLA, Ayodeji Olayinka Johnson.",
         href: "",
-        image: assets.imaage,
+        image: assets.Group21,
         video: "",
         biography: "Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research, and community engagement. Over the past few years, we have nurtured leaders across a multitude of disciplines through our diverse programs. Olabisi Onabanjo University is a prominent institution committed to excellence in teaching, learning, research, and community engagement. Over the past few years, we have nurtured leaders across a multitude of disciplines through our diverse programs.",
         roles: [

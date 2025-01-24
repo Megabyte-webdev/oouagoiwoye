@@ -9,6 +9,7 @@ import CustomButton from "../../Components/CustomButton"
 import { useNavigate } from 'react-router-dom';
 
 import DirectoratesData from "../../Data/DirectoratesData"
+import { MetaHelmet } from "../../Components/PageAttributes";
 
 const Directorates = () => {
     const navigate = useNavigate()
@@ -26,6 +27,9 @@ const Directorates = () => {
     ];
 
   return (
+    <>
+    <MetaHelmet title="Directorates" />
+
     <div className='w-full h-auto lg:h-auto lg:min-h-screen px-2'>
         <div className='p-2 px-0 bg-white'>
             {/* breadcrumbs */}
@@ -71,6 +75,7 @@ const Directorates = () => {
             ))}
         </div>
     </div>
+    </>
   )
 }
 

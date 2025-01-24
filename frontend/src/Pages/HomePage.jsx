@@ -10,12 +10,15 @@ import testimonyData from "../Data/testimonial.json"
 import VideoComponent from "../Components/VideoComponent";
 import {communityData} from "../Data/communities.js" 
 import PhotoGallery from "../Components/PhotoGallery";
-
+import { MetaHelmet } from '../../Components/PageAttributes';
 
 
 
 const HomePage = () => {
   return (
+    <>
+    <MetaHelmet title="Home" />
+
     <div className="">
       <Hero />
       <ViceChancellor />
@@ -31,6 +34,7 @@ const HomePage = () => {
       <Tour />
       <CardComponent address="services/community" data={communityData} />
     </div>
+    </>
   );
 };
 

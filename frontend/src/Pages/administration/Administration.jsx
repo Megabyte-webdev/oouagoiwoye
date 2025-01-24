@@ -11,6 +11,7 @@ import { Breadcrumbs } from '@mui/material';
 import { adminData } from "../../Data/administration";
 import CustomButton from '../../Components/CustomButton';
 import { useNavigate } from 'react-router-dom';
+import { MetaHelmet } from '../../Components/PageAttributes';
 
 const Administration = () => {
 
@@ -30,6 +31,7 @@ const Administration = () => {
 
   return (
     <div className='w-full h-auto lg:min-h-[calc(100vh-150.39px)] font-sans'>
+    <MetaHelmet title="Administrations" />
         <div className='p-2 px-4 bg-white'>
             {/* breadcrumbs */}
             <Stack spacing={1}>

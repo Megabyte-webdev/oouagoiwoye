@@ -15,7 +15,9 @@ import { FaSearch } from 'react-icons/fa';
 import { facultyRequirements, feeRequirements } from '../../Data/facultyRequirements'
 import { postgraduateData } from '../../Data/postgraduate'
 
+
 import FAQ from './FAQ'
+import { MetaHelmet } from "../../Components/PageAttributes";
 const columns = [
     { header: "S/N", field: "serialNo" },
     { header: "Course/Program", field: "course" },
@@ -86,7 +88,9 @@ export default function Admission() {
     ];
 
     return (
-        admissions && (
+        <>
+        <MetaHelmet title={admissions.title || "Admissions"} />
+       { admissions && (
             <div className="w-full h-auto md:min-h-screen px-4">
                 <div className="p-2 px-2 bg-white">
                     <Stack spacing={1}>
@@ -225,6 +229,7 @@ export default function Admission() {
                     </div>
                 </div>
             </div>
-        )
+        )}
+        </>
     );
 }

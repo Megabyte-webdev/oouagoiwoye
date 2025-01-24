@@ -8,6 +8,7 @@ const SuccessModal = ({ isVisible, message, onClose }) => {
       open={isVisible}
       onCancel={onClose}
       footer={null}
+      className="text-red-100"
     >
       <p className="text-gray-600">{message}</p>
     </Modal>

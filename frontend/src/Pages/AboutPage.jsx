@@ -3,10 +3,14 @@ import About from '../Components/About'
 import ViceChancellor from '../Components/ViceChancellor'
 import Statements from '../Components/Statements'
 import assets from '../assets/assets'
+import { MetaHelmet } from "../Components/PageAttributes";
+
 const AboutPage = () => {
   return (
-
+    <>
+    <MetaHelmet title="About" />
     <div className="bg-gray-100 text-gray-900 py-12">
+
       {/* Hero Section */}
       <section style={{ "backgroundImage": `url(${assets.faculty})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }} className="bg-center min-h-80 flex items-center justify-center bg-blue-900 p-5">
         <div className="bg-black bg-opacity-50 text-center text-white py-10 px-6 rounded-md min-h-28">
@@ -113,6 +117,7 @@ const AboutPage = () => {
 </section>
 
     </div>
+    </>
   )
 }
 
