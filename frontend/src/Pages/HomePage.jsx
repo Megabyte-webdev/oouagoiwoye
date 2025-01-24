@@ -10,7 +10,7 @@ import testimonyData from "../Data/testimonial.json"
 import VideoComponent from "../Components/VideoComponent";
 import {communityData} from "../Data/communities.js" 
 import PhotoGallery from "../Components/PhotoGallery";
-import { MetaHelmet } from '../../Components/PageAttributes';
+import { MetaHelmet } from '../Components/PageAttributes';
 
 
 
