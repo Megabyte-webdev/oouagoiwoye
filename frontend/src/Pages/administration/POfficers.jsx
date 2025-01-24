@@ -9,6 +9,7 @@ import { Breadcrumbs } from '@mui/material';
 import assets from '../../assets/assets';
 import { IoLogoWhatsapp } from 'react-icons/io5';
 import { FaAsterisk, FaFacebookSquare, FaYoutube } from 'react-icons/fa';
+import { MetaHelmet } from '../../Components/PageAttributes';
 
 const POfficers = () => {
     const {id} = useParams()
@@ -42,7 +43,9 @@ const POfficers = () => {
       ];
       
   return (
-    data &&
+    <>
+    <MetaHelmet title={data?.title || "Principal Officer"} />
+    {data &&
     <div className='w-full h-auto lg:min-h-[calc(100vh-150.39px)] font-sans'>
         <div className='p-2 px-4 bg-white'>
             {/* breadcrumbs */}
@@ -114,7 +117,8 @@ const POfficers = () => {
             </div>
             
         </div>
-    </div>
+    </div>}
+    </>
   )
 }
 

@@ -6,7 +6,7 @@ import { useContext } from 'react';
 
 const Login = () => {
 
-    const { setAbout, setAdministration, setAdmission, setServices,setFaculty, login, setLogin } = useContext(NavContext);
+    const { setMenu, setAbout, setAdministration, login, setAdmission, setServices, setFaculty, setLogin } = useContext(NavContext);
 
     const toggleBtn = () => {
         setAbout(false);
@@ -16,6 +16,7 @@ const Login = () => {
         setServices(false);
         setLogin(!login);
     };
+
     return (
         <div className='lg:hidden max-lg:w-full max-lg:block '>
             <li className={`group xl:px-1 px-3.5 flex flex-col items-center relative max-lg:items-start max-lg:px-0 max-lg:w-full`}>
