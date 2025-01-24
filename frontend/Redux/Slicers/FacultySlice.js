@@ -43,8 +43,8 @@ export const updateFacultyImage = createAsyncThunk(
 );
 
 // Upsert faculty banner image
-export const upsertBannerImage = createAsyncThunk(
-  'faculty/upsertBannerImage',
+export const updateBannerImage = createAsyncThunk(
+  'faculty/updateBannerImage',
   async ({ id, formData }, { rejectWithValue }) => {
     try {
       const response = await API.patch(`/faculty/banner/${id}`, formData, {

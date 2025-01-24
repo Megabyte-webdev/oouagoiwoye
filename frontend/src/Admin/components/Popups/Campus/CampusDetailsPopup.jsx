@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 
-export default function PopupCampusDetails({ campus, close }) {
-  if (!campus) {
+// Use campus instead of details once the backend is available
+export default function PopupCampusDetails({ details, close }) {
+  if (!details) {
     return null; 
   }
 
@@ -31,27 +32,27 @@ export default function PopupCampusDetails({ campus, close }) {
         <div className="space-y-4">
           <div>
             <h3 className="text-lg font-semibold text-gray-700">Campus Title:</h3>
-            <p className="text-gray-600">{campus.title || 'No title available'}</p>
+            <p className="text-gray-600">{details.title || 'No title available'}</p>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold text-gray-700">History:</h3>
-            <p className="text-gray-600">{campus.history || 'No history provided'}</p>
+            <p className="text-gray-600">{details.history || 'No history provided'}</p>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold text-gray-700">Location:</h3>
-            <p className="text-gray-600">{campus.location || 'No location specified'}</p>
+            <p className="text-gray-600">{details.location || 'No location specified'}</p>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold text-gray-700">Contact Email:</h3>
-            <p className="text-gray-600">{campus.contactEmail || 'Not available'}</p>
+            <p className="text-gray-600">{details.contactEmail || 'Not available'}</p>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold text-gray-700">Contact Phone:</h3>
-            <p className="text-gray-600">{campus.contactPhone || 'Not available'}</p>
+            <p className="text-gray-600">{details.contactPhone || 'Not available'}</p>
           </div>
         </div>
 

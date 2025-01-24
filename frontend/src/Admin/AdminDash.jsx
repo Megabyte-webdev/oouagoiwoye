@@ -12,7 +12,7 @@ import { GiTeacher } from "react-icons/gi";
 //components
 import Dashboard from "./components/Dashboard";
 import Campuses from "./components/campus/Campuses";
-import Faculty from "./components/Faculty";
+import Faculty from "./components/Faculty/Faculty";
 import Administration from "./components/Administration";
 import Facility from "./components/Facility";
 import Issues from "./components/Issues";

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { CiEdit } from 'react-icons/ci';
 import { BsTrashFill } from 'react-icons/bs';
-import Popup01 from '../Popups/Popup01';
-import PopupCampusDetails from '../Popups/CampusDetailsPopup'; 
+import Popup01 from '../Popups/Campus/Popup01';
+import PopupCampusDetails from '../Popups/Campus/CampusDetailsPopup'; 
 import { EyeFilled } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -19,6 +19,26 @@ export default function Campuses() {
 
   const dispatch = useDispatch();
   const campuses = useSelector((state) => state?.campus?.campuses || []); 
+
+  // Dummy data for testing
+  const dummyCampuses = [
+    {
+      id: 1,
+      title: 'Main Campus',
+      faculties: 'Engineering, Business',
+      location: 'City A',
+      history: 'Established in 1990',
+      image: 'https://via.placeholder.com/150',
+    },
+    {
+      id: 2,
+      title: 'North Campus',
+      faculties: 'Arts, Science',
+      location: 'City B',
+      history: 'Established in 2005',
+      image: 'https://via.placeholder.com/150',
+    },
+  ];
 
   useEffect(() => {
     try {
@@ -40,7 +60,8 @@ export default function Campuses() {
   };
 
   const handleDetailsPopupOpen = (campusId) => {
-    const campus = campuses.find((camp) => camp.id === campusId);
+    // const campus = campuses.find((camp) => camp.id === campusId);
+    const campus = dummyCampuses.find((camp) => camp.id === campusId); 
     if (campus) {
       setCampusDetails(campus);
       setDetailsPop(true);
@@ -65,7 +86,7 @@ export default function Campuses() {
   return (
     <div className="container mx-auto p-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
+
         {/* Create Campus Form */}
         <div className="bg-white shadow-lg rounded-lg p-6">
           <h2 className="text-xl font-bold mb-4 text-center">Create Campus</h2>
@@ -147,8 +168,10 @@ export default function Campuses() {
               <span className="col-span-1 text-center">Details</span>
               <span className="col-span-4 text-center">Actions</span>
             </div>
-            {campuses.length > 0 ? (
-              campuses.map((campus, index) => (
+            {/* {campuses.length > 0 ? ( */}
+            {dummyCampuses.length > 0 ? (
+              // campuses.map((campus, index) => (
+                dummyCampuses.map((campus, index) => (
                 <div
                   key={campus?.id || index}
                   className="grid grid-cols-12 gap-4 bg-gray-100 p-3 rounded-md hover:bg-gray-300"

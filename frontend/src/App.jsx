@@ -4,7 +4,7 @@ import React, { Suspense, lazy } from 'react';
 import './App.css';
 import FallbackComponent from './utils/FallbackComponent';
 import ProtectedRoute from './utils/ProtectRoutes';
-import PopupCampusDetails from './Admin/components/Popups/CampusDetailsPopup';
+import PopupCampusDetails from './Admin/components/Popups/Campus/CampusDetailsPopup';
 // import Login from '../src/Admin/Auth/Login';
 
 // Lazy loaded components
