@@ -101,13 +101,12 @@ const POfficers = () => {
                     </div>
                 </div>
             </div>
-            <div className='w-full lg:col-span-2 md:col-span-1 order-first lg:order-last text-center'>
-                <div className='bg-blue-600 mx-auto w-3/5 h-auto lg:h-2/3 relative my-3 overflow-hidden'>
-                    <div className='bg-yellow-400 w-4/5 lg:w-4/5 h-3/5 lg:h-3/5 absolute top-0 left-0 '></div>
-                        <figure className=' relative overflow-hidden m-3'>
-                            <img src={assets.imaage} className='w-full h-full'/>
-                        </figure>
-                </div> 
+                                       <div className='bg-blue-600 relative w-1/3 lg:w-2/12 h-auto flex items-center justify-center'>
+                                <div className='bg-yellow-400 w-20 lg:w-40 h-16 lg:h-36 absolute top-0 left-0 '></div>
+                                <figure className='m-1 lg:m-3 relative'>
+                                    <img src={assets.imaage} />
+                                </figure>
+                            </div>
                 <h2 className=' text-neutral-700 font-bold text-xl w-2/3 mx-auto'>
                     {data?.name}
                 </h2>
