@@ -6,15 +6,17 @@ import { FaCaretDown, FaCaretUp } from 'react-icons/fa';
 
 const LoginDeskTop = () => {
 
-    const { setAbout, setAdministration, setAdmission, setServices, login, setLogin } = useContext(NavContext);
+    const { setMenu, setAbout, setAdministration, login, setAdmission, setServices, setFaculty, setLogin } = useContext(NavContext);
 
     const toggleBtn = () => {
         setAbout(false);
         setAdministration(false);
         setAdmission(false);
+        setFaculty(false);
         setServices(false);
         setLogin(!login);
     };
+
     return (
         <div className=' relative max-lg:hidden'>
             <button className='bg-[#0B35A2] px-4 py-2 rounded-sm shadow-3xl shadow-[goldenrod] shadow-[7px_7px] pointer w-full flex items-center gap-3' onClick={toggleBtn}>Login Here

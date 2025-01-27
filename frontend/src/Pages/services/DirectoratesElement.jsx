@@ -16,6 +16,7 @@ import SliderComponent from '../../Components/SliderComponent';
 import { facultyData } from '../../Data/faculty';
 import { communityData } from '../../Data/communities';
 import { availableCoursesData } from '../../Data/availableCourses';
+import { MetaHelmet } from "../../Components/PageAttributes";
 
 const DirectoratesElement = () => {
     const { id } = useParams()
@@ -46,7 +47,9 @@ const DirectoratesElement = () => {
     ];
 
     return (
-        data &&
+        <>
+        <MetaHelmet title={data?.title || "Directorate"} />
+        {data &&
         <div className='w-full h-auto lg:h-auto lg:min-h-screen px-2'>
             <div className='p-2 px-4 bg-white'>
                 {/* breadcrumbs */}
@@ -142,7 +145,9 @@ const DirectoratesElement = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>}
+
+        </>
     )
 }
 

@@ -10,6 +10,7 @@ import assets from "../../assets/assets";
 import { communityData } from "../../Data/communities";
 import { departmentData } from "../../Data/departments";
 import { data } from "../../Data/news";
+import { MetaHelmet } from "../../Components/PageAttributes";
 
 export default function Faculty() {
     const { id } = useParams();
@@ -74,7 +75,10 @@ export default function Faculty() {
     ];
 
     return (
-        faculty && (
+        <>
+        <MetaHelmet title={faculty?.title || "Faculty"} />
+
+            {faculty && (
             <div className="w-full h-auto md:min-h-screen px-2">
                 <div className="p-2 px-4 bg-white">
                     {/* Breadcrumbs */}
@@ -132,19 +136,19 @@ export default function Faculty() {
                 </div>
                 <div className="mx-3 my-3">
                     <h2 className="capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8">All Departments</h2>
-                   {departmentData?.find(item => item?.faculty.toLowerCase() === id)?
-                    <SliderComponent design="department" data={departmentData?.filter(item => item?.faculty.toLowerCase() === id)} />
-                    :<div className="flex justify-center items-center mt-10 min-h-80 bg-gray-100">
-                        <div className="text-gray-800 text-xl">No data Available for now</div>
-                    </div>}
+                    {departmentData?.find(item => item?.faculty.toLowerCase() === id) ?
+                        <SliderComponent design="department" data={departmentData?.filter(item => item?.faculty.toLowerCase() === id)} />
+                        : <div className="flex justify-center items-center mt-10 min-h-80 bg-gray-100">
+                            <div className="text-gray-800 text-xl">No data Available for now</div>
+                        </div>}
                 </div>
                 <div className="mx-3 my-3">
                     <h2 className="capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8">Faculty Lecturers</h2>
-                    {lecturerData.items?.find(item => item?.faculty.toLowerCase() === id)?
+                    {lecturerData.items?.find(item => item?.faculty.toLowerCase() === id) ?
                         <SliderComponent design="lecturer" data={lecturerData.items.filter(item => item?.faculty.toLowerCase() === id)} />
-                        :<div className="flex justify-center items-center mt-10 min-h-80 bg-gray-100">
-                        <div className="text-gray-800 text-xl">No data Available for now</div>
-                    </div>}
+                        : <div className="flex justify-center items-center mt-10 min-h-80 bg-gray-100">
+                            <div className="text-gray-800 text-xl">No data Available for now</div>
+                        </div>}
                 </div>
                 <div className="mx-3 my-3">
                     <h2 className="capitalize text-blue-900 font-bold text-xl md:text-2xl lg:text-3xl my-8">Associations/Communities in the Faculty</h2>
@@ -155,6 +159,7 @@ export default function Faculty() {
                     <SliderComponent address="news" btnDesc="Read More" data={data.items} />
                 </div>
             </div>
-        )
+            )}
+        </>
     );
 }

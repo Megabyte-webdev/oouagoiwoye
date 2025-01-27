@@ -3,6 +3,9 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
 import './App.css';
 import FallbackComponent from './utils/FallbackComponent';
+import ProtectedRoute from './utils/ProtectRoutes';
+import PopupCampusDetails from './Admin/components/Popups/CampusDetailsPopup';
+// import Login from '../src/Admin/Auth/Login';
 
 // Lazy loaded components
 const NavBar = lazy(() => import('./Components/Nav/useContext'));
@@ -25,8 +28,10 @@ const DirectoratesElement = lazy(() => import('./Pages/services/DirectoratesElem
 const NoPageFound = lazy(() => import('./Pages/NoPageFound'));
 const Admissions = lazy(() => import('./Pages/admissions/Admissions'));
 const Admission = lazy(() => import('./Pages/admissions/Admission'));
+const Login = lazy(() => import('../src/Admin/Auth/Login'));
 
 function App() {
+
   return (
     <BrowserRouter>
       {/* Move Suspense to wrap NavBar, Routes, and Footer */}
@@ -49,13 +54,21 @@ function App() {
           <Route path="/services/continuing/:id" element={<ContinuingEducationElement />} />
           <Route path="/services/directorate" element={<Directorates />} />
           <Route path="/services/directorate/:id" element={<DirectoratesElement />} />
+
           {/* Admin CMS routes */}
-          <Route path="/*" element={<NoPageFound />} />
+          <Route path="/admin/auth" element={<Login />} />
+
+          {/* Protected admin routes */}
           <Route path="/admin-ict/oouagoiwoye-9g4c4h8sh" element={<AdminDash />} />
-        {/* Admmissions routes */}
-        <Route path="/admissions" element={<Admissions />} />
-        <Route path="/admissions/:id" element={<Admission />} />
-  
+          
+          {/* <Route path="/admin-ict/*" element= {<ProtectedRoute />}>
+            <Route path="oouagoiwoye-9g4c4h8sh" element={<AdminDash />} />
+          </Route> */}
+          {/* Admmissions routes */}
+          <Route path="/admissions" element={<Admissions />} />
+          <Route path="/admissions/:id" element={<Admission />} />
+
+          <Route path="/*" element={<NoPageFound />} />
         </Routes>
         <Footer />
       </Suspense>

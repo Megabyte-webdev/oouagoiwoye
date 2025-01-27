@@ -1,53 +1,191 @@
-import React from 'react'
-import { FaPlus } from "react-icons/fa";
-import { CiEdit } from "react-icons/ci";
-import { BsTrashFill } from "react-icons/bs";
+import React, { useState, useEffect } from 'react';
+import { FaPlus } from 'react-icons/fa';
+import { CiEdit } from 'react-icons/ci';
+import { BsTrashFill } from 'react-icons/bs';
 import Popup01 from '../Popups/Popup01';
+import PopupCampusDetails from '../Popups/CampusDetailsPopup'; 
+import { EyeFilled } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  fetchCampus,
+  deleteCampus,
+} from '../../../../Redux/Slicers/CampusSlice';
+
 export default function Campuses() {
-  const [pop, setPop] = React.useState(false);
-  const [id, setId] = React.useState(null);
-  const handleClick = () => setPop(!pop);
+  const [pop, setPop] = useState(false);
+  const [detailsPop, setDetailsPop] = useState(false);
+  const [id, setId] = useState(null);
+  const [campusDetails, setCampusDetails] = useState(null);
+
+  const dispatch = useDispatch();
+  const campuses = useSelector((state) => state?.campus?.campuses || []); 
+
+  useEffect(() => {
+    try {
+      // Fetch all campuses when the component is mounted
+      dispatch(fetchCampus());
+    } catch (error) {
+      console.error('Error fetching campuses:', error); 
+    }
+  }, [dispatch]);
+
+  const handlePopupOpen = (campusId) => {
+    setId(campusId);
+    setPop(true);
+  };
+
+  const handlePopupClose = () => {
+    setPop(false);
+    setId(null);
+  };
+
+  const handleDetailsPopupOpen = (campusId) => {
+    const campus = campuses.find((camp) => camp.id === campusId);
+    if (campus) {
+      setCampusDetails(campus);
+      setDetailsPop(true);
+    } else {
+      console.warn(`Campus with ID ${campusId} not found.`);
+    }
+  };
+
+  const handleDetailsPopupClose = () => {
+    setDetailsPop(false);
+    setCampusDetails(null);
+  };
+
+  const handleDeleteCampus = (campusId) => {
+    try {
+      dispatch(deleteCampus(campusId));
+    } catch (error) {
+      console.error(`Error deleting campus with ID ${campusId}:`, error);
+    }
+  };
+
   return (
-    <div className='w-full h-full grid grid-cols-2 gap-7'>
-        <div className='flex flex-col justify-center items-center font-sans rounded-md p-5 shadow-xl border-thin'>
-            <p className='font-semibold text-2xl mb-3'>Create Campus</p>
-            <form action="" encType='multipart/form-data' className='w-full font-sans p-5'>
-                <div className='flex flex-row items-center font-semibold my-2'>
-                    <label htmlFor="title" className='mr-3 w-2/12'>Title:</label>
-                    <input type="text" name='title' placeholder='Enter campus title' className='border-thin shadow-md focus:outline-none p-1 rounded-md w-9/12'/>
-                </div>
-                <div className='flex flex-row items-center font-semibold my-2'>
-                    <label htmlFor="image" className='mr-3 w-2/12'>Image:</label>
-                    <input type="file" name='image' className='border-thin shadow-md focus:outline-none p-1 rounded-md w-9/12'/>
-                </div>
-                <div className='flex flex-row items-center font-semibold my-2'>
-                    <label htmlFor="campusInfo" className='mr-3 w-2/12'>campus History:</label>
-                    <input type="text" name='campusInfo' id='campusInfo' placeholder='Enter campus information' className='border-thin shadow-md focus:outline-none p-1 rounded-md w-9/12'/>
-                </div>
-                <button className='p-1 px-5 w-10/12 my-5 hover:shadow-xl bg-orange-500 text-white rounded-md flex flex-row items-center justify-center mx-auto'>Create <FaPlus className='ml-2 text-base text-white font-bold' /></button>
-            </form>
-        </div>
-        <div className=' flex flex-col justify-center items-center font-sans'>
-            <p className='font-semibold text-2xl my-3'>Campus list</p>
-            <div className='w-full h-full'>
-                <div className='w-full grid grid-cols-12 gap-4 font-semibold bg-bgBlue text-white p-2'>
-                    <span className=' col-span-1'>No.</span>
-                    <span className=' col-span-4 text-center'>campus</span>
-                    <span className=' col-span-3 text-center'>Faculties</span>
-                    <span className=' col-span-4 text-center' >Actions</span>
-                </div>
-                <div className='w-full grid grid-cols-12 gap-4 text-black hover:bg-blue-600 duration-500 hover:text-white p-2'>
-                    <span className='col-span-1 py-2 text-center'>1.</span>
-                    <span className='col-span-4 py-2 text-center'>Main Campus</span>
-                    <span className='col-span-3 py-2 text-center'>10</span>
-                    <div className='col-span-4 flex flex-row items-center justify-around'>
-                            <CiEdit className='text-4xl bg-white text-deep cursor-pointer hover:text-deep rounded-full p-2' onClick={() =>{ setPop(true); setId("")}}/>
-                            <BsTrashFill className='text-4xl bg-white text-red-600 cursor-pointer hover:text-red-600 rounded-full p-2'/>
-                    </div>
-                </div>
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        {/* Create Campus Form */}
+        <div className="bg-white shadow-lg rounded-lg p-6">
+          <h2 className="text-xl font-bold mb-4 text-center">Create Campus</h2>
+          <form
+            action=""
+            encType="multipart/form-data"
+            className="space-y-4"
+            onSubmit={(e) => e.preventDefault()}
+          >
+            {/* Title */}
+            <div>
+              <label htmlFor="title" className="block font-medium mb-1">
+                Title:
+              </label>
+              <input
+                type="text"
+                name="title"
+                placeholder="Enter campus title"
+                className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-orange-500"
+              />
             </div>
+
+            {/* Image */}
+            <div>
+              <label htmlFor="image" className="block font-medium mb-1">
+                Image:
+              </label>
+              <input
+                type="file"
+                name="image"
+                className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none"
+              />
+            </div>
+
+            {/* Campus History */}
+            <div>
+              <label htmlFor="campusInfo" className="block font-medium mb-1">
+                Campus History:
+              </label>
+              <input
+                type="text"
+                name="campusInfo"
+                placeholder="Enter campus information"
+                className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-orange-500"
+              />
+            </div>
+
+            {/* Location */}
+            <div>
+              <label htmlFor="campusLocation" className="block font-medium mb-1">
+                Location:
+              </label>
+              <input
+                type="text"
+                name="campusLocation"
+                placeholder="Enter campus location"
+                className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-orange-500"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full bg-orange-500 text-white font-bold py-2 rounded-lg flex items-center justify-center hover:bg-orange-600"
+            >
+              Create <FaPlus className="ml-2" />
+            </button>
+          </form>
         </div>
-        {pop ? <Popup01 close={handleClick} id={id}/> : null}
+
+        {/* Campus List */}
+        <div className="bg-white shadow-lg rounded-lg p-6">
+          <h2 className="text-xl font-bold mb-4 text-center">Campus List</h2>
+          <div className="space-y-2">
+            <div className="grid grid-cols-12 gap-4 font-semibold bg-gray-200 p-3 rounded-md">
+              <span className="col-span-1 text-center">No.</span>
+              <span className="col-span-2 text-center">Campus</span>
+              <span className="col-span-3 text-center">Faculties</span>
+              <span className="col-span-1 text-center">Details</span>
+              <span className="col-span-4 text-center">Actions</span>
+            </div>
+            {campuses.length > 0 ? (
+              campuses.map((campus, index) => (
+                <div
+                  key={campus?.id || index}
+                  className="grid grid-cols-12 gap-4 bg-gray-100 p-3 rounded-md hover:bg-gray-300"
+                >
+                  <span className="col-span-1 text-center">{index + 1}.</span>
+                  <span className="col-span-4 text-center">{campus?.title || 'N/A'}</span>
+                  <span className="col-span-3 text-center">{campus?.faculties || 'N/A'}</span>
+                  <div className="col-span-4 flex justify-around items-center">
+                    <CiEdit
+                      className="text-xl text-blue-500 cursor-pointer hover:scale-110"
+                      onClick={() => handlePopupOpen(campus?.id)}
+                    />
+                    <EyeFilled
+                      className="text-xl text-blue-500 cursor-pointer hover:scale-110"
+                      onClick={() => handleDetailsPopupOpen(campus?.id)}
+                    />
+                    <BsTrashFill
+                      className="text-xl text-red-500 cursor-pointer hover:scale-110"
+                      onClick={() => handleDeleteCampus(campus?.id)}
+                    />
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="text-center text-gray-500">No campuses available</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Popups */}
+      {pop && id && (
+        <Popup01 close={handlePopupClose} id={id} />
+      )}
+      {detailsPop && campusDetails && (
+        <PopupCampusDetails close={handleDetailsPopupClose} details={campusDetails} />
+      )}
     </div>
-  )
+  );
 }

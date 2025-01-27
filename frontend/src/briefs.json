@@ -1,11 +1,19 @@
 [
     {
-        "notification":  "Check out our newly accredited Departments"    
-    },{
-        "notification":  "Post Utme form is out"    
-    },{
-        "notification":  "Inauguration program coming up on 13th of december 2024"    
-    },{
-        "notification":  "Admission list is out"
+      "id": 1,
+      "notification": "Check out our newly accredited Departments"
+    },
+    {
+      "id": 2,
+      "notification": "Post Utme form is out"
+    },
+    {
+      "id": 3,
+      "notification": "Inauguration program coming up on 13th of December 2024"
+    },
+    {
+      "id": 4,
+      "notification": "Admission list is out"
     }
-]
+  ]
+  
