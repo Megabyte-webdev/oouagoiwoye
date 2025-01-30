@@ -40,7 +40,7 @@ const loginAdmin = async (req, res, next) => {
 
         res
         .status(200)
-        .cookie("authToken", token, { httpOnly: true, secure: true })
+        .cookie("authToken", token, { httpOnly: true })
         .json("Login Successfully");
     } catch (error) {
         next(error);

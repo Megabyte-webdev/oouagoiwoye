@@ -10,19 +10,19 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 
 model admin {
-  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  id        String     @id @default(cuid()) @unique
   username  String      @unique
   password  String?
 }
 
 model campus{
-  id              String     @id @default(auto()) @map("_id") @db.ObjectId
+  id              String     @id @default(cuid()) @unique
   title           String
   location        String
   image           String?
@@ -33,8 +33,8 @@ model campus{
 }
 
 model Faculties {
-  id                  String      @id @default(auto()) @map("_id") @db.ObjectId
-  campusId            String      @db.ObjectId
+  id                  String      @id @default(cuid()) @unique
+  campusId            String      
   campus              campus      @relation(fields: [campusId], references: [id], onDelete: Cascade)
   title               String
   image               String?
@@ -51,90 +51,90 @@ model Faculties {
 }
 
 model departments {
-  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  id           String     @id @default(cuid()) @unique
   title        String
   image        String?
   body         String
-  facultyId    String   @db.ObjectId 
+  facultyId    String   
   faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
 }
 
 model lecturers {
-  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  id           String     @id @default(cuid()) @unique
   name         String
   designation  String
   image        String?
-  facultyId    String   @db.ObjectId 
+  facultyId    String  
   faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
 }
 
 model contact {
-  id                      String     @id @default(auto()) @map("_id") @db.ObjectId
+  id                      String     @id @default(cuid()) @unique
   whatsapp                String?      
   facebook                String?     
   youtube                 String?
-  campus                  campus?             @relation(fields: [campusId], references: [id], onDelete: Cascade)
-  campusId                String?             @db.ObjectId    @unique
-  Faculties               Faculties?          @relation(fields: [facultyId], references: [id], onDelete: Cascade)
-  facultyId               String?             @db.ObjectId     @unique
-  Administration          Administration?     @relation(fields: [adminId], references: [id], onDelete: Cascade)
-  adminId                 String?             @db.ObjectId     @unique
-  Principal               Principal?          @relation(fields: [PrincipalId], references: [id], onDelete: Cascade)   
-  PrincipalId             String?             @db.ObjectId     @unique
+  campus                  campus?                 @relation(fields: [campusId], references: [id], onDelete: Cascade)
+  campusId                String?                 @unique
+  Faculties               Faculties?              @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+  facultyId               String?                 @unique
+  Administration          Administration?         @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  adminId                 String?                 @unique
+  Principal               Principal?              @relation(fields: [PrincipalId], references: [id], onDelete: Cascade)   
+  PrincipalId             String?                 @unique
   ContinuingEducation     ContinuingEducation?    @relation(fields: [contEducationId], references: [id], onDelete: Cascade)
-  contEducationId         String?             @db.ObjectId     @unique
-  Directorate             Directorates?       @relation(fields: [DirectorateId], references: [id], onDelete: Cascade)
-  DirectorateId           String?             @db.ObjectId     @unique
+  contEducationId         String?                 @unique
+  Directorate             Directorates?           @relation(fields: [DirectorateId], references: [id], onDelete: Cascade)
+  DirectorateId           String?                 @unique
 }
 
 model news {
-  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  id           String     @id @default(cuid()) @unique
   headline     String
   image        String?
   body         String
   author       String
 }
 model communities {
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  id          String     @id @default(cuid()) @unique
   image       String?
   title       String
   body        String
 }
 
 model Administration {
-  id                  String     @id @default(auto()) @map("_id") @db.ObjectId
+  id                  String     @id @default(cuid()) @unique
   name                String
   designation         String
   image               String?
   biography           String
   contact             contact?
-  responsibilities    String[]
+  responsibilities    String
 }
 
 model Principal {
-  id                  String     @id @default(auto()) @map("_id") @db.ObjectId
+  id                  String     @id @default(cuid()) @unique
   name                String
   designation         String
   image               String?
   biography           String
   contact             contact?
-  responsibilities    String[]
+  responsibilities    String
 }
 
 model ContinuingEducation {
-  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  id                 String    @id @default(cuid()) @unique
   program            String
   image             String?
   headline          String    
   overview          String
-  requirements      String[]
-  benefits          String[]
+  requirements      String
+  benefits          String
   contact            contact?
 
 }
 
 model Directorates {
-  id              String     @id @default(auto()) @map("_id") @db.ObjectId
+  id              String     @id @default(cuid()) @unique
   office          String
   headline        String
   message         String
@@ -142,33 +142,33 @@ model Directorates {
   history         String?
   vission             String?
   mission             String?
-  responsibilities    String[]
+  responsibilities    String
   contact             contact?
 }
 
 model AdmissionReq {
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  id          String     @id @default(cuid()) @unique
   course      String
-  utmeReq     String[]
-  olevelReq   String[]
-  DEReq       String[]
-  facultyId    String     @db.ObjectId 
+  utmeReq     String
+  olevelReq   String
+  DEReq       String
+  facultyId    String 
   faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
 }
 
 model SchoolFee {
-  id                    String     @id @default(auto()) @map("_id") @db.ObjectId
+  id                    String     @id @default(cuid()) @unique
   course                String
   acceptanceFee         String
   admissionSchFee       String
   returningSchFee       String
-  facultyId             String      @db.ObjectId
+  facultyId             String 
   faculty               Faculties   @relation(fields: [facultyId], references: [id], onDelete: Cascade)
   @@map("schoolFees")
 }
 
 model Faq{
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  id          String     @id @default(cuid()) @unique
   question    String
   answer      String
   type        Type
