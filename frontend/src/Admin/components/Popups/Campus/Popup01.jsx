@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import SuccessModal from '../../../Auth/SuccessModal'; // Assuming this is the success modal component.
+import SuccessModal from '../../../Auth/SuccessModal'; 
 
 export default function Popup01({ close, id }) {
   const [showSuccess, setShowSuccess] = useState(false);

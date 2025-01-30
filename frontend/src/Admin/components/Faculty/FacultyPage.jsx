@@ -11,7 +11,7 @@ import {
   deleteCampus,
 } from '../../../../Redux/Slicers/CampusSlice';
 
-export default function Campuses() {
+export default function FacultyPage() {
   const [pop, setPop] = useState(false);
   const [detailsPop, setDetailsPop] = useState(false);
   const [id, setId] = useState(null);
@@ -87,9 +87,9 @@ export default function Campuses() {
     <div className="container mx-auto p-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-        {/* Create Campus Form */}
+        {/* Create Faculty Form */}
         <div className="bg-white shadow-lg rounded-lg p-6">
-          <h2 className="text-xl font-bold mb-4 text-center">Create Campus</h2>
+          <h2 className="text-xl font-bold mb-4 text-center">Create Faculty</h2>
           <form
             action=""
             encType="multipart/form-data"

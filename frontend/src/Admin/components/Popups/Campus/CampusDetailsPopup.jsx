@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 
-// Use campus instead of details once the backend is available
 export default function PopupCampusDetails({ details, close }) {
   if (!details) {
     return null; 
