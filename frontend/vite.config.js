@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     port: 8020,
     proxy: {
-      "/api" : "https://oouagoiwoye.onrender.com"
+      "/api" : "http://localhost:5000"
     }
   }
 })

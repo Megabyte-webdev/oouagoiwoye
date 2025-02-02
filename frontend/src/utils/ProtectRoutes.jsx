@@ -1,19 +1,17 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import Cookies from "js-cookie"; 
+import Cookies from "js-cookie";
 
-const ProtectedRoute = () => {
+
+const ProtectedRoute = ({ element }) => {
   const authToken = Cookies.get("authToken");
-
-  console.log("AuthToken:", authToken); 
+  console.log("Auth Token:", authToken);
 
   if (!authToken) {
-    console.log("Redirecting to login...");
     return <Navigate to="/admin/auth" replace />;
   }
 
-  console.log("Rendering protected component...");
-  return <Outlet/>;
+  return <Outlet />;;
 };
 
 export default ProtectedRoute;
