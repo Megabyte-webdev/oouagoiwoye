@@ -44,11 +44,15 @@ function App() {
           <Route path="/" exact element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/facultypage" element={<Campuses1 />} />
+
+
           {/* Administration Routes */}
           <Route path="/administration/admin" element={<Administration />} />
           <Route path="/administration/admin/:id" element={<AAdministration />} />
           <Route path="/administration/principal-officers" element={<PrincipalOfficers />} />
           <Route path="/administration/principal-officers/:id" element={<POfficers />} />
+
+
           {/* SERVICES ROUTES */}
           <Route path="/services/campus" element={<Campus />} />
           <Route path="/services/campus/:id" element={<CampusElement />} />
@@ -63,11 +67,11 @@ function App() {
           <Route path="/admin/auth" element={<Login />} />
 
           {/* Protected admin routes */}
-          <Route path="/admin-ict/oouagoiwoye-9g4c4h8sh" element={<AdminDash />} />
+          {/* <Route path="/admin-ict/oouagoiwoye-9g4c4h8sh" element={<AdminDash />} /> */}
           
-          {/* <Route path="/admin-ict/*" element= {<ProtectedRoute />}>
-            <Route path="oouagoiwoye-9g4c4h8sh" element={<AdminDash />} />
-          </Route> */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/admin-ict/oouagoiwoye-9g4c4h8sh" element={<AdminDash />} />
+          </Route>
           {/* Admmissions routes */}
           <Route path="/admissions" element={<Admissions />} />
           <Route path="/admissions/:id" element={<Admission />} />

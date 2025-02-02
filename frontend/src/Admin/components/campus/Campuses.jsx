@@ -2,71 +2,64 @@ import React, { useState, useEffect } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { CiEdit } from 'react-icons/ci';
 import { BsTrashFill } from 'react-icons/bs';
-import Popup01 from '../Popups/Campus/Popup01';
-import PopupCampusDetails from '../Popups/Campus/CampusDetailsPopup'; 
 import { EyeFilled } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchCampus,
-  deleteCampus,
-} from '../../../../Redux/Slicers/CampusSlice';
+import { fetchCampus, deleteCampus, createCampus } from '../../../../Redux/Slicers/CampusSlice';
+import Popup01 from '../Popups/Campus/Popup01';
+import PopupCampusDetails from '../Popups/Campus/CampusDetailsPopup';
+import DeleteConfirmationModal from './ConfirmDelete';
 
 export default function Campuses() {
   const [pop, setPop] = useState(false);
   const [detailsPop, setDetailsPop] = useState(false);
-  const [id, setId] = useState(null);
+  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+  const [selectedCampusId, setSelectedCampusId] = useState(null);
   const [campusDetails, setCampusDetails] = useState(null);
+  const [formData, setFormData] = useState({
+    title: '',
+    image: null,
+    campusInfo: '',
+    location: '',
+    facebook: '',
+    whatsapp: '',
+    youtube: '',
+  });
+  const [success, setSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const dispatch = useDispatch();
-  const campuses = useSelector((state) => state?.campus?.campuses || []); 
-
-  // Dummy data for testing
-  const dummyCampuses = [
-    {
-      id: 1,
-      title: 'Main Campus',
-      faculties: 'Engineering, Business',
-      location: 'City A',
-      history: 'Established in 1990',
-      image: 'https://via.placeholder.com/150',
-    },
-    {
-      id: 2,
-      title: 'North Campus',
-      faculties: 'Arts, Science',
-      location: 'City B',
-      history: 'Established in 2005',
-      image: 'https://via.placeholder.com/150',
-    },
-  ];
+  const campuses = useSelector((state) => state.campus.campuses || []);
+  const loading = useSelector((state) => state.campus.loading);
+  const error = useSelector((state) => state.campus.error);
 
   useEffect(() => {
-    try {
-      // Fetch all campuses when the component is mounted
-      dispatch(fetchCampus());
-    } catch (error) {
-      console.error('Error fetching campuses:', error); 
-    }
+    dispatch(fetchCampus());
   }, [dispatch]);
 
   const handlePopupOpen = (campusId) => {
-    setId(campusId);
-    setPop(true);
+    console.log('Opening popup for campus ID:', campusId);
+    const campus = campuses.find((campus) => campus.id === campusId);
+    if (campus) {
+      console.log('Campus found:', campus);
+      setCampusDetails(campus);
+      setSelectedCampusId(campusId);
+      setPop(true);
+    } else {
+      console.warn('Campus not found for ID:', campusId);
+    }
   };
 
   const handlePopupClose = () => {
     setPop(false);
-    setId(null);
+    setCampusDetails(null);
+    setSelectedCampusId(null);
   };
 
   const handleDetailsPopupOpen = (campusId) => {
-    // const campus = campuses.find((camp) => camp.id === campusId);
-    const campus = dummyCampuses.find((camp) => camp.id === campusId); 
+    const campus = campuses.find((campus) => campus.id === campusId);
     if (campus) {
       setCampusDetails(campus);
       setDetailsPop(true);
-    } else {
-      console.warn(`Campus with ID ${campusId} not found.`);
     }
   };
 
@@ -76,17 +69,74 @@ export default function Campuses() {
   };
 
   const handleDeleteCampus = (campusId) => {
+    setSelectedCampusId(campusId);
+    setDeleteModalVisible(true);
+  };
+
+  const handleDeleteConfirm = () => {
+    dispatch(deleteCampus(selectedCampusId));
+    setDeleteModalVisible(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, image: e.target.files[0] });
+  };
+
+  const handleCreateCampus = async (e) => {
+    e.preventDefault();
+    const formDataToSend = new FormData();
+    formDataToSend.append('title', formData.title);
+    formDataToSend.append('image', formData.image);
+    formDataToSend.append('campusInfo', formData.campusInfo);
+    formDataToSend.append('location', formData.location);
+    formDataToSend.append('facebook', formData.facebook);
+    formDataToSend.append('whatsapp', formData.whatsapp);
+    formDataToSend.append('youtube', formData.youtube);
+
+
     try {
-      dispatch(deleteCampus(campusId));
+      const result = await dispatch(createCampus(formDataToSend)).unwrap();
+      setSuccessMessage('Campus created successfully!');
+      setSuccess(true);
+      setFormData({
+        title: '',
+        image: null,
+        campusInfo: '',
+        location: '',
+        facebook: '',
+        whatsapp: '',
+        youtube: '',
+      });
+      // Refetch campuses to update the list
+      dispatch(fetchCampus());
     } catch (error) {
-      console.error(`Error deleting campus with ID ${campusId}:`, error);
+      setSuccessMessage(`Failed to create campus: ${error?.message || "Unknown error"}`);
+      setSuccess(true);
     }
   };
+
+  const SuccessModal = ({ message, onClose }) => (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+        <p className="text-lg text-gray-700 mb-4">{message}</p>
+        <button
+          onClick={onClose}
+          className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <div className="container mx-auto p-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
         {/* Create Campus Form */}
         <div className="bg-white shadow-lg rounded-lg p-6">
           <h2 className="text-xl font-bold mb-4 text-center">Create Campus</h2>
@@ -94,7 +144,7 @@ export default function Campuses() {
             action=""
             encType="multipart/form-data"
             className="space-y-4"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleCreateCampus}
           >
             {/* Title */}
             <div>
@@ -104,6 +154,8 @@ export default function Campuses() {
               <input
                 type="text"
                 name="title"
+                value={formData.title}
+                onChange={handleInputChange}
                 placeholder="Enter campus title"
                 className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-orange-500"
               />
@@ -117,6 +169,7 @@ export default function Campuses() {
               <input
                 type="file"
                 name="image"
+                onChange={handleFileChange}
                 className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none"
               />
             </div>
@@ -129,6 +182,8 @@ export default function Campuses() {
               <input
                 type="text"
                 name="campusInfo"
+                value={formData.campusInfo}
+                onChange={handleInputChange}
                 placeholder="Enter campus information"
                 className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-orange-500"
               />
@@ -141,7 +196,9 @@ export default function Campuses() {
               </label>
               <input
                 type="text"
-                name="campusLocation"
+                name="location"
+                value={formData.location}
+                onChange={handleInputChange}
                 placeholder="Enter campus location"
                 className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-orange-500"
               />
@@ -168,29 +225,34 @@ export default function Campuses() {
               <span className="col-span-1 text-center">Details</span>
               <span className="col-span-4 text-center">Actions</span>
             </div>
-            {/* {campuses.length > 0 ? ( */}
-            {dummyCampuses.length > 0 ? (
-              // campuses.map((campus, index) => (
-                dummyCampuses.map((campus, index) => (
+            {loading ? (
+              <p className="text-center text-gray-500">Loading...</p>
+            ) : error ? (
+              <p className="text-center text-red-500">{error}</p>
+            ) : campuses.length > 0 ? (
+              campuses.map((campus, index) => (
                 <div
-                  key={campus?.id || index}
-                  className="grid grid-cols-12 gap-4 bg-gray-100 p-3 rounded-md hover:bg-gray-300"
+                  key={campus.id}
+                  className="grid grid-cols-12 gap-4 bg-gray-100 p-3 rounded-md hover:bg-gray-300 max-h-[90vh] overflow-y-auto"
                 >
                   <span className="col-span-1 text-center">{index + 1}.</span>
-                  <span className="col-span-4 text-center">{campus?.title || 'N/A'}</span>
-                  <span className="col-span-3 text-center">{campus?.faculties || 'N/A'}</span>
+                  <span className="col-span-4 text-left">{campus.title || 'N/A'}</span>
+                  <span className="col-span-3 text-center">{campus.faculties || 'N/A'}</span>
                   <div className="col-span-4 flex justify-around items-center">
                     <CiEdit
                       className="text-xl text-blue-500 cursor-pointer hover:scale-110"
-                      onClick={() => handlePopupOpen(campus?.id)}
+                      onClick={(e) => {
+                        e.stopPropagation(); 
+                        handlePopupOpen(campus.id);
+                      }}
                     />
                     <EyeFilled
                       className="text-xl text-blue-500 cursor-pointer hover:scale-110"
-                      onClick={() => handleDetailsPopupOpen(campus?.id)}
+                      onClick={() => handleDetailsPopupOpen(campus.id)}
                     />
                     <BsTrashFill
                       className="text-xl text-red-500 cursor-pointer hover:scale-110"
-                      onClick={() => handleDeleteCampus(campus?.id)}
+                      onClick={() => handleDeleteCampus(campus.id)}
                     />
                   </div>
                 </div>
@@ -203,11 +265,30 @@ export default function Campuses() {
       </div>
 
       {/* Popups */}
-      {pop && id && (
-        <Popup01 close={handlePopupClose} id={id} />
+      {pop && campusDetails && (
+        <Popup01
+          close={handlePopupClose}
+          campusDetails={campusDetails}
+          id={selectedCampusId} 
+        />
       )}
       {detailsPop && campusDetails && (
         <PopupCampusDetails close={handleDetailsPopupClose} details={campusDetails} />
+      )}
+
+      {/* Delete Confirmation Modal */}
+      <DeleteConfirmationModal
+        visible={deleteModalVisible}
+        onCancel={() => setDeleteModalVisible(false)}
+        onConfirm={handleDeleteConfirm}
+      />
+
+      {/* Success Modal */}
+      {success && (
+        <SuccessModal
+          message={successMessage}
+          onClose={() => setSuccess(false)}
+        />
       )}
     </div>
   );

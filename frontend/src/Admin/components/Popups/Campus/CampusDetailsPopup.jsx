@@ -1,10 +1,16 @@
 import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 
-export default function PopupCampusDetails({ details, close }) {
+const PopupCampusDetails = ({ details, close }) => {
   if (!details) {
-    return null; 
+    return null;
   }
+
+  // Base URL for the API
+  const baseUrl = 'http://localhost:5000';
+
+  // Full image URL
+  const fullImageUrl = `${baseUrl}/public/uploads/${details.image}`;
 
   return (
     <div
@@ -12,7 +18,7 @@ export default function PopupCampusDetails({ details, close }) {
       onClick={close}
     >
       <div
-        className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full relative animate-fade-in"
+        className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full relative animate-fade-in max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -35,8 +41,13 @@ export default function PopupCampusDetails({ details, close }) {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-gray-700">History:</h3>
-            <p className="text-gray-600">{details.history || 'No history provided'}</p>
+            <h3 className="text-lg font-semibold text-gray-700">Campus Image:</h3>
+            <img src={fullImageUrl} alt="Campus" className="w-[100px] h-[100px]" />
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-700">Campus Info:</h3>
+            <p className="text-gray-600">{details.campusInfo || 'No history provided'}</p>
           </div>
 
           <div>
@@ -45,13 +56,18 @@ export default function PopupCampusDetails({ details, close }) {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-gray-700">Contact Email:</h3>
-            <p className="text-gray-600">{details.contactEmail || 'Not available'}</p>
+            <h3 className="text-lg font-semibold text-gray-700">Facebook</h3>
+            <p className="text-gray-600">{details.Contact?.facebook || 'Not available'}</p>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-gray-700">Contact Phone:</h3>
-            <p className="text-gray-600">{details.contactPhone || 'Not available'}</p>
+            <h3 className="text-lg font-semibold text-gray-700">Whatsapp</h3>
+            <p className="text-gray-600">{details.Contact?.whatsapp || 'Not available'}</p>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-700">Youtube</h3>
+            <p className="text-gray-600">{details.Contact?.youtube || 'Not available'}</p>
           </div>
         </div>
 
@@ -67,4 +83,6 @@ export default function PopupCampusDetails({ details, close }) {
       </div>
     </div>
   );
-}
+};
+
+export default PopupCampusDetails;
