@@ -221,8 +221,8 @@ export default function Campuses() {
             <div className="grid grid-cols-12 gap-4 font-semibold bg-gray-200 p-3 rounded-md">
               <span className="col-span-1 text-center">No.</span>
               <span className="col-span-2 text-center">Campus</span>
-              <span className="col-span-3 text-center">Faculties</span>
-              <span className="col-span-1 text-center">Details</span>
+              {/* <span className="col-span-3 text-center">Faculties</span> */}
+              <span className="col-span-5 text-center">Faculty No.</span>
               <span className="col-span-4 text-center">Actions</span>
             </div>
             {loading ? (
@@ -237,7 +237,7 @@ export default function Campuses() {
                 >
                   <span className="col-span-1 text-center">{index + 1}.</span>
                   <span className="col-span-4 text-left">{campus.title || 'N/A'}</span>
-                  <span className="col-span-3 text-center">{campus.faculties || 'N/A'}</span>
+                  <span className="col-span-3 text-center">{campus.faculties.length || 'N/A'}</span>
                   <div className="col-span-4 flex justify-around items-center">
                     <CiEdit
                       className="text-xl text-blue-500 cursor-pointer hover:scale-110"

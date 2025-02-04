@@ -14,6 +14,8 @@ export const fetchFaculty = createAsyncThunk(
   }
 );
 
+
+
 // Update faculty data
 export const updateFaculty = createAsyncThunk(
   'faculty/updateFaculty',
