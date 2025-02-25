@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nodemon server",
     "migrate": "npx prisma migrate dev",
+    "push": "npx prisma db push",
     "generate": "npx prisma generate",
     "studio": "npx prisma studio"
   },
