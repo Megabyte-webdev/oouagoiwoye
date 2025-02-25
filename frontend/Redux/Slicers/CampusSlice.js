@@ -6,12 +6,12 @@ export const createCampus = createAsyncThunk(
   'campus/createCampus',
   async (formData, { rejectWithValue }) => {
     try {
-      const response = await API.post('/', formData, {
+      const response = await API.post('/campus', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(error.response?.data || "Error creating campus");
     }
   }
 );
@@ -130,6 +130,9 @@ const campusSlice = createSlice({
       })
       .addCase(createCampus.fulfilled, (state, action) => {
         state.loading = false;
+        if (!Array.isArray(state.campuses)) {
+          state.campuses = []; 
+        }
         state.campuses.push(action.payload);
       })
       .addCase(createCampus.rejected, (state, action) => {
@@ -142,13 +145,14 @@ const campusSlice = createSlice({
       })
       .addCase(fetchCampus.fulfilled, (state, action) => {
         state.loading = false;
-        state.campuses = action.payload;
+        state.campuses = Array.isArray(action.payload.data) ? action.payload.data : [];
       })
       .addCase(fetchCampus.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
       .addCase(updateCampusContact.fulfilled, (state, action) => {
+        if (!Array.isArray(state.campuses)) state.campuses = [];
         const index = state.campuses.findIndex((campus) => campus.id === action.meta.arg.id);
         if (index !== -1) {
           state.campuses[index] = { ...state.campuses[index], ...action.payload };

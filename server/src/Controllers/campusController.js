@@ -5,12 +5,12 @@ const prisma = new prismaClient.PrismaClient();
 const campusDB = prisma.campus;
 
 const createCampus = async (req, res) => {
-    const { title , campusInfo, location} = req.body;
+    const { title, campusInfo, location } = req.body;
     const image = req.file;
     try {
 
         const newCampus = await campusDB.create({
-            data:{
+            data: {
                 title,
                 image: image?.filename,
                 campusInfo,
@@ -30,7 +30,7 @@ const createCampus = async (req, res) => {
 const fetchCampus = async (req, res) => {
     try {
         const campuses = await campusDB.findMany({
-            include:{
+            include: {
                 Contact: true,
                 faculties: true
             }
@@ -49,17 +49,17 @@ const updateCampusImage = async (req, res, next) => {
     const reqImage = req.file;
     try {
         const prevdata = await campusDB.findUnique({
-            where:{
+            where: {
                 id: req.params.id
             }
         })
         const previmg = prevdata.image;
 
         const newImage = await campusDB.update({
-            where:{
+            where: {
                 id: req.params.id
             },
-            data:{
+            data: {
                 image: reqImage?.filename
             }
         })
@@ -74,29 +74,29 @@ const updateCampusImage = async (req, res, next) => {
 }
 
 //add or add campus Banner video
-const upsertCampusBannerVideo = async (req, res, next) =>{
-    const bannerVideo =  req.file;
+const upsertCampusBannerVideo = async (req, res, next) => {
+    const bannerVideo = req.file;
     try {
         const prevdata = await campusDB.findUnique({
-            where:{
+            where: {
                 id: req.params.id
             }
         })
         const prevVid = prevdata.bannerVideo;
 
         const bannerVid = await campusDB.upsert({
-            where:{
+            where: {
                 id: req.params.id
             },
-            update:{
-                bannerVideo : bannerVideo?.filename
+            update: {
+                bannerVideo: bannerVideo?.filename
             },
-            create:{
+            create: {
                 title: prevdata.title,
                 location: prevdata.location,
                 image: prevdata.image,
                 campusInfo: prevdata.campusInfo,
-                bannerVideo : prevVid
+                bannerVideo: prevVid
             }
         });
 
@@ -115,16 +115,17 @@ const updateCampusData = async (req, res, next) => {
     const { title, campusInfo, location } = req.body;
     try {
         const data = {};
-        if(title) data.title = title;
-        if(campusInfo) data.campusInfo = campusInfo;
-        if(location) data.location = location;
-        if(Object.keys(data).length === 0)(res.status(400).json("No data to update"));
+        if (title) data.title = title;
+        if (campusInfo) data.campusInfo = campusInfo;
+        if (location) data.location = location;
+        if (Object.keys(data).length === 0)
+            return res.status(400).json("No data to update");
         const updatedData = await campusDB.update({
-            where:{
+            where: {
                 id: req.params.id
             },
             data
-        }) 
+        })
         res.status(200).json({
             message: "Campus data updated successfully",
             data: updatedData
@@ -139,23 +140,25 @@ const updateCampusContact = async (req, res, next) => {
     const { whatsapp, facebook, youtube } = req.body;
     try {
         const data = {};
-        if(whatsapp) data.whatsapp = whatsapp;
-        if(facebook) data.facebook = facebook;
-        if(youtube) data.youtube = youtube;
-        if(Object.keys(data).length < 1) res.status(400).json("No data to update");
+        if (whatsapp) data.whatsapp = whatsapp;
+        if (facebook) data.facebook = facebook;
+        if (youtube) data.youtube = youtube;
+        if (Object.keys(data).length < 1) 
+            return res.status(400).json("No data to update");
+        
         const updatedData = await campusDB.update({
-            where:{
+            where: {
                 id: req.params.id
             },
             data: {
-                Contact:{
-                    upsert:{
-                        update:data,
+                Contact: {
+                    upsert: {
+                        update: data,
                         create: data
                     }
                 }
             },
-            include:{
+            include: {
                 Contact: true
             }
         })
@@ -175,17 +178,17 @@ const createFaculty = async (req, res, next) => {
 
     try {
         const newFaculty = await campusDB.update({
-            where:{
+            where: {
                 id: req.params.id
             },
-            data:{
-                faculties:{
+            data: {
+                faculties: {
                     create: {
                         title,
-                        image:  imageName?.filename,
+                        image: imageName?.filename,
                         noOfDepartments,
                         body,
-                        Contact:{
+                        Contact: {
                             create: {
                                 whatsapp: "000",
                                 facebook: "000",
@@ -212,19 +215,19 @@ const createFaculty = async (req, res, next) => {
 const deleteCampus = async (req, res, next) => {
     try {
         const prevdata = await campusDB.findUnique({
-            where:{
+            where: {
                 id: req.params.id
             }
         });
-        
-        
-        const deletedCampus= await campusDB.delete({
+
+
+        const deletedCampus = await campusDB.delete({
             where: {
                 id: req.params.id
-            } 
+            }
         });
         prevdata.bannerVideo !== null ? deleteFile(`public/uploads/${prevdata.bannerVideo}`) : ''
-        prevdata.image !== null ? deleteFile(`public/uploads/${prevdata.image}`): ''
+        prevdata.image !== null ? deleteFile(`public/uploads/${prevdata.image}`) : ''
         res.status(200).json({
             message: "Campus deleted successfully",
             data: deletedCampus

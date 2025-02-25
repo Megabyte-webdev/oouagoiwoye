@@ -18,6 +18,9 @@ import Facility from "./components/Facility";
 import Issues from "./components/Issues";
 import News from "./components/News";
 import Department from './components/Department';
+import FacultyPage from './components/Faculty/FacultyPage';
+import Faculties from './components/Faculty/FacultyPage';
+import Campuses1 from './components/Faculty/FacultyPage';
 
 export default function AdminDash() {
     const sidebar = [
@@ -34,6 +37,11 @@ export default function AdminDash() {
         {
             title: "Faculties",
             view: "faculty",
+            icon: MdGroups,
+        },
+        {
+            title: "Faculty Page1",
+            view: "FacultyPage",
             icon: MdGroups,
         },
         {
@@ -107,6 +115,7 @@ export default function AdminDash() {
                 {view === "dashboard" && <Dashboard/>}
                 {view === "campus" && <Campuses/>}
                 {view === "faculty" && <Faculty/>}
+                {view === "FacultyPage" && <FacultyPage/>}
                 {view === "department" && <Department/>}
                 {/* {view === "faculty" && <Faculty/>} */}
                 {view === "admin" && <Administration/>}
