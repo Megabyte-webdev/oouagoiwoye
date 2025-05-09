@@ -66,7 +66,7 @@ const PopupCampusDetails = ({ details, close }) => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-gray-700">Youtube</h3>
+            <h3 className="text-lg font-semibold text-gray-700">Youtubeb </h3>
             <p className="text-gray-600">{details.Contact?.youtube || 'Not available'}</p>
           </div>
         </div>

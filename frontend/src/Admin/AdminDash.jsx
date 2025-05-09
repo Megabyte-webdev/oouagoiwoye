@@ -12,15 +12,16 @@ import { GiTeacher } from "react-icons/gi";
 //components
 import Dashboard from "./components/Dashboard";
 import Campuses from "./components/campus/Campuses";
-import Faculty from "./components/Faculty";
+// import Faculty from "./components/Faculty";
 import Administration from "./components/Administration";
 import Facility from "./components/Facility";
 import Issues from "./components/Issues";
 import News from "./components/News";
 import Department from './components/Department';
-import FacultyPage from './components/Faculty/FacultyPage';
-import Faculties from './components/Faculty/FacultyPage';
-import Campuses1 from './components/Faculty/FacultyPage';
+// import FacultyPage from './components/Faculty/FacultyPage';
+// import Faculties from './components/Faculty/FacultyPage';
+// import Campuses1 from './components/Faculty/FacultyPage';
+import Faculty from './components/Faculty/Faculty';
 
 export default function AdminDash() {
     const sidebar = [
@@ -115,7 +116,7 @@ export default function AdminDash() {
                 {view === "dashboard" && <Dashboard/>}
                 {view === "campus" && <Campuses/>}
                 {view === "faculty" && <Faculty/>}
-                {view === "FacultyPage" && <FacultyPage/>}
+                {/* {view === "FacultyPage" && <FacultyPage/>} */}
                 {view === "department" && <Department/>}
                 {/* {view === "faculty" && <Faculty/>} */}
                 {view === "admin" && <Administration/>}
