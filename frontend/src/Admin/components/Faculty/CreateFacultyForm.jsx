@@ -29,10 +29,10 @@ export default function CreateFacultyForm({ onSubmit, loading }) {
     formDataToSend.append("body", formData.body);
     formDataToSend.append("noOfDepartments", formData.noOfDepartments);
     if (formData.image) {
-      formDataToSend.append("image", formData.image); // Attach image file
+      formDataToSend.append("image", formData.image); 
     }
 
-    onSubmit(formDataToSend); // Pass formDataToSend to parent
+    onSubmit(formDataToSend); 
   };
 
   return (
