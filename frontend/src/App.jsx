@@ -4,7 +4,7 @@ import React, { Suspense, lazy } from 'react';
 import './App.css';
 import FallbackComponent from './utils/FallbackComponent';
 import ProtectedRoute from './utils/ProtectRoutes';
-import Campuses1 from './Admin/components/Faculty/FacultyPage';
+// import Campuses1 from './Admin/components/Faculty/FacultyPage';
 // import PopupCampusDetails from './Admin/components/Popups/CampusDetailsPopup';
 // import Login from '../src/Admin/Auth/Login';
 
@@ -31,7 +31,7 @@ const Admissions = lazy(() => import('./Pages/admissions/Admissions'));
 const Admission = lazy(() => import('./Pages/admissions/Admission'));
 const Login = lazy(() => import('../src/Admin/Auth/Login'));
 
-const FacultyPage = lazy(() => import('./Admin/components/Faculty/FacultyPage'));
+
 
 function App() {
 
@@ -43,7 +43,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/facultypage" element={<Campuses1 />} />
+        
 
 
           {/* Administration Routes */}
