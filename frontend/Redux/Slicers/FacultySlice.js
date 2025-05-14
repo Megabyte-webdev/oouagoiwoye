@@ -7,9 +7,9 @@ export const fetchFaculty = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await API.get('/faculty');
-      return response.data;
+      return response.data.data; 
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(error.response?.data || error.message);
     }
   }
 );
