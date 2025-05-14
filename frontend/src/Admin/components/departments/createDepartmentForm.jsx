@@ -3,6 +3,7 @@ import CustomButton2 from "../Faculty/CustomButton";
 import FormInput from "../Faculty/FormInput";
 import { useState } from "react";
 import { addDepartment } from "../../../../Redux/Slicers/FacultySlice";
+import { message } from "antd";
 
 export default function CreateDepartmentForm({ facultyId, onCreate }) {
 
@@ -40,7 +41,7 @@ export default function CreateDepartmentForm({ facultyId, onCreate }) {
 
     try {
       await dispatch(addDepartment({ id: facultyId, formData: formDataToSend })).unwrap();
-      alert("Department created successfully!");
+      message.success("Department created successfully!");
 
     } catch (error) {
       console.log("Error creating department: " + error.message);

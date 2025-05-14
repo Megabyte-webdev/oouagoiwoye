@@ -8,6 +8,7 @@ import { use } from "react";
 import { deleteDepartment, fetchAllDepartments } from "../../../../Redux/Slicers/DepartmentSlice";
 import { BsTrashFill } from "react-icons/bs";
 import DeleteConfirmationModal from "./deleteModal";
+import { message } from "antd";
 
 function DepartmentList({ departments, onEdit }) {
 
@@ -24,16 +25,17 @@ function DepartmentList({ departments, onEdit }) {
         setDeleteDepartmentVisible(true);
     }
 
-    const handleDeleteConfirm = (id) => {
+    const handleDeleteConfirm = async (id) => {
             try {
-                dispatch(deleteDepartment(departmentId)).unwrap();
-                setDeleteDepartmentVisible(true);
+                await dispatch(deleteDepartment(departmentId)).unwrap();
                 
+                await message.loading("Deleting department...");
+                onEdit();
+                message.success("Department deleted successfully!");
             } catch (error) {
                 alert("Error deleting department: " + error.message);
             }finally {
                 setDeleteDepartmentVisible(false);
-                onEdit();
             }
         }
 
