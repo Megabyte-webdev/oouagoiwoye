@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import React, { Suspense, lazy } from "react";
 import "./App.css";
@@ -28,6 +29,7 @@ const Admissions = lazy(() => import("./Pages/admissions/Admissions"));
 const Admission = lazy(() => import("./Pages/admissions/Admission"));
 const Login = lazy(() => import("../src/Admin/Auth/Login"));
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -36,6 +38,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+
 
           {/* Administration Routes */}
           <Route path="/administration/admin" element={<Administration />} />
