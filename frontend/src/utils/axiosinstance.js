@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create an Axios instance
 const API = axios.create({
-  baseURL: "/api/oouweb", 
+  baseURL: "https://api.oouweb.site/api/oouweb", 
   withCredentials: true,  
 });
 
