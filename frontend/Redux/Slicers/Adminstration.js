@@ -22,7 +22,7 @@ export const fetchAllMembers = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await API.get('/administration');
-      return response.data;
+      return response.data.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -104,7 +104,11 @@ const administrationSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    clearError: (state) => {
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(createMember.pending, (state) => {
@@ -113,7 +117,17 @@ const administrationSlice = createSlice({
       })
       .addCase(createMember.fulfilled, (state, action) => {
         state.loading = false;
-        state.members.push(action.payload);
+        state.error = null;
+       
+        if (!Array.isArray(state.members)) {
+          state.members = [];
+        }
+    
+        if (Array.isArray(action.payload)) {
+          state.members = state.members.concat(action.payload);
+        } else {
+          state.members = [...state.members, action.payload];
+        }
       })
       .addCase(createMember.rejected, (state, action) => {
         state.loading = false;
@@ -125,40 +139,92 @@ const administrationSlice = createSlice({
       })
       .addCase(fetchAllMembers.fulfilled, (state, action) => {
         state.loading = false;
+        state.error = null;
         state.members = action.payload;
       })
       .addCase(fetchAllMembers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
+      .addCase(updateAdminImage.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(updateAdminImage.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
         const index = state.members.findIndex((member) => member.id === action.meta.arg.id);
         if (index !== -1) {
           state.members[index] = { ...state.members[index], ...action.payload };
         }
+      })
+      .addCase(updateAdminImage.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(updateAdminData.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
       .addCase(updateAdminData.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
         const index = state.members.findIndex((member) => member.id === action.meta.arg.id);
         if (index !== -1) {
           state.members[index] = { ...state.members[index], ...action.payload };
         }
+      })
+      .addCase(updateAdminData.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(updateAdminResponsibilities.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
       .addCase(updateAdminResponsibilities.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
         const index = state.members.findIndex((member) => member.id === action.meta.arg.id);
         if (index !== -1) {
           state.members[index] = { ...state.members[index], ...action.payload };
         }
+      })
+      .addCase(updateAdminResponsibilities.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(updateAdminContact.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
       .addCase(updateAdminContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
         const index = state.members.findIndex((member) => member.id === action.meta.arg.id);
         if (index !== -1) {
           state.members[index] = { ...state.members[index], ...action.payload };
         }
       })
+      .addCase(updateAdminContact.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(deleteAdminMember.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(deleteAdminMember.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
         state.members = state.members.filter((member) => member.id !== action.meta.arg);
+      })
+      .addCase(deleteAdminMember.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
 
+export const { clearError } = administrationSlice.actions;
 export default administrationSlice.reducer;

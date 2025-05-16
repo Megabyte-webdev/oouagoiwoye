@@ -8,6 +8,7 @@ export default defineConfig({
     port: 8020,
     proxy: {
       "/api" : "https://api.oouweb.site"
+      // "/api" : "http://localhost:5000"
     }
   }
 })
