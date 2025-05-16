@@ -4,7 +4,7 @@ import axios from "axios";
 const API = axios.create({
   baseURL: "https://api.oouweb.site/api/oouweb", 
   timeout: 60000,
-  withCredentials: false,  
+  withCredentials: true,  
 });
 
 
