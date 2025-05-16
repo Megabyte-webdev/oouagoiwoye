@@ -1,29 +1,30 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 
-// Create an Axios instance
-const API = axios.create({
-  baseURL: "https://api.oouweb.site/api/oouweb", 
-  timeout: 60000,
-  withCredentials: false,  
-});
+export const axiosClient = (token: string | null, multiMedia: boolean = false): AxiosInstance => {
+  let headers;
 
-/*
-API.interceptors.request.use(
-  (config) => {
-    const authToken = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("authToken="))
-      ?.split("=")[1]; 
+  const contentType = multiMedia ? 'multipart/form-data' : "application/json;charset=utf-8"
 
-    if (authToken) {
-      config.headers["Authorization"] = `Bearer ${authToken}`; 
+  if(token){
+   headers = {
+      "Content-Type": contentType,
+      "Authorization": `Bearer ${token}`,
     }
+  } else{
+    headers = {
+      "Content-Type": contentType,
+      // "ngrok-skip-browser-warning":"true",
+    };
 
-    return config; 
-  },
-  (error) => {
-    return Promise.reject(error); 
   }
-);*/
 
-export default API;
+
+  const client = axios.create({
+    baseURL: import.meta.env.VITE_BASE_URL,
+    headers,
+    timeout: 60000,
+    withCredentials: false,
+  });
+
+  return client;
+};
