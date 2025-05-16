@@ -4,10 +4,10 @@ import axios from "axios";
 const API = axios.create({
   baseURL: "https://api.oouweb.site/api/oouweb", 
   timeout: 60000,
-  withCredentials: true,  
+  withCredentials: false,  
 });
 
-
+/*
 API.interceptors.request.use(
   (config) => {
     const authToken = document.cookie
@@ -24,6 +24,6 @@ API.interceptors.request.use(
   (error) => {
     return Promise.reject(error); 
   }
-);
+);*/
 
 export default API;
