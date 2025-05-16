@@ -1,23 +1,20 @@
 import axios from "axios";
 
-const axiosClient = ({ token, multiMedia = false }) => {
-  const contentType = multiMedia
-    ? "multipart/form-data"
-    : "application/json;charset=utf-8";
+const token = document.cookie
+  .split("; ")
+  .find(row => row.startsWith("authToken="))
+  ?.split("=")[1];
 
-  const headers = {
+const contentType = "application/json;charset=utf-8";
+
+const API = axios.create({
+  baseURL: "https://api.oouweb.site/api/oouweb",
+  headers: {
     "Content-Type": contentType,
     ...(token && { Authorization: `Bearer ${token}` }),
-  };
+  },
+  timeout: 60000,
+  withCredentials: false,
+});
 
-  const API = axios.create({
-    baseURL: "https://api.oouweb.site/api/oouweb",
-    headers,
-    timeout: 60000,
-    withCredentials: false,
-  });
-
-  return API;
-};
-
-export default axiosClient;
+export default API;
