@@ -12,13 +12,20 @@ import { GiTeacher } from "react-icons/gi";
 // Components
 import Dashboard from "./components/Dashboard";
 import Campuses from "./components/campus/Campuses";
+
 import Faculty from "./components/Faculty/Faculty";
 import Administration from "./components/Admin/Administration";
 // import Administration from "./components/Administration";
 import Facility from "./components/Facility";
 import Issues from "./components/Issues";
 import News from "./components/News";
+
 import Department from "./components/departments/Department";
+
+// import FacultyPage from './components/Faculty/FacultyPage';
+// import Faculties from './components/Faculty/FacultyPage';
+// import Campuses1 from './components/Faculty/FacultyPage';
+
 
 export default function AdminDash() {
   const navigate = useNavigate();
@@ -133,6 +140,7 @@ export default function AdminDash() {
             </button>
           </div>
         </div>
+
         <div className="w-full h-screen lg:w-10/12 lg:ml-0 bg-white p-5">
           <Routes>
             <Route path="dashboard" element={<Dashboard />} />
