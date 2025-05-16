@@ -19,12 +19,12 @@ export const axiosClient = (token: string | null, multiMedia: boolean = false): 
   }
 
 
-  const client = axios.create({
+  const API = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL,
     headers,
     timeout: 60000,
     withCredentials: false,
   });
 
-  return client;
+  return API;
 };
