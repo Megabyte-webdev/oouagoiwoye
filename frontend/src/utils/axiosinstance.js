@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 
-export const axiosClient = (token: string | null, multiMedia: boolean = false): AxiosInstance => {
+export const axiosClient = AxiosInstance => {
   let headers;
 
   const contentType = multiMedia ? 'multipart/form-data' : "application/json;charset=utf-8"
