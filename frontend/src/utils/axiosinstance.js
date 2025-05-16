@@ -14,13 +14,12 @@ const authToken = document.cookie
 .find((row) => row\.startsWith("authToken="))
 ?.split("=")\[1];
 
-```
 if (authToken) {
   config.headers["Authorization"] = `Bearer ${authToken}`; 
 }
 
 return config; 
-```
+
 
 },
 (error) => {
