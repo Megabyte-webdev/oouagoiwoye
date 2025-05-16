@@ -20,7 +20,7 @@ export const axiosClient = AxiosInstance => {
 
 
   const API = axios.create({
-    baseURL: import.meta.env.VITE_BASE_URL,
+    baseURL: "https://api.oouweb.site/api/oouweb",
     headers,
     timeout: 60000,
     withCredentials: false,
