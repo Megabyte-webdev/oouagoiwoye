@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const axiosClient = ({ token, multiMedia = false }) => {
+const axiosClient = ({ token, multiMedia = false }) => {
   const contentType = multiMedia
     ? "multipart/form-data"
     : "application/json;charset=utf-8";
@@ -19,3 +19,5 @@ export const axiosClient = ({ token, multiMedia = false }) => {
 
   return API;
 };
+
+export default axiosClient;
