@@ -6,6 +6,7 @@ const API = axios.create({
   withCredentials: true, // if your backend uses cookies for auth
   headers: {
     "Content-Type": "application/json",
+    "ngrok-skip-browser-warning":"true",
   },
 });
 
