@@ -18,7 +18,7 @@ import Administration from "./components/Admin/Administration";
 // import Administration from "./components/Administration";
 import Facility from "./components/Facility";
 import Issues from "./components/Issues";
-import News from "./components/News";
+import News from "./components/news/News";
 
 import Department from "./components/departments/Department";
 
