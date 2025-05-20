@@ -5,7 +5,7 @@ import { IoSchool, IoSettings, IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { MdGroups } from "react-icons/md";
 import { RiAdminFill, RiLogoutBoxFill } from "react-icons/ri";
-import { HiMiniNewspaper } from "react-icons/hi2";
+import { HiMiniChartPie, HiMiniEnvelopeOpen, HiMiniNewspaper } from "react-icons/hi2";
 import { FcDepartment } from "react-icons/fc";
 import { GiTeacher } from "react-icons/gi";
 
@@ -18,7 +18,7 @@ import Administration from "./components/Admin/Administration";
 // import Administration from "./components/Administration";
 import Facility from "./components/Facility";
 import Issues from "./components/Issues";
-import News from "./components/News";
+import News from "./components/news/News";
 
 import Department from "./components/departments/Department";
 
@@ -78,6 +78,36 @@ export default function AdminDash() {
       path: "news",
       icon: HiMiniNewspaper,
     },
+    {
+      title: "Communities",
+      path: "news",
+      icon: HiMiniNewspaper,
+    },
+    {
+      title: "Principal",
+      path: "news",
+      icon: HiMiniNewspaper,
+    },
+    {
+      title: "Continuing Education",
+      path: "news",
+      icon: HiMiniNewspaper,
+    },
+    {
+      title: "Directorates",
+      path: "news",
+      icon: HiMiniEnvelopeOpen,
+    },
+    {
+      title: "Admission Requirements",
+      path: "news",
+      icon: HiMiniNewspaper,
+    },
+    {
+      title: "School Fees",
+      path: "news",
+      icon: HiMiniChartPie,
+    },
   ];
 
   // Get the current path to highlight the active sidebar item
@@ -90,7 +120,7 @@ export default function AdminDash() {
   };
 
   return (
-    <div className="w-full h-auto">
+    <div className="w-full h-auto overflow-y-auto ">
       <div className="p-3 px-5 border-b-thin border-slate-300">
         <h1 className="text-lg lg:text-3xl font-black flex flex-row items-center justify-between">
           <span className="text-emerald-600">
@@ -110,7 +140,7 @@ export default function AdminDash() {
           )}
         </h1>
       </div>
-      <div className="w-full h-full flex flex-row items-start relative">
+      <div className="w-full h-[100vh] flex flex-row items-start relative">
         <div
           className={
             control
@@ -118,7 +148,7 @@ export default function AdminDash() {
               : "w-3/5 lg:w-2/12 h-full lg:h-screen absolute -left-96 lg:top-0 lg:left-0 lg:relative font-light font-sans bg-white duration-1000 shadow-2xl pr-5"
           }
         >
-          <div className="w-full ml-2">
+          <div className="w-full ml-2  overflow-y-auto h-[90vh]">
             {sidebar.map((item, index) => (
               <button
                 key={index}
@@ -128,7 +158,7 @@ export default function AdminDash() {
                 }`}
               >
                 <item.icon className="text-2xl mr-4" />
-                <h2>{item.title}</h2>
+                <h2 className="overflow-hidden text-ellipsis whitespace-nowrap" title={item.title}>{item.title}</h2>
               </button>
             ))}
             <button
@@ -141,13 +171,13 @@ export default function AdminDash() {
           </div>
         </div>
 
-        <div className="w-full h-screen lg:w-10/12 lg:ml-0 bg-white p-5">
+        <div className="w-full h-screen lg:w-10/12 lg:ml-0 bg-white p-5 ">
           <Routes>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="campus" element={<Campuses />} />
             <Route path="faculty" element={<Faculty />} />
             <Route path="department" element={<Department />} />
-            <Route path="lecturer" element={<Faculty />} /> {/* Assuming lecturer uses Faculty for now */}
+            <Route path="lecturer" element={<Faculty />} /> 
             <Route path="admin" element={<Administration />} />
             <Route path="facility" element={<Facility />} />
             <Route path="issues" element={<Issues />} />
