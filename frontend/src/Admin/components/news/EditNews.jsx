@@ -248,7 +248,7 @@ function EditNews({ isOpen, onClose, news, onSave }) {
             </button>
             <button
               type="submit"
-              className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium transition-colors"
+              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors"
               disabled={detailsLoading}
             >
               {detailsLoading ? "Saving..." : "Save All Changes"}
