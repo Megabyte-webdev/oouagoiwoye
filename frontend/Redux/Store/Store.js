@@ -11,6 +11,7 @@ import lecturerReducer from "../Slicers/LecturerSlice";
 import newsReducer from "../Slicers/News";
 import principalOfficersReducer from "../Slicers/PrincipalOfficers";
 import schoolFeeReducer from "../Slicers/Schoolfees";
+import communitiesReducer from "../Slicers/Communities";
 
 
 const store = configureStore({
@@ -26,7 +27,8 @@ const store = configureStore({
     lecturers: lecturerReducer,
     news: newsReducer,
     principalOfficers: principalOfficersReducer,
-    schoolFees: schoolFeeReducer
+    schoolFees: schoolFeeReducer,
+    communities: communitiesReducer,
   },
 });
 
