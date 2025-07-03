@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://api.oouweb.site/api/oouweb",
+  baseURL: "https://api.perfecthomesdeveloperlimited.com",
   timeout: 60000,
-  withCredentials: true, // if your backend uses cookies for auth
+  //withCredentials: true, // if your backend uses cookies for auth
   headers: {
     "Content-Type": "application/json",
     "ngrok-skip-browser-warning":"true",
