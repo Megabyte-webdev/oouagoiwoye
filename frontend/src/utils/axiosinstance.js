@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://api.perfecthomesdeveloperlimited.com",
+  baseURL: "https://api.perfecthomesdeveloperlimited.com/api",
   timeout: 60000,
   //withCredentials: true, // if your backend uses cookies for auth
   headers: {
