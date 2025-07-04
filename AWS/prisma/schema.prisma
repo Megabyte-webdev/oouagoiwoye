@@ -1,0 +1,180 @@
+  // This is your Prisma schema file,
+  // learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+  // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+  // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+  generator client {
+    provider = "prisma-client-js"
+    previewFeatures = ["driverAdapters"]
+  }
+
+  datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+  }
+
+
+  model admin {
+    id        Int     @id @default(autoincrement()) @unique
+    username  String      @unique
+    password  String?
+  }
+
+  model campus{
+    id              Int @id   @default(autoincrement()) @unique
+    title           String
+    location        String
+    image           String
+    bannerVideo     String?
+    campusInfo      String
+    Contact         contact?       
+    faculties       Faculties[]
+  }
+
+  model Faculties {
+    id                  Int @id @default(autoincrement()) @unique 
+    campusId            Int
+    campus              campus @relation(fields: [campusId], references: [id], onDelete: Cascade)
+    title               String
+    image               String
+    deanImage           String?
+    deanName            String?
+    noOfDepartments     String
+    body                String
+    bannerImage         String?
+    Contact             contact?  
+    facultyLecturers    lecturers[]
+    departments         departments[]
+    admissionReq        AdmissionReq[]
+    schoolFee            SchoolFee[]
+  }
+
+  model departments {
+    id           Int @id @default(autoincrement()) @unique
+    title        String
+    image        String
+    body         String
+    facultyId    Int 
+    faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+  }
+
+  model lecturers {
+    id           Int @id @default(autoincrement()) @unique
+    name         String
+    designation  String
+    image        String
+    facultyId    Int 
+    faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+  }
+
+  model contact {
+    id                      Int         @id @default(autoincrement()) @unique
+    whatsapp                String?      
+    facebook                String?     
+    youtube                 String?
+    campus                  campus?             @relation(fields: [campusId], references: [id], onDelete: Cascade)
+    campusId                Int?                @unique
+    Faculties               Faculties?          @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+    facultyId               Int?                @unique
+    Administration          Administration?     @relation(fields: [adminId], references: [id], onDelete:Cascade)
+    adminId                 Int?                @unique
+    Principal               Principal?          @relation(fields: [PrincipalId], references: [id], onDelete:Cascade)   
+    PrincipalId             Int?                 @unique
+    ContinuingEducation     ContinuingEducation?    @relation(fields: [contEducationId], references: [id], onDelete: Cascade)
+    contEducationId         Int?                @unique
+    Directorate             Directorates?       @relation(fields: [DirectorateId], references: [id], onDelete: Cascade)
+    DirectorateId           Int?                @unique
+  }
+
+  model news {
+    id           Int @id @default(autoincrement()) @unique
+    headline     String
+    image        String
+    body         String
+    author       String
+  }
+  model communities {
+    id          Int @id @default(autoincrement()) @unique
+    image       String
+    title       String
+    body        String
+  }
+
+  model Administration {
+    id                  Int @id @default(autoincrement()) @unique
+    name                String
+    designation         String
+    image               String
+    biography           String
+    contact             contact?
+    responsibilities    String[]
+  }
+
+  model Principal {
+    id                  Int @id @default(autoincrement()) @unique
+    name                String
+    designation         String
+    image               String
+    biography           String
+    contact             contact?
+    responsibilities    String[]
+  }
+
+  model ContinuingEducation {
+    id             Int     @id     @default(autoincrement())     @unique
+    program       String
+    image         String
+    headline      String    
+    overview      String
+    requirements      String[]
+    benefits          String[]
+    contact            contact?
+
+  }
+
+  model Directorates {
+    id      Int     @id     @default(autoincrement())     @unique
+    office          String
+    headline        String
+    message         String
+    image           String
+    history         String?
+    vission             String?
+    mission             String?
+    responsibilities    String[]
+    contact             contact?
+  }
+
+  model AdmissionReq {
+    id          Int     @id     @default(autoincrement())     @unique
+    course      String
+    utmeReq     String[]
+    olevelReq   String[]
+    DEReq       String[]
+    facultyId    Int 
+    faculty      Faculties @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+  }
+
+  model SchoolFee {
+    id                    Int     @id     @default(autoincrement())     @unique
+    course                String
+    acceptanceFee         String
+    admissionSchFee       String
+    returningSchFee       String
+    facultyId             Int
+    faculty               Faculties   @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+    @@map("schoolFees")
+  }
+
+  model Faq{
+    id          Int     @id     @default(autoincrement())     @unique
+    question    String
+    answer      String
+    type        Type
+  }
+
+  enum Type {
+    UNDERGRADUATE
+    POSTGRADUATE
+  }

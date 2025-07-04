@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "schoolFees" ALTER COLUMN "acceptanceFee" SET DATA TYPE TEXT,
+ALTER COLUMN "admissionSchFee" SET DATA TYPE TEXT,
+ALTER COLUMN "returningSchFee" SET DATA TYPE TEXT;
