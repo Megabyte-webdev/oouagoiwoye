@@ -1,0 +1,19 @@
+{
+    "tag" : "Testimonial",
+    "title": "Let’s hear what our \n students have to say about OOU.",
+    "items" : [
+      {
+        "id": 1,
+        "image": "./assets.group19.png"
+      },
+      {
+        "id": 2,
+        "image": "./assets.js/assets.group19"
+      },
+      {
+        "id": 3,
+        "image": "../assets/Group 19.png"
+      }
+      
+    ]
+  }

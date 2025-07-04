@@ -1,0 +1,191 @@
+{
+  "about": [
+    {
+      "title": "History of the University",
+      "href":"history"
+    },
+    {
+      "title": "Our Vision/Mission",
+      "href":"mission"
+    },
+    {
+      "title": "Core Values/Philosophy",
+      "href":"values"
+    }
+  ],
+  "administration": {
+    "admin": "/administration/admin",
+    "princi": "/administration/principal-officers",
+    "administrations": [
+      {
+        "title": "The Visitor",
+        "href": "/administration/visitor"
+      },
+      {
+        "title": "Pro-Chancellor",
+        "href": "/administration/pro-chancellor"
+      },
+      {
+        "title": "Vice-Chancellor",
+        "href": "/administration/vice-chancellor"
+      },
+      {
+        "title": "The Council",
+        "href": "/administration/council"
+      }
+    ],
+    "Principal_Officers": [
+      {
+        "title": "Deputy Vice-Chancellor (Academics)",
+        "href": "/principal-officers/dvc-acad"
+      },
+      {
+        "title": "Deputy Vice-Chancellor (Administration)",
+        "href": "/principal-officers/dvc-admin"
+      },
+      {
+        "title": "University Registrar",
+        "href": "/principal-officers/registrar"
+      },
+      {
+        "title": "University Librarian",
+        "href": "/principal-officers/libarian"
+      },
+      {
+         "title": "University Bursar",
+        "href": "/principal-officers/bursar"
+      }
+    ]
+  },
+  "admissions": [
+    {
+      "title": "Undergraduate",
+      "href": "/undergraduate"
+    },
+    {
+      "title": "Postgraduate",
+      "href": "/postgraduate"
+    }
+  ],
+  "services": {
+    "campus": [
+      {
+        "title": "Main Campus",
+        "href": "/services/campus/main-campus"
+      },
+      {
+        "title": "Ibogun Campus",
+        "href": "/services/campus/ibogun-campus"
+      },
+      {
+        "title": "Aiyetoro Campus",
+        "href": "/services/campus/aiyetoro-campus"
+      },
+      {
+        "title": "Sagamu Campus",
+        "href": "/services/campus/sagamu-campus"
+      }
+    ]
+  ,
+
+  "faculties": [
+    {
+      "title": "Faculty of Science",
+      "href": "/services/faculty/science"
+    },
+    {
+      "title": "Faculty of Law",
+      "href": "/services/faculty/Law"
+    },
+    {
+      "title": "Faculty of social sciences",
+      "href": "/services/faculty/social-science"
+    },
+    {
+      "title": "Faculty of Arts",
+      "href": "/services/faculty/art"
+    },
+    {
+      "title": "Faculty of Pharmacy",
+      "href": "/services/faculty/pharmacy"
+    }
+  ],
+  "faculties_second": [
+    {
+      "title": "Faculty of Agricultural Sciences",
+      "href": "/services/faculty/agric"
+    },
+    {
+      "title": " Faculty of Basic Medical Sciences",
+      "href": "/services/faculty/medical-sciences"
+    },
+    {
+      "title": "Faculty of Clinical sciences",
+      "href": "/services/faculty/clinical-sciences"
+    },
+    {
+      "title": "Faculty of Education",
+      "href": "/services/faculty/education"
+    },
+    {
+      "title": "Faculty of Administration & Management",
+      "href": "/services/faculty/admin"
+    },
+    {
+      "title": "Faculty of Engineering & Environmental Studies",
+      "href": "/services/faculty/engineering"
+    }
+  ],
+  "continuing_education": [
+    {
+      "title": "Pre-Degree Studies",
+      "href": "/services/continuing/predegree"
+    },
+    {
+      "title": "Jupeb Programme",
+      "href": "/services/continuing/jupeb"
+    },
+    {
+      "title": "Part-Time Programme",
+      "href": "/services/continuing/part-time"
+    },
+    {
+      "title": "Advance Certificate Programme",
+      "href": "/services/continuing/advance-certificate"
+    }
+  ],
+  "directorates": [
+    {
+      "title": "Academic Planning",
+      "href": "/services/directorate/acad-planning"
+    },
+    {
+      "title": "Quality Assurance",
+      "href": "/services/directorate/quality-assurance"
+    },
+    {
+      "title": "Student Affairs",
+      "href": "/services/directorate/student-affairs"
+    },
+    {
+      "title": "General Nigerian Studies",
+      "href": "/services/directorate/general-studies"
+    },
+    {
+      "title": "Entrepreneurial Studies & Innovation",
+      "href": "/services/directorate/entrepreneurial-studies"
+    }
+  ]
+},
+
+  "login": [
+    {
+      "title": "As a Student",
+      "href": "/"
+    },
+    {
+      "title": "As a Staff",
+      "href": "/admin/auth"
+    }
+  ]
+}

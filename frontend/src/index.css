@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Style the entire website's scrollbar */
+::-webkit-scrollbar {
+  width: 6px; /* Set the width of the scrollbar */
+  height: 0px; /* Set the height for horizontal scrollbar (if any) */
+}
+
+/* Style the track (the background of the scrollbar) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light gray track color */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+/* Style the thumb (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+  background: #1310bd; /* Dark gray thumb color */
+  border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+/* Style the thumb when it's being hovered */
+::-webkit-scrollbar-thumb:hover {
+  background: #010035; /* Darker color when hovered */
+}
+
+/* Optional: Style for the corner where the vertical and horizontal scrollbars meet */
+::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+@media (max-width:600px){
+::-webkit-scrollbar {
+  width: 0px; /* Set the width of the scrollbar */
+  height: 0px; /* Set the height for horizontal scrollbar (if any) */
+}
+}
+
+/* 
+:root {
+  --primary-blue: #010035;
+  --secondary-blue: #0B35A2;
+  --primary-white: #FFFFFF;
+  --secondary-white: #e3ecfa;
+  --tertiary-blue: #afbcd8;
+  --primary-grey: #cccccc;
+  --secondary-grey: #FCFCFD;
+  --primary-red: rgba(100, 30, 30, .7);
+  --primary-yellow: goldenrod;
+  --nav-main-width: 222px;
+  --nav-main-height: 88px;
+  --black: #000000;
+  --medium-black: #454545;
+  --slides: 0;
+  --nav-height: 160px;
+  --drop-height: 0px;
+  
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background:#010035;
+  border-radius: 5px;
+  margin: 3px;
+}
+::-webkit-scrollbar-track{
+  background: #01003516;
+}
+main{
+  margin-top: var(--nav-height) ;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  outline: none;
+  border: none;
+  min-width: 60px;
+  height: 40px;
+  font-weight: 550;
+  font-size: 1rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.primary-btn {
+  margin: 10px 0px;
+  font-size: 0.9rem;
+  background-color: var(--secondary-blue);
+  color: var(--primary-white);
+  box-shadow: 8px 8px var(--black);
+}
+
+.primary-btn a {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary-btn i {
+  margin-left: 5px;
+  font-style: normal;
+}
+
+.primary-btn:hover {
+  background-color: var(--primary-blue);
+  box-shadow: 8px 8px var(--primary-grey);
+}
+.txt-img-section.dark .primary-btn:hover{
+  background-color: var(--primary-white);
+  color: var(--black);
+}
+
+.container {
+  padding: 2%;
+  width: 95% !important;
+  margin: 0 auto;
+  margin-top: calc(var(--nav-height)/3); 
+}
+
+.hide {
+  transform: scale(0);
+  opacity: 0;
+}
+
+
+@media screen and (max-width: 900px) {
+    
+  main {
+      --nav-height: 110px;
+  }
+} */
