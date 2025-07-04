@@ -140,7 +140,7 @@ const News = () => {
                             e.stopPropagation();
                             setEditNews(item);
                           }}
-                          className="text-green-600 hover:text-green-800 p-1 rounded-full hover:bg-green-50"
+                          className="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-50"
                           title="Edit news"
                         >
                           <BiEdit size={18} />
@@ -170,7 +170,7 @@ const News = () => {
 
           {/* Publish News Section */}
           <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-            <div className="bg-gradient-to-r from-green-600 to-green-800 px-6 py-4">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4">
               <h2 className="font-bold text-2xl text-white">Publish News</h2>
             </div>
             

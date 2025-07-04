@@ -5,7 +5,7 @@ import { IoSchool, IoSettings, IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { MdGroups } from "react-icons/md";
 import { RiAdminFill, RiLogoutBoxFill } from "react-icons/ri";
-import { HiMiniChartPie, HiMiniEnvelopeOpen, HiMiniNewspaper } from "react-icons/hi2";
+import { HiMiniChartPie, HiMiniEnvelopeOpen, HiMiniNewspaper, HiMiniUsers } from "react-icons/hi2";
 import { FcDepartment } from "react-icons/fc";
 import { GiTeacher } from "react-icons/gi";
 
@@ -19,6 +19,7 @@ import Administration from "./components/Admin/Administration";
 import Facility from "./components/Facility";
 import Issues from "./components/Issues";
 import News from "./components/news/News";
+import Communities from "./components/Communities/Communities";
 
 import Department from "./components/departments/Department";
 
@@ -80,8 +81,8 @@ export default function AdminDash() {
     },
     {
       title: "Communities",
-      path: "news",
-      icon: HiMiniNewspaper,
+      path: "communities",
+      icon: HiMiniUsers,
     },
     {
       title: "Principal",
@@ -182,6 +183,7 @@ export default function AdminDash() {
             <Route path="facility" element={<Facility />} />
             <Route path="issues" element={<Issues />} />
             <Route path="news" element={<News />} />
+            <Route path="communities" element={<Communities />} />
             <Route path="/" element={<Navigate to="dashboard" />} />
           </Routes>
         </div>
