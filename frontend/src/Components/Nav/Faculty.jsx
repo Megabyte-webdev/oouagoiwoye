@@ -5,7 +5,7 @@ import { NavContext } from "./useContext";
 import { useContext } from "react";
 import ServicesList from "./Services/ServicesList";
 import { facultyData } from "../../Data/faculty";
-
+import useCampus from "../../hooks/useCampus";
 const Faculty = () => {
     const {
         setMenu,
@@ -17,6 +17,10 @@ const Faculty = () => {
         setFaculty,
         setLogin,
     } = useContext(NavContext);
+
+    const { useFaculties } = useCampus();
+    const { data: faculties } = useFaculties();
+    console.log(faculties);
 
     const toggleBtn = () => {
         setAbout(false);

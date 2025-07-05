@@ -1,20 +1,24 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
     server: {
         port: 8020,
         proxy: {
-            "/api": "https://api.oouweb.site",
-            // "/api" : "http://localhost:5000"
+            "/api": {
+                target: "https://api.perfecthomesdeveloperlimited.com",
+                changeOrigin: true,
+                secure: true, // set to false only if using self-signed SSL
+                rewrite: (path) => path.replace(/^\/api/, "/api/oouweb"),
+                configure: (proxy) => {
+                    proxy.on("proxyReq", (proxyReq, req) => {
+                        console.log(
+                            `[VITE PROXY] ${req.url} -> ${proxyReq.path}`
+                        );
+                    });
+                },
+            },
         },
     },
 });
-
-///addd to package .json
-//"homepage": "https://megabyte-webdev.github.io/olabisionabanjouniversitywithreact.com/",
-// add to script
-// "predeploy": "npm run build",
-//     "deploy": "gh-pages -d build"
