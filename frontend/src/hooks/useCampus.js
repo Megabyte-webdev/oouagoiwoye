@@ -56,6 +56,42 @@ const useCampus = () => {
         });
     };
 
+    const useCommunities = () => {
+        return useQuery({
+            queryKey: ["communities"],
+            queryFn: async () => {
+                try {
+                    const { data } = await API.get("/communities");
+                    return data?.data || [];
+                } catch (error) {
+                    onFailure({
+                        message: "Failed to fetch communities",
+                        error: extractErrorMessage(error),
+                    });
+                    throw error;
+                }
+            },
+        });
+    };
+
+    const useNews = () => {
+        return useQuery({
+            queryKey: ["news"],
+            queryFn: async () => {
+                try {
+                    const { data } = await API.get("/news");
+                    return data?.data || [];
+                } catch (error) {
+                    onFailure({
+                        message: "Failed to fetch news",
+                        error: extractErrorMessage(error),
+                    });
+                    throw error;
+                }
+            },
+        });
+    };
+
     const useLecturers = () => {
         return useQuery({
             queryKey: ["lecturers"],
@@ -96,6 +132,8 @@ const useCampus = () => {
         useDepartments,
         useLecturers,
         useCampusList,
+        useNews,
+        useCommunities,
     };
 };
 
