@@ -37,7 +37,7 @@ const Services = () => {
     const { data: directorateData = [] } = useDirectorate;
 
     return (
-        <div className="max-lg:w-full bg-red-100">
+        <div className="max-lg:w-full">
             <div className="group flex flex-col items-center relative max-lg:items-start max-lg:px-0 max-lg:w-full">
                 <div
                     className="flex gap-1 items-center max-lg:justify-between max-lg:px-8 max-lg:w-full max-md:px-7 max-lg:border-b-2 max-lg:py-7 z-[22]"
