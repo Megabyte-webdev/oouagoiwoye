@@ -157,7 +157,7 @@ export default function AdminDash() {
                     className={
                         control
                             ? "w-3/5 lg:w-2/12 h-full lg:h-screen absolute left-0 lg:top-0 lg:left-0 lg:relative font-light font-sans bg-white duration-1000 shadow-2xl pr-5"
-                            : "w-3/5 lg:w-2/12 h-full lg:h-screen absolute -left-96 lg:top-0 lg:left-0 lg:relative font-light font-sans bg-white duration-1000 shadow-2xl pr-5"
+                            : "w-3/5 lg:w-2/12 h-full lg:h-screen absolute -left-full lg:top-0 lg:left-0 lg:relative font-light font-sans bg-white duration-1000 shadow-2xl pr-5"
                     }
                 >
                     <div className="w-full ml-2  overflow-y-auto h-[90vh]">

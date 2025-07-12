@@ -1,11 +1,10 @@
-import navListJson from "../../Json/navlist.json";
 import { FaCaretDown, FaCaretUp, FaAsterisk } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
-import { NavContext } from "./useContext";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import ServicesList from "./Services/ServicesList";
-import { facultyData } from "../../Data/faculty";
 import useCampus from "../../hooks/useCampus";
+import { NavContext } from "./useContext";
+
 const Faculty = () => {
     const {
         setMenu,
@@ -19,8 +18,7 @@ const Faculty = () => {
     } = useContext(NavContext);
 
     const { useFaculties } = useCampus();
-    const { data: faculties } = useFaculties();
-    console.log(faculties);
+    const { data: faculties, isLoading, isError } = useFaculties;
 
     const toggleBtn = () => {
         setAbout(false);
@@ -30,11 +28,10 @@ const Faculty = () => {
         setLogin(false);
         setAdmission(false);
     };
+
     return (
         <div className="max-lg:w-full">
-            <li
-                className={`group flex flex-col items-center relative max-lg:items-start max-lg:px-0 max-lg:w-full`}
-            >
+            <li className="group flex flex-col items-center relative max-lg:items-start max-lg:px-0 max-lg:w-full">
                 <div
                     className="flex gap-1 items-center max-lg:justify-between max-lg:px-8 max-lg:w-full max-md:px-7 max-lg:border-b-2 max-lg:py-7 z-[22]"
                     onClick={toggleBtn}
@@ -50,9 +47,10 @@ const Faculty = () => {
 
                 {faculty && (
                     <div
-                        className={`bg-white text-[#010035]  font-light z-50 py-8 text-md absolute px-8 left-[50%] translate-x-[-50%] top-[55px] group-hover:block max-lg:top-[0%] max-lg:left-[0%] max-lg:translate-x-[0%] max-lg:translate-y-[0%] max-lg:static max-lg:py-0 min-w-80`}
+                        className={`bg-white text-[#010035] font-light z-50 py-8 text-md absolute px-8 left-[50%] translate-x-[-50%] top-[55px] group-hover:block max-lg:top-[0%] max-lg:left-[0%] max-lg:translate-x-[0%] max-lg:translate-y-[0%] max-lg:static max-lg:py-0 min-w-80`}
                     >
-                        <div className="hidden lg:block w-5 h-5 -rotate-45 bg-white absolute -top-2 right-1/2 translate-x-1/2 " />
+                        <div className="hidden lg:block w-5 h-5 -rotate-45 bg-white absolute -top-2 right-1/2 translate-x-1/2" />
+
                         <div className="flex gap-2 items-center pb-3 border-b-[3px] w-full max-lg:hidden">
                             <div>
                                 <FaAsterisk />
@@ -69,15 +67,26 @@ const Faculty = () => {
                             </Link>
                         </div>
 
+                        {/* Content */}
                         <div>
-                            <ServicesList
-                                headerTitle="Faculties"
-                                address="services/faculty"
-                                value={facultyData?.items.slice(
-                                    0,
-                                    Math.round(facultyData?.items.length / 2)
-                                )}
-                            />
+                            {isLoading ? (
+                                <div className="py-4 text-sm text-gray-500">
+                                    Loading faculties...
+                                </div>
+                            ) : isError ? (
+                                <div className="py-4 text-sm text-red-500">
+                                    Failed to load faculties.
+                                </div>
+                            ) : (
+                                <ServicesList
+                                    headerTitle="Faculties"
+                                    address="services/faculty"
+                                    value={faculties?.slice(
+                                        0,
+                                        Math.round(faculties?.length / 2)
+                                    )}
+                                />
+                            )}
                         </div>
                     </div>
                 )}

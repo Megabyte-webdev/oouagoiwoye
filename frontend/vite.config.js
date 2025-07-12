@@ -7,7 +7,7 @@ export default defineConfig({
         port: 8020,
         proxy: {
             "/api": {
-                target: "https://api.perfecthomesdeveloperlimited.com",
+                target: "http://oouweb.perfecthomesdeveloperlimited.com",
                 changeOrigin: true,
                 secure: true, // set to false only if using self-signed SSL
                 rewrite: (path) => path.replace(/^\/api/, "/api/oouweb"),

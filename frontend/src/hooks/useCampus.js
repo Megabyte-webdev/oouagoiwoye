@@ -4,20 +4,36 @@ import { onFailure } from "../utils/notifications/OnFailure";
 import { extractErrorMessage } from "../utils/formmaters";
 
 const useCampus = () => {
-    const useFaculties = () => {
+    // Fetch all faculties once
+    const useFaculties = useQuery({
+        queryKey: ["faculties"],
+        queryFn: async () => {
+            try {
+                const { data } = await API.get("/faculty");
+                return data?.data || [];
+            } catch (error) {
+                onFailure({
+                    message: "Failed to fetch faculties",
+                    error: extractErrorMessage(error),
+                });
+                throw error;
+            }
+        },
+    });
+
+    // Fetch a single faculty by ID using already-cached faculties
+    const useFacultyById = (id) => {
         return useQuery({
-            queryKey: ["faculties"],
+            queryKey: ["faculty", id],
+            enabled: !!id,
             queryFn: async () => {
-                try {
-                    const { data } = await API.get("/faculty");
-                    return data?.data || [];
-                } catch (error) {
-                    onFailure({
-                        message: "Failed to fetch faculties",
-                        error: extractErrorMessage(error),
-                    });
-                    throw error;
-                }
+                if (!useFaculties.data)
+                    throw new Error("Faculties not loaded yet");
+                const match = useFaculties.data.find(
+                    (item) => item.href === id || item.id === id
+                );
+                if (!match) throw new Error("Faculty not found");
+                return match;
             },
         });
     };
@@ -45,7 +61,7 @@ const useCampus = () => {
             queryKey: ["lecturers"],
             queryFn: async () => {
                 try {
-                    const { data } = await client.get("/lecturers");
+                    const { data } = await API.get("/lecturers");
                     return data?.data || [];
                 } catch (error) {
                     onFailure({
@@ -57,7 +73,30 @@ const useCampus = () => {
             },
         });
     };
-    return { useFaculties, useDepartments, useLecturers };
+
+    const useCampusList = useQuery({
+        queryKey: ["campuses"],
+        queryFn: async () => {
+            try {
+                const { data } = await API.get("/campus");
+                return data?.data || [];
+            } catch (error) {
+                onFailure({
+                    message: "Failed to fetch campuses",
+                    error: extractErrorMessage(error),
+                });
+                throw error;
+            }
+        },
+    });
+
+    return {
+        useFaculties,
+        useFacultyById,
+        useDepartments,
+        useLecturers,
+        useCampusList,
+    };
 };
 
 export default useCampus;
